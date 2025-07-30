@@ -1,0 +1,424 @@
+// Шрифты
+
+@font-face {
+  font-family: pfdintextcomppro-light;
+  src: url("./assets/font/pfdintextcomppro-light.woff");
+}
+
+@font-face {
+  font-family: pfdintextcomppro-regular;
+  src: url("./assets/font/pfdintextcomppro-regular.woff");
+}
+
+// Переменные
+
+$main-font: "DM Sans", sans-serif;
+$font-family: "pfdintextcomppro-light", sans-serif;
+$second-family: "pfdintextcomppro-regular", sans-serif;
+$accent-color: #b30006;
+$second-accent: #292361;
+$text-color: #212121;
+$second-text: #fefefe;
+$shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+
+// Основные стили
+body {
+  font-family: $main-font;
+  color: $text-color;
+  box-sizing: content-box;
+  max-width: 100%;
+}
+
+p,
+a {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: $text-color;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-family: inherit;
+  color: $text-color;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+// Хэдер
+@media screen and (max-width: 768px) {
+
+  .header {
+
+    position: sticky;
+    top: 0;
+    z-index: 3;
+
+    // Верхняя часть
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $accent-color;
+      padding: 15px 20px;
+      gap: 1rem;
+    }
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 1;
+    }
+
+    &__logo-icon {
+      width: 3rem;
+      height: 2rem;
+    }
+
+    &__logo-text {
+      white-space: nowrap;
+      font-family: $second-family;
+      font-size: 0.85rem;
+      color: $second-text;
+
+      span.header__logo-subtext {
+        font-family: $font-family;
+        font-size: 0.75rem;
+      }
+    }
+
+    &__phone {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    // Нижняя часть
+    &__bottom {
+      background-color: $second-text;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    &__menu-toggle,
+    &__cart {
+      width: 4rem;
+      height: 4rem;
+      line-height: 0;
+      border-right: 0.5px solid #c0c4cc;
+    }
+
+    &__menu-toggle-icon,
+    &__search-icon,
+    &__cart-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    &__cart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 0.5px solid #c0c4cc;
+    }
+
+    &__search {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__search {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+      margin: 0 1rem;
+    }
+
+    &__search-input {
+      flex-grow: 1;
+      border: none;
+      font-size: 0.875rem;
+    }
+
+    &__search-input:focus {
+      outline: none;
+    }
+
+    &__search-input::placeholder {
+      font-size: 0.75rem;
+    }
+
+  }
+
+  // Меню
+
+  .backdrop {
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.35);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+  }
+
+  .mobile-menu__wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    z-index: 7;
+    background-color: $second-text;
+  }
+
+  .mobile-menu {
+
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 20px;
+      padding-right: 10px;
+      border-bottom: 1px solid #c2c2c2;
+      background-color: $second-text;
+    }
+
+    &__login {
+      font-size: 1.2rem;
+    }
+
+    &__close-btn {
+      width: 2.8rem;
+      height: 2.8rem;
+      line-height: 0;
+    }
+
+    &__icon {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+
+    &__arrow {
+      width: 1rem;
+      height: 1rem;
+      fill: $text-color !important;
+      transform: rotate(-90deg);
+    }
+
+    &>li>a {
+      background-color: #fefefe !important;
+      color: #212121 !important;
+      font-size: 1.5rem !important;
+      font-weight: 500 !important;
+    }
+
+    &__phone {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__phone *:nth-child(2),
+    &__phone *:nth-child(3) {
+      font-size: 1rem;
+    }
+
+    &__phone *:nth-child(2) {
+      margin-top: 5px;
+    }
+
+    &__phone+&__arrow {
+      transform: rotate(0deg) !important;
+    }
+
+    .tab__content li a {
+      color: #212121;
+      background-color: #fefefe;
+      font-size: 1.2rem;
+    }
+
+    &__link {
+      padding: 1rem 20px;
+      font-size: 1.5rem !important;
+      font-weight: 500 !important;
+      background-color: #fefefe !important;
+      color: #212121 !important;
+      padding-right: 10px;
+      border-bottom: 1px solid #c2c2c2;
+    }
+
+    &__lang{
+      background-color: $second-text;
+      padding: 20px;
+    }
+
+    &__lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      border-radius: 30px;
+      box-shadow: $shadow;
+      padding: 10px 20px;
+      padding-right: 10px;
+      font-size: 1.2rem;
+    }
+  }
+
+  // Кнопка для связи
+
+  main {
+    height: 100vh;
+  }
+
+  .message__btn {
+    width: 4rem;
+    height: 4rem;
+    box-shadow: $shadow;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: $second-text;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+  }
+
+  .message__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  // Футер
+
+  .contacts {
+    border-top: 0.5px solid #c2c2c2;
+    padding: 2rem 20px;
+
+    &__list,
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    &__item {
+      gap: 1rem;
+    }
+
+    &__title {
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+  }
+
+  // Выпадающее меню
+  .menu {
+    z-index: 1;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .tab {
+    position: relative;
+
+
+    & input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    &__label .arrow {
+      width: 1rem;
+      height: 1rem;
+      transform: rotate(-90deg);
+      transition: transform 0.3s;
+      fill: $second-text;
+    }
+
+    & input:checked+.tab__label .arrow {
+      transform: rotate(0deg);
+    }
+
+    &__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    & input:checked~&__content {
+      max-height: 300px;
+    }
+
+    &__content li a {
+      display: block;
+      padding: 1.2rem;
+      color: $text-color;
+      background: #352f74;
+      text-decoration: none;
+      color: #fefefe;
+      border-bottom: 0.5px solid #9d9d9d;
+    }
+  }
+
+  .tab__label,
+  .menu>li>a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem;
+    font-size: 18px;
+    color: #fefefe;
+    background: $second-accent;
+    font-weight: 600;
+    border-bottom: 0.5px solid #9d9d9d;
+    color: white;
+  }
+
+  .footer-info {
+
+    display: flex;
+    flex-direction: column;
+
+    &__disclaimer {
+      font-size: 0.9rem;
+      padding: 1rem 20px;
+    }
+
+    &__copyright {
+      font-size: 0.9rem;
+      padding: 0 20px;
+      padding-bottom: 1rem;
+      margin-left: auto;
+
+      span {
+        color: #848484;
+      }
+    }
+
+    &__links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 0.5px solid #9d9d9d;
+      padding: 1rem 20px;
+    }
+  }
+}
