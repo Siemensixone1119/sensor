@@ -37,10 +37,6 @@ button {
   border: none;
 }
 
-.hidden {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   .header {
     position: sticky;
@@ -104,11 +100,7 @@ button {
     border-left: 0.5px solid #c0c4cc;
   }
   .header__search {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-  }
-  .header__search {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -135,16 +127,28 @@ button {
     background: rgba(0, 0, 0, 0.35);
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 10;
     position: fixed;
     top: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
+    visibility: hidden;
   }
   .mobile-menu__wrap {
     position: absolute;
     inset: 0;
     width: 100%;
-    z-index: 7;
+    z-index: 101;
     background-color: #fefefe;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
+    visibility: hidden;
+  }
+  .mobile-menu__wrap.open,
+  .backdrop.open {
+    transform: translate(0);
+    transition: transform 0.3s ease-in-out;
+    visibility: visible;
   }
   .mobile-menu__top {
     display: flex;
