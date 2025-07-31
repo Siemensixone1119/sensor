@@ -19,7 +19,7 @@
 
 <body>
   <header class="header">
-    <section class="header__top">
+    <section class="header__top visible">
       <a href="/" class="header__logo">
         <svg class="header__logo-icon">
           <use href="./assets/image/symbol-defs.svg#icon-logo"></use>
@@ -36,8 +36,8 @@
         </svg>
       </a>
     </section>
-
-    <section class="header__bottom">
+  </header>
+ <section class="header__bottom shifted">
       <button class="header__menu-toggle">
         <svg class="header__menu-toggle-icon">
           <use href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
@@ -45,7 +45,7 @@
       </button>
 
       <div class="header__search">
-        <input type="text" class="header__search-input" placeholder="Найти продукцию, файлы, программное обесп...">
+        <input type="text" class="header__search-input" placeholder="Найти продукцию, файлы, программное обеспечение">
         <svg class="header__search-icon">
           <use href="./assets/image/symbol-defs.svg#icon-magnify"></use>
         </svg>
@@ -57,9 +57,6 @@
         </svg>
       </a>
     </section>
-  </header>
-
-
   <main>
     <button class="message__btn">
       <svg class="message__icon">
@@ -166,7 +163,7 @@
 
 
 
-  <section class="mobile-menu__wrap hidden">
+  <section class="mobile-menu__wrap">
     
     <div class="mobile-menu__top">
       <a href="/" class="mobile-menu__login">Войти</a>
@@ -178,16 +175,16 @@
     </div>
 
     <nav class="mobile-menu__nav">
-      <ul class="menu mobile-menu">
+      <ul class=" mobile-menu">
         <li class="tab">
           <input type="checkbox" id="menu-1">
           <label for="menu-1" class="tab__label  mobile-menu__link">
             О предприятии
-            <svg class="mobile-menu__arrow arrow">
+            <svg class="mobile-menu__arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
           </label>
-          <ul class="tab__content mobile-menu__content">
+          <ul class="mobile-menu__content">
             <li><a href="/">Уровнемеры</a></li>
             <li><a href="/">Газоанализаторы</a></li>
             <li><a href="/">Адаптеры интерфейсов</a></li>
@@ -198,11 +195,11 @@
           <input type="checkbox" id="menu-2">
           <label for="menu-2" class="tab__label  mobile-menu__link">
             Продукция
-            <svg class="mobile-menu__arrow arrow">
+            <svg class="mobile-menu__arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
           </label>
-          <ul class="tab__content mobile-menu__content">
+          <ul class="mobile-menu__content">
             <li><a href="/">Уровнемеры</a></li>
             <li><a href="/">Газоанализаторы</a></li>
             <li><a href="/">Адаптеры интерфейсов</a></li>
@@ -211,13 +208,13 @@
 
         <li class="tab">
           <input type="checkbox" id="menu-3">
-          <label for="menu-3" class="tab__label  mobile-menu__link">
+          <label for="menu-3" class="mobile-menu__link">
             Поддержка
-            <svg class="mobile-menu__arrow arrow">
+            <svg class="mobile-menu__arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
           </label>
-          <ul class="tab__content mobile-menu__content">
+          <ul class="mobile-menu__content">
             <li><a href="/">Уровнемеры</a></li>
             <li><a href="/">Газоанализаторы</a></li>
             <li><a href="/">Адаптеры интерфейсов</a></li>
@@ -229,17 +226,17 @@
 
         <li class="tab">
           <input type="checkbox" id="menu-4">
-          <label for="menu-4" class="tab__label  mobile-menu__link">
+          <label for="menu-4" class="mobile-menu__link">
             <p class="mobile-menu__phone">
               <span>+7 (8412) 65-21-00</span>
               <span>Приемная (обращения)</span>
               <span>в будни с 08:00 до 17:00 (мск)</span>
             </p>
-            <svg class="mobile-menu__arrow arrow">
+            <svg class="mobile-menu__arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
           </label>
-          <ul class="tab__content mobile-menu__content">
+          <ul class="mobile-menu__content">
             <li class="mobile-menu__link">
               <p class="mobile-menu__phone">
                 <span>+7 8412 65-21-55</span>
@@ -267,7 +264,6 @@
       </button>
     </div>
   </section>
-  <div class="backdrop"></div>
 </body>
 
 </html>

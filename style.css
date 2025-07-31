@@ -37,12 +37,11 @@ button {
   border: none;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 768px) {
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 3;
-  }
   .header__top {
     display: flex;
     justify-content: space-between;
@@ -50,6 +49,20 @@ button {
     background-color: #b30006;
     padding: 15px 20px;
     gap: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+  .header__top.visible {
+    transform: translateY(0);
+  }
+  .header__top.hidden {
+    transform: translateY(-100%);
   }
   .header__logo {
     display: flex;
@@ -81,7 +94,13 @@ button {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
-    z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
+  .header__bottom.shifted {
+    transform: translateY(98%);
   }
   .header__menu-toggle, .header__cart {
     width: 4rem;
@@ -111,28 +130,21 @@ button {
     flex-grow: 1;
     border: none;
     font-size: 0.875rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .header__search-input:focus {
     outline: none;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
   }
   .header__search-input::-moz-placeholder {
     font-size: 0.75rem;
   }
   .header__search-input::placeholder {
     font-size: 0.75rem;
-  }
-  .backdrop {
-    -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);
-    background: rgba(0, 0, 0, 0.35);
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
-    visibility: hidden;
   }
   .mobile-menu__wrap {
     position: absolute;
@@ -144,8 +156,7 @@ button {
     transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
     visibility: hidden;
   }
-  .mobile-menu__wrap.open,
-  .backdrop.open {
+  .mobile-menu__wrap.open {
     transform: translate(0);
     transition: transform 0.3s ease-in-out;
     visibility: visible;
@@ -224,6 +235,19 @@ button {
     padding-right: 10px;
     font-size: 1.2rem;
   }
+  .mobile-menu__wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 101;
+    background-color: #fefefe;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
+    visibility: hidden;
+    overflow-y: auto;
+  }
   main {
     height: 100vh;
   }
@@ -246,7 +270,7 @@ button {
     height: 2.5rem;
   }
   .contacts {
-    border-top: 0.5px solid #c2c2c2;
+    border-top: 0.5px solid #e3e3e3;
     padding: 2rem 20px;
   }
   .contacts__list, .contacts__item {
@@ -255,11 +279,14 @@ button {
     gap: 2.5rem;
   }
   .contacts__item {
-    gap: 1rem;
+    gap: 1.2rem;
+  }
+  .contacts__item p {
+    font-size: 1rem;
   }
   .contacts__title {
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.2rem !important;
   }
   .menu {
     z-index: 1;
@@ -292,14 +319,19 @@ button {
   .tab input:checked ~ .tab__content {
     max-height: 300px;
   }
+  .tab .tab:has(input:checked) + .tab label {
+    border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
+  }
   .tab__content li a {
     display: block;
     padding: 1.2rem;
     color: #212121;
-    background: #352f74;
+    background-color: #292361;
     text-decoration: none;
     color: #fefefe;
-    border-bottom: 0.5px solid #9d9d9d;
+  }
+  .with-border {
+    border-top: 0.25px solid rgb(56, 68, 102) !important;
   }
   .tab__label,
   .menu > li > a {
@@ -311,7 +343,7 @@ button {
     color: #fefefe;
     background: #292361;
     font-weight: 600;
-    border-bottom: 0.5px solid #9d9d9d;
+    border-bottom: 0.25px solid rgba(90, 96, 112, 0.5411764706);
     color: white;
   }
   .footer-info {
@@ -335,7 +367,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 0.5px solid #9d9d9d;
+    border-top: 0.5px solid #e3e3e3;
     padding: 1rem 20px;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -53,15 +53,13 @@ button {
   border: none;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 // Хэдер
 @media screen and (max-width: 768px) {
-
   .header {
-
-    position: sticky;
-    top: 0;
-    z-index: 3;
-
     // Верхняя часть
     &__top {
       display: flex;
@@ -70,6 +68,22 @@ button {
       background-color: $accent-color;
       padding: 15px 20px;
       gap: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    &__top.visible {
+      transform: translateY(0);
+    }
+
+    &__top.hidden {
+      transform: translateY(-100%);
     }
 
     &__logo {
@@ -108,7 +122,14 @@ button {
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
-      z-index: 10;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    &__bottom.shifted {
+      transform: translateY(98%);
     }
 
     &__menu-toggle,
@@ -146,32 +167,24 @@ button {
       flex-grow: 1;
       border: none;
       font-size: 0.875rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &__search-input:focus {
       outline: none;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
     }
 
     &__search-input::placeholder {
       font-size: 0.75rem;
     }
-
   }
 
   // Меню
-
-  .backdrop {
-    backdrop-filter: blur(4px);
-    background: rgba(0, 0, 0, 0.35);
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
-    visibility: hidden;
-  }
 
   .mobile-menu__wrap {
     position: absolute;
@@ -184,15 +197,13 @@ button {
     visibility: hidden;
   }
 
-  .mobile-menu__wrap.open,
-  .backdrop.open{
+  .mobile-menu__wrap.open {
     transform: translate(0);
     transition: transform 0.3s ease-in-out;
     visibility: visible;
   }
 
   .mobile-menu {
-
     &__top {
       display: flex;
       align-items: center;
@@ -225,7 +236,7 @@ button {
       transform: rotate(-90deg);
     }
 
-    &>li>a {
+    & > li > a {
       background-color: #fefefe !important;
       color: #212121 !important;
       font-size: 1.5rem !important;
@@ -246,7 +257,7 @@ button {
       margin-top: 5px;
     }
 
-    &__phone+&__arrow {
+    &__phone + &__arrow {
       transform: rotate(0deg) !important;
     }
 
@@ -266,7 +277,7 @@ button {
       border-bottom: 1px solid #c2c2c2;
     }
 
-    &__lang{
+    &__lang {
       background-color: $second-text;
       padding: 20px;
     }
@@ -284,6 +295,19 @@ button {
   }
 
   // Кнопка для связи
+  .mobile-menu__wrap {
+    position: fixed; // <-- Важно!
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; // чтобы заняло весь экран
+    z-index: 101;
+    background-color: $second-text;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
+    visibility: hidden;
+    overflow-y: auto; // <-- Чтобы внутреннее содержимое можно было скроллить
+  }
 
   main {
     height: 100vh;
@@ -312,7 +336,7 @@ button {
   // Футер
 
   .contacts {
-    border-top: 0.5px solid #c2c2c2;
+    border-top: 0.5px solid #e3e3e3;
     padding: 2rem 20px;
 
     &__list,
@@ -323,12 +347,16 @@ button {
     }
 
     &__item {
-      gap: 1rem;
+      gap: 1.2rem;
+
+      p {
+        font-size: 1rem;
+      }
     }
 
     &__title {
       font-weight: 600;
-      font-size: 1.4rem;
+      font-size: 1.2rem !important;
     }
   }
 
@@ -341,7 +369,6 @@ button {
 
   .tab {
     position: relative;
-
 
     & input {
       position: absolute;
@@ -357,7 +384,7 @@ button {
       fill: $second-text;
     }
 
-    & input:checked+.tab__label .arrow {
+    & input:checked + .tab__label .arrow {
       transform: rotate(0deg);
     }
 
@@ -367,23 +394,29 @@ button {
       transition: max-height 0.35s ease;
     }
 
-    & input:checked~&__content {
+    & input:checked ~ &__content {
       max-height: 300px;
+    }
+
+    .tab:has(input:checked) + .tab label {
+      border-top: 0.25px solid #5a60708a;
     }
 
     &__content li a {
       display: block;
       padding: 1.2rem;
       color: $text-color;
-      background: #352f74;
+      background-color: $second-accent;
       text-decoration: none;
       color: #fefefe;
-      border-bottom: 0.5px solid #9d9d9d;
     }
+  }
+  .with-border {
+    border-top: 0.25px solid rgb(56 68 102) !important;
   }
 
   .tab__label,
-  .menu>li>a {
+  .menu > li > a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -392,12 +425,11 @@ button {
     color: #fefefe;
     background: $second-accent;
     font-weight: 600;
-    border-bottom: 0.5px solid #9d9d9d;
+    border-bottom: 0.25px solid #5a60708a;
     color: white;
   }
 
   .footer-info {
-
     display: flex;
     flex-direction: column;
 
@@ -421,7 +453,7 @@ button {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 0.5px solid #9d9d9d;
+      border-top: 0.5px solid #e3e3e3;
       padding: 1rem 20px;
     }
   }
