@@ -21,6 +21,9 @@
   <header class="header">
     <section class="header__top visible">
       <a href="/" class="header__logo">
+        <svg class="header__logo-icon-text">
+          <use href="./assets/image/symbol-defs.svg#icon-logo_text"></use>
+        </svg>
         <svg class="header__logo-icon">
           <use href="./assets/image/symbol-defs.svg#icon-logo"></use>
         </svg>
@@ -37,26 +40,26 @@
       </a>
     </section>
   </header>
- <section class="header__bottom shifted">
-      <button class="header__menu-toggle">
-        <svg class="header__menu-toggle-icon">
-          <use href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
-        </svg>
-      </button>
+  <section class="header__bottom shifted">
+    <button class="header__menu-toggle">
+      <svg class="header__menu-toggle-icon">
+        <use href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
+      </svg>
+    </button>
 
-      <div class="header__search">
-        <input type="text" class="header__search-input" placeholder="Найти продукцию, файлы, программное обеспечение">
-        <svg class="header__search-icon">
-          <use href="./assets/image/symbol-defs.svg#icon-magnify"></use>
-        </svg>
-      </div>
+    <div class="header__search">
+      <input type="text" class="header__search-input" placeholder="Найти продукцию, файлы, программное обеспечение">
+      <svg class="header__search-icon">
+        <use href="./assets/image/symbol-defs.svg#icon-magnify"></use>
+      </svg>
+    </div>
 
-      <a href="/" class="header__cart">
-        <svg class="header__cart-icon">
-          <use href="./assets/image/symbol-defs.svg#icon-bascet"></use>
-        </svg>
-      </a>
-    </section>
+    <a href="/" class="header__cart">
+      <svg class="header__cart-icon">
+        <use href="./assets/image/symbol-defs.svg#icon-bascet"></use>
+      </svg>
+    </a>
+  </section>
   <main>
     <button class="message__btn">
       <svg class="message__icon">
@@ -164,7 +167,7 @@
 
 
   <section class="mobile-menu__wrap">
-    
+
     <div class="mobile-menu__top">
       <a href="/" class="mobile-menu__login">Войти</a>
       <button class="mobile-menu__close-btn">
@@ -174,69 +177,51 @@
       </button>
     </div>
 
-    <nav class="mobile-menu__nav">
-      <ul class=" mobile-menu">
-        <li class="tab">
-          <input type="checkbox" id="menu-1">
-          <label for="menu-1" class="tab__label  mobile-menu__link">
-            О предприятии
+    <nav>
+      <ul class="mobile-menu">
+        <li class="mobile-menu__link">
+          <button data-title="О предприятии">
+            <p>О предприятии</p>
             <svg class="mobile-menu__arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
-          </label>
-          <ul class="mobile-menu__content">
-            <li><a href="/">Уровнемеры</a></li>
-            <li><a href="/">Газоанализаторы</a></li>
-            <li><a href="/">Адаптеры интерфейсов</a></li>
-          </ul>
+          </button>
         </li>
 
-        <li class="tab">
-          <input type="checkbox" id="menu-2">
-          <label for="menu-2" class="tab__label  mobile-menu__link">
-            Продукция
+        <li class="mobile-menu__link">
+          <button data-title="Продукция">
+            <p>Продукция</p>
             <svg class="mobile-menu__arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
-          </label>
-          <ul class="mobile-menu__content">
-            <li><a href="/">Уровнемеры</a></li>
-            <li><a href="/">Газоанализаторы</a></li>
-            <li><a href="/">Адаптеры интерфейсов</a></li>
-          </ul>
+          </button>
         </li>
 
-        <li class="tab">
-          <input type="checkbox" id="menu-3">
-          <label for="menu-3" class="mobile-menu__link">
-            Поддержка
+        <li class="mobile-menu__link">
+          <button data-title="Поддержка">
+            <p>Поддержка</p>
             <svg class="mobile-menu__arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
-          </label>
-          <ul class="mobile-menu__content">
-            <li><a href="/">Уровнемеры</a></li>
-            <li><a href="/">Газоанализаторы</a></li>
-            <li><a href="/">Адаптеры интерфейсов</a></li>
-          </ul>
+          </button>
         </li>
 
-        <li><a href="/">Контакты</a></li>
-        <li><a href="/">Цены</a></li>
+        <li class="mobile-menu__link"><a href="/">Контакты</a></li>
+        <li class="mobile-menu__link"><a href="/">Цены</a></li>
 
         <li class="tab">
           <input type="checkbox" id="menu-4">
-          <label for="menu-4" class="mobile-menu__link">
+          <label for="menu-4" class="tab__label  mobile-menu__link">
             <p class="mobile-menu__phone">
               <span>+7 (8412) 65-21-00</span>
               <span>Приемная (обращения)</span>
               <span>в будни с 08:00 до 17:00 (мск)</span>
             </p>
-            <svg class="mobile-menu__arrow">
+            <svg class="mobile-menu__arrow arrow">
               <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
           </label>
-          <ul class="mobile-menu__content">
+          <ul class="tab__content mobile-menu__content">
             <li class="mobile-menu__link">
               <p class="mobile-menu__phone">
                 <span>+7 8412 65-21-55</span>
@@ -253,7 +238,6 @@
             </li>
           </ul>
         </li>
-      </ul>
     </nav>
     <div class="mobile-menu__lang">
       <button class="mobile-menu__lang-btn">
@@ -263,6 +247,31 @@
         </svg>
       </button>
     </div>
+  </section>
+
+  <section class="mobile-menu__wrap v">
+    <div class="mobile-menu__top">
+      <button class="mobile-menu__back-btn">
+        <svg class="mobile-menu__icon">
+          <use href="./assets/image/symbol-defs.svg#icon-arrow"></use>
+        </svg>
+      </button>
+      <p class="mobile-menu__title">О предприятии</p>
+      <button class="mobile-menu__close-btn">
+        <svg class="mobile-menu__icon">
+          <use href="./assets/image/symbol-defs.svg#icon-menu_close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <nav>
+      <ul class="mobile-menu">
+        <li class="mobile-menu__link"><a href="/">История предрприятия</a></li>
+        <li class="mobile-menu__link"><a href="/">Социальная политика</a></li>
+        <li class="mobile-menu__link"><a href="/">База отдыха</a></li>
+        <li class="mobile-menu__link"><a href="/">Новости</a></li>
+      </ul>
+    </nav>
   </section>
 </body>
 

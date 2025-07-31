@@ -4,6 +4,8 @@ const refs = {
   menu: document.querySelector(".mobile-menu__wrap"),
   headerTop: document.querySelector(".header__top"),
   headerBottom: document.querySelector(".header__bottom"),
+  
+menuTitle: document.querySelector("[data-title]")
 };
 
 // открытие меню
@@ -13,7 +15,7 @@ refs.closeBtn.addEventListener("click", toggleMenu);
 
 function toggleMenu() {
   refs.menu.classList.toggle("open");
-  document.body.classList.toggle(".no-scroll");
+  document.body.classList.toggle("no-scroll");
 }
 
 // поведение хэдера
@@ -56,3 +58,20 @@ document
         });
     });
   });
+
+  const menuButtons = document.querySelectorAll('.mobile-menu__link button[data-title]');
+const subMenu = document.querySelector('.mobile-menu__wrap.v');
+const subMenuTitle = document.querySelector('.mobile-menu__wrap.v .mobile-menu__title');
+const backBtn = document.querySelector('.mobile-menu__back-btn');
+
+backBtn.addEventListener('click', () => {
+  subMenu.classList.remove('open'); // Скрываем подменю
+});
+
+menuButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const title = btn.getAttribute('data-title');
+    subMenuTitle.textContent = title;
+    subMenu.classList.add('open'); // Показываем подменю
+  });
+});

@@ -57,9 +57,14 @@ button {
   overflow: hidden;
 }
 
+:focus::-webkit-input-placeholder{
+  color: transparent;
+}
+
 // Хэдер
 @media screen and (max-width: 768px) {
   .header {
+
     // Верхняя часть
     &__top {
       display: flex;
@@ -84,6 +89,10 @@ button {
 
     &__top.hidden {
       transform: translateY(-100%);
+    }
+
+    &__logo-icon-text {
+      display: none;
     }
 
     &__logo {
@@ -234,9 +243,14 @@ button {
       height: 1rem;
       fill: $text-color !important;
       transform: rotate(-90deg);
+      margin-left: auto;
     }
 
-    & > li > a {
+    &__item {
+      padding: 1rem 20px;
+    }
+
+    &__content>li>a {
       background-color: #fefefe !important;
       color: #212121 !important;
       font-size: 1.5rem !important;
@@ -257,7 +271,7 @@ button {
       margin-top: 5px;
     }
 
-    &__phone + &__arrow {
+    &__phone+&__arrow {
       transform: rotate(0deg) !important;
     }
 
@@ -275,6 +289,15 @@ button {
       color: #212121 !important;
       padding-right: 10px;
       border-bottom: 1px solid #c2c2c2;
+      width: 100%;
+
+      button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+      }
     }
 
     &__lang {
@@ -292,22 +315,32 @@ button {
       padding-right: 10px;
       font-size: 1.2rem;
     }
+
+    &__back-btn {
+      svg {
+        width: 1.7rem;
+        height: 1.7rem;
+        transform: rotate(90deg);
+      }
+    }
   }
 
-  // Кнопка для связи
+
   .mobile-menu__wrap {
-    position: fixed; // <-- Важно!
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; // чтобы заняло весь экран
+    height: 100vh;
     z-index: 101;
     background-color: $second-text;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
     visibility: hidden;
-    overflow-y: auto; // <-- Чтобы внутреннее содержимое можно было скроллить
+    overflow-y: auto;
   }
+
+  // Кнопка для связи
 
   main {
     height: 100vh;
@@ -384,7 +417,7 @@ button {
       fill: $second-text;
     }
 
-    & input:checked + .tab__label .arrow {
+    & input:checked+.tab__label .arrow {
       transform: rotate(0deg);
     }
 
@@ -394,11 +427,11 @@ button {
       transition: max-height 0.35s ease;
     }
 
-    & input:checked ~ &__content {
+    & input:checked~&__content {
       max-height: 300px;
     }
 
-    .tab:has(input:checked) + .tab label {
+    .tab:has(input:checked)+.tab label {
       border-top: 0.25px solid #5a60708a;
     }
 
@@ -411,12 +444,13 @@ button {
       color: #fefefe;
     }
   }
+
   .with-border {
     border-top: 0.25px solid rgb(56 68 102) !important;
   }
 
   .tab__label,
-  .menu > li > a {
+  .menu>li>a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -455,6 +489,34 @@ button {
       justify-content: space-between;
       border-top: 0.5px solid #e3e3e3;
       padding: 1rem 20px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 360px) {
+  .header {
+
+    &__logo-icon,
+    &__logo-text {
+      display: none;
+    }
+
+    &__logo-icon-text {
+      display: block;
+      width: 10rem;
+      height: 2rem;
+      margin-left: -15px;
+    }
+
+    &__top {
+      padding: 10px 20px;
+    }
+
+    &__menu-toggle,
+    &__cart {
+      width: 3.2rem;
+      height: 3.2rem;
     }
   }
 }
