@@ -119,17 +119,17 @@ button {
     transition: transform 0.3s ease;
   }
   .header__bottom.shifted {
-    transform: translateY(113%);
+    transform: translateY(95%);
   }
   .header__menu-toggle, .header__cart {
-    width: 65px;
-    height: 50px;
     line-height: 0;
   }
-  .header__menu-toggle {
-    border-right: 0.5px solid rgba(204, 204, 204, 0.8);
+  .header__menu-toggle-icon, .header__cart-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 20px;
   }
-  .header__menu-toggle-icon, .header__search-icon, .header__cart-icon, .header__search-arrow {
+  .header__search-icon, .header__search-arrow {
     width: 1.2rem;
     height: 1.2rem;
   }
@@ -137,7 +137,6 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 0.5px solid #ccc;
   }
   .header__search {
     justify-content: space-between;
@@ -165,6 +164,9 @@ button {
   }
   .header__search-wrap {
     width: 100%;
+    height: 59px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
   }
   .header__search-input:focus {
     outline: none;
@@ -454,6 +456,9 @@ button {
   }
 }
 @media screen and (max-width: 359px) {
+  .header__menu-toggle-icon, .header__cart-icon {
+    margin: 14px;
+  }
   .header__top {
     padding-left: 10px;
   }
@@ -475,10 +480,6 @@ button {
     width: 10rem;
     height: 2rem;
     margin-left: -15px;
-  }
-  .header__menu-toggle, .header__cart {
-    width: 70px;
-    height: 50px;
   }
   .mobile-menu__item, .mobile-menu__link {
     padding: 1rem 10px;

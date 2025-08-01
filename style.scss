@@ -149,23 +149,22 @@ button {
     }
 
     &__bottom.shifted {
-      transform: translateY(113%);
+      transform: translateY(95%);
     }
 
     &__menu-toggle,
     &__cart {
-      width: 65px;
-      height: 50px;
       line-height: 0;
     }
 
-    &__menu-toggle {
-      border-right: 0.5px solid #cccc;
-    }
 
     &__menu-toggle-icon,
+    &__cart-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin: 20px;
+    }
     &__search-icon,
-    &__cart-icon,
     &__search-arrow {
       width: 1.2rem;
       height: 1.2rem;
@@ -175,7 +174,6 @@ button {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: 0.5px solid #ccc;
     }
 
     &__search {
@@ -187,7 +185,7 @@ button {
       padding: 0 15px;
       height: 50px;
 
-      button{
+      button {
         transform: rotate(90deg);
         width: 1.2rem;
         height: 1.2rem;
@@ -207,6 +205,9 @@ button {
 
     &__search-wrap {
       width: 100%;
+      height: 59px;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
     }
 
     &__search-input:focus {
@@ -562,6 +563,17 @@ button {
 
 @media screen and (max-width: 359px) {
   .header {
+
+    &__search-wrap {
+   
+    }
+
+
+    &__menu-toggle-icon,
+    &__cart-icon {
+      margin: 14px;
+    }
+
     &__top {
       padding-left: 10px;
     }
@@ -587,12 +599,6 @@ button {
       width: 10rem;
       height: 2rem;
       margin-left: -15px;
-    }
-
-    &__menu-toggle,
-    &__cart {
-      width: 70px;
-      height: 50px;
     }
   }
 
