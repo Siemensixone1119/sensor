@@ -112,7 +112,6 @@ button {
   .header__menu-toggle, .header__cart {
     width: 4rem;
     height: 4rem;
-    line-height: 0;
     border-right: 0.5px solid #c0c4cc;
   }
   .header__menu-toggle-icon, .header__search-icon, .header__cart-icon {
@@ -410,5 +409,8 @@ button {
   .header__menu-toggle, .header__cart {
     width: 3.2rem;
     height: 3.2rem;
+  }
+  .header__search-input {
+    width: 3rem;
   }
 }/*# sourceMappingURL=style.css.map */

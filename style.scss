@@ -145,7 +145,7 @@ button {
     &__cart {
       width: 4rem;
       height: 4rem;
-      line-height: 0;
+      // line-height: 0;
       border-right: 0.5px solid #c0c4cc;
     }
 
@@ -515,6 +515,10 @@ button {
     &__cart {
       width: 3.2rem;
       height: 3.2rem;
+    }
+
+    &__search-input{
+      width: 3rem;
     }
   }
 }
