@@ -394,14 +394,14 @@ button {
     padding: 1rem 20px;
   }
 }
-@media screen and (max-width: 360px) {
-  .header__logo-icon, .header__logo-text {
+@media screen and (max-width: 359px) {
+  .header__logo-text {
     display: none;
   }
   .header__logo-icon-text {
     display: block;
     width: 10rem;
-    height: 2rem;
+    height: 1.8rem;
     margin-left: -15px;
   }
   .header__top {

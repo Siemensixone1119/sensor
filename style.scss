@@ -494,10 +494,8 @@ button {
 }
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 359px) {
   .header {
-
-    &__logo-icon,
     &__logo-text {
       display: none;
     }
@@ -505,7 +503,7 @@ button {
     &__logo-icon-text {
       display: block;
       width: 10rem;
-      height: 2rem;
+      height: 1.8rem;
       margin-left: -15px;
     }
 
