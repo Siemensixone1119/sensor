@@ -57,21 +57,20 @@ button {
   overflow: hidden;
 }
 
-:focus::-webkit-input-placeholder{
+:focus::-webkit-input-placeholder {
   color: transparent;
 }
 
 // Хэдер
 @media screen and (max-width: 768px) {
   .header {
-
     // Верхняя часть
     &__top {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: $accent-color;
-      padding: 15px 20px;
+      padding-left: 15px;
       gap: 1rem;
       position: fixed;
       top: 0;
@@ -98,7 +97,7 @@ button {
     &__logo {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 10px;
       flex-shrink: 1;
     }
 
@@ -117,6 +116,14 @@ button {
         font-family: $font-family;
         font-size: 0.75rem;
       }
+    }
+
+    &__phone-btn {
+      width: 3.5rem;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &__phone {
@@ -138,14 +145,14 @@ button {
     }
 
     &__bottom.shifted {
-      transform: translateY(98%);
+      transform: translateY(114%);
     }
 
     &__menu-toggle,
     &__cart {
-      width: 4rem;
-      height: 4rem;
-      // line-height: 0;
+      width: 65px;
+      height: 50px;
+      line-height: 0;
       border-right: 0.5px solid #c0c4cc;
     }
 
@@ -168,17 +175,23 @@ button {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      flex: 1;
-      margin: 0 1rem;
+      width: inherit;
+      padding: 0 15px;
     }
 
     &__search-input {
-      flex-grow: 1;
       border: none;
       font-size: 0.875rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 0;
+    }
+
+    &__search-wrap {
+      width: 100%;
     }
 
     &__search-input:focus {
@@ -187,7 +200,18 @@ button {
       overflow: hidden !important;
       text-overflow: ellipsis;
     }
-
+    &__search-input:focus-visible {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100%;
+      z-index: 102;
+      background-color: $second-text;
+      padding-left: 1rem;
+      padding-right: 3rem; /* чтобы не перекрывать иконку */
+      border: none;
+    }
     &__search-input::placeholder {
       font-size: 0.75rem;
     }
@@ -217,7 +241,7 @@ button {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 20px;
+      padding: 1rem 15px;
       padding-right: 10px;
       border-bottom: 1px solid #c2c2c2;
       background-color: $second-text;
@@ -247,10 +271,10 @@ button {
     }
 
     &__item {
-      padding: 1rem 20px;
+      padding: 1rem 15px;
     }
 
-    &__content>li>a {
+    &__content > li > a {
       background-color: #fefefe !important;
       color: #212121 !important;
       font-size: 1.5rem !important;
@@ -271,7 +295,7 @@ button {
       margin-top: 5px;
     }
 
-    &__phone+&__arrow {
+    &__phone + &__arrow {
       transform: rotate(0deg) !important;
     }
 
@@ -282,7 +306,7 @@ button {
     }
 
     &__link {
-      padding: 1rem 20px;
+      padding: 1rem 15px;
       font-size: 1.5rem !important;
       font-weight: 500 !important;
       background-color: #fefefe !important;
@@ -296,7 +320,6 @@ button {
         display: flex;
         align-items: center;
         justify-content: space-between;
-
       }
     }
 
@@ -311,7 +334,7 @@ button {
       gap: 3rem;
       border-radius: 30px;
       box-shadow: $shadow;
-      padding: 10px 20px;
+      padding: 10px 15px;
       padding-right: 10px;
       font-size: 1.2rem;
     }
@@ -324,7 +347,6 @@ button {
       }
     }
   }
-
 
   .mobile-menu__wrap {
     position: fixed;
@@ -370,7 +392,7 @@ button {
 
   .contacts {
     border-top: 0.5px solid #e3e3e3;
-    padding: 2rem 20px;
+    padding: 2rem 15px;
 
     &__list,
     &__item {
@@ -417,7 +439,7 @@ button {
       fill: $second-text;
     }
 
-    & input:checked+.tab__label .arrow {
+    & input:checked + .tab__label .arrow {
       transform: rotate(0deg);
     }
 
@@ -427,11 +449,11 @@ button {
       transition: max-height 0.35s ease;
     }
 
-    & input:checked~&__content {
+    & input:checked ~ &__content {
       max-height: 300px;
     }
 
-    .tab:has(input:checked)+.tab label {
+    .tab:has(input:checked) + .tab label {
       border-top: 0.25px solid #5a60708a;
     }
 
@@ -445,12 +467,8 @@ button {
     }
   }
 
-  .with-border {
-    border-top: 0.25px solid rgb(56 68 102) !important;
-  }
-
   .tab__label,
-  .menu>li>a {
+  .menu > li > a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -459,7 +477,7 @@ button {
     color: #fefefe;
     background: $second-accent;
     font-weight: 600;
-    border-bottom: 0.25px solid #5a60708a;
+    border-top: 0.25px solid #5a60708a;
     color: white;
   }
 
@@ -469,12 +487,17 @@ button {
 
     &__disclaimer {
       font-size: 0.9rem;
-      padding: 1rem 20px;
+      padding: 1rem 15px;
+      text-indent: 1.5rem;
+    }
+
+    &__disclaimer:first-child {
+      margin-bottom: -30px;
     }
 
     &__copyright {
       font-size: 0.9rem;
-      padding: 0 20px;
+      padding: 0 15px;
       padding-bottom: 1rem;
       margin-left: auto;
 
@@ -482,20 +505,30 @@ button {
         color: #848484;
       }
     }
+    &__item {
+      padding: 15px;
+    }
 
     &__links {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 0.5px solid #e3e3e3;
-      padding: 1rem 20px;
     }
   }
 }
 
-
 @media screen and (max-width: 359px) {
   .header {
+    &__bottom.shifted {
+      transform: translateY(103%);
+    }
+
+    &__phone-btn {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+
     &__logo-text {
       display: none;
     }
@@ -507,18 +540,47 @@ button {
       margin-left: -15px;
     }
 
-    &__top {
-      padding: 10px 20px;
-    }
-
     &__menu-toggle,
     &__cart {
-      width: 3.2rem;
-      height: 3.2rem;
+      width: 70px;
+      height: 50px;
+    }
+  }
+
+  .mobile-menu {
+    &__item,
+    &__link {
+      padding: 1rem 10px;
     }
 
-    &__search-input{
-      width: 3rem;
+    &__lang-btn {
+      padding: 10px;
     }
+
+    &__lang {
+      padding: 20px 10px;
+    }
+  }
+
+  .contacts {
+    padding: 2rem 10px;
+  }
+
+  .footer-info {
+    &__disclaimer {
+      padding: 1rem 10px;
+    }
+
+    &__copyright {
+      padding: 0 10px;
+    }
+
+    &__item {
+      padding: 10px;
+    }
+
+    &__link{
+        font-size: 0.9rem;
+      }
   }
 }

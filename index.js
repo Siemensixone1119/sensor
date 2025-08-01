@@ -6,6 +6,6 @@ import { setupCloseAllMenus } from "./scripts/closeAllMenu.js";
 
 setupMenuToggle();
 setupHeaderScroll();
-setupMenuHighlight();
+// setupMenuHighlight();
 setupSubmenu();
 setupCloseAllMenus();
