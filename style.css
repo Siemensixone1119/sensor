@@ -46,6 +46,10 @@ button {
   color: transparent;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 @media screen and (max-width: 768px) {
   .header__top {
     display: flex;
@@ -115,15 +119,17 @@ button {
     transition: transform 0.3s ease;
   }
   .header__bottom.shifted {
-    transform: translateY(114%);
+    transform: translateY(113%);
   }
   .header__menu-toggle, .header__cart {
     width: 65px;
     height: 50px;
     line-height: 0;
-    border-right: 0.5px solid #c0c4cc;
   }
-  .header__menu-toggle-icon, .header__search-icon, .header__cart-icon {
+  .header__menu-toggle {
+    border-right: 0.5px solid rgba(204, 204, 204, 0.8);
+  }
+  .header__menu-toggle-icon, .header__search-icon, .header__cart-icon, .header__search-arrow {
     width: 1.2rem;
     height: 1.2rem;
   }
@@ -131,7 +137,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 0.5px solid #c0c4cc;
+    border-left: 0.5px solid #ccc;
   }
   .header__search {
     justify-content: space-between;
@@ -140,6 +146,12 @@ button {
     gap: 0.5rem;
     width: inherit;
     padding: 0 15px;
+    height: 50px;
+  }
+  .header__search button {
+    transform: rotate(90deg);
+    width: 1.2rem;
+    height: 1.2rem;
   }
   .header__search-input {
     border: none;
@@ -162,9 +174,9 @@ button {
   }
   .header__search-input:focus-visible {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
-    width: 100vw;
+    width: 90vw;
     height: 100%;
     z-index: 102;
     background-color: #fefefe;
@@ -177,6 +189,27 @@ button {
   }
   .header__search-input::placeholder {
     font-size: 0.75rem;
+  }
+  .header__search-res {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fefefe;
+    width: 100%;
+    display: block;
+  }
+  .header__search-res li svg {
+    transform: rotate(-90deg);
+  }
+  .header__search-res li:first-child {
+    border-top: 1px solid #ccc;
+  }
+  .header__search-res a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 15px;
+    border-bottom: 1px solid #ccc;
   }
   .mobile-menu__wrap {
     position: absolute;
@@ -352,12 +385,11 @@ button {
   .tab__label .arrow {
     width: 1rem;
     height: 1rem;
-    transform: rotate(-90deg);
     transition: transform 0.3s;
     fill: #fefefe;
   }
   .tab input:checked + .tab__label .arrow {
-    transform: rotate(0deg);
+    transform: rotate(180deg);
   }
   .tab__content {
     max-height: 0;
@@ -398,10 +430,9 @@ button {
   .footer-info__disclaimer {
     font-size: 0.9rem;
     padding: 1rem 15px;
-    text-indent: 1.5rem;
   }
   .footer-info__disclaimer:first-child {
-    margin-bottom: -30px;
+    margin-bottom: -20px;
   }
   .footer-info__copyright {
     font-size: 0.9rem;
@@ -423,11 +454,14 @@ button {
   }
 }
 @media screen and (max-width: 359px) {
+  .header__top {
+    padding-left: 10px;
+  }
   .header__search {
     width: 70vw;
   }
   .header__bottom.shifted {
-    transform: translateY(103%);
+    transform: translateY(102%);
   }
   .header__phone-btn {
     width: 3.2rem;
@@ -439,7 +473,7 @@ button {
   .header__logo-icon-text {
     display: block;
     width: 10rem;
-    height: 1.8rem;
+    height: 2rem;
     margin-left: -15px;
   }
   .header__menu-toggle, .header__cart {
@@ -463,6 +497,7 @@ button {
   }
   .footer-info__copyright {
     padding: 0 10px;
+    padding-bottom: 1rem;
   }
   .footer-info__item {
     padding: 10px;

@@ -9,6 +9,12 @@ const refs = {
   subMenuTitle: document.querySelector(".mobile-menu__wrap.v .mobile-menu__title"),
   backBtn: document.querySelector(".mobile-menu__back-btn"),
   menuTitle: document.querySelector("[data-title]"),
+  search: document.querySelector(".header__search-input"),
+  searchResult: document.querySelector(".header__search-res"),
+  backInputBtn: document.querySelector(".header__search button"),
+  cartBtn: document.querySelector(".header__cart"),
+  searchIcon: document.querySelector(".header__search-icon"),
+  searchWrap: document.querySelector(".header__search"),
 };
 
 export default refs;

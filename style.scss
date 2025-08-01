@@ -61,6 +61,10 @@ button {
   color: transparent;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 // Хэдер
 @media screen and (max-width: 768px) {
   .header {
@@ -145,7 +149,7 @@ button {
     }
 
     &__bottom.shifted {
-      transform: translateY(114%);
+      transform: translateY(113%);
     }
 
     &__menu-toggle,
@@ -153,12 +157,16 @@ button {
       width: 65px;
       height: 50px;
       line-height: 0;
-      border-right: 0.5px solid #c0c4cc;
+    }
+
+    &__menu-toggle {
+      border-right: 0.5px solid #cccc;
     }
 
     &__menu-toggle-icon,
     &__search-icon,
-    &__cart-icon {
+    &__cart-icon,
+    &__search-arrow {
       width: 1.2rem;
       height: 1.2rem;
     }
@@ -167,7 +175,7 @@ button {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: 0.5px solid #c0c4cc;
+      border-left: 0.5px solid #ccc;
     }
 
     &__search {
@@ -177,6 +185,13 @@ button {
       gap: 0.5rem;
       width: inherit;
       padding: 0 15px;
+      height: 50px;
+
+      button{
+        transform: rotate(90deg);
+        width: 1.2rem;
+        height: 1.2rem;
+      }
     }
 
     &__search-input {
@@ -200,11 +215,12 @@ button {
       overflow: hidden !important;
       text-overflow: ellipsis;
     }
+
     &__search-input:focus-visible {
       position: absolute;
-      left: 0;
+      right: 0;
       top: 0;
-      width: 100vw;
+      width: 90vw;
       height: 100%;
       z-index: 102;
       background-color: $second-text;
@@ -212,8 +228,36 @@ button {
       padding-right: 3rem; /* чтобы не перекрывать иконку */
       border: none;
     }
+
     &__search-input::placeholder {
       font-size: 0.75rem;
+    }
+
+    &__search-res {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: $second-text;
+      width: 100%;
+      display: block;
+
+      li {
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+
+      li:first-child {
+        border-top: 1px solid #ccc;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 15px;
+        border-bottom: 1px solid #ccc;
+      }
     }
   }
 
@@ -434,13 +478,12 @@ button {
     &__label .arrow {
       width: 1rem;
       height: 1rem;
-      transform: rotate(-90deg);
       transition: transform 0.3s;
       fill: $second-text;
     }
 
     & input:checked + .tab__label .arrow {
-      transform: rotate(0deg);
+      transform: rotate(180deg);
     }
 
     &__content {
@@ -488,11 +531,10 @@ button {
     &__disclaimer {
       font-size: 0.9rem;
       padding: 1rem 15px;
-      text-indent: 1.5rem;
     }
 
     &__disclaimer:first-child {
-      margin-bottom: -30px;
+      margin-bottom: -20px;
     }
 
     &__copyright {
@@ -520,13 +562,15 @@ button {
 
 @media screen and (max-width: 359px) {
   .header {
-    
-    &__search{
+    &__top {
+      padding-left: 10px;
+    }
+    &__search {
       width: 70vw;
     }
 
     &__bottom.shifted {
-      transform: translateY(103%);
+      transform: translateY(102%);
     }
 
     &__phone-btn {
@@ -541,7 +585,7 @@ button {
     &__logo-icon-text {
       display: block;
       width: 10rem;
-      height: 1.8rem;
+      height: 2rem;
       margin-left: -15px;
     }
 
@@ -578,14 +622,15 @@ button {
 
     &__copyright {
       padding: 0 10px;
+      padding-bottom: 1rem;
     }
 
     &__item {
       padding: 10px;
     }
 
-    &__link{
-        font-size: 0.9rem;
-      }
+    &__link {
+      font-size: 0.9rem;
+    }
   }
 }

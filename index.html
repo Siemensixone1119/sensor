@@ -1,281 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500..600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/image/favicon.ico"
+      type="image/x-icon"
+    />
+    <script type="module" src="./index.js" defer></script>
+    <title>Сенсор</title>
+  </head>
 
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
-    integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500..600&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="./assets/image/favicon.ico" type="image/x-icon">
-  <script type="module" src="./index.js" defer></script>
-  <title>Сенсор</title>
-</head>
+  <body>
+    <header class="header">
+      <section class="header__top visible">
+        <a href="/" class="header__logo">
+          <svg class="header__logo-icon">
+            <use xlink:href="./assets/image/symbol-defs.svg#icon-logo"></use>
+          </svg>
+          <svg class="header__logo-icon-text">
+            <use
+              xlink:href="./assets/image/symbol-defs.svg#icon-logo_text"
+            ></use>
+          </svg>
 
-<body>
-  <header class="header">
-    <section class="header__top visible">
-      <a href="/" class="header__logo">
-        <svg class="header__logo-icon">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-logo"></use>
+          <p class="header__logo-text">
+            Научно-производственное предприятие «СЕНСОР»<br />
+            <span class="header__logo-subtext"
+              >Средства и системы контроля взрывоопасных сред</span
+            >
+          </p>
+        </a>
+
+        <a href="/" class="header__phone-btn">
+          <svg class="header__phone">
+            <use xlink:href="./assets/image/symbol-defs.svg#icon-phone"></use>
+          </svg>
+        </a>
+      </section>
+    </header>
+    <section class="header__bottom shifted">
+      <button class="header__menu-toggle">
+        <svg class="header__menu-toggle-icon">
+          <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
         </svg>
-        <svg class="header__logo-icon-text">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-logo_text"></use>
-        </svg>
+      </button>
 
-        <p class="header__logo-text">Научно-производственное предприятие «СЕНСОР»<br>
-          <span class="header__logo-subtext">Средства и системы контроля взрывоопасных сред</span>
+      <div class="header__search-wrap">
+        <div class="header__search">
+          <button class="is-hidden">
+            <svg class="header__search-arrow">
+              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
+            </svg>
+          </button>
+          <input
+            type="text"
+            class="header__search-input"
+            placeholder="Найти продукцию, файлы, программное обеспечение"
+          />
+          <svg class="header__search-icon">
+            <use xlink:href="./assets/image/symbol-defs.svg#icon-magnify"></use>
+          </svg>
+        </div>
+        <ul class="header__search-res is-hidden">
+          <li>
+            <a href="/"
+              >Результат поиска 1
+              <svg class="header__search-icon">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a href="/"
+              >Результат поиска 2
+              <svg class="header__search-icon">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a href="/"
+              >Результат поиска 3
+              <svg class="header__search-icon">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <a href="/" class="header__cart">
+        <svg class="header__cart-icon">
+          <use xlink:href="./assets/image/symbol-defs.svg#icon-bascet"></use>
+        </svg>
+      </a>
+    </section>
+    <main>
+      <button class="message__btn">
+        <svg class="message__icon">
+          <use xlink:href="./assets/image/symbol-defs.svg#icon-message"></use>
+        </svg>
+      </button>
+    </main>
+
+    <footer>
+      <section class="contacts">
+        <ul class="contacts__list">
+          <li class="contacts__item">
+            <p class="contacts__title">Отдел продаж</p>
+            <p>+7 8412 65-21-55</p>
+            <p>op@nppsensor.ru</p>
+          </li>
+
+          <li class="contacts__item">
+            <p class="contacts__title">Сервисная служба</p>
+            <p>+7 8412 65-21-55</p>
+            <p>srv@nppsensor.ru</p>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <ul class="menu">
+          <li class="tab">
+            <input type="checkbox" id="menu-5" />
+            <label for="menu-5" class="tab__label">
+              Продукция
+              <svg class="arrow">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </label>
+            <ul class="tab__content">
+              <li><a href="/">Уровнемеры</a></li>
+              <li><a href="/">Газоанализаторы</a></li>
+              <li><a href="/">Адаптеры интерфейсов</a></li>
+            </ul>
+          </li>
+
+          <li class="tab">
+            <input type="checkbox" id="menu-6" />
+            <label for="menu-6" class="tab__label">
+              Поддержка
+              <svg class="arrow">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </label>
+            <ul class="tab__content">
+              <li><a href="#">Файлы для скачивания</a></li>
+              <li><a href="#">Обращения в сервисную службу</a></li>
+              <li><a href="#">Проверить статус обращения</a></li>
+            </ul>
+          </li>
+
+          <li class="tab">
+            <input type="checkbox" id="menu-7" />
+            <label for="menu-7" class="tab__label">
+              О предприятии
+              <svg class="arrow">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </label>
+            <ul class="tab__content">
+              <li><a href="/">НПП “СЕНСОР” сегодня</a></li>
+              <li><a href="/">Политика в области качества</a></li>
+              <li><a href="/">Социальная политика</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/">Контакты</a></li>
+          <li><a href="/">Каталоги продукции</a></li>
+          <li><a href="/">Анкета дилера</a></li>
+        </ul>
+      </section>
+      <section class="footer-info">
+        <p class="footer-info__disclaimer">
+          Настоящий интернет-сайт, прайс-лист носят исключительно информационный
+          характер и ни при каких условиях не являются публичной офертой,
+          определяемой положениями статьи 437 Гражданского кодекса РФ.
+          Опубликованные изображения и описания продукции могут отличаться от
+          актуальных. Актуальные цены и информацию необходимо всегда уточнять у менеджеров
+          предприятия.
         </p>
-      </a>
+        <p class="footer-info__disclaimer">
+         Использование товарного знака и любой информации с сайта
+          допускается только с письменного разрешения ООО НПП «СЕНСОР».
+        </p>
 
-      <a href="/" class="header__phone-btn">
-        <svg class="header__phone">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-phone"></use>
-        </svg>
-      </a>
-    </section>
-  </header>
-  <section class="header__bottom shifted">
-    <button class="header__menu-toggle">
-      <svg class="header__menu-toggle-icon">
-        <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
-      </svg>
-    </button>
+        <p class="footer-info__copyright">
+          <span>© 2025</span> ООО НПП «СЕНСОР»
+        </p>
 
-    <div class="header__search-wrap">
-      <div class="header__search">
-      <input type="text" class="header__search-input" placeholder="Найти продукцию, файлы, программное обеспечение">
-      <svg class="header__search-icon">
-        <use xlink:href="./assets/image/symbol-defs.svg#icon-magnify"></use>
-      </svg>
-    </div>
-    </div>
+        <ul class="footer-info__links">
+          <li class="footer-info__item">
+            <a href="/" class="footer-info__link">Обратная связь</a>
+          </li>
+          <li class="footer-info__item">
+            <a href="/" class="footer-info__link">Правовая информация</a>
+          </li>
+        </ul>
+      </section>
+    </footer>
 
-    <a href="/" class="header__cart">
-      <svg class="header__cart-icon">
-        <use xlink:href="./assets/image/symbol-defs.svg#icon-bascet"></use>
-      </svg>
-    </a>
-  </section>
-  <main>
-    <button class="message__btn">
-      <svg class="message__icon">
-        <use xlink:href="./assets/image/symbol-defs.svg#icon-message"></use>
-      </svg>
-    </button>
-  </main>
+    <section class="mobile-menu__wrap">
+      <div class="mobile-menu__top">
+        <a href="/" class="mobile-menu__login">Войти</a>
+        <button class="mobile-menu__close-btn">
+          <svg class="mobile-menu__icon">
+            <use
+              xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
+            ></use>
+          </svg>
+        </button>
+      </div>
 
-  <footer>
-    <section class="contacts">
-      <ul class="contacts__list">
-        <li class="contacts__item">
-          <p class="contacts__title">Отдел продаж</p>
-          <p>+7 8412 65-21-55</p>
-          <p>op@nppsensor.ru</p>
-        </li>
+      <nav>
+        <ul class="mobile-menu">
+          <li class="mobile-menu__link">
+            <button data-title="О предприятии">
+              <p>О предприятии</p>
+              <svg class="mobile-menu__arrow">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </button>
+          </li>
 
-        <li class="contacts__item">
-          <p class="contacts__title">Сервисная служба</p>
-          <p>+7 8412 65-21-55</p>
-          <p>srv@nppsensor.ru</p>
-        </li>
-      </ul>
-    </section>
+          <li class="mobile-menu__link">
+            <button data-title="Продукция">
+              <p>Продукция</p>
+              <svg class="mobile-menu__arrow">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </button>
+          </li>
 
-    <section>
-      <ul class="menu">
+          <li class="mobile-menu__link">
+            <button data-title="Поддержка">
+              <p>Поддержка</p>
+              <svg class="mobile-menu__arrow">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </button>
+          </li>
 
-        <li class="tab">
-          <input type="checkbox" id="menu-5">
-          <label for="menu-5" class="tab__label">
-            Продукция
-            <svg class="arrow">
-              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-            </svg>
-          </label>
-          <ul class="tab__content">
-            <li><a href="/">Уровнемеры</a></li>
-            <li><a href="/">Газоанализаторы</a></li>
-            <li><a href="/">Адаптеры интерфейсов</a></li>
-          </ul>
-        </li>
+          <li class="mobile-menu__link"><a href="/">Контакты</a></li>
+          <li class="mobile-menu__link"><a href="/">Цены</a></li>
 
-        <li class="tab">
-          <input type="checkbox" id="menu-6">
-          <label for="menu-6" class="tab__label">
-            Поддержка
-            <svg class="arrow">
-              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-            </svg>
-          </label>
-          <ul class="tab__content">
-            <li><a href="#">Файлы для скачивания</a></li>
-            <li><a href="#">Обращения в сервисную службу</a></li>
-            <li><a href="#">Проверить статус обращения</a></li>
-          </ul>
-        </li>
-
-        <li class="tab">
-          <input type="checkbox" id="menu-7">
-          <label for="menu-7" class="tab__label">
-            О предприятии
-            <svg class="arrow">
-              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-            </svg>
-          </label>
-          <ul class="tab__content">
-            <li><a href="/">НПП “СЕНСОР” сегодня</a></li>
-            <li><a href="/">Политика в области качества</a></li>
-            <li><a href="/">Социальная политика</a></li>
-          </ul>
-        </li>
-
-        <li><a href="/">Контакты</a></li>
-        <li><a href="/">Каталоги продукции</a></li>
-        <li><a href="/">Анкета дилера</a></li>
-      </ul>
-
-    </section>
-    <section class="footer-info">
-      <p class="footer-info__disclaimer">
-        Настоящий интернет-сайт, прайс-лист носят исключительно информационный характер и ни при каких условиях
-        не являются публичной офертой, определяемой положениями статьи 437 Гражданского кодекса РФ. Опубликованные
-        изображения и описания продукции могут отличаться от актуальных. 
-      </p>
-      <p  class="footer-info__disclaimer">Актуальные цены и информацию необходимо всегда
-        уточнять у менеджеров предприятия. Использование товарного знака и любой информации с сайта допускается только
-        с письменного разрешения ООО НПП «СЕНСОР».</p>
-
-      <p class="footer-info__copyright">
-        <span>© 2025</span> ООО НПП «СЕНСОР»
-      </p>
-
-      <ul class="footer-info__links">
-        <li class="footer-info__item">
-          <a href="/" class="footer-info__link">Обратная связь</a>
-        </li>
-        <li class="footer-info__item">
-          <a href="/" class="footer-info__link">Правовая информация</a>
-        </li>
-      </ul>
-    </section>
-
-  </footer>
-
-
-
-  <section class="mobile-menu__wrap">
-
-    <div class="mobile-menu__top">
-      <a href="/" class="mobile-menu__login">Войти</a>
-      <button class="mobile-menu__close-btn">
-        <svg class="mobile-menu__icon">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"></use>
-        </svg>
-      </button>
-    </div>
-
-    <nav>
-      <ul class="mobile-menu">
-        <li class="mobile-menu__link">
-          <button data-title="О предприятии">
-            <p>О предприятии</p>
-            <svg class="mobile-menu__arrow">
-              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-            </svg>
-          </button>
-        </li>
-
-        <li class="mobile-menu__link">
-          <button data-title="Продукция">
-            <p>Продукция</p>
-            <svg class="mobile-menu__arrow">
-              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-            </svg>
-          </button>
-        </li>
-
-        <li class="mobile-menu__link">
-          <button data-title="Поддержка">
-            <p>Поддержка</p>
-            <svg class="mobile-menu__arrow">
-              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-            </svg>
-          </button>
-        </li>
-
-        <li class="mobile-menu__link"><a href="/">Контакты</a></li>
-        <li class="mobile-menu__link"><a href="/">Цены</a></li>
-
-        <li class="tab">
-          <input type="checkbox" id="menu-4">
-          <label for="menu-4" class="tab__label  mobile-menu__link">
-            <p class="mobile-menu__phone">
-              <span>+7 (8412) 65-21-00</span>
-              <span>Приемная (обращения)</span>
-              <span>в будни с 08:00 до 17:00 (мск)</span>
-            </p>
-            <svg class="mobile-menu__arrow arrow">
-              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-            </svg>
-          </label>
-          <ul class="tab__content mobile-menu__content">
-            <li class="mobile-menu__link">
+          <li class="tab">
+            <input type="checkbox" id="menu-4" />
+            <label for="menu-4" class="tab__label mobile-menu__link">
               <p class="mobile-menu__phone">
-                <span>+7 8412 65-21-55</span>
-                <span>Сервисная служба</span>
-                <span>srv@nppsensor.ru</span>
+                <span>+7 (8412) 65-21-00</span>
+                <span>Приемная (обращения)</span>
+                <span>в будни с 08:00 до 17:00 (мск)</span>
               </p>
-            </li>
-            <li class="mobile-menu__link">
-              <p class="mobile-menu__phone">
-                <span>+7 (8412) 65-21-21</span>
-                <span>Отдел продаж</span>
-                <span>op@nppsensor.ru</span>
-              </p>
-            </li>
-          </ul>
-        </li>
-    </nav>
-    <div class="mobile-menu__lang">
-      <button class="mobile-menu__lang-btn">
-        English
-        <svg class="mobile-menu__arrow">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-        </svg>
-      </button>
-    </div>
-  </section>
+              <svg class="mobile-menu__arrow arrow">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
+                ></use>
+              </svg>
+            </label>
+            <ul class="tab__content mobile-menu__content">
+              <li class="mobile-menu__link">
+                <p class="mobile-menu__phone">
+                  <span>+7 8412 65-21-55</span>
+                  <span>Сервисная служба</span>
+                  <span>srv@nppsensor.ru</span>
+                </p>
+              </li>
+              <li class="mobile-menu__link">
+                <p class="mobile-menu__phone">
+                  <span>+7 (8412) 65-21-21</span>
+                  <span>Отдел продаж</span>
+                  <span>op@nppsensor.ru</span>
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="mobile-menu__lang">
+        <button class="mobile-menu__lang-btn">
+          English
+          <svg class="mobile-menu__arrow">
+            <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
+          </svg>
+        </button>
+      </div>
+    </section>
 
-  <section class="mobile-menu__wrap v">
-    <div class="mobile-menu__top">
-      <button class="mobile-menu__back-btn">
-        <svg class="mobile-menu__icon">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-        </svg>
-      </button>
-      <p class="mobile-menu__title">О предприятии</p>
-      <button class="mobile-menu__close-btn">
-        <svg class="mobile-menu__icon">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"></use>
-        </svg>
-      </button>
-    </div>
+    <section class="mobile-menu__wrap v">
+      <div class="mobile-menu__top">
+        <button class="mobile-menu__back-btn">
+          <svg class="mobile-menu__icon">
+            <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
+          </svg>
+        </button>
+        <p class="mobile-menu__title">О предприятии</p>
+        <button class="mobile-menu__close-btn">
+          <svg class="mobile-menu__icon">
+            <use
+              xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
+            ></use>
+          </svg>
+        </button>
+      </div>
 
-    <nav>
-      <ul class="mobile-menu">
-        <li class="mobile-menu__link"><a href="/">История предрприятия</a></li>
-        <li class="mobile-menu__link"><a href="/">Социальная политика</a></li>
-        <li class="mobile-menu__link"><a href="/">База отдыха</a></li>
-        <li class="mobile-menu__link"><a href="/">Новости</a></li>
-      </ul>
-    </nav>
-  </section>
-</body>
-
+      <nav>
+        <ul class="mobile-menu">
+          <li class="mobile-menu__link">
+            <a href="/">История предрприятия</a>
+          </li>
+          <li class="mobile-menu__link"><a href="/">Социальная политика</a></li>
+          <li class="mobile-menu__link"><a href="/">База отдыха</a></li>
+          <li class="mobile-menu__link"><a href="/">Новости</a></li>
+        </ul>
+      </nav>
+    </section>
+  </body>
 </html>
