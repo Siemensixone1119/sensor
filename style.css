@@ -423,6 +423,9 @@ button {
   }
 }
 @media screen and (max-width: 359px) {
+  .header__search {
+    width: 70vw;
+  }
   .header__bottom.shifted {
     transform: translateY(103%);
   }

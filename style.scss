@@ -520,6 +520,11 @@ button {
 
 @media screen and (max-width: 359px) {
   .header {
+    
+    &__search{
+      width: 70vw;
+    }
+
     &__bottom.shifted {
       transform: translateY(103%);
     }
