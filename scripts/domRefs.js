@@ -15,6 +15,7 @@ const refs = {
   cartBtn: document.querySelector(".header__cart"),
   searchIcon: document.querySelector(".header__search-icon"),
   searchWrap: document.querySelector(".header__search"),
+  msgBtn: document.querySelector(".message__btn")
 };
 
 export default refs;

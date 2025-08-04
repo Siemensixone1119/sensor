@@ -46,7 +46,8 @@ ul {
   color: $text-color;
 }
 
-button {
+button,
+input {
   margin: 0;
   padding: 0;
   background: none;
@@ -81,7 +82,7 @@ button {
       left: 0;
       right: 0;
       z-index: 10;
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% + 40px));
       transition: transform 0.3s ease;
       will-change: transform;
     }
@@ -91,7 +92,7 @@ button {
     }
 
     &__top.hidden {
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% + 40px));
     }
 
     &__logo-icon-text {
@@ -157,7 +158,6 @@ button {
       line-height: 0;
     }
 
-
     &__menu-toggle-icon,
     &__cart-icon {
       width: 1.2rem;
@@ -166,14 +166,20 @@ button {
     }
     &__search-icon,
     &__search-arrow {
+      margin-left: 1px;
       width: 1.2rem;
       height: 1.2rem;
+    }
+
+    &__menu-toggle {
+      border-right: 1px solid #ccc;
     }
 
     &__cart {
       display: flex;
       align-items: center;
       justify-content: center;
+      border-left: 1px solid #ccc;
     }
 
     &__search {
@@ -201,12 +207,12 @@ button {
       transition: all 0.3s ease;
       flex: 1;
       min-width: 0;
+      margin-top: 3px;
+      z-index: 0;
     }
 
     &__search-wrap {
       width: 100%;
-      border-left: 1px solid #ccc;
-      border-right: 1px solid #ccc;
     }
 
     &__search-input:focus {
@@ -221,16 +227,16 @@ button {
       right: 0;
       top: 0;
       width: 90vw;
-      height: 100%;
+      height: 90%;
       z-index: 102;
       background-color: $second-text;
       padding-left: 1rem;
-      padding-right: 3rem; /* чтобы не перекрывать иконку */
+      padding-right: 3rem;
       border: none;
     }
 
     &__search-input::placeholder {
-      font-size: 0.75rem;
+      font-size: 0.95rem;
     }
 
     &__search-res {
@@ -239,23 +245,28 @@ button {
       left: 0;
       background-color: $second-text;
       width: 100%;
+      height: 100vh;
       display: block;
-
+      border-top: 1px solid #ccc;
       li {
         svg {
           transform: rotate(-90deg);
         }
       }
 
-      li:first-child {
-        border-top: 1px solid #ccc;
-      }
-
       a {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 15px;
+        padding: 0.6rem 15px;
+      }
+
+      a:first-child {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      a:last-child {
         border-bottom: 1px solid #ccc;
       }
     }
@@ -343,7 +354,7 @@ button {
       transform: rotate(0deg) !important;
     }
 
-     input:checked + label svg {
+    input:checked + label svg {
       transform: rotate(180deg) !important;
     }
 
@@ -351,6 +362,10 @@ button {
       color: #212121;
       background-color: #fefefe;
       font-size: 1.2rem;
+    }
+
+    & > li label{
+      border-top: none;
     }
 
     &__link {
@@ -429,6 +444,14 @@ button {
     bottom: 20px;
     right: 20px;
     z-index: 5;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+  }
+
+  .message__btn.hide {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .message__icon {
@@ -464,6 +487,7 @@ button {
   }
 
   // Выпадающее меню
+
   .menu {
     z-index: 1;
     padding: 0;
@@ -524,6 +548,7 @@ button {
     color: #fefefe;
     background: $second-accent;
     font-weight: 600;
+    border-top: 0.25px solid #5a60708a;
     color: white;
   }
 
@@ -565,7 +590,6 @@ button {
 
 @media screen and (max-width: 359px) {
   .header {
-
     &__menu-toggle-icon,
     &__cart-icon {
       width: 1rem;
@@ -577,7 +601,7 @@ button {
       padding-left: 10px;
     }
 
-    &__search-wrap{
+    &__search-wrap {
       height: 46px;
     }
 
@@ -608,8 +632,7 @@ button {
   }
 
   .mobile-menu {
-
-    &__top{
+    &__top {
       padding: 0.8rem 0px;
       padding-left: 10px;
     }
