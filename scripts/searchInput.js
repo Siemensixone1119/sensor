@@ -2,8 +2,6 @@ import refs from "./domRefs.js";
 
 export function setupInputFocus() {
   refs.search.addEventListener("focus", () => {
-    console.log();
-
     refs.headerTop.classList.add("is-hidden");
     refs.headerBottom.classList.remove("shifted");
     refs.searchResult.classList.remove("is-hidden");
@@ -14,7 +12,6 @@ export function setupInputFocus() {
     refs.searchIcon.classList.add("is-hidden");
     console.log(refs.searchWrap);
     refs.searchWrap.style.width = "100vw"
-    
   });
 
   refs.backInputBtn.addEventListener("click", () => {
