@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: pfdintextcomppro-light;
   src: url("./assets/font/pfdintextcomppro-light.woff");
@@ -50,55 +51,6 @@ input {
   display: none !important;
 }
 
-@media screen and (max-width: 768px) {
-  .footer-info {
-    display: flex;
-    flex-direction: column;
-  }
-  .footer-info__disclaimer {
-    font-size: 0.9rem;
-    padding: 1rem 15px;
-  }
-  .footer-info__disclaimer:first-child {
-    margin-bottom: -20px;
-  }
-  .footer-info__copyright {
-    font-size: 0.9rem;
-    padding: 0 15px;
-    padding-bottom: 1rem;
-    margin-left: auto;
-  }
-  .footer-info__copyright span {
-    color: #848484;
-  }
-  .footer-info__item {
-    padding: 15px;
-  }
-  .footer-info__links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 0.5px solid #e3e3e3;
-  }
-}
-@media screen and (max-width: 359px) {
-  .contacts {
-    padding: 2rem 10px;
-  }
-  .footer-info__disclaimer {
-    padding: 1rem 10px;
-  }
-  .footer-info__copyright {
-    padding: 0 10px;
-    padding-bottom: 1rem;
-  }
-  .footer-info__item {
-    padding: 10px;
-  }
-  .footer-info__link {
-    font-size: 0.9rem;
-  }
-}
 @media screen and (max-width: 768px) {
   .header__top {
     display: flex;
@@ -271,128 +223,7 @@ input {
   .header__search-res a:last-child {
     border-bottom: 1px solid #ccc;
   }
-}
-@media screen and (max-width: 359px) {
-  .header__menu-toggle-icon, .header__cart-icon {
-    width: 1rem;
-    height: 1rem;
-    margin: 15px;
-  }
-  .header__top {
-    padding-left: 10px;
-  }
-  .header__search-wrap {
-    height: 46px;
-  }
-  .header__search {
-    width: 70vw;
-    height: 46px;
-  }
-  .header__bottom.shifted {
-    transform: translateY(110%);
-  }
-  .header__phone-btn {
-    width: 3.2rem;
-    height: 3.2rem;
-  }
-  .header__logo-text {
-    display: none;
-  }
-  .header__logo-icon-text {
-    display: block;
-    width: 10rem;
-    height: 2rem;
-    margin-left: -15px;
-  }
-}
-@media screen and (max-width: 768px) {
-  main {
-    height: 100vh;
-  }
-  .message__btn {
-    width: 4rem;
-    height: 4rem;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    background-color: #fefefe;
-    bottom: 20px;
-    right: 20px;
-    z-index: 5;
-    opacity: 1;
-    pointer-events: auto;
-    transition: opacity 0.3s ease;
-  }
-  .message__btn.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .message__icon {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-@media screen and (max-width: 768px) {
-  .menu {
-    z-index: 1;
-    padding: 0;
-    overflow: hidden;
-  }
-  .tab {
-    position: relative;
-  }
-  .tab input {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-  }
-  .tab__label .arrow {
-    width: 1rem;
-    height: 1rem;
-    transition: transform 0.3s;
-    fill: #fefefe;
-  }
-  .tab input:checked + .tab__label .arrow {
-    transform: rotate(180deg);
-  }
-  .tab__content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-  .tab input:checked ~ .tab__content {
-    max-height: 300px;
-  }
-  .tab .tab:has(input:checked) + .tab label {
-    border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
-  }
-  .tab__content li a {
-    display: block;
-    padding: 1.2rem;
-    color: #212121;
-    background-color: #292361;
-    text-decoration: none;
-    color: #fefefe;
-  }
-  .tab__label,
-  .menu > li > a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem;
-    font-size: 18px;
-    color: #fefefe;
-    background: #292361;
-    font-weight: 600;
-    border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
-    color: white;
-  }
-}
-@media screen and (max-width: 768px) {
-  .mobile-menu__wrap {
+  Меню .mobile-menu__wrap {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -516,8 +347,169 @@ input {
     visibility: hidden;
     overflow-y: auto;
   }
+  Кнопка для связи main {
+    height: 100vh;
+  }
+  .message__btn {
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: #fefefe;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+  }
+  .message__btn.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .message__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .contacts {
+    border-top: 0.5px solid #e3e3e3;
+    padding: 2rem 15px;
+  }
+  .contacts__list, .contacts__item {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .contacts__item {
+    gap: 1.2rem;
+  }
+  .contacts__item p {
+    font-size: 1rem;
+  }
+  .contacts__title {
+    font-weight: 600;
+    font-size: 1.2rem !important;
+  }
+  Выпадающее меню .menu {
+    z-index: 1;
+    padding: 0;
+    overflow: hidden;
+  }
+  .tab {
+    position: relative;
+  }
+  .tab input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  .tab__label .arrow {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.3s;
+    fill: #fefefe;
+  }
+  .tab input:checked + .tab__label .arrow {
+    transform: rotate(180deg);
+  }
+  .tab__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .tab input:checked ~ .tab__content {
+    max-height: 300px;
+  }
+  .tab .tab:has(input:checked) + .tab label {
+    border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
+  }
+  .tab__content li a {
+    display: block;
+    padding: 1.2rem;
+    color: #212121;
+    background-color: #292361;
+    text-decoration: none;
+    color: #fefefe;
+  }
+  .tab__label,
+  .menu > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem;
+    font-size: 18px;
+    color: #fefefe;
+    background: #292361;
+    font-weight: 600;
+    border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
+    color: white;
+  }
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-info__disclaimer {
+    font-size: 0.9rem;
+    padding: 1rem 15px;
+  }
+  .footer-info__disclaimer:first-child {
+    margin-bottom: -20px;
+  }
+  .footer-info__copyright {
+    font-size: 0.9rem;
+    padding: 0 15px;
+    padding-bottom: 1rem;
+    margin-left: auto;
+  }
+  .footer-info__copyright span {
+    color: #848484;
+  }
+  .footer-info__item {
+    padding: 15px;
+  }
+  .footer-info__links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.5px solid #e3e3e3;
+  }
 }
 @media screen and (max-width: 359px) {
+  .header__menu-toggle-icon, .header__cart-icon {
+    width: 1rem;
+    height: 1rem;
+    margin: 15px;
+  }
+  .header__top {
+    padding-left: 10px;
+  }
+  .header__search-wrap {
+    height: 46px;
+  }
+  .header__search {
+    width: 70vw;
+    height: 46px;
+  }
+  .header__bottom.shifted {
+    transform: translateY(110%);
+  }
+  .header__phone-btn {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+  .header__logo-text {
+    display: none;
+  }
+  .header__logo-icon-text {
+    display: block;
+    width: 10rem;
+    height: 2rem;
+    margin-left: -15px;
+  }
   .mobile-menu__top {
     padding: 0.8rem 0px;
     padding-left: 10px;
@@ -531,4 +523,20 @@ input {
   .mobile-menu__lang {
     padding: 20px 10px;
   }
-}/*# sourceMappingURL=style.css.map */
+  .contacts {
+    padding: 2rem 10px;
+  }
+  .footer-info__disclaimer {
+    padding: 1rem 10px;
+  }
+  .footer-info__copyright {
+    padding: 0 10px;
+    padding-bottom: 1rem;
+  }
+  .footer-info__item {
+    padding: 10px;
+  }
+  .footer-info__link {
+    font-size: 0.9rem;
+  }
+}/*# sourceMappingURL=index.css.map */

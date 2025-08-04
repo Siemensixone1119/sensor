@@ -1,0 +1,56 @@
+@use "./variable" as *;
+
+@font-face {
+  font-family: pfdintextcomppro-light;
+  src: url("./assets/font/pfdintextcomppro-light.woff");
+}
+
+@font-face {
+  font-family: pfdintextcomppro-regular;
+  src: url("./assets/font/pfdintextcomppro-regular.woff");
+}
+
+// Основные стили
+body {
+  font-family: $main-font;
+  color: $text-color;
+  box-sizing: content-box;
+  max-width: 100%;
+}
+
+p,
+a {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: $text-color;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-family: inherit;
+  color: $text-color;
+}
+
+button,
+input {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.is-hidden {
+  display: none !important;
+}

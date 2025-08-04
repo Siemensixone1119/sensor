@@ -1,0 +1,251 @@
+@use "./variable" as *;
+
+@media screen and (max-width: 768px) {
+  .header {
+    // Верхняя часть
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $accent-color;
+      padding-left: 15px;
+      gap: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      transform: translateY(calc(-100% + 40px));
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    &__top.visible {
+      transform: translateY(0);
+    }
+
+    &__top.hidden {
+      transform: translateY(calc(-100% + 40px));
+    }
+
+    &__logo-icon-text {
+      display: none;
+    }
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 1;
+    }
+
+    &__logo-icon {
+      width: 3rem;
+      height: 2rem;
+    }
+
+    &__logo-text {
+      white-space: nowrap;
+      font-family: $second-family;
+      font-size: 0.85rem;
+      color: $second-text;
+
+      span.header__logo-subtext {
+        font-family: $font-family;
+        font-size: 0.75rem;
+      }
+    }
+
+    &__phone-btn {
+      width: 3.5rem;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__phone {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    // Нижняя часть
+    &__bottom {
+      background-color: $second-text;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    &__bottom.shifted {
+      transform: translateY(95%);
+    }
+
+    &__menu-toggle,
+    &__cart {
+      line-height: 0;
+    }
+
+    &__menu-toggle-icon,
+    &__cart-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+      margin: 20px;
+    }
+    &__search-icon,
+    &__search-arrow {
+      margin-left: 1px;
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    &__menu-toggle {
+      border-right: 1px solid #ccc;
+    }
+
+    &__cart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #ccc;
+    }
+
+    &__search {
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: inherit;
+      padding: 0 15px;
+      height: 59px;
+
+      button {
+        transform: rotate(90deg);
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+
+    &__search-input {
+      border: none;
+      font-size: 0.875rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 0;
+      margin-top: 3px;
+      z-index: 0;
+    }
+
+    &__search-wrap {
+      width: 100%;
+    }
+
+    &__search-input:focus {
+      outline: none;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+    }
+
+    &__search-input:focus-visible {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 90vw;
+      height: 90%;
+      z-index: 102;
+      background-color: $second-text;
+      padding-left: 1rem;
+      padding-right: 3rem;
+      border: none;
+    }
+
+    &__search-input::placeholder {
+      font-size: 0.95rem;
+    }
+
+    &__search-res {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: $second-text;
+      width: 100%;
+      height: 100vh;
+      display: block;
+      border-top: 1px solid #ccc;
+      li {
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.6rem 15px;
+      }
+
+      a:first-child {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      a:last-child {
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .header {
+    &__menu-toggle-icon,
+    &__cart-icon {
+      width: 1rem;
+      height: 1rem;
+      margin: 15px;
+    }
+
+    &__top {
+      padding-left: 10px;
+    }
+
+    &__search-wrap {
+      height: 46px;
+    }
+
+    &__search {
+      width: 70vw;
+      height: 46px;
+    }
+
+    &__bottom.shifted {
+      transform: translateY(110%);
+    }
+
+    &__phone-btn {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+
+    &__logo-text {
+      display: none;
+    }
+
+    &__logo-icon-text {
+      display: block;
+      width: 10rem;
+      height: 2rem;
+      margin-left: -15px;
+    }
+  }
+}
