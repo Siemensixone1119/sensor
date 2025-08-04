@@ -13,8 +13,7 @@ export function setupInputFocus() {
     refs.cartBtn.classList.add("is-hidden");
     refs.searchIcon.classList.add("is-hidden");
     console.log(refs.searchWrap);
-    refs.searchWrap.style.width = "100vw"
-    
+    refs.searchWrap.style.width = "100vw";
   });
 
   refs.backInputBtn.addEventListener("click", () => {
@@ -25,8 +24,8 @@ export function setupInputFocus() {
     refs.searchResult.classList.add("is-hidden");
     refs.headerTop.classList.remove("is-hidden");
     refs.headerBottom.classList.add("shifted");
-    refs.search.value = ""
-    refs.searchWrap.style.width = "70vw"
-    refs.backInputBtn.classList.add("is-hidden")
+    refs.search.value = "";
+    refs.searchWrap.style.width = "70vw";
+    refs.backInputBtn.classList.add("is-hidden");
   });
 }
