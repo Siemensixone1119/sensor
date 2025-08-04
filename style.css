@@ -277,6 +277,9 @@ button {
   .mobile-menu__phone + .mobile-menu__arrow {
     transform: rotate(0deg) !important;
   }
+  .mobile-menu input:checked + label svg {
+    transform: rotate(180deg) !important;
+  }
   .mobile-menu .tab__content li a {
     color: #212121;
     background-color: #fefefe;
@@ -421,7 +424,6 @@ button {
     color: #fefefe;
     background: #292361;
     font-weight: 600;
-    border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
     color: white;
   }
   .footer-info {
@@ -485,6 +487,10 @@ button {
     width: 10rem;
     height: 2rem;
     margin-left: -15px;
+  }
+  .mobile-menu__top {
+    padding: 0.8rem 0px;
+    padding-left: 10px;
   }
   .mobile-menu__item, .mobile-menu__link {
     padding: 1rem 10px;

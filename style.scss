@@ -343,6 +343,10 @@ button {
       transform: rotate(0deg) !important;
     }
 
+     input:checked + label svg {
+      transform: rotate(180deg) !important;
+    }
+
     .tab__content li a {
       color: #212121;
       background-color: #fefefe;
@@ -520,7 +524,6 @@ button {
     color: #fefefe;
     background: $second-accent;
     font-weight: 600;
-    border-top: 0.25px solid #5a60708a;
     color: white;
   }
 
@@ -605,6 +608,12 @@ button {
   }
 
   .mobile-menu {
+
+    &__top{
+      padding: 0.8rem 0px;
+      padding-left: 10px;
+    }
+
     &__item,
     &__link {
       padding: 1rem 10px;

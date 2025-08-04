@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,10 +31,10 @@
     <header class="header">
       <section class="header__top visible">
         <a href="/" class="header__logo">
-          <svg class="header__logo-icon">
+          <svg class="header__logo-icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-logo"></use>
           </svg>
-          <svg class="header__logo-icon-text">
+          <svg class="header__logo-icon-text" aria-hidden="true" focusable="false"></svg>
             <use
               xlink:href="./assets/image/symbol-defs.svg#icon-logo_text"
             ></use>
@@ -48,8 +48,8 @@
           </p>
         </a>
 
-        <a href="/" class="header__phone-btn">
-          <svg class="header__phone">
+        <a href="tel:+78412652155" class="header__phone-btn" aria-label="Позвонить">
+          <svg class="header__phone" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-phone"></use>
           </svg>
         </a>
@@ -57,15 +57,15 @@
     </header>
     <section class="header__bottom shifted">
       <button class="header__menu-toggle">
-        <svg class="header__menu-toggle-icon">
+        <svg class="header__menu-toggle-icon" aria-hidden="true" focusable="false">
           <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
         </svg>
       </button>
 
       <div class="header__search-wrap">
-        <div class="header__search">
-          <button class="is-hidden">
-            <svg class="header__search-arrow">
+        <div class="header__search" focusable="false">
+          <button class="is-hidden" aria-label="Назад">
+            <svg class="header__search-arrow" aria-hidden="true" focusable="false">
               <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
           </button>
@@ -73,16 +73,17 @@
             type="text"
             class="header__search-input"
             placeholder="Найти продукцию, файлы, программное обеспечение"
+            aria-label="Поиск по сайту"
           />
-          <svg class="header__search-icon">
+          <svg class="header__search-icon"  aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-magnify"></use>
           </svg>
         </div>
-        <ul class="header__search-res is-hidden">
+        <ul class="header__search-res is-hidden" aria-live="polite">
           <li>
             <a href="/"
               >Результат поиска 1
-              <svg class="header__search-icon">
+              <svg class="header__search-icon" aria-hidden="true" focusable="false>
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -93,7 +94,7 @@
           <li>
             <a href="/"
               >Результат поиска 2
-              <svg class="header__search-icon">
+              <svg class="header__search-icon" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -104,7 +105,7 @@
           <li>
             <a href="/"
               >Результат поиска 3
-              <svg class="header__search-icon">
+              <svg class="header__search-icon" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -114,15 +115,15 @@
         </ul>
       </div>
 
-      <a href="/" class="header__cart">
-        <svg class="header__cart-icon">
+      <a href="/" class="header__cart" aria-label="Открыть корзину">
+        <svg class="header__cart-icon" aria-hidden="true" focusable="false">
           <use xlink:href="./assets/image/symbol-defs.svg#icon-bascet"></use>
         </svg>
       </a>
     </section>
     <main>
-      <button class="message__btn">
-        <svg class="message__icon">
+      <button class="message__btn" aria-label="Отправить сообщение">
+        <svg class="message__icon" aria-hidden="true" focusable="false">
           <use xlink:href="./assets/image/symbol-defs.svg#icon-message"></use>
         </svg>
       </button>
@@ -151,7 +152,7 @@
             <input type="checkbox" id="menu-5" />
             <label for="menu-5" class="tab__label">
               Продукция
-              <svg class="arrow">
+              <svg class="arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -168,7 +169,7 @@
             <input type="checkbox" id="menu-6" />
             <label for="menu-6" class="tab__label">
               Поддержка
-              <svg class="arrow">
+              <svg class="arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -185,7 +186,7 @@
             <input type="checkbox" id="menu-7" />
             <label for="menu-7" class="tab__label">
               О предприятии
-              <svg class="arrow">
+              <svg class="arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -232,11 +233,11 @@
       </section>
     </footer>
 
-    <section class="mobile-menu__wrap">
+    <section class="mobile-menu__wrap" aria-hidden="true">
       <div class="mobile-menu__top">
         <a href="/" class="mobile-menu__login">Войти</a>
-        <button class="mobile-menu__close-btn">
-          <svg class="mobile-menu__icon">
+        <button class="mobile-menu__close-btn" aria-label="Закрыть меню">
+          <svg class="mobile-menu__icon" focusable="false">
             <use
               xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
             ></use>
@@ -244,12 +245,12 @@
         </button>
       </div>
 
-      <nav>
+      <nav aria-label="Мобильное меню">
         <ul class="mobile-menu">
           <li class="mobile-menu__link">
             <button data-title="О предприятии">
               <p>О предприятии</p>
-              <svg class="mobile-menu__arrow">
+              <svg class="mobile-menu__arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -260,7 +261,7 @@
           <li class="mobile-menu__link">
             <button data-title="Продукция">
               <p>Продукция</p>
-              <svg class="mobile-menu__arrow">
+              <svg class="mobile-menu__arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -290,7 +291,7 @@
                 <span>Приемная (обращения)</span>
                 <span>в будни с 08:00 до 17:00 (мск)</span>
               </p>
-              <svg class="mobile-menu__arrow arrow">
+              <svg class="mobile-menu__arrow arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -318,23 +319,23 @@
       <div class="mobile-menu__lang">
         <button class="mobile-menu__lang-btn">
           English
-          <svg class="mobile-menu__arrow">
+          <svg class="mobile-menu__arrow" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
           </svg>
         </button>
       </div>
     </section>
 
-    <section class="mobile-menu__wrap v">
+    <section class="mobile-menu__wrap v" aria-hidden="true">
       <div class="mobile-menu__top">
-        <button class="mobile-menu__back-btn">
-          <svg class="mobile-menu__icon">
+        <button class="mobile-menu__back-btn" aria-label="Назад">
+          <svg class="mobile-menu__icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
           </svg>
         </button>
-        <p class="mobile-menu__title">О предприятии</p>
-        <button class="mobile-menu__close-btn">
-          <svg class="mobile-menu__icon">
+        <p class="mobile-menu__title" id="sub-menu-title">О предприятии</p>
+        <button class="mobile-menu__close-btn" aria-label="Закрыть меню">
+          <svg class="mobile-menu__icon" aria-hidden="true" focusable="false">
             <use
               xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
             ></use>
@@ -342,7 +343,7 @@
         </button>
       </div>
 
-      <nav>
+      <nav aria-labelledby="sub-menu-title">
         <ul class="mobile-menu">
           <li class="mobile-menu__link">
             <a href="/">История предрприятия</a>
