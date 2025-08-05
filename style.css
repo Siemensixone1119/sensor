@@ -187,7 +187,7 @@ input {
     transition: transform 0.3s ease;
   }
   .header__bottom.shifted {
-    transform: translateY(95%);
+    transform: translateY(110%);
   }
   .header__menu-toggle, .header__cart {
     line-height: 0;
@@ -195,7 +195,7 @@ input {
   .header__menu-toggle-icon, .header__cart-icon {
     width: 1.2rem;
     height: 1.2rem;
-    margin: 20px;
+    margin: 15px;
   }
   .header__search-icon, .header__search-arrow {
     margin-left: 1px;
@@ -218,7 +218,7 @@ input {
     gap: 0.5rem;
     width: inherit;
     padding: 0 15px;
-    height: 59px;
+    height: 49px;
   }
   .header__search button {
     transform: rotate(90deg);
