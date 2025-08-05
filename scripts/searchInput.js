@@ -3,7 +3,7 @@ import refs from "./domRefs.js";
 export function setupInputFocus() {
   refs.search.addEventListener("focus", () => {
     refs.headerTop.classList.add("is-hidden");
-    refs.headerBottom.classList.remove("shifted");
+    refs.headerBottom.classList.remove("header__bottom--shifted");
 
     refs.searchResult.classList.remove("is-hidden");
     document.body.classList.add("no-scroll");
@@ -20,8 +20,8 @@ export function setupInputFocus() {
     document.body.classList.remove("no-scroll");
 
     refs.headerTop.classList.remove("is-hidden");
-    refs.headerTop.classList.add("visible");
-    refs.headerBottom.classList.add("shifted");
+    refs.headerTop.classList.add("header__top--visible");
+    refs.headerBottom.classList.add("header__bottom--shifted");
 
     refs.searchResult.classList.add("is-hidden");
     refs.backInputBtn.classList.add("is-hidden");
@@ -39,11 +39,11 @@ export function setupInputFocus() {
     const currentScroll = window.scrollY;
 
     if (currentScroll < lastScroll) {
-      refs.headerTop.classList.add("visible");
-      refs.headerBottom.classList.add("shifted");
+      refs.headerTop.classList.add("header__top--visible");
+      refs.headerBottom.classList.add("header__bottom--shifted");
     } else {
-      refs.headerTop.classList.remove("visible");
-      refs.headerBottom.classList.remove("shifted");
+      refs.headerTop.classList.remove("header__top--visible");
+      refs.headerBottom.classList.remove("header__bottom--shifted");
     }
 
     lastScroll = currentScroll;

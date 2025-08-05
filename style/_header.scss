@@ -20,7 +20,7 @@
       will-change: transform;
     }
 
-    &__top.visible {
+    &__top.header__top--visible {
       transform: translateY(0);
     }
 
@@ -56,7 +56,7 @@
       }
     }
 
-    &__phone-btn {
+    &__phone-button {
       width: 3.5rem;
       height: 3.5rem;
       display: flex;
@@ -64,7 +64,7 @@
       justify-content: center;
     }
 
-    &__phone {
+    &__phone-icon {
       width: 1.2rem;
       height: 1.2rem;
     }
@@ -82,8 +82,8 @@
       transition: transform 0.3s ease;
     }
 
-    &__bottom.shifted {
-      transform: translateY(110%);
+    &__bottom.header__bottom--shifted {
+      transform: translateY(113%);
     }
 
     &__menu-toggle,
@@ -172,7 +172,7 @@
       font-size: 0.95rem;
     }
 
-    &__search-res {
+    &__search-result {
       position: absolute;
       top: 100%;
       left: 0;
@@ -228,8 +228,8 @@
       height: 46px;
     }
 
-    &__bottom.shifted {
-      transform: translateY(110%);
+    &__bottom.header__bottom--shifted {
+      transform: translateY(120%);
     }
 
     &__phone-btn {
