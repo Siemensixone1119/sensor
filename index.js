@@ -1,3 +1,5 @@
+// UI
+
 import { setupMenuToggle } from "./scripts/toggleMenu.js";
 import { setupHeaderScroll } from "./scripts/headerScrollBehavoir.js";
 import { setupSubmenu } from "./scripts/openSubMenu.js";

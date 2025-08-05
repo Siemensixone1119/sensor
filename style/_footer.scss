@@ -1,4 +1,29 @@
 @media screen and (max-width: 768px) {
+  .contacts {
+    border-top: 0.5px solid #e3e3e3;
+    padding: 2rem 15px;
+
+    &__list,
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    &__item {
+      gap: 1.2rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    &__title {
+      font-weight: 600;
+      font-size: 1.2rem !important;
+    }
+  }
+
   .footer-info {
     display: flex;
     flex-direction: column;

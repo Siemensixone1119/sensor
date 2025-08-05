@@ -51,6 +51,25 @@ input {
 }
 
 @media screen and (max-width: 768px) {
+  .contacts {
+    border-top: 0.5px solid #e3e3e3;
+    padding: 2rem 15px;
+  }
+  .contacts__list, .contacts__item {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .contacts__item {
+    gap: 1.2rem;
+  }
+  .contacts__item p {
+    font-size: 1rem;
+  }
+  .contacts__title {
+    font-weight: 600;
+    font-size: 1.2rem !important;
+  }
   .footer-info {
     display: flex;
     flex-direction: column;
