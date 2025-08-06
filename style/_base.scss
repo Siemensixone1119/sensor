@@ -10,12 +10,31 @@
   src: url("./assets/font/pfdintextcomppro-regular.woff");
 }
 
-// Основные стили
+*{
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 body {
   font-family: $main-font;
   color: $text-color;
   box-sizing: content-box;
   max-width: 100%;
+  margin: 0;
+  // overflow-x: hidden;
 }
 
 p,
@@ -41,10 +60,6 @@ input {
   padding: 0;
   background: none;
   border: none;
-}
-
-.no-scroll {
-  overflow: hidden;
 }
 
 :focus::-webkit-input-placeholder {

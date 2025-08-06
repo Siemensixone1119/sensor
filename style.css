@@ -6,11 +6,30 @@
   font-family: pfdintextcomppro-regular;
   src: url("./assets/font/pfdintextcomppro-regular.woff");
 }
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   color: #212121;
   box-sizing: content-box;
   max-width: 100%;
+  margin: 0;
 }
 
 p,
@@ -36,10 +55,6 @@ input {
   padding: 0;
   background: none;
   border: none;
-}
-
-.no-scroll {
-  overflow: hidden;
 }
 
 :focus::-webkit-input-placeholder {
@@ -216,7 +231,6 @@ input {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    width: inherit;
     padding: 0 15px;
     height: 49px;
   }
@@ -250,13 +264,13 @@ input {
     position: absolute;
     right: 0;
     top: 0;
-    width: 90vw;
-    height: 90%;
-    z-index: 102;
     background-color: #fefefe;
     padding-left: 1rem;
     padding-right: 3rem;
     border: none;
+    width: 100%;
+    height: 90%;
+    z-index: 102;
   }
   .header__search-input::-moz-placeholder {
     font-size: 0.95rem;
@@ -265,14 +279,17 @@ input {
     font-size: 0.95rem;
   }
   .header__search-result {
-    position: absolute;
-    top: 100%;
-    left: 0;
     background-color: #fefefe;
-    width: 100%;
-    height: 100vh;
     display: block;
     border-top: 1px solid #ccc;
+    position: fixed;
+    top: 49px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fefefe;
+    overflow-y: auto;
+    z-index: 101;
   }
   .header__search-result li svg {
     transform: rotate(-90deg);
@@ -304,7 +321,7 @@ input {
     height: 46px;
   }
   .header__search {
-    width: 70vw;
+    width: 68vw;
     height: 46px;
   }
   .header__bottom.header__bottom--shifted {
@@ -499,6 +516,7 @@ input {
     width: 100%;
   }
   .mobile-menu__link button {
+    font-size: inherit;
     width: 100%;
     display: flex;
     align-items: center;
@@ -617,7 +635,7 @@ input {
     height: 2.8rem;
   }
   .contacts__group--info {
-    margin-top: -45px;
+    margin-top: -40px;
     display: flex;
     flex-direction: column;
   }
@@ -689,16 +707,5 @@ input {
     flex-direction: column;
     align-items: end;
     justify-content: flex-start;
-  }
-  @-moz-document url-prefix() {
-    .contacts {
-      height: 101.1vh;
-    }
-    .contacts__group--info {
-      margin-top: -40px;
-    }
-    .contacts__close-btn {
-      top: 1%;
-    }
   }
 }/*# sourceMappingURL=style.css.map */

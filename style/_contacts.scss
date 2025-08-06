@@ -69,7 +69,7 @@
     }
 
     &__group--info {
-      margin-top: -45px;
+      margin-top: -40px;
       display: flex;
       flex-direction: column;
       div {
@@ -160,17 +160,6 @@
     justify-content: flex-start;
   }
 
-  @-moz-document url-prefix() {
-    .contacts {
-      height: 101.1vh;
 
-      &__group--info {
-        margin-top: -40px;
-      }
-
-      &__close-btn {
-        top: 1%;
-      }
-    }
-  }
 }
+
