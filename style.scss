@@ -68,6 +68,7 @@ button {
 // Хэдер
 @media screen and (max-width: 768px) {
   .header {
+
     // Верхняя часть
     &__top {
       display: flex;
@@ -164,6 +165,7 @@ button {
       height: 1.2rem;
       margin: 20px;
     }
+
     &__search-icon,
     &__search-arrow {
       width: 1.2rem;
@@ -226,7 +228,8 @@ button {
       z-index: 102;
       background-color: $second-text;
       padding-left: 1rem;
-      padding-right: 3rem; /* чтобы не перекрывать иконку */
+      padding-right: 3rem;
+      /* чтобы не перекрывать иконку */
       border: none;
     }
 
@@ -319,7 +322,7 @@ button {
       padding: 1rem 15px;
     }
 
-    &__content > li > a {
+    &__content>li>a {
       background-color: #fefefe !important;
       color: #212121 !important;
       font-size: 1.5rem !important;
@@ -340,7 +343,7 @@ button {
       margin-top: 5px;
     }
 
-    &__phone + &__arrow {
+    &__phone+&__arrow {
       transform: rotate(0deg) !important;
     }
 
@@ -483,7 +486,7 @@ button {
       fill: $second-text;
     }
 
-    & input:checked + .tab__label .arrow {
+    & input:checked+.tab__label .arrow {
       transform: rotate(180deg);
     }
 
@@ -493,11 +496,11 @@ button {
       transition: max-height 0.35s ease;
     }
 
-    & input:checked ~ &__content {
+    & input:checked~&__content {
       max-height: 300px;
     }
 
-    .tab:has(input:checked) + .tab label {
+    .tab:has(input:checked)+.tab label {
       border-top: 0.25px solid #5a60708a;
     }
 
@@ -512,7 +515,7 @@ button {
   }
 
   .tab__label,
-  .menu > li > a {
+  .menu>li>a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -548,6 +551,7 @@ button {
         color: #848484;
       }
     }
+
     &__item {
       padding: 15px;
     }
@@ -564,23 +568,18 @@ button {
 @media screen and (max-width: 359px) {
   .header {
 
-    &__menu-toggle,
-    &__cart{
-      width: 50px;
-      height: 50px;
-    }
-
-
     &__menu-toggle-icon,
     &__cart-icon {
-      margin: 14px;
+      width: 1rem;
+      height: 1rem;
+      margin: 15px
     }
 
     &__top {
       padding-left: 10px;
     }
 
-    &__search-wrap{
+    &__search-wrap {
       height: auto;
     }
 
@@ -610,6 +609,7 @@ button {
   }
 
   .mobile-menu {
+
     &__item,
     &__link {
       padding: 1rem 10px;

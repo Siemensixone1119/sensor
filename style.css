@@ -183,7 +183,8 @@ button {
     z-index: 102;
     background-color: #fefefe;
     padding-left: 1rem;
-    padding-right: 3rem; /* чтобы не перекрывать иконку */
+    padding-right: 3rem;
+    /* чтобы не перекрывать иконку */
     border: none;
   }
   .header__search-input::-moz-placeholder {
@@ -456,12 +457,10 @@ button {
   }
 }
 @media screen and (max-width: 359px) {
-  .header__menu-toggle, .header__cart {
-    width: 50px;
-    height: 50px;
-  }
   .header__menu-toggle-icon, .header__cart-icon {
-    margin: 14px;
+    width: 1rem;
+    height: 1rem;
+    margin: 15px;
   }
   .header__top {
     padding-left: 10px;
