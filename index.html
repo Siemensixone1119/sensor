@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
-      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,13 +21,19 @@
   </head>
 
   <body>
+    <!-- Верхняя часть хэдера -->
+
     <header class="header">
-      <section class="header__top visible">
+      <section class="header__top header__top--visible">
         <a href="/" class="header__logo">
-          <svg class="header__logo-icon">
+          <svg class="header__logo-icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-logo"></use>
           </svg>
-          <svg class="header__logo-icon-text">
+          <svg
+            class="header__logo-icon-text"
+            aria-hidden="true"
+            focusable="false"
+          >
             <use
               xlink:href="./assets/image/symbol-defs.svg#icon-logo_text"
             ></use>
@@ -48,24 +47,37 @@
           </p>
         </a>
 
-        <a href="/" class="header__phone-btn">
-          <svg class="header__phone">
+        <button href="" class="header__phone-button" aria-label="Позвонить">
+          <svg class="header__phone-icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-phone"></use>
           </svg>
-        </a>
+        </button>
       </section>
     </header>
-    <section class="header__bottom shifted">
+
+    <!-- Нижняя часть хэдера -->
+
+    <section class="header__bottom header__bottom--shifted">
       <button class="header__menu-toggle">
-        <svg class="header__menu-toggle-icon">
+        <svg
+          class="header__menu-toggle-icon"
+          aria-hidden="true"
+          focusable="false"
+        >
           <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
         </svg>
       </button>
 
+      <!-- Поиск -->
+
       <div class="header__search-wrap">
-        <div class="header__search">
-          <button class="is-hidden">
-            <svg class="header__search-arrow">
+        <div class="header__search" focusable="false">
+          <button class="is-hidden" aria-label="Назад">
+            <svg
+              class="header__search-arrow"
+              aria-hidden="true"
+              focusable="false"
+            >
               <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
             </svg>
           </button>
@@ -73,77 +85,168 @@
             type="text"
             class="header__search-input"
             placeholder="Найти продукцию, файлы, программное обеспечение"
+            aria-label="Поиск по сайту"
           />
-          <svg class="header__search-icon">
+          <svg class="header__search-icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-magnify"></use>
           </svg>
         </div>
-        <ul class="header__search-res is-hidden">
-          <li>
-            <a href="/"
-              >Результат поиска 1
-              <svg class="header__search-icon">
-                <use
-                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                ></use>
-              </svg>
-            </a>
-          </li>
 
-          <li>
-            <a href="/"
-              >Результат поиска 2
-              <svg class="header__search-icon">
-                <use
-                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                ></use>
-              </svg>
-            </a>
-          </li>
+        <!-- Результаты поиска -->
 
+        <ul class="header__search-result is-hidden" aria-live="polite">
           <li>
-            <a href="/"
-              >Результат поиска 3
-              <svg class="header__search-icon">
-                <use
-                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                ></use>
-              </svg>
-            </a>
+            <a href="/">Продукция</a>
+            <a href="/">Результат поиска 1</a>
+            <a href="/">Результат поиска 2</a>
+          </li>
+          <li>
+            <a href="/">Продукция</a>
+            <a href="/">Результат поиска 1</a>
+            <a href="/">Результат поиска 2</a>
+          </li>
+          <li>
+            <a href="/">Продукция</a>
+            <a href="/">Результат поиска 1</a>
+            <a href="/">Результат поиска 2</a>
           </li>
         </ul>
       </div>
 
-      <a href="/" class="header__cart">
-        <svg class="header__cart-icon">
+      <a href="/" class="header__cart" aria-label="Открыть корзину">
+        <svg class="header__cart-icon" aria-hidden="true" focusable="false">
           <use xlink:href="./assets/image/symbol-defs.svg#icon-bascet"></use>
         </svg>
       </a>
     </section>
+
     <main>
-      <button class="message__btn">
-        <svg class="message__icon">
+      <!-- Контактная информация -->
+
+      <section class="contacts contacts--fixed-bottom">
+        <div>
+          <div class="contacts__group contacts__group--info">
+            <button class="contacts__close-btn" aria-label="Закрыть меню">
+              <svg class="contacts__close-btn-icon" focusable="false">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
+                ></use>
+              </svg>
+            </button>
+            <div lass="contacts__logo">
+              <svg class="contacts__logo-icon" focusable="false">
+                <use
+                  xlink:href="./assets/image/symbol-defs.svg#icon-logo-color"
+                ></use>
+              </svg>
+            </div>
+            <div>
+              <p class="contacts__text">ООО НПП «СЕНСОР»</p>
+              <p class="contacts__subtext">ИНН: 5838002196</p>
+            </div>
+            <p class="contacts__subtext">
+              Россия, 442960, Пензенская область, г. Заречный, ул. Промышленная,
+              строение 5
+            </p>
+            <div>
+              <p class="contacts__subtext">
+                понедельник – пятница с 08:00 до 17:00 (мск)
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="contacts__group contacts__group--phones">
+          <ul class="contacts__list">
+            <li class="contacts__item">
+              <a href="tel:+78412652121" class="contacts__link"
+                >+7 8412 65-21-21</a
+              >
+              <p class="contacts__desc">отдел продаж</p>
+              <p class="contacts__subtext">подбор и заказ продукции</p>
+            </li>
+            <li class="contacts__item">
+              <a href="tel:+78412652155" class="contacts__link"
+                >+7 8412 65-21-55</a
+              >
+              <p class="contacts__desc">сервисная служба</p>
+              <p class="contacts__subtext">
+                заказ запчастей, технические консультации
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contacts__group contacts__group--button">
+          <a href="/" class="contacts__button">
+            Все контакты
+            <svg class="contacts__button-icon">
+              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
+            </svg>
+          </a>
+        </div>
+
+        <div class="contacts__group contacts__group--social">
+          <ul class="contacts__social-list">
+            <li class="contacts__social-item">
+              <a href="/" class="contacts__social-link">
+                <svg class="contacts__social-icon">
+                  <use
+                    xlink:href="./assets/image/symbol-defs.svg#icon-telegram"
+                  ></use>
+                </svg>
+              </a>
+            </li>
+            <li class="contacts__social-item">
+              <a href="/" class="contacts__social-link">
+                <svg class="contacts__social-icon">
+                  <use
+                    xlink:href="./assets/image/symbol-defs.svg#icon-vkontakte"
+                  ></use>
+                </svg>
+              </a>
+            </li>
+            <li class="contacts__social-item">
+              <a href="/" class="contacts__social-link">
+                <svg class="contacts__social-icon">
+                  <use
+                    xlink:href="./assets/image/symbol-defs.svg#icon-rutube"
+                  ></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Кнопка связи -->
+
+      <button class="message__btn" aria-label="Связь">
+        <svg class="message__icon" aria-hidden="true" focusable="false">
           <use xlink:href="./assets/image/symbol-defs.svg#icon-message"></use>
         </svg>
       </button>
     </main>
 
     <footer>
-      <section class="contacts">
-        <ul class="contacts__list">
-          <li class="contacts__item">
-            <p class="contacts__title">Отдел продаж</p>
-            <p>+7 8412 65-21-55</p>
+      <!-- Номера телефонов -->
+
+      <section class="connect">
+        <ul class="connect__list">
+          <li class="connect__item">
+            <p class="connect__title">Отдел продаж</p>
+            <p>+7 (8412) 65-21-21</p>
             <p>op@nppsensor.ru</p>
           </li>
 
-          <li class="contacts__item">
-            <p class="contacts__title">Сервисная служба</p>
+          <li class="connect__item">
+            <p class="connect__title">Сервисная служба</p>
             <p>+7 8412 65-21-55</p>
             <p>srv@nppsensor.ru</p>
           </li>
         </ul>
       </section>
+
+      <!-- Выпадающее меню -->
 
       <section>
         <ul class="menu">
@@ -151,7 +254,7 @@
             <input type="checkbox" id="menu-5" />
             <label for="menu-5" class="tab__label">
               Продукция
-              <svg class="arrow">
+              <svg class="arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -168,7 +271,7 @@
             <input type="checkbox" id="menu-6" />
             <label for="menu-6" class="tab__label">
               Поддержка
-              <svg class="arrow">
+              <svg class="arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -185,7 +288,7 @@
             <input type="checkbox" id="menu-7" />
             <label for="menu-7" class="tab__label">
               О предприятии
-              <svg class="arrow">
+              <svg class="arrow" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -203,12 +306,15 @@
           <li><a href="/">Анкета дилера</a></li>
         </ul>
       </section>
+
+      <!-- Юридическая информация -->
+
       <section class="footer-info">
         <p class="footer-info__disclaimer">
           Настоящий интернет-сайт, прайс-лист носят исключительно информационный
           характер и ни при каких условиях не являются публичной офертой,
-          определяемой положениями статьи 437 Гражданского кодекса
-          РФ. Опубликованные изображения и описания продукции могут отличаться от
+          определяемой положениями статьи 437 Гражданского кодекса РФ.
+          Опубликованные изображения и описания продукции могут отличаться от
           актуальных. Актуальные цены и информацию необходимо всегда уточнять у
           менеджеров предприятия.
         </p>
@@ -232,11 +338,13 @@
       </section>
     </footer>
 
-    <section class="mobile-menu__wrap">
+    <!-- Боковое меню -->
+
+    <aside class="mobile-menu__wrap" aria-hidden="true">
       <div class="mobile-menu__top">
         <a href="/" class="mobile-menu__login">Войти</a>
-        <button class="mobile-menu__close-btn">
-          <svg class="mobile-menu__icon">
+        <button class="mobile-menu__close-btn" aria-label="Закрыть меню">
+          <svg class="mobile-menu__icon" focusable="false">
             <use
               xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
             ></use>
@@ -244,12 +352,16 @@
         </button>
       </div>
 
-      <nav>
+      <nav aria-label="Мобильное меню">
         <ul class="mobile-menu">
           <li class="mobile-menu__link">
             <button data-title="О предприятии">
-              <p>О предприятии</p>
-              <svg class="mobile-menu__arrow">
+              <span>О предприятии</span>
+              <svg
+                class="mobile-menu__arrow"
+                aria-hidden="true"
+                focusable="false"
+              >
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -259,8 +371,12 @@
 
           <li class="mobile-menu__link">
             <button data-title="Продукция">
-              <p>Продукция</p>
-              <svg class="mobile-menu__arrow">
+              <span>Продукция</span>
+              <svg
+                class="mobile-menu__arrow"
+                aria-hidden="true"
+                focusable="false"
+              >
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -270,7 +386,7 @@
 
           <li class="mobile-menu__link">
             <button data-title="Поддержка">
-              <p>Поддержка</p>
+              <span>Поддержка</span>
               <svg class="mobile-menu__arrow">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
@@ -290,7 +406,11 @@
                 <span>Приемная (обращения)</span>
                 <span>в будни с 08:00 до 17:00 (мск)</span>
               </p>
-              <svg class="mobile-menu__arrow arrow">
+              <svg
+                class="mobile-menu__arrow arrow"
+                aria-hidden="true"
+                focusable="false"
+              >
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>
@@ -318,23 +438,23 @@
       <div class="mobile-menu__lang">
         <button class="mobile-menu__lang-btn">
           English
-          <svg class="mobile-menu__arrow">
+          <svg class="mobile-menu__arrow" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
           </svg>
         </button>
       </div>
-    </section>
+    </aside>
 
-    <section class="mobile-menu__wrap v">
+    <aside class="mobile-menu__wrap v" aria-hidden="true">
       <div class="mobile-menu__top">
-        <button class="mobile-menu__back-btn">
-          <svg class="mobile-menu__icon">
+        <button class="mobile-menu__back-btn" aria-label="Назад">
+          <svg class="mobile-menu__icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
           </svg>
         </button>
-        <p class="mobile-menu__title">О предприятии</p>
-        <button class="mobile-menu__close-btn">
-          <svg class="mobile-menu__icon">
+        <p class="mobile-menu__title" id="sub-menu-title">О предприятии</p>
+        <button class="mobile-menu__close-btn" aria-label="Закрыть меню">
+          <svg class="mobile-menu__icon" aria-hidden="true" focusable="false">
             <use
               xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
             ></use>
@@ -342,7 +462,7 @@
         </button>
       </div>
 
-      <nav>
+      <nav aria-labelledby="sub-menu-title">
         <ul class="mobile-menu">
           <li class="mobile-menu__link">
             <a href="/">История предрприятия</a>
@@ -352,6 +472,6 @@
           <li class="mobile-menu__link"><a href="/">Новости</a></li>
         </ul>
       </nav>
-    </section>
+    </aside>
   </body>
 </html>

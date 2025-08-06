@@ -10,11 +10,15 @@ const refs = {
   backBtn: document.querySelector(".mobile-menu__back-btn"),
   menuTitle: document.querySelector("[data-title]"),
   search: document.querySelector(".header__search-input"),
-  searchResult: document.querySelector(".header__search-res"),
+  searchResult: document.querySelector(".header__search-result"),
   backInputBtn: document.querySelector(".header__search button"),
   cartBtn: document.querySelector(".header__cart"),
   searchIcon: document.querySelector(".header__search-icon"),
   searchWrap: document.querySelector(".header__search"),
+  msgBtn: document.querySelector(".message__btn"),
+  openContactBtn: document.querySelector(".header__phone-button"),
+  closeContactBtn: document.querySelector(".contacts__close-btn"),
+  contacts: document.querySelector(".contacts")
 };
 
 export default refs;
