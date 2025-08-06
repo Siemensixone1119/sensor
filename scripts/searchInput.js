@@ -2,6 +2,7 @@ import refs from "./domRefs.js";
 
 export function setupInputFocus() {
   refs.search.addEventListener("focus", () => {
+        document.querySelector(".menu").classList.add("is-hidden")
     refs.headerTop.classList.add("is-hidden");
     refs.headerBottom.classList.remove("header__bottom--shifted");
 
@@ -14,9 +15,11 @@ export function setupInputFocus() {
     refs.searchIcon.classList.add("is-hidden");
 
     refs.searchWrap.style.width = "100vw";
+
   });
 
   refs.backInputBtn.addEventListener("click", () => {
+    document.querySelector(".menu").classList.remove("is-hidden")
     document.body.classList.remove("no-scroll");
 
     refs.headerTop.classList.remove("is-hidden");

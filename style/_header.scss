@@ -40,7 +40,7 @@
     }
 
     &__logo-icon {
-      width: 3rem;
+      width: 3.1rem;
       height: 2rem;
     }
 
@@ -120,9 +120,12 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      // width: inherit;
-      padding: 0 15px;
-      height: 49px;
+      padding: 14px 15px;
+      width:74%;
+      height: auto;
+      position: fixed;
+      z-index: 10000;
+      background-color: $second-text;
 
       button {
         transform: rotate(90deg);
@@ -141,11 +144,11 @@
       flex: 1;
       min-width: 0;
       margin-top: 3px;
-      z-index: 0;
+      z-index: 1000;
     }
 
     &__search-wrap {
-      width: 100%;
+      width: 100%;height: 46px;
     }
 
     &__search-input:focus {
@@ -183,7 +186,7 @@
       bottom: 0;
       background-color: $second-text;
       overflow-y: auto;
-      z-index: 101;
+      z-index: 1001;
       li {
         svg {
           transform: rotate(-90deg);
@@ -207,6 +210,7 @@
       }
     }
   }
+  
 }
 
 @media screen and (max-width: 359px) {
