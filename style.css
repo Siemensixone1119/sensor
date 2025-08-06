@@ -560,7 +560,7 @@ input {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
     transition: transform 0.3s ease;
     transform: translateY(100%);
@@ -570,7 +570,7 @@ input {
     background-color: #fefefe;
     z-index: 9999;
     text-align: center;
-    overflow: hidden;
+    overflow-y: auto;
   }
   .contacts__logo {
     width: 100%;
@@ -597,11 +597,13 @@ input {
   .contacts__group {
     width: 100%;
     padding: 0 15px;
+    margin-top: 20px;
   }
   .contacts__close-btn {
     z-index: 9999;
     margin-right: 10px;
     margin-top: 10px;
+    margin-left: auto;
   }
   .contacts__close-btn-icon {
     width: 2.8rem;
