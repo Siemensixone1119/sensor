@@ -18,7 +18,7 @@
     background-color: $second-text;
     z-index: 9999;
     text-align: center;
-     overflow-y: auto;
+    overflow-y: auto;
 
     &__logo {
       width: 100%;
@@ -55,9 +55,12 @@
 
     &__close-btn {
       z-index: 9999;
-      margin-right: 10px;
-      margin-top: 10px;
+      padding-right: 10px;
+      padding-top: 10px;
       margin-left: auto;
+      position: sticky;
+      top: 0;
+      right: 0;
     }
 
     &__close-btn-icon {
@@ -160,6 +163,10 @@
   @-moz-document url-prefix() {
     .contacts {
       height: 101.1vh;
+
+      &__group--info {
+        margin-top: -40px;
+      }
     }
   }
 }

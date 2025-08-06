@@ -17,7 +17,7 @@ const refs = {
   searchWrap: document.querySelector(".header__search"),
   msgBtn: document.querySelector(".message__btn"),
   openContactBtn: document.querySelector(".header__phone-button"),
-  closeContactBtn: document.querySelector(".contacts__close-btn-icon"),
+  closeContactBtn: document.querySelector(".contacts__close-btn"),
   contacts: document.querySelector(".contacts")
 };
 
