@@ -697,5 +697,8 @@ input {
     .contacts__group--info {
       margin-top: -40px;
     }
+    .contacts__close-btn {
+      top: 1%;
+    }
   }
 }/*# sourceMappingURL=style.css.map */
