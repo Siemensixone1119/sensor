@@ -18,6 +18,7 @@
     background-color: $second-text;
     z-index: 9999;
     text-align: center;
+    overflow: hidden;
 
     &__logo {
       width: 100%;
@@ -48,10 +49,10 @@
 
     &__group {
       width: 100%;
-      padding: 1.2rem 15px;
+      padding: 0 15px;
     }
 
-    &__close-btn{
+    &__close-btn {
       z-index: 9999;
       margin-right: 10px;
       margin-top: 10px;
@@ -60,14 +61,12 @@
     &__close-btn-icon {
       width: 2.8rem;
       height: 2.8rem;
-      // margin-bottom: -50px;
     }
 
     &__group--info {
       margin-top: -45px;
       display: flex;
       flex-direction: column;
-      padding-top: 0;
       div {
         .contacts__text:last-child {
           margin-top: 2px;
@@ -76,22 +75,15 @@
     }
 
     &__group--phones {
-      padding-top: 8px;
-      padding-bottom: 0;
-
-      .contacts__item {
-        padding-top: 20px;
-      }
-
       .contacts__list {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4vh;
       }
-
       .contacts__link {
         font-size: 1.1rem;
-        padding-top: 20px;
         color: $accent-color;
       }
 
@@ -124,8 +116,6 @@
         justify-content: space-between;
         width: 50%;
         border: 1px solid #aaa;
-        margin-bottom: 20px;
-        margin-top: 20px;
       }
 
       .contacts__button-icon {
@@ -163,5 +153,11 @@
     flex-direction: column;
     align-items: end;
     justify-content: flex-start;
+  }
+
+  @-moz-document url-prefix() {
+    .contacts {
+      height: 101vh;
+    }
   }
 }

@@ -570,6 +570,7 @@ input {
     background-color: #fefefe;
     z-index: 9999;
     text-align: center;
+    overflow: hidden;
   }
   .contacts__logo {
     width: 100%;
@@ -595,7 +596,7 @@ input {
   }
   .contacts__group {
     width: 100%;
-    padding: 1.2rem 15px;
+    padding: 0 15px;
   }
   .contacts__close-btn {
     z-index: 9999;
@@ -610,26 +611,19 @@ input {
     margin-top: -45px;
     display: flex;
     flex-direction: column;
-    padding-top: 0;
   }
   .contacts__group--info div .contacts__text:last-child {
     margin-top: 2px;
   }
-  .contacts__group--phones {
-    padding-top: 8px;
-    padding-bottom: 0;
-  }
-  .contacts__group--phones .contacts__item {
-    padding-top: 20px;
-  }
   .contacts__group--phones .contacts__list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4vh;
   }
   .contacts__group--phones .contacts__link {
     font-size: 1.1rem;
-    padding-top: 20px;
     color: #b30006;
   }
   .contacts__group--phones .contacts__desc {
@@ -657,8 +651,6 @@ input {
     justify-content: space-between;
     width: 50%;
     border: 1px solid #aaa;
-    margin-bottom: 20px;
-    margin-top: 20px;
   }
   .contacts__group--button .contacts__button-icon {
     width: 1.2rem;
@@ -688,5 +680,10 @@ input {
     flex-direction: column;
     align-items: end;
     justify-content: flex-start;
+  }
+  @-moz-document url-prefix() {
+    .contacts {
+      height: 101vh;
+    }
   }
 }/*# sourceMappingURL=style.css.map */
