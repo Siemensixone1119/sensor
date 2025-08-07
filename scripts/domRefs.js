@@ -18,7 +18,9 @@ const refs = {
   msgBtn: document.querySelector(".message__btn"),
   openContactBtn: document.querySelector(".header__phone-button"),
   closeContactBtn: document.querySelector(".contacts__close-btn"),
-  contacts: document.querySelector(".contacts")
+  contacts: document.querySelector(".contacts"), 
+  header: document.querySelector(".header"), 
+  searchCont: document.querySelector(".header__search-wrap"),
 };
 
 export default refs;
