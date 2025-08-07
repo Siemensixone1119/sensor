@@ -12,6 +12,6 @@ setupMenuToggle();
 setupHeaderScroll();
 setupSubmenu();
 setupCloseAllMenus();
-setupInputFocus();
+// setupInputFocus();
 setUpMsgBtn();
 setupToggleContacts();

@@ -194,7 +194,6 @@ input {
     background-color: #fefefe;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
@@ -203,6 +202,11 @@ input {
   }
   .header__bottom.header__bottom--shifted {
     transform: translateY(113%);
+  }
+  .header__search--false {
+    font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .header__menu-toggle, .header__cart {
     line-height: 0;
@@ -397,8 +401,9 @@ input {
 }
 @media screen and (max-width: 768px) {
   main {
-    height: 100vh;
-    padding-top: 100px;
+    padding: 15px;
+    padding-top: 70px;
+    text-align: justify;
   }
   .message__btn {
     width: 4rem;
@@ -551,10 +556,20 @@ input {
   .mobile-menu input:checked + label svg {
     transform: rotate(180deg) !important;
   }
+  .mobile-menu .tab__label,
   .mobile-menu .tab__content li a {
     color: #212121;
-    background-color: #fefefe;
+    background-color: #fefefe !important;
     font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .mobile-menu .tab__label svg,
+  .mobile-menu .tab__content li a svg {
+    fill: #212121;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    min-width: 16px;
   }
   .mobile-menu > li label {
     border-top: none;
@@ -647,6 +662,15 @@ input {
     z-index: 9999;
     text-align: center;
     overflow-y: auto;
+    overflow: hidden;
+  }
+  .contacts > div {
+    overflow: auto;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .contacts__logo {
     width: 100%;
@@ -679,8 +703,7 @@ input {
     padding-right: 10px;
     padding-top: 10px;
     margin-left: auto;
-    margin-top: -58px;
-    position: sticky;
+    position: fixed;
     top: 0;
     right: 0;
   }

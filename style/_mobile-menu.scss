@@ -84,11 +84,20 @@
     input:checked + label svg {
       transform: rotate(180deg) !important;
     }
-
+    .tab__label,
     .tab__content li a {
       color: #212121;
-      background-color: #fefefe;
+      background-color: #fefefe !important;
       font-size: 1.2rem;
+      font-weight: 500;
+
+      svg{
+        fill: $text-color;
+        min-height: 16px;
+        max-width: 16px;
+        max-height: 16px;
+        min-width: 16px;
+      }
     }
 
     & > li label {
@@ -113,7 +122,7 @@
         justify-content: space-between;
       }
 
-      a{
+      a {
         display: block;
         width: 100%;
       }

@@ -74,7 +74,7 @@
       background-color: $second-text;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      // justify-content: space-between;
       box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
       position: sticky;
       top: 0;
@@ -84,6 +84,13 @@
 
     &__bottom.header__bottom--shifted {
       transform: translateY(113%);
+    }
+
+    &__search--false{
+      font-size: 14px;
+      white-space: nowrap;
+      // overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &__menu-toggle,
