@@ -4,23 +4,31 @@ const refs = {
   menu: document.querySelector(".mobile-menu__wrap"),
   headerTop: document.querySelector(".header__top"),
   headerBottom: document.querySelector(".header__bottom"),
-  menuButtons: document.querySelectorAll(".mobile-menu__link button[data-title]"),
+  menuButtons: document.querySelectorAll(
+    ".mobile-menu__link button[data-title]"
+  ),
   subMenu: document.querySelector(".mobile-menu__wrap.v"),
-  subMenuTitle: document.querySelector(".mobile-menu__wrap.v .mobile-menu__title"),
+  subMenuTitle: document.querySelector(
+    ".mobile-menu__wrap.v .mobile-menu__title"
+  ),
   backBtn: document.querySelector(".mobile-menu__back-btn"),
   menuTitle: document.querySelector("[data-title]"),
-  search: document.querySelector(".header__search-input"),
   searchResult: document.querySelector(".header__search-result"),
-  backInputBtn: document.querySelector(".header__search button"),
+  backInputBtn: document.querySelector(".search button"),
   cartBtn: document.querySelector(".header__cart"),
   searchIcon: document.querySelector(".header__search-icon"),
-  searchWrap: document.querySelector(".header__search"),
+  search: document.querySelector(".search"),
   msgBtn: document.querySelector(".message__btn"),
   openContactBtn: document.querySelector(".header__phone-button"),
   closeContactBtn: document.querySelector(".contacts__close-btn"),
-  contacts: document.querySelector(".contacts"), 
-  header: document.querySelector(".header"), 
+  contacts: document.querySelector(".contacts"),
+  header: document.querySelector(".header"),
   searchCont: document.querySelector(".header__search-wrap"),
+  searchFalse: document.querySelector(".header__search--false"),
+  fakeSearch: document.querySelector(".header__search"),
+  realSearch: document.querySelector(".search"),
+  realInput: document.querySelector(".search__input"),
+  closeSearch: document.querySelector(".search__wrap button"),
 };
 
 export default refs;
