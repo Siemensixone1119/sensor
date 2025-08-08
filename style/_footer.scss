@@ -1,19 +1,19 @@
 .connect {
   border-top: 0.5px solid #e3e3e3;
-  padding: 2rem 15px;
+  padding: 32px 15px;
 
   &__list,
   &__item {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 40px;
   }
 
   &__item {
-    gap: 1.2rem;
+    gap: 20px;
 
     p {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 
@@ -29,7 +29,7 @@
 
   &__disclaimer {
     font-size: 0.9rem;
-    padding: 1rem 15px;
+    padding: 16px 15px;
   }
 
   &__disclaimer:first-child {
@@ -39,7 +39,7 @@
   &__copyright {
     font-size: 0.9rem;
     padding: 0 15px;
-    padding-bottom: 1rem;
+    padding-bottom: 16px;
     margin-left: auto;
 
     span {

@@ -37,7 +37,7 @@
   }
 
   &__logo-icon {
-    height: 5rem;
+    height: 80px;
   }
 
   &__text {
@@ -72,8 +72,8 @@
   }
 
   &__close-btn-icon {
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 44px;
+    height: 44px;
   }
 
   &__group--info {
@@ -110,8 +110,8 @@
   }
 
   &__social-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 32px;
+    height: 32px;
   }
 
   &__group--button {
@@ -122,7 +122,7 @@
 
     padding: 0;
     .contacts__button {
-      padding: 1rem 15px;
+      padding: 15px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -131,8 +131,8 @@
     }
 
     .contacts__button-icon {
-      width: 1.2rem;
-      height: 1.2rem;
+      width: 20px;
+      height: 20px;
       transform: rotate(-90deg);
     }
   }
@@ -149,12 +149,12 @@
 
     .contacts__social-link {
       display: block;
-      padding: 1rem 2rem;
+      padding: 16px 32px;
     }
 
     .contacts__social-icon {
-      width: 2rem;
-      height: 2rem;
+      width: 32px;
+      height: 32px;
       fill: #212121;
     }
   }

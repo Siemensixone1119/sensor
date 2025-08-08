@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 15px;
+    padding: 16px 15px;
     padding-right: 10px;
     border-bottom: 1px solid #c2c2c2;
     background-color: $second-text;
@@ -33,26 +33,26 @@
   }
 
   &__close-btn {
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 44px;
+    height: 44px;
     line-height: 0;
   }
 
   &__icon {
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 44px;
+    height: 44px;
   }
 
   &__arrow {
-    width: 1rem;
-    height: 1rem;
+    width: 16px;
+    height: 16px;
     fill: $text-color !important;
     transform: rotate(-90deg);
     margin-left: auto;
   }
 
   &__item {
-    padding: 1rem 15px;
+    padding: 16px 15px;
   }
 
   &__content > li > a {
@@ -69,7 +69,7 @@
 
   &__phone *:nth-child(2),
   &__phone *:nth-child(3) {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   &__phone *:nth-child(2) {
@@ -104,7 +104,7 @@
   }
 
   &__link {
-    padding: 1rem 15px;
+    padding: 16px 15px;
     font-size: 1.5rem !important;
     font-weight: 500 !important;
     background-color: #fefefe !important;
@@ -135,7 +135,7 @@
   &__lang-btn {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 48px;
     border-radius: 30px;
     box-shadow: $shadow;
     padding: 10px 15px;
@@ -145,8 +145,8 @@
 
   &__back-btn {
     svg {
-      width: 1.7rem;
-      height: 1.7rem;
+      width: 27px;
+      height: 27px;
       transform: rotate(90deg);
     }
   }
@@ -169,13 +169,13 @@
 @media screen and (max-width: 359px) {
   .mobile-menu {
     &__top {
-      padding: 0.8rem 0px;
+      padding: 12px 0px;
       padding-left: 10px;
     }
 
     &__item,
     &__link {
-      padding: 1rem 10px;
+      padding: 16px 10px;
     }
 
     &__lang-btn {

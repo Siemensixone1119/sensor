@@ -1,5 +1,5 @@
 const refs = {
-  openBtn: document.querySelector(".header__menu-toggle"),
+  openBtn: document.querySelector("#open-menu"),
   closeBtn: document.querySelector(".mobile-menu__close-btn"),
   menu: document.querySelector(".mobile-menu__wrap"),
   headerTop: document.querySelector(".header__top"),
