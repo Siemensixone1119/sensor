@@ -1,166 +1,164 @@
 @use "./variable" as *;
 
-@media screen and (max-width: 768px) {
-  .header {
-    // Верхняя часть
-    &__top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: $accent-color;
-      padding-left: 15px;
-      gap: 1rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      transform: translateY(calc(-100% + 40px));
-      transition: transform 0.3s ease;
-      will-change: transform;
+.header {
+  // Верхняя часть
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $accent-color;
+    padding-left: 15px;
+    gap: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    transform: translateY(calc(-100% + 40px));
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  &__top.header__top--visible {
+    transform: translateY(0);
+  }
+
+  &__top.hidden {
+    transform: translateY(calc(-100% + 40px));
+  }
+
+  &__logo-icon-text {
+    display: none;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 1;
+  }
+
+  &__logo-icon {
+    width: 3.1rem;
+    height: 2rem;
+  }
+
+  &__logo-text {
+    white-space: nowrap;
+    font-family: $second-family;
+    font-size: 0.85rem;
+    color: $second-text;
+
+    span.header__logo-subtext {
+      font-family: $font-family;
+      font-size: 0.75rem;
     }
+  }
 
-    &__top.header__top--visible {
-      transform: translateY(0);
-    }
+  &__phone-button {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    &__top.hidden {
-      transform: translateY(calc(-100% + 40px));
-    }
+  &__phone-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 
-    &__logo-icon-text {
-      display: none;
-    }
+  // Нижняя часть
+  &__bottom {
+    background-color: $second-text;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
 
-    &__logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 1;
-    }
+  &__bottom.header__bottom--shifted {
+    transform: translateY(113%);
+  }
 
-    &__logo-icon {
-      width: 3.1rem;
-      height: 2rem;
-    }
+  &__search--false {
+    font-size: 14px;
+    white-space: nowrap;
+    color: rgb(104, 103, 103);
+    text-overflow: ellipsis;
+  }
 
-    &__logo-text {
-      white-space: nowrap;
-      font-family: $second-family;
-      font-size: 0.85rem;
-      color: $second-text;
+  &__menu-toggle,
+  &__cart {
+    flex: 0 0 auto;
+    line-height: 0;
+  }
 
-      span.header__logo-subtext {
-        font-family: $font-family;
-        font-size: 0.75rem;
-      }
-    }
+  &--false {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 1 0;
+  }
+  &__menu-toggle-icon,
+  &__cart-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 15px;
+  }
+  &__search-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    flex: 0 0 auto;
+    margin-left: 8px;
+  }
 
-    &__phone-button {
-      width: 3.5rem;
-      height: 3.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  &__menu-toggle {
+    border-right: 1px solid #ccc;
+  }
 
-    &__phone-icon {
-      width: 1.2rem;
-      height: 1.2rem;
-    }
+  &__cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #ccc;
+  }
 
-    // Нижняя часть
-    &__bottom {
-      background-color: $second-text;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: transform 0.3s ease;
-    }
+  &__search-cont {
+    flex: 1 1 0;
+    min-width: 0;
 
-    &__bottom.header__bottom--shifted {
-      transform: translateY(113%);
-    }
-
-    &__search--false {
-      font-size: 14px;
-      white-space: nowrap;
-      color: rgb(104, 103, 103);
-      text-overflow: ellipsis;
-    }
-
-    &__menu-toggle,
-    &__cart {
-      flex: 0 0 auto;
-      line-height: 0;
-    }
-
-    &--false {
+    .header__search--false {
       display: block;
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      flex: 1 1 0;
     }
-    &__menu-toggle-icon,
-    &__cart-icon {
-      width: 1.2rem;
-      height: 1.2rem;
-      margin: 15px;
-    }
-    &__search-icon {
-      width: 1.2rem;
-      height: 1.2rem;
-      flex: 0 0 auto;
-      margin-left: 8px;
-    }
+  }
+  &__search {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    // gap: 0.5rem;
+    padding: 14px 15px;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    z-index: 10000;
+    background-color: $second-text;
+  }
 
-    &__menu-toggle {
-      border-right: 1px solid #ccc;
-    }
-
-    &__cart {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-left: 1px solid #ccc;
-    }
-
-    &__search-cont {
-      flex: 1 1 0;
-      min-width: 0;
-
-      .header__search--false {
-        display: block;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-    &__search {
-      justify-content: space-between;
-      display: flex;
-      align-items: center;
-      // gap: 0.5rem;
-      padding: 14px 15px;
-      width: 100%;
-      min-width: 0;
-      height: auto;
-      z-index: 10000;
-      background-color: $second-text;
-    }
-
-    &__search-wrap {
-      width: 100%;
-      height: 46px;
-      flex: 1 1 0;
-      min-width: 0;
-    }
+  &__search-wrap {
+    width: 100%;
+    height: 46px;
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
 

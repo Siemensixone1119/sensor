@@ -1,106 +1,104 @@
 @use "./variable" as *;
 
-@media screen and (max-width: 768px) {
-  .search--open {
-    // opacity: 1 !important;
-    // visibility: visible !important;
-    // transition: opacity 0.3s ease !important;
-    transform: translateX(0) !important;
-  }
+.search--open {
+  // opacity: 1 !important;
+  // visibility: visible !important;
+  // transition: opacity 0.3s ease !important;
+  transform: translateX(0) !important;
+}
 
-  .search--closing {
-    transform: translateX(-100%) !important;
-  }
+.search--closing {
+  transform: translateX(-100%) !important;
+}
 
-  .no-transition{
-    transition: none !important;
-  }
+.no-transition {
+  transition: none !important;
+}
 
-  .search {
+.search {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  background-color: $second-text;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+
+  &__wrap {
+    position: relative;
+    z-index: 101;
     width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10000;
+    transition: all 0.3s ease;
     background-color: $second-text;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    //   border-bottom: 1px solid #ccc;
 
-    &__wrap {
-      position: relative;
-      z-index: 101;
-      width: 100%;
-      transition: all 0.3s ease;
-      background-color: $second-text;
+    button {
+      padding: 15px 15px;
+    }
+  }
+
+  &__input {
+    border: none;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+    margin-top: 3px;
+    z-index: 1000;
+    padding-right: 20px;
+  }
+
+  &__input:focus-visible {
+    outline: none;
+  }
+
+  &__input::placeholder {
+    font-family: $main-font;
+  }
+
+  &__arrow {
+    width: 1.2rem;
+    height: 1.2rem;
+    transform: rotate(90deg);
+    margin-top: 4px;
+  }
+
+  &__result {
+    background-color: $second-text;
+    display: block;
+    border-top: 1px solid #ccc;
+    position: fixed;
+    top: calc(56px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $second-text;
+    overflow-y: auto;
+    z-index: 10000;
+    li {
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+    a {
       display: flex;
       align-items: center;
-      //   border-bottom: 1px solid #ccc;
-
-      button {
-        padding: 15px 15px;
-      }
+      justify-content: space-between;
+      padding: 0.6rem 15px;
     }
 
-    &__input {
-      border: none;
-      font-size: 0.875rem;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      flex: 1;
-      min-width: 0;
-      margin-top: 3px;
-      z-index: 1000;
-      padding-right: 20px;
+    a:first-child {
+      font-size: 18px;
+      font-weight: 600;
     }
 
-    &__input:focus-visible {
-      outline: none;
-    }
-
-    &__input::placeholder {
-      font-family: $main-font;
-    }
-
-    &__arrow {
-      width: 1.2rem;
-      height: 1.2rem;
-      transform: rotate(90deg);
-      margin-top: 4px;
-    }
-
-    &__result {
-      background-color: $second-text;
-      display: block;
-      border-top: 1px solid #ccc;
-      position: fixed;
-      top: calc(56px);
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: $second-text;
-      overflow-y: auto;
-      z-index: 10000;
-      li {
-        svg {
-          transform: rotate(-90deg);
-        }
-      }
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.6rem 15px;
-      }
-
-      a:first-child {
-        font-size: 18px;
-        font-weight: 600;
-      }
-
-      a:last-child {
-        border-bottom: 1px solid #ccc;
-      }
+    a:last-child {
+      border-bottom: 1px solid #ccc;
     }
   }
 }

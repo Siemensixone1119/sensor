@@ -1,38 +1,36 @@
 @use "./variable" as *;
 
-@media screen and (max-width: 768px) {
-  main {
-    // height: 100vh;
-    padding: 15px;
-    padding-top: 70px;
-    text-align: justify;
-  }
+main {
+  // height: 100vh;
+  padding: 15px;
+  padding-top: 70px;
+  text-align: justify;
+}
 
-  .message__btn {
-    width: 4rem;
-    height: 4rem;
-    box-shadow: $shadow;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    background-color: $second-text;
-    bottom: 20px;
-    right: 20px;
-    z-index: 5;
-    opacity: 1;
-    pointer-events: auto;
-    transition: opacity 0.3s ease;
-  }
+.message__btn {
+  width: 4rem;
+  height: 4rem;
+  box-shadow: $shadow;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-color: $second-text;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
 
-  .message__btn.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
+.message__btn.hide {
+  opacity: 0;
+  pointer-events: none;
+}
 
-  .message__icon {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
+.message__icon {
+  width: 2.5rem;
+  height: 2.5rem;
 }
