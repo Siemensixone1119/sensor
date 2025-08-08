@@ -1,30 +1,21 @@
-<!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <title>Мобильный хедер</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500..600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="shortcut icon"
-      href="./assets/image/favicon.ico"
-      type="image/x-icon"
-    />
-    <script type="module" src="./index.js" defer></script>
-    <title>Сенсор</title>
   </head>
-
   <body>
-    <!-- Верхняя часть хэдера -->
+    <!-- Хэдер -->
 
-    <header class="header">
-      <section class="header__top header__top--visible">
+    <header
+      class="header-overlay header"
+      id="headerOverlay"
+      style="transform: translateY(calc(-100% + 40px))"
+    >
+      <!-- Верхняя часть хэдера -->
+
+      <section class="header-overlay-inner header__top" id="headerOverlayInner">
         <a href="/" class="header__logo">
           <svg class="header__logo-icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-logo"></use>
@@ -53,39 +44,47 @@
           </svg>
         </button>
       </section>
-    </header>
 
-    <!-- Нижняя часть хэдера -->
+      <!-- Няжняя часть хэдера -->
 
-    <section class="header__bottom header__bottom--shifted">
-      <button class="header__button header__button--left" id="open-menu">
-        <svg
-          class="header__button-icon"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_open"></use>
-        </svg>
-      </button>
-
-      <div class="header__search-wrap">
-        <div class="header__search" focusable="false">
-          <div class="header__search-cont">
-            <p class="header__search--false">
-              Найти продукцию, файлы, программное обеспечение
-            </p>
-          </div>
-          <svg class="header__search-icon" aria-hidden="true" focusable="false">
-            <use xlink:href="./assets/image/symbol-defs.svg#icon-magnify"></use>
+      <section class="header-overlay-search">
+        <button class="header__button header__button--left" id="open-menu">
+          <svg class="header__button-icon" aria-hidden="true" focusable="false">
+            <use
+              xlink:href="./assets/image/symbol-defs.svg#icon-menu_open"
+            ></use>
           </svg>
+        </button>
+
+        <div class="header__search-wrap">
+          <div class="header__search" focusable="false">
+            <div class="header__search-cont">
+              <p class="header__search--false">
+                Найти продукцию, файлы, программное обеспечение
+              </p>
+            </div>
+            <svg
+              class="header__search-icon"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use
+                xlink:href="./assets/image/symbol-defs.svg#icon-magnify"
+              ></use>
+            </svg>
+          </div>
         </div>
-      </div>
-      <a href="/" class="header__button header__button--right" aria-label="Открыть корзину">
-        <svg class="header__button-icon" aria-hidden="true" focusable="false">
-          <use xlink:href="./assets/image/symbol-defs.svg#icon-bascet"></use>
-        </svg>
-      </a>
-    </section>
+        <a
+          href="/"
+          class="header__button header__button--right"
+          aria-label="Открыть корзину"
+        >
+          <svg class="header__button-icon" aria-hidden="true" focusable="false">
+            <use xlink:href="./assets/image/symbol-defs.svg#icon-bascet"></use>
+          </svg>
+        </a>
+      </section>
+    </header>
 
     <!-- Поиск -->
 
@@ -247,72 +246,122 @@
 
       <!-- Контент -->
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
-        hic quos tenetur voluptate, quasi odio iure maiores, non eaque
-        aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
-        vitae molestiae.
-      </p>
+      <div class="content">
+        <div class="submenu-sticker section-header">Заголовок 1</div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <div class="submenu-sticker section-header">Заголовок 2</div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <div class="submenu-sticker section-header">Заголовок 3</div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <div class="submenu-sticker section-header">Заголовок 4</div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <div class="submenu-sticker section-header">Заголовок 5</div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <div class="submenu-sticker section-header">Заголовок 6</div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
+          hic quos tenetur voluptate, quasi odio iure maiores, non eaque
+          aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
+          vitae molestiae.
+        </p>
+      </div>
     </main>
 
     <footer>
@@ -700,5 +749,57 @@
         </ul>
       </nav>
     </aside>
+
+    <script>
+      const headerOverlay = document.getElementById("headerOverlay");
+      const headerOverlayInner = document.getElementById("headerOverlayInner");
+      const headerOverlaySearch = document.getElementById(
+        "headerOverlaySearch"
+      );
+      const submenuStickers =
+        document.getElementsByClassName("submenu-sticker");
+
+      const content = document.getElementsByClassName("content");
+      const headerOverlayHeight = headerOverlay.offsetHeight; //высота двух строк заголовка
+      const headerOverlayInnerHeight = headerOverlayInner.offsetHeight; //высота логотипа
+      let lastScrollTop = window.scrollY;
+      let offset = headerOverlayInnerHeight;
+
+      for (const el of content) el.style.marginTop = `${headerOverlayHeight}px`;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.scrollY;
+        const delta = lastScrollTop - currentScroll;
+
+        if (delta > 0 && currentScroll > 0) {
+          // scrolling up
+          offset = Math.min(offset + delta, headerOverlayInnerHeight);
+        } else if (delta < 0) {
+          // scrolling down
+          offset = Math.max(offset + delta, 0);
+        }
+
+        if (offset > 0) {
+          headerOverlay.style.transform = `translateY(${
+            -headerOverlayInnerHeight + offset
+          }px)`;
+          // Двигаем заголовок вместе с хедером
+          for (const submenuSticker of submenuStickers)
+            submenuSticker.style.top = `${
+              headerOverlayHeight - headerOverlayInnerHeight + offset
+            }px`;
+        } else {
+          headerOverlay.style.transform = `translateY(calc(${
+            headerOverlayHeight - headerOverlayInnerHeight
+          }px - 100%))`;
+          for (const submenuSticker of submenuStickers)
+            submenuSticker.style.top = `${
+              headerOverlayHeight - headerOverlayInnerHeight
+            }px`;
+        }
+        console.log(headerOverlayHeight, headerOverlayInnerHeight);
+        lastScrollTop = currentScroll;
+      });
+    </script>
   </body>
 </html>

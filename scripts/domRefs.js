@@ -29,6 +29,9 @@ const refs = {
   realSearch: document.querySelector(".search"),
   realInput: document.querySelector(".search__input"),
   closeSearch: document.querySelector(".search__wrap button"),
+  headerOverlay:    document.getElementById('headerOverlay'),
+  headerOverlayInner: document.getElementById('headerOverlayInner'),
+  headerBottom:     document.querySelector('.header__bottom'),
 };
 
 export default refs;

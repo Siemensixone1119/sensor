@@ -8,10 +8,10 @@ import { setupSearchToggle } from "./scripts/searchInput.js";
 import { setUpMsgBtn } from "./scripts/hideMsgBtn.js";
 import { setupToggleContacts } from "./scripts/toggleContacts.js";
 
-setupMenuToggle();
+// setupMenuToggle();
 setupHeaderScroll();
 setupSubmenu();
 setupCloseAllMenus();
-setupSearchToggle();
+// setupSearchToggle();
 setUpMsgBtn();
-setupToggleContacts();
+// setupToggleContacts();
