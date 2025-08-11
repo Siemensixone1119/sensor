@@ -28,10 +28,6 @@
     background-color: $second-text;
   }
 
-  // &__login {
-  //   font-size: 1.2rem;
-  // }
-
   &__close-btn {
     width: 44px;
     height: 44px;
@@ -51,34 +47,12 @@
     margin-left: auto;
   }
 
-  // &__item {
-  //   padding: 16px 15px;
-  // }
-
   &__content > li > a {
     background-color: #fefefe !important;
     color: #212121 !important;
     font-size: 1.5rem !important;
     font-weight: 500 !important;
   }
-
-  // &__phone {
-  //   display: flex;
-  //   flex-direction: column;
-  // }
-
-  // &__phone *:nth-child(2),
-  // &__phone *:nth-child(3) {
-  //   font-size: 16px;
-  // }
-
-  // &__phone *:nth-child(2) {
-  //   margin-top: 5px;
-  // }
-
-  // &__phone + &__arrow {
-  //   transform: rotate(0deg) !important;
-  // }
 
   input:checked + label svg {
     transform: rotate(180deg) !important;
@@ -89,6 +63,7 @@
     background-color: #fefefe !important;
     font-size: 1.2rem;
     font-weight: 500;
+    padding: 0;
 
     svg {
       fill: $text-color;
@@ -99,11 +74,20 @@
     }
   }
 
+  // .tab__label:first-child{
+  //   padding-bottom: 10px !important;
+  // }
+
+  // .tab__content li a {
+  //   padding: 15px 0px;
+  //   font-size: 1rem;
+  // }
+
   & > li label {
     border-top: none;
   }
 
-  &__item--link {
+  &__item {
     padding: 16px 15px;
     font-size: 1.2rem !important;
     font-weight: 500 !important;
@@ -125,6 +109,10 @@
       display: block;
       width: 100%;
     }
+
+    // label{
+    //   padding-bottom: 16px !important;
+    // }
   }
 
   &__lang {
@@ -158,7 +146,6 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 101;
   background-color: $second-text;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;

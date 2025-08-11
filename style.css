@@ -454,6 +454,7 @@ main {
   background-color: #fefefe !important;
   font-size: 1.2rem;
   font-weight: 500;
+  padding: 0;
 }
 .mobile-menu .tab__label svg,
 .mobile-menu .tab__content li a svg {
@@ -466,7 +467,7 @@ main {
 .mobile-menu > li label {
   border-top: none;
 }
-.mobile-menu__item--link {
+.mobile-menu__item {
   padding: 16px 15px;
   font-size: 1.2rem !important;
   font-weight: 500 !important;
@@ -476,14 +477,14 @@ main {
   border-bottom: 1px solid #c2c2c2;
   width: 100%;
 }
-.mobile-menu__item--link button {
+.mobile-menu__item button {
   font-size: inherit;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.mobile-menu__item--link a {
+.mobile-menu__item a {
   display: block;
   width: 100%;
 }
@@ -513,7 +514,6 @@ main {
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 101;
   background-color: #fefefe;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
