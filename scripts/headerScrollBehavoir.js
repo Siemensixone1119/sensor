@@ -3,6 +3,7 @@ import refs from "./domRefs.js";
 export function setupHeaderScroll() {
   const headerOverlayHeight = refs.headerOverlay.offsetHeight;
   const headerOverlayInnerHeight = refs.headerOverlayInner.offsetHeight;
+  const adjust = 67;
   let lastScrollTop = window.scrollY;
   let offset = headerOverlayInnerHeight;
 
@@ -18,21 +19,22 @@ export function setupHeaderScroll() {
 
     if (offset > 0) {
       refs.headerOverlay.style.transform = `translateY(${
-        -headerOverlayInnerHeight + offset
+        -headerOverlayInnerHeight + offset - adjust
       }px)`;
       for (const submenuSticker of refs.submenuStickers)
         submenuSticker.style.top = `${
-          headerOverlayHeight - headerOverlayInnerHeight + offset
+          headerOverlayHeight - headerOverlayInnerHeight + offset - adjust
         }px`;
     } else {
       refs.headerOverlay.style.transform = `translateY(calc(${
-        headerOverlayHeight - headerOverlayInnerHeight
+        headerOverlayHeight - headerOverlayInnerHeight - adjust
       }px - 100%))`;
       for (const submenuSticker of refs.submenuStickers)
         submenuSticker.style.top = `${
-          headerOverlayHeight - headerOverlayInnerHeight
+          headerOverlayHeight - headerOverlayInnerHeight - adjust
         }px`;
     }
+
     console.log(headerOverlayHeight, headerOverlayInnerHeight);
     lastScrollTop = currentScroll;
   });

@@ -1,5 +1,6 @@
 @use "./variable" as *;
 .header {
+  
   // Верхняя часть
   &__top {
     display: flex;
@@ -47,6 +48,7 @@
     font-family: $second-family;
     font-size: 0.85rem;
     color: $second-text;
+    text-align: left;
 
     span.header__logo-subtext {
       font-family: $font-family;
@@ -172,10 +174,10 @@
 
 .header__overlay {
   position: fixed;
-  top: 0;
+  top: 67px;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   transform: translateY(0);
   transition: none;
 }
