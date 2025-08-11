@@ -422,6 +422,14 @@ main {
   visibility: visible;
 }
 
+.mobile-menu__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .mobile-menu__top {
   display: flex;
   align-items: center;
@@ -431,6 +439,13 @@ main {
   border-bottom: 1px solid #c2c2c2;
   background-color: #fefefe;
 }
+.mobile-menu__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
 .mobile-menu__close-btn {
   width: 44px;
   height: 44px;
@@ -439,10 +454,15 @@ main {
 .mobile-menu__icon {
   width: 44px;
   height: 44px;
+  margin-right: 5px;
 }
 .mobile-menu .arrow {
   width: 16px;
   height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  flex: 0 0 16px;
+  flex-shrink: 0;
   fill: #212121 !important;
   transform: rotate(-90deg);
   margin-left: auto;
@@ -482,6 +502,7 @@ main {
   color: #212121 !important;
   border-bottom: 1px solid #c2c2c2;
   width: 100%;
+  max-width: 100%;
 }
 .mobile-menu__item button {
   font-size: inherit;
@@ -499,6 +520,9 @@ main {
   padding: 16px 15px !important;
   padding-right: 20px !important;
   display: inline-block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  gap: 10px;
 }
 .mobile-menu__item--link {
   display: flex;
