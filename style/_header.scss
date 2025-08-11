@@ -1,6 +1,5 @@
 @use "./variable" as *;
 .header {
-  
   // Верхняя часть
   &__top {
     display: flex;
@@ -29,19 +28,25 @@
     height: 32px;
   }
 
+  &__logo-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
   &__logo-text {
     white-space: nowrap;
     font-family: $second-family;
     font-size: 0.85rem;
     color: $second-text;
     text-align: left;
-
-    span.header__logo-subtext {
-      font-family: $font-family;
-      font-size: 0.75rem;
-    }
   }
 
+  &__logo-subtext {
+    font-family: $font-family;
+    font-size: 0.75rem;
+    color: $second-text;
+  }
   &__phone-button {
     padding: 18px 15px;
     display: flex;
@@ -152,7 +157,8 @@
       width: 130px;
       height: 32px;
     }
-  }}
+  }
+}
 
 .header__overlay {
   position: fixed;
