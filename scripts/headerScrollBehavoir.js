@@ -35,7 +35,6 @@ export function setupHeaderScroll() {
         }px`;
     }
 
-    console.log(headerOverlayHeight, headerOverlayInnerHeight);
     lastScrollTop = currentScroll;
   });
 }
