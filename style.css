@@ -269,7 +269,7 @@ input {
 }
 .header__overlay {
   position: fixed;
-  top: 67px;
+  top: 0px;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -332,11 +332,11 @@ main {
 
 .submenu-sticker {
   position: sticky;
+  top: var(--sticky-top, 0px);
   background-color: #b30006;
   color: #fefefe;
   margin: 15px 0;
   padding: 10px;
-  top: 105px;
   transition: transform 0.3s linear;
 }
 
