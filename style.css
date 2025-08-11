@@ -470,12 +470,10 @@ main {
   border-top: none;
 }
 .mobile-menu__item {
-  padding: 16px 15px;
   font-size: 1.2rem !important;
   font-weight: 500 !important;
   background-color: #fefefe !important;
   color: #212121 !important;
-  padding-right: 20px;
   border-bottom: 1px solid #c2c2c2;
   width: 100%;
 }
@@ -486,14 +484,29 @@ main {
   align-items: center;
   justify-content: space-between;
 }
-.mobile-menu__item a {
-  display: block;
+.mobile-menu__item a,
+.mobile-menu__item label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   width: 100%;
+  padding: 16px 15px !important;
+  padding-right: 20px !important;
+  display: inline-block;
 }
 .mobile-menu__item--link {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.mobile-menu__item--desc a {
+  display: flex !important;
+  align-items: start !important;
+  flex-direction: column;
+}
+.mobile-menu__item--desc a span {
+  font-size: 0.8rem;
+  color: rgba(33, 33, 33, 0.8);
 }
 .mobile-menu__lang {
   background-color: #fefefe;
@@ -532,9 +545,6 @@ main {
   .mobile-menu__top {
     padding: 12px 0px;
     padding-left: 10px;
-  }
-  .mobile-menu__item, .mobile-menu__link {
-    padding: 16px 10px;
   }
   .mobile-menu__lang-btn {
     padding: 10px;
