@@ -27,7 +27,7 @@
     >
       <!-- Верхняя часть хэдера -->
 
-      <section
+      <div
         class="header__overlay-inner header__top"
         id="headerOverlayInner"
       >
@@ -58,11 +58,11 @@
             <use xlink:href="./assets/image/symbol-defs.svg#icon-phone"></use>
           </svg>
         </button>
-      </section>
+      </div>
 
       <!-- Няжняя часть хэдера -->
 
-      <section class="header__overlay-search">
+      <div class="header__overlay-search">
         <button class="header__button header__button--left" id="open-menu">
           <svg class="header__button-icon" aria-hidden="true" focusable="false">
             <use
@@ -98,13 +98,13 @@
             <use xlink:href="./assets/image/symbol-defs.svg#icon-bascet"></use>
           </svg>
         </a>
-      </section>
+      </div>
     </header>
 
     <!-- Поиск -->
 
     <main>
-      <section class="search">
+      <aside class="search">
         <div class="search__wrap" focusable="false">
           <button aria-label="Назад">
             <svg class="search__arrow" aria-hidden="true" focusable="false">
@@ -150,11 +150,11 @@
             <a href="/">Результат поиска 2</a>
           </li>
         </ul>
-      </section>
+      </aside>
 
       <!-- Контактная информация -->
 
-      <section class="contacts">
+      <aside class="contacts">
         <button class="contacts__close-btn" aria-label="Закрыть меню">
           <svg class="contacts__close-btn-icon" focusable="false">
             <use
@@ -249,7 +249,7 @@
             </ul>
           </div>
         </div>
-      </section>
+      </aside>
 
       <!-- Кнопка связи -->
 
@@ -262,7 +262,9 @@
       <!-- Контент -->
 
       <div class="content">
-        <div class="submenu-sticker section-header">Заголовок 1</div>
+        <h1>Главный заголовок</h1>
+        <section>
+          <h2 class="submenu-sticker section-header">Заголовок 1</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -281,7 +283,8 @@
           aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
           vitae molestiae.
         </p>
-        <div class="submenu-sticker section-header">Заголовок 2</div>
+      </section>
+       <section> <h2 class="submenu-sticker section-header">Заголовок 2</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -299,8 +302,8 @@
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
           aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
           vitae molestiae.
-        </p>
-        <div class="submenu-sticker section-header">Заголовок 3</div>
+        </p></section>
+       <section> <h2 class="submenu-sticker section-header">Заголовок 3</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -318,8 +321,8 @@
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
           aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
           vitae molestiae.
-        </p>
-        <div class="submenu-sticker section-header">Заголовок 4</div>
+        </p></section>
+        <section><h2 class="submenu-sticker section-header">Заголовок 4</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -337,8 +340,8 @@
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
           aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
           vitae molestiae.
-        </p>
-        <div class="submenu-sticker section-header">Заголовок 5</div>
+        </p></section>
+        <section><h2 class="submenu-sticker section-header">Заголовок 5</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -356,8 +359,8 @@
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
           aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
           vitae molestiae.
-        </p>
-        <div class="submenu-sticker section-header">Заголовок 6</div>
+        </p></section>
+        <section><h2 class="submenu-sticker section-header">Заголовок 6</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fuga
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -375,14 +378,14 @@
           hic quos tenetur voluptate, quasi odio iure maiores, non eaque
           aspernatur inventore nesciunt aliquid soluta. Consequuntur ipsam rerum
           vitae molestiae.
-        </p>
+        </p></section>
       </div>
     </main>
 
     <footer>
       <!-- Номера телефонов -->
 
-      <section class="connect">
+      <div class="connect">
         <ul class="connect__list">
           <li class="connect__item">
             <p class="connect__title">Отдел продаж</p>
@@ -396,11 +399,11 @@
             <p>srv@nppsensor.ru</p>
           </li>
         </ul>
-      </section>
+      </div>
 
       <!-- Выпадающее меню -->
 
-      <section>
+      <div>
         <ul class="menu">
           <li class="tab">
             <input type="checkbox" id="menu-5" />
@@ -457,11 +460,11 @@
           <li><a href="/">Каталоги продукции</a></li>
           <li><a href="/">Анкета дилера</a></li>
         </ul>
-      </section>
+      </div>
 
       <!-- Юридическая информация -->
 
-      <section class="footer-info">
+      <div class="footer-info">
         <p class="footer-info__disclaimer">
           Настоящий интернет-сайт, прайс-лист носят исключительно информационный
           характер и ни при каких условиях не являются публичной офертой,
@@ -487,7 +490,7 @@
             <a href="/" class="footer-info__link">Правовая информация</a>
           </li>
         </ul>
-      </section>
+      </div>
     </footer>
 
     <!-- Боковое меню -->

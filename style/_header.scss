@@ -7,23 +7,10 @@
     justify-content: space-between;
     align-items: center;
     background-color: $accent-color;
-    // padding-left: 15px;
-    // position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
-    // will-change: transform;
-    // transition: transform 0.3s ease;
-    // transform: translateY(0);
   }
-
-  // &__top.header__top--visible {
-  //   transform: translateY(0);
-  // }
-
-  // &__top.hidden {
-  //   transform: translateY(calc(-100% + 40px));
-  // }
 
   &__logo-icon-text {
     display: none;
@@ -56,8 +43,6 @@
   }
 
   &__phone-button {
-    // width: 55px;
-    // height: 55px;
     padding: 18px 15px;
     display: flex;
     align-items: center;
@@ -75,8 +60,6 @@
     display: flex;
     align-items: center;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
-    // position: sticky;
-    // position: sticky;
     top: var(--header-inner-height);
     z-index: 100;
   }
