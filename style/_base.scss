@@ -78,3 +78,24 @@ input {
 .is-hidden {
   display: none !important;
 }
+
+
+.neg-m{
+  margin: -15px;
+}
+
+:root {
+  --page-gutter: 15px; 
+}
+
+@media (max-width: 359px) {
+  :root { --page-gutter: 10px; }
+}
+@media (min-width: 768px) {
+  :root { --page-gutter: 15px; }
+}
+
+.l-container {
+  width: min(calc(100% - 2 * var(--page-gutter)));
+  margin:  0 auto; 
+}
