@@ -37,6 +37,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
 }
 
 p,
@@ -432,7 +434,7 @@ main {
   width: 44px;
   height: 44px;
 }
-.mobile-menu__arrow {
+.mobile-menu .arrow {
   width: 16px;
   height: 16px;
   fill: #212121 !important;
@@ -487,6 +489,11 @@ main {
 .mobile-menu__item a {
   display: block;
   width: 100%;
+}
+.mobile-menu__item--link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .mobile-menu__lang {
   background-color: #fefefe;

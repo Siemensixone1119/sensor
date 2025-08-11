@@ -102,8 +102,9 @@
       <!-- Контент -->
 
       <div class="content">
+        <h1>Главный заголовок</h1>
         <section>
-          <div class="submenu-sticker section-header">Заголовок 1</div>
+          <h2 class="submenu-sticker section-header">Заголовок 1</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
             fuga hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -124,7 +125,7 @@
           </p>
         </section>
         <section>
-          <div class="submenu-sticker section-header">Заголовок 2</div>
+          <h2 class="submenu-sticker section-header">Заголовок 2</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
             fuga hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -145,7 +146,7 @@
           </p>
         </section>
         <section>
-          <div class="submenu-sticker section-header">Заголовок 3</div>
+          <h2 class="submenu-sticker section-header">Заголовок 3</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
             fuga hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -166,7 +167,7 @@
           </p>
         </section>
         <section>
-          <div class="submenu-sticker section-header">Заголовок 4</div>
+          <h2 class="submenu-sticker section-header">Заголовок 4</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
             fuga hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -187,7 +188,7 @@
           </p>
         </section>
         <section>
-          <div class="submenu-sticker section-header">Заголовок 5</div>
+          <h2 class="submenu-sticker section-header">Заголовок 5</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
             fuga hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -208,7 +209,7 @@
           </p>
         </section>
         <section>
-          <div class="submenu-sticker section-header">Заголовок 6</div>
+          <h2 class="submenu-sticker section-header">Заголовок 6</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
             fuga hic quos tenetur voluptate, quasi odio iure maiores, non eaque
@@ -363,16 +364,18 @@
 
       <nav aria-labelledby="sub-menu-title">
         <ul class="mobile-menu">
-          <li class="mobile-menu__item">
-            <!-- mobile-menu__item--link -->
+          <li class="mobile-menu__item mobile-menu__item--link">
             <a href="/">Контент ссылка</a>
+            <svg class="arrow" aria-hidden="true" focusable="false">
+              <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
+            </svg>
           </li>
           <li class="mobile-menu__item tab">
             <!-- mobile-menu__item--list -->
             <input type="checkbox" id="menu-10" />
             <label for="menu-10" class="tab__label">
               Контент список
-              <svg class="arrow" aria-hidden="true" focusable="false">
+              <svg class="arrow-list" aria-hidden="true" focusable="false">
                 <use
                   xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
                 ></use>

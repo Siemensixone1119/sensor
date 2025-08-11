@@ -39,13 +39,14 @@
     height: 44px;
   }
 
-  &__arrow {
+  .arrow {
     width: 16px;
     height: 16px;
     fill: $text-color !important;
     transform: rotate(-90deg);
     margin-left: auto;
   }
+
 
   &__content > li > a {
     background-color: #fefefe !important;
@@ -113,6 +114,12 @@
     // label{
     //   padding-bottom: 16px !important;
     // }
+  }
+
+  &__item--link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__lang {
