@@ -1,12 +1,10 @@
-export function setupCloseAllMenus() {
-  const allCloseButtons = document.querySelectorAll(".mobile-menu__close-btn");
-  const mainMenu = document.querySelector(".mobile-menu__wrap");
-  const subMenu = document.querySelector(".mobile-menu__wrap.v");
+import refs from "./domRefs.js";
 
-  allCloseButtons.forEach((btn) => {
+export function setupCloseAllMenus() {
+  refs.allCloseButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      mainMenu.classList.remove("open");
-      subMenu.classList.remove("open");
+     refs.mainMenu.classList.remove("open");
+      refs.subMenu.classList.remove("open");
       document.body.classList.remove("no-scroll");
     });
   });

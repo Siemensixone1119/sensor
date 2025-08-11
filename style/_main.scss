@@ -3,7 +3,7 @@
 main {
   // height: 100vh;
   padding: 15px;
-  padding-top: 70px;
+  padding-top: 115px;
   text-align: justify;
 }
 
@@ -37,7 +37,10 @@ main {
 
 .submenu-sticker {
   position: sticky;
-  background-color: rgb(114, 119, 119);
+  background-color: $accent-color;
+  color: $second-text;
+  margin: 15px 0;
+  padding: 10px;
   top: 105px;
   transition: transform 0.3s linear;
 }

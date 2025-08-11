@@ -2,20 +2,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Мобильный хедер</title>
+    <title>Сенсор</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/image/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500..600&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="./index.js" defer></script>
   </head>
   <body>
     <!-- Хэдер -->
 
     <header
-      class="header-overlay header"
+      class="header__overlay header"
       id="headerOverlay"
       style="transform: translateY(calc(-100% + 40px))"
     >
       <!-- Верхняя часть хэдера -->
 
-      <section class="header-overlay-inner header__top" id="headerOverlayInner">
+      <section
+        class="header__overlay-inner header__top"
+        id="headerOverlayInner"
+      >
         <a href="/" class="header__logo">
           <svg class="header__logo-icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-logo"></use>
@@ -47,7 +62,7 @@
 
       <!-- Няжняя часть хэдера -->
 
-      <section class="header-overlay-search">
+      <section class="header__overlay-search">
         <button class="header__button header__button--left" id="open-menu">
           <svg class="header__button-icon" aria-hidden="true" focusable="false">
             <use
@@ -749,57 +764,5 @@
         </ul>
       </nav>
     </aside>
-
-    <script>
-      const headerOverlay = document.getElementById("headerOverlay");
-      const headerOverlayInner = document.getElementById("headerOverlayInner");
-      const headerOverlaySearch = document.getElementById(
-        "headerOverlaySearch"
-      );
-      const submenuStickers =
-        document.getElementsByClassName("submenu-sticker");
-
-      const content = document.getElementsByClassName("content");
-      const headerOverlayHeight = headerOverlay.offsetHeight; //высота двух строк заголовка
-      const headerOverlayInnerHeight = headerOverlayInner.offsetHeight; //высота логотипа
-      let lastScrollTop = window.scrollY;
-      let offset = headerOverlayInnerHeight;
-
-      for (const el of content) el.style.marginTop = `${headerOverlayHeight}px`;
-
-      window.addEventListener("scroll", () => {
-        const currentScroll = window.scrollY;
-        const delta = lastScrollTop - currentScroll;
-
-        if (delta > 0 && currentScroll > 0) {
-          // scrolling up
-          offset = Math.min(offset + delta, headerOverlayInnerHeight);
-        } else if (delta < 0) {
-          // scrolling down
-          offset = Math.max(offset + delta, 0);
-        }
-
-        if (offset > 0) {
-          headerOverlay.style.transform = `translateY(${
-            -headerOverlayInnerHeight + offset
-          }px)`;
-          // Двигаем заголовок вместе с хедером
-          for (const submenuSticker of submenuStickers)
-            submenuSticker.style.top = `${
-              headerOverlayHeight - headerOverlayInnerHeight + offset
-            }px`;
-        } else {
-          headerOverlay.style.transform = `translateY(calc(${
-            headerOverlayHeight - headerOverlayInnerHeight
-          }px - 100%))`;
-          for (const submenuSticker of submenuStickers)
-            submenuSticker.style.top = `${
-              headerOverlayHeight - headerOverlayInnerHeight
-            }px`;
-        }
-        console.log(headerOverlayHeight, headerOverlayInnerHeight);
-        lastScrollTop = currentScroll;
-      });
-    </script>
   </body>
 </html>

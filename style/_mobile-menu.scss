@@ -4,7 +4,7 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  z-index: 101;
+  z-index: 10001;
   background-color: $second-text;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;

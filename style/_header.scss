@@ -6,25 +6,24 @@
     justify-content: space-between;
     align-items: center;
     background-color: $accent-color;
-    padding-left: 15px;
+    // padding-left: 15px;
     gap: 16px;
     // position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     z-index: 10;
     // will-change: transform;
     // transition: transform 0.3s ease;
     // transform: translateY(0);
   }
 
-  &__top.header__top--visible {
-    transform: translateY(0);
-  }
+  // &__top.header__top--visible {
+  //   transform: translateY(0);
+  // }
 
-  &__top.hidden {
-    transform: translateY(calc(-100% + 40px));
-  }
+  // &__top.hidden {
+  //   transform: translateY(calc(-100% + 40px));
+  // }
 
   &__logo-icon-text {
     display: none;
@@ -35,6 +34,7 @@
     align-items: center;
     gap: 10px;
     flex-shrink: 1;
+    padding: 12px 15px;
   }
 
   &__logo-icon {
@@ -55,8 +55,9 @@
   }
 
   &__phone-button {
-    width: 55px;
-    height: 55px;
+    // width: 55px;
+    // height: 55px;
+    padding: 18px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,19 +138,14 @@
     justify-content: space-between;
     display: flex;
     align-items: center;
-    padding: 14px 15px;
-    width: 100%;
-    min-width: 0;
-    height: auto;
+    padding: 0 15px;
     z-index: 10000;
     background-color: $second-text;
   }
 
   &__search-wrap {
-    width: 100%;
-    height: 46px;
     flex: 1 1 0;
-    min-width: 0;
+    min-width: 44px;
   }
 }
 
@@ -169,72 +165,33 @@
 
     &__logo-icon-text {
       display: block;
-      width: 160px;
+      width: 130px;
       height: 32px;
-      margin-left: -15px;
     }
   }}
 
-
-.section-header {
-  background: #666;
-  color: white;
-  padding: 10px 15px;
-  position: sticky;
-  top: 46px; /* Начальная позиция - под логотипом */
-  z-index: 998;
-}
-
-.menu-btn {
-  font-size: 20px;
-  background: none;
-  border: none;
-  color: black;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-right: 1px solid #ddd;
-}
-
-.search-input {
-  flex: 1;
-
-  padding: 8px 12px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: white;
-  color: #333;
-  height: 40px;
-}
-
-.content {
-  padding: 15px;
-  line-height: 1.8;
-}
-
-.header-overlay {
+.header__overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 100;
   transform: translateY(0);
   transition: none;
 }
 
-.header-overlay-inner {
-  background: brown;
+.header__overlay-inner {
+  background: $accent-color;
   color: white;
   text-align: center;
-  padding: 15px;
+  // padding: 15px;
   height: 57px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header-overlay-search {
+.header__overlay-search {
   background: white;
   display: flex;
   align-items: center;
