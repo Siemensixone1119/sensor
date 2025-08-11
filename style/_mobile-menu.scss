@@ -23,6 +23,7 @@
   overflow: hidden;
   white-space: normal;
   overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .mobile-menu {
@@ -94,7 +95,7 @@
       min-width: 16px;
     }
   }
-  
+
   & > li label {
     border-top: none;
   }
