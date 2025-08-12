@@ -10,6 +10,8 @@ const refs = {
   ),
   backBtn: document.querySelector(".mobile-menu__back-btn"),
   backInputBtn: document.querySelector(".search button"),
+  dropInputbtn: document.querySelector(".search__drop"),
+  saerchInput: document.querySelector(".search__input"),
   search: document.querySelector(".search"),
   msgBtn: document.querySelector(".message__btn"),
   openContactBtn: document.querySelector(".header__phone-button"),

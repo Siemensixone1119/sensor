@@ -69,6 +69,12 @@
   &__drop {
     width: 44px;
     height: 44px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &__drop--visible {
+    opacity: 1;
   }
 
   &__result {

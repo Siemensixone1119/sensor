@@ -110,7 +110,6 @@ input {
 .full-bcg {
   margin-inline: calc(var(--page-gutter) * -1);
   padding-inline: var(--page-gutter);
-  background-image: url("../sensor/assets/image/sakura_tsvety_vetki_142329_3840x2400.jpg");
 }
 
 .connect {
@@ -493,7 +492,6 @@ main {
 .mobile-menu__icon {
   width: 44px;
   height: 44px;
-  margin-right: 5px;
 }
 .mobile-menu .arrow {
   width: 16px;
@@ -826,6 +824,11 @@ main {
 .search__drop {
   width: 44px;
   height: 44px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.search__drop--visible {
+  opacity: 1;
 }
 .search__result {
   background-color: #fefefe;
