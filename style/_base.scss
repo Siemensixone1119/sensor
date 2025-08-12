@@ -40,7 +40,12 @@ body {
   // overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 1.2rem;
   margin: 0;
   padding: 0;
@@ -79,23 +84,37 @@ input {
   display: none !important;
 }
 
-
-.neg-m{
+.neg-m {
   margin: -15px;
 }
 
 :root {
-  --page-gutter: 15px; 
+  --page-gutter: 15px;
 }
 
 @media (max-width: 359px) {
-  :root { --page-gutter: 10px; }
+  :root {
+    --page-gutter: 10px;
+  }
 }
 @media (min-width: 768px) {
-  :root { --page-gutter: 15px; }
+  :root {
+    --page-gutter: 15px;
+  }
 }
 
-.l-container {
-  width: min(calc(100% - 2 * var(--page-gutter)));
-  margin:  0 auto; 
+.layout {
+  padding-inline: var(--page-gutter);
+}
+
+.full-container {
+width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.full-bcg {
+  margin-inline: calc(var(--page-gutter) * -1);
+  padding-inline: var(--page-gutter);
+  background-image: url("../assets/image/sakura_tsvety_vetki_142329_3840x2400.jpg");
 }
