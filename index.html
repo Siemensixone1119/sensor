@@ -21,14 +21,10 @@
   <body>
     <!-- Хэдер -->
 
-    <header
-      class="header__overlay header"
-      id="headerOverlay"
-      style="transform: translateY(calc(-100% + 40px))"
-    >
+    <header class="header__overlay header">
       <!-- Верхняя часть хэдера -->
 
-      <div class="header__overlay-inner header__top" id="headerOverlayInner">
+      <div class="header__overlay-inner header__top">
         <a href="/" class="header__logo">
           <svg class="header__logo-icon" aria-hidden="true" focusable="false">
             <use xlink:href="./assets/image/symbol-defs.svg#icon-logo"></use>
@@ -100,10 +96,10 @@
       </div>
     </header>
 
-    <main class="layout" style="background:#f5f5f5;">
+    <main class="layout" style="background: #f5f5f5">
       <!-- Контент -->
 
-      <div class="content full-bcg" >
+      <div class="content full-bcg">
         <h1>Главный заголовок</h1>
         <section class="full-container">
           <h2 class="submenu-sticker section-header">Заголовок 1</h2>
@@ -347,84 +343,198 @@
 
     <!-- Боковое меню -->
 
-    <div class="mobile-menu__wrap v2" aria-hidden="true">
-      <div class="mobile-menu__top">
-        <button class="mobile-menu__back-btn" aria-label="Назад">
-          <svg class="mobile-menu__icon" aria-hidden="true" focusable="false">
-            <use xlink:href="./assets/image/symbol-defs.svg#icon-arrow"></use>
-          </svg>
-        </button>
-        <p class="mobile-menu__title" id="sub-menu-title">Продукция</p>
-        <button class="mobile-menu__close-btn" aria-label="Закрыть меню">
-          <svg class="mobile-menu__icon" aria-hidden="true" focusable="false">
-            <use
-              xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
-            ></use>
-          </svg>
-        </button>
-      </div>
-
-      <nav aria-labelledby="sub-menu-title">
-        <ul class="mobile-menu">
-          <li class="mobile-menu__item mobile-menu__item--link">
-            <a href="/"
-              >Контент ссылка<svg
-                class="arrow"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <use
-                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                ></use></svg
-            ></a>
+    <ul class="root-menu">
+      <li data-role="profile">
+        <a href="" class="login-link">Войти</a
+        ><!--<span class="login-text">Имя пользователя</span>-->
+      </li>
+      <li data-role="language-link">
+        <a href="/en" class="language-link">English</a>
+      </li>
+      <li data-role="group">
+        <ul>
+          <li data-role="header">Профиль</li>
+          <li data-role="group">
+            <a><span class="text-primary">Мой аккаунт</span></a>
           </li>
-          <li class="mobile-menu__item tab mobile-menu__item--list">
-            <!-- mobile-menu__item--list -->
-            <input type="checkbox" id="menu-10" />
-            <label for="menu-10" class="tab__label">
-              Контент список
-              <svg class="arrow-list" aria-hidden="true" focusable="false">
-                <use
-                  xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                ></use>
-              </svg>
-            </label>
-            <ul class="tab__content">
-              <li>
-                <a href="/"
-                  >Контент
-                  <svg class="arrow" aria-hidden="true" focusable="false">
-                    <use
-                      xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                    ></use></svg
-                ></a>
-              </li>
-              <li>
-                <a href="/"
-                  >Контент
-                  <svg class="arrow" aria-hidden="true" focusable="false">
-                    <use
-                      xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                    ></use></svg
-                ></a>
-              </li>
-              <li>
-                <a href="/"
-                  >Контент
-                  <svg class="arrow" aria-hidden="true" focusable="false">
-                    <use
-                      xlink:href="./assets/image/symbol-defs.svg#icon-arrow"
-                    ></use></svg
-                ></a>
-              </li>
-            </ul>
+          <li data-role="group">
+            <a><span class="text-primary">Админ-панель</span></a>
+            <a><span class="text-primary">Файлы для скачивания</span></a>
+            <a><span class="text-primary">Ссылки на файлы</span></a>
+            <a><span class="text-primary">Реквизиты</span></a>
           </li>
-          <li class="mobile-menu__item mobile-menu__item--desc">
-            <a href="/">Контент <span>Контент поменьше</span></a>
+          <li data-role="group">
+            <a
+              ><span class="text-primary"
+                >Статус регистрации АРМ СИ СЕНС</span
+              ></a
+            >
+          </li>
+          <li data-role="group">
+            <a><span class="text-primary">Метрика</span></a>
+            <a><span class="text-primary">Вебмастер</span></a>
+          </li>
+          <li data-role="group">
+            <a><span class="text-primary">Выйти</span></a>
           </li>
         </ul>
-      </nav>
-    </div>
+      </li>
+      <li>
+        <ul>
+          <li data-role="header">О предприятии</li>
+          <li data-role="group">
+            <a><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
+            <a><span class="text-primary">История</span></a>
+            <a><span class="text-primary">Новости</span></a>
+            <a><span class="text-primary">Дилеры</span></a>
+            <a><span class="text-primary">Дипломы, патенты</span></a>
+            <a><span class="text-primary">Видеоархив</span></a>
+            <a><span class="text-primary">Вакансии</span></a>
+            <a><span class="text-primary">Политика в области качества</span></a>
+            <a><span class="text-primary">Социальная политика</span></a>
+          </li>
+        </ul>
+        <ul>
+          <li data-role="header">Продукция</li>
+          <li data-role="group">
+            <a><span class="text-primary">Уровнемеры</span></a>
+            <a
+              ><span class="text-primary"
+                >Датчики и сигнализаторы уровня</span
+              ></a
+            >
+            <ul>
+              <li data-role="header">
+                Манометры, преобразователи давления, температуры
+              </li>
+              <li data-role="group">
+                <a
+                  ><span class="text-primary">Преобразователи давления</span></a
+                >
+                <a
+                  ><span class="text-primary"
+                    >Преобразователи температуры</span
+                  ></a
+                >
+                <a
+                  ><span class="text-primary"
+                    >Электроконтактные манометры</span
+                  ></a
+                >
+              </li>
+            </ul>
+            <a><span class="text-primary">Адаптеры интерфейсов</span></a>
+            <a><span class="text-primary">Газоанализаторы</span></a>
+            <a
+              ><span class="text-primary">Охранно-пожарные оповещатели</span></a
+            >
+            <a
+              ><span class="text-primary"
+                >Соединительные коробки и корпуса</span
+              ></a
+            >
+            <a
+              ><span class="text-primary"
+                >Устройства заземления автоцистерн</span
+              ></a
+            >
+            <ul>
+              <li data-role="header">Клапаны электромагнитные</li>
+              <li data-role="group">
+                <ul>
+                  <li data-role="header">Однопроходные</li>
+                  <li data-role="group">
+                    <a>
+                      <span class="text-primary">СЕНС-П DN80 PN5</span>
+                      <span class="text-secondary"
+                        >для приёмки светлых нефтепродуктов самотеком из
+                        бензовозов в подземные резервуары на АЗС</span
+                      >
+                    </a>
+                    <a>
+                      <span class="text-primary"
+                        >СЕНС-ПФ DN(15 .. 100)PN25</span
+                      >
+                      <span class="text-secondary"
+                        >для слабоагрессивных и пищевых сред</span
+                      >
+                    </a>
+                    <a>
+                      <span class="text-primary"
+                        >СЕНС DN(15 .. 100)PN25-В(-НО)</span
+                      >
+                      <span class="text-secondary">для вязких сред</span>
+                    </a>
+                    <a>
+                      <span class="text-primary"
+                        >СЕНС DN(25 .. 100) PN25-М</span
+                      >
+                      <span class="text-secondary">для мазута</span>
+                    </a>
+                  </li>
+                </ul>
+                <a><span class="text-primary">Двухпроходные</span></a>
+                <a><span class="text-primary">Донные скоростные</span></a>
+                <a
+                  ><span class="text-primary"
+                    >Блоки контроля и индикаторы состояния клапанов СЕНС</span
+                  ></a
+                >
+              </li>
+            </ul>
+            <a><span class="text-primary">Программное обеспечение</span></a>
+            <a><span class="text-primary">Блоки питания, коммутации</span></a>
+            <a
+              ><span class="text-primary"
+                >Приборы индикации, управления</span
+              ></a
+            >
+          </li>
+        </ul>
+        <ul>
+          <li data-role="header">Поддержка</li>
+          <li data-role="group">
+            <a
+              ><span class="text-primary">Обращение в сервисную службу</span></a
+            >
+            <a><span class="text-primary">Проверить статус обращения</span></a>
+            <a><span class="text-primary">Регистрация АРМ СИ СЕНС</span></a>
+            <a><span class="text-primary">Метрологические услуги</span></a>
+            <a><span class="text-primary">Часто задаваемые вопросы</span></a>
+          </li>
+          <li data-role="group">
+            <div data-role="header">Файлы для скачивания</div>
+            <a><span class="text-primary">Свидетельства и сертификаты</span></a>
+            <a><span class="text-primary">Каталоги продукции</span></a>
+            <a><span class="text-primary">Опросные листы</span></a>
+            <a><span class="text-primary">Руководства по эксплуатации</span></a>
+            <a><span class="text-primary">Программное обеспечение</span></a>
+            <a><span class="text-primary">3D-модели</span></a>
+          </li>
+        </ul>
+        <a><span class="text-primary">Контакты</span></a>
+        <a><span class="text-primary">Прайс-лист</span></a>
+        <a><span class="text-primary">Помощь</span></a>
+      </li>
+      <li data-role="group" data-visibility="1">
+        <a>
+          <span class="text-primary">+7 8412 65-21-21</span>
+          <span class="text-secondary"
+            >Отдел продаж - заказ продукции, выставление счетов</span
+          >
+        </a>
+        <a>
+          <span class="text-primary">+7 8412 65-21-55</span>
+          <span class="text-secondary"
+            >Сервисная служба - заказ запчастей, консультации</span
+          >
+        </a>
+        <a>
+          <span class="text-primary">+7 8412 65-21-00</span>
+          <span class="text-secondary">Приёмная - обращения</span>
+        </a>
+      </li>
+    </ul>
 
     <!-- Поиск -->
 
@@ -437,8 +547,10 @@
         </button>
         <input type="text" class="search__input" aria-label="Поиск по сайту" />
         <button aria-label="Назад">
-          <svg class="search__drop" aria-hidden="true" focusable="false">
-            <use xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"></use>
+          <svg class="search__clear" aria-hidden="true" focusable="false">
+            <use
+              xlink:href="./assets/image/symbol-defs.svg#icon-menu_close"
+            ></use>
           </svg>
         </button>
       </div>

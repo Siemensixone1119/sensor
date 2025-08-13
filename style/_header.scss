@@ -28,7 +28,7 @@
     height: 32px;
   }
 
-  &__logo-cont{
+  &__logo-cont {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -78,8 +78,11 @@
 
   &__button {
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
     line-height: 0;
-    padding: 15px;
   }
 
   &__button--left {
@@ -130,6 +133,7 @@
     padding: 0 15px;
     z-index: 10000;
     background-color: $second-text;
+    height: 100%;
   }
 
   &__search-wrap {
@@ -140,10 +144,6 @@
 
 @media screen and (max-width: 359px) {
   .header {
-    &__search {
-      height: 46px;
-    }
-
     &__bottom.header__bottom--shifted {
       transform: translateY(110%);
     }
@@ -165,7 +165,7 @@
   top: 0px;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 100;
   transform: translateY(0);
   transition: none;
 }
@@ -183,8 +183,9 @@
 .header__overlay-search {
   background: white;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
   color: white;
   box-shadow: 0 0 5px #aaa;
+  height: 50px;
 }

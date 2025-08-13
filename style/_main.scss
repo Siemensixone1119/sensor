@@ -40,7 +40,6 @@ main {
   top: var(--sticky-top, 0px);
   background-color: $accent-color;
   color: $second-text;
-  margin: 15px 0;
   padding: 10px;
   transition: transform 0.3s linear;
 }

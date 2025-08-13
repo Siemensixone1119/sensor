@@ -1,17 +1,12 @@
 // UI
+import { initHeaderAutoHide } from "./scripts/header-auto-hide.js";
+import { initSearchOverlay } from "./scripts/search-overlay.js";
+import { initContactsPanel } from "./scripts/contacts-panel.js";
+import { initMessageButtonAutoHide } from "./scripts/message-button-autohide.js";
+import { mountMobileMenu } from "./scripts/toggleMenu.js"
 
-import { setupMenuToggle } from "./scripts/toggleMenu.js";
-import { setupHeaderScroll } from "./scripts/headerScrollBehavoir.js";
-import { setupSubmenu } from "./scripts/openSubMenu.js";
-import { setupCloseAllMenus } from "./scripts/closeAllMenu.js";
-import { setupSearchToggle } from "./scripts/searchInput.js";
-import { setUpMsgBtn } from "./scripts/hideMsgBtn.js";
-import { setupToggleContacts } from "./scripts/toggleContacts.js";
-
-setupMenuToggle();
-setupHeaderScroll();
-setupSubmenu();
-setupCloseAllMenus();
-setupSearchToggle();
-setUpMsgBtn();
-setupToggleContacts();
+initHeaderAutoHide();
+initSearchOverlay();
+initMessageButtonAutoHide();
+initContactsPanel();
+// mountMobileMenu()

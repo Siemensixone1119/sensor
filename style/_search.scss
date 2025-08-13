@@ -66,14 +66,14 @@
     transform: rotate(90deg);
   }
 
-  &__drop {
+  &__clear {
     width: 44px;
     height: 44px;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
-  &__drop--visible {
+  &__clear--visible {
     opacity: 1;
   }
 
@@ -82,7 +82,7 @@
     display: block;
     border-top: 1px solid #ccc;
     position: fixed;
-    top: calc(56px);
+    top: 58px;
     left: 0;
     right: 0;
     bottom: 0;
