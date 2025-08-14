@@ -1,6 +1,5 @@
 export function mountMobileMenu() {
   // основные элементы
-
   const mm = "mobile-menu";
   const svgSprite = "./assets/image/symbol-defs.svg";
   const source = document.querySelector(".root-menu");
@@ -30,6 +29,7 @@ export function mountMobileMenu() {
     panelEnter: `${mm}__panel--enter`,
     panelLeave: `${mm}__panel--leave`,
     panelActive: `${mm}__panel--active`,
+    listCollapsible: `${mm}__list--collapsible`,
   };
 
   // состояния
@@ -54,7 +54,6 @@ export function mountMobileMenu() {
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    // для совместимости можно добавить и href, но xlink достаточно
     use.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
@@ -68,7 +67,7 @@ export function mountMobileMenu() {
 
   // настройки svg
   const icons = {
-    // задание вариантов аправлений стрелочек
+    // задание вариантов направлений стрелочек
     chevron(dir = "right", size) {
       const rot = { right: 270, down: 0, left: 90, up: 180 }[dir] ?? 0;
       return iconUse("icon-arrow", rot, size);
@@ -83,6 +82,7 @@ export function mountMobileMenu() {
 
   // открытие меню
   function open() {
+    document.body.classList.add("no-scroll");
     if (state.root) return;
     createRoot();
     document.body.appendChild(state.root);
@@ -92,13 +92,34 @@ export function mountMobileMenu() {
 
   function close() {
     if (!state.root) return;
+
     state.root.classList.remove(CLS.open);
-    // очищение всего стека меню
-    state.stack = [];
-    state.root.remove();
-    state.root = null;
-    state.sheet = null;
-    state.stackWrap = null;
+
+    const sheet = state.sheet;
+    let cleaned = false;
+
+    const cleanup = () => {
+      if (cleaned) return;
+      cleaned = true;
+
+      // очищение стека и DOM
+      state.stack = [];
+      state.root.remove();
+      state.root = state.sheet = state.stackWrap = null;
+
+      document.documentElement.classList.remove("mm-lock");
+      document.body.classList.remove("mm-lock", "no-scroll");
+    };
+
+    // ждём окончания анимации
+    const onEnd = (e) => {
+      if (e.target !== sheet || e.propertyName !== "transform") return;
+      sheet.removeEventListener("transitionend", onEnd);
+      cleanup();
+    };
+    sheet.addEventListener("transitionend", onEnd);
+
+    setTimeout(cleanup, 350); //на всякий случайы
   }
 
   // создаие подложки для меню
@@ -117,9 +138,13 @@ export function mountMobileMenu() {
 
   // добавление панели со всеми разделами меню в интерфейс
   function pushPanelFromUL(ul, fallbackTitle) {
+    const currentTop = state.stack[state.stack.length - 1];
+    cleanupOpenExpansions(currentTop);
     // создание контейнера для всего содержимого
     const panel = document.createElement("div");
     panel.className = `${CLS.panel} ${CLS.panelEnter}`;
+    // панель поверх предыдущих
+    panel.style.setProperty("--mm-z", String(state.stack.length + 1));
 
     // создание шапки меню
     const header = document.createElement("div");
@@ -135,12 +160,12 @@ export function mountMobileMenu() {
     const titleEl = document.createElement("div");
     titleEl.className = CLS.headerTitle;
     const foundHeader = ul.querySelector(':scope > [data-role="header"]');
-    titleEl.textContent = foundHeader ? titleTrim(foundHeader) : fallbackTitle;
+    titleEl.textContent = titleTrim(foundHeader) || fallbackTitle;
 
-    // создани кнопочки ""
+    // создание кнопочки "закрыть"
     const closeBtn = document.createElement("button");
     closeBtn.className = CLS.headerBtn;
-    closeBtn.appendChild(icons.close("25px"));
+    closeBtn.appendChild(icons.close("44px"));
     closeBtn.addEventListener("click", close);
 
     if (state.stack.length === 0) {
@@ -160,21 +185,22 @@ export function mountMobileMenu() {
     rootList.className = CLS.list;
     body.appendChild(rootList);
 
-    // верхняя линия с профилем/языком только на корневой панели
+    // добавление раздела в начало первого экрана
     if (state.stack.length === 0) {
       const topLine = buildTopline();
       if (topLine) body.prepend(topLine);
     }
 
     // контент уровня
-    const liChildren = [...ul.querySelectorAll(":scope > li")];
-    for (const li of liChildren) {
-      const role = li.getAttribute("data-role") || "";
+    const liChildren = ul.querySelectorAll(":scope > li");
+
+    liChildren.forEach((li) => {
+      const role = li.getAttribute("data-role");
       if (role === "profile" || role === "language-link" || role === "header")
-        continue;
+        return;
       const frag = renderGroup(li);
-      if (frag) rootList.appendChild(frag); // теперь вставляем в <ul>
-    }
+      if (frag) rootList.appendChild(frag);
+    });
 
     panel.appendChild(header);
     panel.appendChild(body);
@@ -184,6 +210,7 @@ export function mountMobileMenu() {
     requestAnimationFrame(() => panel.classList.add(CLS.panelActive));
   }
 
+  // закрытие экрана
   function goBack() {
     if (state.stack.length <= 1) {
       close();
@@ -193,9 +220,10 @@ export function mountMobileMenu() {
     leaving.classList.remove(CLS.panelEnter, CLS.panelActive);
     leaving.classList.add(CLS.panelLeave);
     requestAnimationFrame(() => leaving.classList.add(CLS.panelActive));
-    setTimeout(() => leaving.remove(), 200);
+    setTimeout(() => leaving.remove(), 300);
   }
 
+  // создание строки со входом и выбором языка
   function buildTopline() {
     const pf = state.rootProfileLi?.querySelector("a.login-link");
     const lg = state.rootLangLi?.querySelector("a.language-link");
@@ -204,111 +232,204 @@ export function mountMobileMenu() {
     const topLine = document.createElement("div");
     topLine.className = CLS.topline;
 
+    // вход
     if (pf) {
       const a = document.createElement("a");
       a.href = pf.getAttribute("href") || "#";
-      a.textContent = (pf.textContent || "Войти").trim();
+      a.textContent = pf.textContent;
       topLine.appendChild(a);
     }
+
+    // язык
     if (lg) {
       const a = document.createElement("a");
       a.href = lg.getAttribute("href") || "#";
-      a.textContent = (lg.textContent || "").trim();
+      a.textContent = lg.textContent;
       topLine.appendChild(a);
     }
     return topLine;
   }
 
+  // создание самой структуры вложенных списков
   function renderGroup(li) {
     const headerEl = li.querySelector(':scope > [data-role="header"]');
-    const directLinks = [...li.querySelectorAll(":scope > a")];
-    const nestedSubUls = [...li.querySelectorAll(":scope > ul")];
+    const links = li.querySelectorAll(":scope > a");
+    const subUls = li.querySelectorAll(":scope > ul");
 
     const visAttr = li.getAttribute("data-visibility");
     const hasVis = visAttr !== null;
-    let visibleCount = hasVis ? parseInt(visAttr, 10) : directLinks.length;
-    if (Number.isNaN(visibleCount)) visibleCount = directLinks.length;
+    let visibleCount = hasVis ? parseInt(visAttr, 10) : links.length;
+    if (Number.isNaN(visibleCount)) visibleCount = links.length;
 
-    if (hasVis && visibleCount === 0 && !headerEl) {
-      if (directLinks.length === 0 && nestedSubUls.length === 0) return null;
-    }
-
-    // <li> группа
+    // создание li группы
     const groupLi = document.createElement("li");
     groupLi.className = CLS.group;
 
-    // header
-    if (headerEl) {
-      const gh = document.createElement("div");
-      gh.className = CLS.groupHeader;
-      gh.textContent = titleTrim(headerEl);
-      groupLi.appendChild(gh);
-
-      if (hasVis && visibleCount === 0 && directLinks.length) {
-        const t = createToggleButton(() => {
-          innerUl.classList.remove(CLS.listHidden);
-          t.remove();
-        });
-        gh.appendChild(t);
-      }
-    }
-
-    // внутри группы всегда <ul>
+    // создание ul внутри группы
     const innerUl = document.createElement("ul");
     innerUl.className = CLS.list;
     groupLi.appendChild(innerUl);
 
-    if (hasVis && visibleCount === 0 && headerEl && directLinks.length) {
+    if (visibleCount === 0 && headerEl && links.length) {
       innerUl.classList.add(CLS.listHidden);
     }
 
-    // ссылки группы
-    const initialToShow = Math.min(directLinks.length, visibleCount);
+    // ссылки вложенной группы
+    const initialToShow = Math.min(links.length, visibleCount);
     for (let i = 0; i < initialToShow; i++) {
-      const itemLi = createLinkLi(directLinks[i]);
-      const hasHidden = directLinks.length > visibleCount;
+      const hasHidden = links.length > visibleCount;
+
       if (hasHidden && i === initialToShow - 1) {
-        const t = createToggleButton(() => {
-          for (let j = visibleCount; j < directLinks.length; j++) {
-            innerUl.appendChild(createLinkLi(directLinks[j]));
+        // последний видимый пункт делает раскрытие остальных
+        const makeHiddenNodes = () => {
+          const nodes = [];
+          for (let j = visibleCount; j < links.length; j++) {
+            nodes.push(createLinkLi(links[j]));
           }
-          t.remove();
-        });
-        // добавляем кнопку разворота внутрь интерактивного элемента
-        itemLi.querySelector(`.${CLS.item}`)?.appendChild(t);
+          return nodes;
+        };
+
+        const expanderLi = createFullRowExpander(
+          links[i],
+          makeHiddenNodes,
+          innerUl
+        );
+        innerUl.appendChild(expanderLi);
+      } else {
+        const itemLi = createLinkLi(links[i]);
+        innerUl.appendChild(itemLi);
       }
-      innerUl.appendChild(itemLi);
     }
 
     // вложенные подменю
-    for (const subUl of nestedSubUls) {
+    for (const subUl of subUls) {
       innerUl.appendChild(createSubmenuLi(subUl));
     }
 
-    if (!headerEl && directLinks.length === 0 && nestedSubUls.length === 0)
-      return null;
     return groupLi;
   }
 
+  // создание ссылки/кнопки в группе
   function createLinkLi(anchorEl) {
-    const isHref = !!anchorEl.getAttribute("href");
+    const href = (anchorEl.getAttribute("href") || "").trim();
+
     const li = document.createElement("li");
-    const el = document.createElement(isHref ? "a" : "button");
-    el.className = CLS.item;
-    if (isHref) {
-      el.href = anchorEl.getAttribute("href") || "#";
+
+    const a = document.createElement("a");
+    a.className = CLS.item;
+    if (href) {
+      a.setAttribute("href", href);
     } else {
-      el.type = "button";
-      el.addEventListener("click", (e) => e.preventDefault());
+      a.setAttribute("role", "link");
     }
+
     const label = document.createElement("div");
     label.className = CLS.itemLabel;
     label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
-    el.appendChild(label);
-    li.appendChild(el);
+
+    a.appendChild(label);
+    li.appendChild(a);
     return li;
   }
 
+  // функционал выпадающего списка
+  function createFullRowExpander(anchorEl, makeHiddenNodes) {
+    const href = (anchorEl.getAttribute("href") || "").trim();
+    const li = document.createElement("li");
+
+    // создание ссылок
+    const a = document.createElement("a");
+    a.className = CLS.item;
+    if (href) a.href = href;
+    else a.setAttribute("role", "link");
+
+    // текст ссылки
+    const label = document.createElement("div");
+    label.className = CLS.itemLabel;
+    label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
+    a.appendChild(label);
+
+    // создание стрелочек
+    const chevron = icons.chevron("down");
+    a.appendChild(chevron);
+
+    let isAnimating = false; //чтобы не было ошибки, когда много нажимаешь
+    let wrap = null; //вложенный список
+
+    const isCurrentlyOpen = () =>
+      !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
+
+    // открытие списка
+    const openAnim = () => {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      //если не сощдвн, то создаем
+      if (!wrap) {
+        wrap = document.createElement("ul");
+        wrap.className = `${CLS.list} ${CLS.listCollapsible}`;
+        li.appendChild(wrap);
+      } else if (!wrap.isConnected) {
+        li.appendChild(wrap);
+      }
+
+      // отрисовка скрытых подпунктов
+      const nodes = makeHiddenNodes() || [];
+      wrap.innerHTML = "";
+      nodes.forEach((n) => wrap.appendChild(n));
+
+      // окончание
+      const el = wrap;
+      el.style.height = "0px";
+      void el.offsetHeight;
+      el.classList.add("is-open");
+      el.style.height = el.scrollHeight + "px";
+
+      const onEndOpen = (e) => {
+        if (e.target !== el || e.propertyName !== "height") return;
+        el.style.height = "auto";
+        isAnimating = false;
+        el.removeEventListener("transitionend", onEndOpen);
+      };
+      el.addEventListener("transitionend", onEndOpen);
+
+      chevron.style.setProperty("--mm-rot", "180deg");
+    };
+
+    const closeAnim = () => {
+      if (isAnimating || !wrap) return;
+      isAnimating = true;
+
+      const el = wrap;
+      el.style.height = el.scrollHeight + "px";
+      void el.offsetHeight;
+      el.style.height = "0px";
+      el.classList.remove("is-open");
+
+      const onEndClose = (e) => {
+        if (e.target !== el || e.propertyName !== "height") return;
+        el.removeEventListener("transitionend", onEndClose);
+        el.remove();
+        if (wrap === el) wrap = null;
+        isAnimating = false;
+      };
+      el.addEventListener("transitionend", onEndClose);
+
+      chevron.style.setProperty("--mm-rot", "0deg");
+    };
+
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (isAnimating) return;
+      if (!isCurrentlyOpen()) openAnim();
+      else closeAnim();
+    });
+
+    li.appendChild(a);
+    return li;
+  }
+
+  // создние элементов выпадающего списка
   function createSubmenuLi(ul) {
     const li = document.createElement("li");
     const btn = document.createElement("button");
@@ -318,7 +439,7 @@ export function mountMobileMenu() {
     label.className = CLS.itemLabel;
 
     const header = ul.querySelector(':scope > [data-role="header"]');
-    label.textContent = header ? titleTrim(header) : "Раздел";
+    label.textContent = titleTrim(header) || "Раздел";
 
     btn.appendChild(label);
     btn.appendChild(icons.chevron("right"));
@@ -331,28 +452,28 @@ export function mountMobileMenu() {
     return li;
   }
 
-  function createToggleButton(onOpen) {
-    const b = document.createElement("button");
-    b.className = CLS.headerBtn;
-    b.appendChild(icons.chevron("down"));
-    b.addEventListener("click", (e) => {
-      e.stopPropagation();
-      onOpen();
-    });
-    return b;
-  }
-
+  //
   function slideForward() {
-    const n = state.stack.length;
-    if (n < 2) return;
-    const incoming = state.stack[n - 1];
+    const count = state.stack.length;
+    if (count < 2) return;
+    const incoming = state.stack[count - 1];
     incoming.classList.add(CLS.panelEnter);
     requestAnimationFrame(() => incoming.classList.add(CLS.panelActive));
   }
 
+  // обрезка лишнего вокруг заголовка
   function titleTrim(el) {
-    return (el.textContent || "").trim();
+    return (el?.textContent || "").trim();
+  }
+
+  // чтобы при открытии других вложенностей выпадающие списки закрывались
+  function cleanupOpenExpansions(scopeEl) {
+    if (!scopeEl) return;
+    scopeEl.querySelectorAll(`.${CLS.listCollapsible}`).forEach((el) => {
+      const li = el.closest("li");
+      el.remove();
+      const chev = li?.querySelector(`.${CLS.chevron}`);
+      if (chev) chev.style.setProperty("--mm-rot", "0deg");
+    });
   }
 }
-
-export default mountMobileMenu;
