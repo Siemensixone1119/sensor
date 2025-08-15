@@ -1,15 +1,11 @@
 @charset "UTF-8";
 @font-face {
   font-family: pfdintextcomppro-light;
-  src: url("../assets/font/pfdintextcomppro-light.woff");
+  src: url("./assets/font/pfdintextcomppro-light.woff");
 }
 @font-face {
   font-family: pfdintextcomppro-regular;
-  src: url("../assets/font/pfdintextcomppro-regular.woff");
-}
-@font-face {
-  font-family: Spell;
-  src: url("../assets/font/Avenir Next World Medium.ttf");
+  src: url("./assets/font/pfdintextcomppro-regular.woff");
 }
 * {
   box-sizing: border-box;
