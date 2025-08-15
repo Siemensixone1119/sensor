@@ -17,12 +17,12 @@ main {
   justify-content: center;
   position: fixed;
   background-color: $second-text;
-  bottom: 20px;
   right: 20px;
   z-index: 5;
   opacity: 1;
   pointer-events: auto;
   transition: opacity 0.3s ease;
+  bottom: calc($safe-bottom + 20px);
 }
 
 .message__btn.hide {

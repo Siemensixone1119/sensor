@@ -8,3 +8,5 @@ $second-accent: #292361;
 $text-color: #212121;
 $second-text: #fefefe;
 $shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+$vvh: 100vh;
+$safe-bottom: env(safe-area-inset-bottom, 0px);

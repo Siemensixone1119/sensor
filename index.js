@@ -9,4 +9,4 @@ initHeaderAutoHide();
 initSearchOverlay();
 initMessageButtonAutoHide();
 initContactsPanel();
-mountMobileMenu()
+mountMobileMenu();

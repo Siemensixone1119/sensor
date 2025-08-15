@@ -90,6 +90,7 @@ export function mountMobileMenu() {
     state.root.classList.add(CLS.open);
   }
 
+  // закрытие  меню
   function close() {
     if (!state.root) return;
 
@@ -114,6 +115,7 @@ export function mountMobileMenu() {
     // ждём окончания анимации
     const onEnd = (e) => {
       if (e.target !== sheet || e.propertyName !== "transform") return;
+      
       sheet.removeEventListener("transitionend", onEnd);
       cleanup();
     };
@@ -122,7 +124,7 @@ export function mountMobileMenu() {
     setTimeout(cleanup, 350); //на всякий случайы
   }
 
-  // создаие подложки для меню
+  // создание подложки для меню
   function createRoot() {
     state.root = document.createElement("div");
     state.root.className = CLS.root;

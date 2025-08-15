@@ -25,6 +25,10 @@
   background-color: $second-text;
   transform: translateX(100%);
   transition: transform 0.3s ease;
+  padding-bottom: calc($safe-bottom + 16px);
+  height: calc($vvh - var(--sticky-top));
+  min-height: 100svh;
+  max-height: 100dvh;
 
   &__wrap {
     position: relative;
