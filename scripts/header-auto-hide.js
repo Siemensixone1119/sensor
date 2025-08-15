@@ -15,7 +15,7 @@ export function ensureDynamicVh() {
 }
 
 export function initHeaderAutoHide() {
-  ensureDynamicVh(); // важный вызов до всех расчётов
+  ensureDynamicVh();
 
   const headerOverlay = document.querySelector('.header__overlay');
   const headerOverlayInner = document.querySelector('.header__overlay-inner');
@@ -28,6 +28,7 @@ export function initHeaderAutoHide() {
   let headerRevealOffset = 0;
   let lastViewportWidth = window.innerWidth;
   let isInitialized = false;
+  let lastTick = performance.now();
 
   const updateStickyTopVar = () => {
     const headerBottom = Math.max(0, Math.round(headerOverlay.getBoundingClientRect().bottom));
@@ -59,23 +60,31 @@ export function initHeaderAutoHide() {
     renderHeaderPosition();
   };
 
-  const onScroll = () => {
-    const y = window.scrollY;
-    const delta = lastScrollY - y;
-    const h = getHeaderInnerHeight();
+const onScroll = () => {
+  const now = performance.now();
+  const dt = now - lastTick;
+  const y = window.scrollY;
+  const delta = lastScrollY - y;
+  const h = getHeaderInnerHeight();
 
-    if (delta > 0 && y > 0) {
-      headerRevealOffset = Math.min(headerRevealOffset + delta, h);
-    } else if (delta < 0) {
-      headerRevealOffset = Math.max(headerRevealOffset + delta, 0);
+  const flickUp = delta > 25 && dt < 60;
+
+  if (delta > 0 && y > 0) {
+    headerRevealOffset = Math.min(headerRevealOffset + delta, h);
+
+    if (flickUp || (headerRevealOffset > h * 0.85 && delta > 8)) {
+      headerRevealOffset = h;
     }
+  } else if (delta < 0) {
+    headerRevealOffset = Math.max(headerRevealOffset + delta, 0);
+  }
 
-    renderHeaderPosition();
-    lastScrollY = y;
-  };
-
+  renderHeaderPosition();
+  lastScrollY = y;
+  lastTick = now;
+};
   const onVisualViewportChange = () => {
-    // при появлении/скрытии URL-бара пересчитать липкую точку и перерисовать хедер
+
     updateStickyTopVar();
     renderHeaderPosition();
   };

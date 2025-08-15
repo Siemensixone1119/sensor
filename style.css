@@ -323,6 +323,8 @@ input {
   z-index: 100;
   transform: translateY(0);
   transition: none;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .header__overlay-inner {
