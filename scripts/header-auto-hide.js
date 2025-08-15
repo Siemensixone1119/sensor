@@ -62,21 +62,27 @@ export function initHeaderAutoHide() {
 
 const onScroll = () => {
   const now = performance.now();
-  const dt = now - lastTick;
+  const dt = now - lastTick;           // мс между кадрами
   const y = window.scrollY;
-  const delta = lastScrollY - y;
+  const delta = lastScrollY - y;       // >0 — тянем вверх
   const h = getHeaderInnerHeight();
-
+  const atTop = y <= 0;                // самый верх
   const flickUp = delta > 25 && dt < 60;
 
-  if (delta > 0 && y > 0) {
+  if (delta > 0) { // прокрутка вверх
     headerRevealOffset = Math.min(headerRevealOffset + delta, h);
 
-    if (flickUp || (headerRevealOffset > h * 0.85 && delta > 8)) {
+    // снап: у самого верха или при резком рывке — раскрываем шапку полностью
+    if (atTop || flickUp || headerRevealOffset > h * 0.85) {
       headerRevealOffset = h;
     }
-  } else if (delta < 0) {
+  } else if (delta < 0) { // прокрутка вниз
     headerRevealOffset = Math.max(headerRevealOffset + delta, 0);
+
+    // опционально: быстрый «закрывающий» снап при резком рывке вниз
+    if ((-delta) > 25 && dt < 60 && headerRevealOffset < h * 0.15) {
+      headerRevealOffset = 0;
+    }
   }
 
   renderHeaderPosition();
