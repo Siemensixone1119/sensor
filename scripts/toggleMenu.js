@@ -1,3 +1,4 @@
+// menu.js
 export function mountMobileMenu() {
   // основные элементы
   const mm = "mobile-menu";
@@ -44,7 +45,7 @@ export function mountMobileMenu() {
   };
 
   // создание svg стрелочек и иконок, а также их размер и поворот
-  function iconUse(symbolId, rotateDeg = 0, size) {
+  function iconUse(symbolId, rotateDeg = 0, size, close = false) {
     const wrap = document.createElement("span");
     wrap.className = CLS.chevron;
 
@@ -53,12 +54,22 @@ export function mountMobileMenu() {
     if (size) wrap.style.setProperty("--mm-size", size);
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+
+    // для совместимости можно добавить и href, но xlink достаточно
     use.setAttributeNS(
       "http://www.w3.org/1999/xlink",
       "xlink:href",
       `${svgSprite}#${symbolId}`
     );
+    // современный вариант (некоторые браузеры требуют)
+    use.setAttribute("href", `${svgSprite}#${symbolId}`);
+
+    if(close){
+      svg.setAttribute("data-close", "true")
+    }
 
     svg.appendChild(use);
     wrap.appendChild(svg);
@@ -74,7 +85,7 @@ export function mountMobileMenu() {
     },
     // задание размера крестика
     close(size) {
-      return iconUse("icon-menu_close", 0, size);
+      return iconUse("icon-menu_close", 0, size, true);
     },
   };
 
@@ -112,16 +123,15 @@ export function mountMobileMenu() {
       document.body.classList.remove("mm-lock", "no-scroll");
     };
 
-    // ждём окончания анимации
+    // ждём окончания анимации затемнения/съезда
     const onEnd = (e) => {
-      if (e.target !== sheet || e.propertyName !== "transform") return;
-      
+      if (e.target !== sheet) return;
       sheet.removeEventListener("transitionend", onEnd);
       cleanup();
     };
     sheet.addEventListener("transitionend", onEnd);
 
-    setTimeout(cleanup, 350); //на всякий случайы
+    setTimeout(cleanup, 350); // на всякий случай
   }
 
   // создание подложки для меню
@@ -140,13 +150,18 @@ export function mountMobileMenu() {
 
   // добавление панели со всеми разделами меню в интерфейс
   function pushPanelFromUL(ul, fallbackTitle) {
-    const currentTop = state.stack[state.stack.length - 1];
-    cleanupOpenExpansions(currentTop);
     // создание контейнера для всего содержимого
     const panel = document.createElement("div");
     panel.className = `${CLS.panel} ${CLS.panelEnter}`;
+
     // панель поверх предыдущих
     panel.style.setProperty("--mm-z", String(state.stack.length + 1));
+
+    // страховка от «белого флэша»: сразу уводим панель за экран и скрываем
+    // panel.style.transform = "translate3d(100%,0,0)";
+    // panel.style.willChange = "transform";
+    // panel.style.transition = "transform .28s ease";
+    // panel.style.visibility = "hidden"; // покажем только в rAF
 
     // создание шапки меню
     const header = document.createElement("div");
@@ -195,7 +210,6 @@ export function mountMobileMenu() {
 
     // контент уровня
     const liChildren = ul.querySelectorAll(":scope > li");
-
     liChildren.forEach((li) => {
       const role = li.getAttribute("data-role");
       if (role === "profile" || role === "language-link" || role === "header")
@@ -209,7 +223,15 @@ export function mountMobileMenu() {
 
     state.stackWrap.appendChild(panel);
     state.stack.push(panel);
-    requestAnimationFrame(() => panel.classList.add(CLS.panelActive));
+
+    // показываем только в следующий кадр → без «флэша»
+    requestAnimationFrame(() => {
+      panel.style.visibility = "visible";
+      panel.classList.add(CLS.panelActive);
+
+      // ПОСЛЕ анимации появления панели закроем все раскрывашки на остальных
+      afterPanelAnimation(panel, () => cleanupAllExpansionsExcept(panel));
+    });
   }
 
   // закрытие экрана
@@ -238,7 +260,7 @@ export function mountMobileMenu() {
     if (pf) {
       const a = document.createElement("a");
       a.href = pf.getAttribute("href") || "#";
-      a.textContent = pf.textContent;
+      a.textContent = (pf.textContent || "").trim();
       topLine.appendChild(a);
     }
 
@@ -246,7 +268,7 @@ export function mountMobileMenu() {
     if (lg) {
       const a = document.createElement("a");
       a.href = lg.getAttribute("href") || "#";
-      a.textContent = lg.textContent;
+      a.textContent = (lg.textContent || "").trim();
       topLine.appendChild(a);
     }
     return topLine;
@@ -291,11 +313,7 @@ export function mountMobileMenu() {
           return nodes;
         };
 
-        const expanderLi = createFullRowExpander(
-          links[i],
-          makeHiddenNodes,
-          innerUl
-        );
+        const expanderLi = createFullRowExpander(links[i], makeHiddenNodes);
         innerUl.appendChild(expanderLi);
       } else {
         const itemLi = createLinkLi(links[i]);
@@ -334,12 +352,12 @@ export function mountMobileMenu() {
     return li;
   }
 
-  // функционал выпадающего списка
+  // функционал выпадающего списка (переключатель — вся строка)
   function createFullRowExpander(anchorEl, makeHiddenNodes) {
     const href = (anchorEl.getAttribute("href") || "").trim();
     const li = document.createElement("li");
 
-    // создание ссылок
+    // создание ссылки-строки
     const a = document.createElement("a");
     a.className = CLS.item;
     if (href) a.href = href;
@@ -351,12 +369,12 @@ export function mountMobileMenu() {
     label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
     a.appendChild(label);
 
-    // создание стрелочек
+    // стрелочка с анимацией поворота
     const chevron = icons.chevron("down");
     a.appendChild(chevron);
 
-    let isAnimating = false; //чтобы не было ошибки, когда много нажимаешь
-    let wrap = null; //вложенный список
+    let isAnimating = false; // чтобы не было ошибки, когда много нажимаешь
+    let wrap = null; // вложенный UL со скрытыми пунктами
 
     const isCurrentlyOpen = () =>
       !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
@@ -366,7 +384,6 @@ export function mountMobileMenu() {
       if (isAnimating) return;
       isAnimating = true;
 
-      //если не сощдвн, то создаем
       if (!wrap) {
         wrap = document.createElement("ul");
         wrap.className = `${CLS.list} ${CLS.listCollapsible}`;
@@ -380,7 +397,7 @@ export function mountMobileMenu() {
       wrap.innerHTML = "";
       nodes.forEach((n) => wrap.appendChild(n));
 
-      // окончание
+      // анимация высоты
       const el = wrap;
       el.style.height = "0px";
       void el.offsetHeight;
@@ -398,6 +415,7 @@ export function mountMobileMenu() {
       chevron.style.setProperty("--mm-rot", "180deg");
     };
 
+    // закрытие списка
     const closeAnim = () => {
       if (isAnimating || !wrap) return;
       isAnimating = true;
@@ -420,6 +438,7 @@ export function mountMobileMenu() {
       chevron.style.setProperty("--mm-rot", "0deg");
     };
 
+    // переключатель по клику на всю строку
     a.addEventListener("click", (e) => {
       e.preventDefault();
       if (isAnimating) return;
@@ -431,7 +450,7 @@ export function mountMobileMenu() {
     return li;
   }
 
-  // создние элементов выпадающего списка
+  // создние элементов выпадающего списка (переход на новую панель)
   function createSubmenuLi(ul) {
     const li = document.createElement("li");
     const btn = document.createElement("button");
@@ -478,4 +497,35 @@ export function mountMobileMenu() {
       if (chev) chev.style.setProperty("--mm-rot", "0deg");
     });
   }
+
+  // закрываем раскрывашки во всех панелях, кроме указанной
+  function cleanupAllExpansionsExcept(exceptPanel) {
+    state.stack.forEach((panel) => {
+      if (panel !== exceptPanel) cleanupOpenExpansions(panel);
+    });
+  }
+
+  // вызвать cb после завершения анимации конкретной панели
+  function afterPanelAnimation(panel, cb) {
+    let done = false;
+    const onEnd = (e) => {
+      if (done) return;
+      if (e.target !== panel || e.propertyName !== "transform") return;
+      done = true;
+      panel.removeEventListener("transitionend", onEnd);
+      cb();
+    };
+    panel.addEventListener("transitionend", onEnd);
+
+    // страховка, если transitionend не сработает
+    setTimeout(() => {
+      if (done) return;
+      try {
+        panel.removeEventListener("transitionend", onEnd);
+      } catch {}
+      cb();
+    }, 450);
+  }
 }
+
+export default mountMobileMenu;
