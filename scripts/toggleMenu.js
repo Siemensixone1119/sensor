@@ -1,4 +1,3 @@
-// menu.js
 export function mountMobileMenu() {
   const mm = "mobile-menu";
   const svgSprite = "./assets/image/symbol-defs.svg";
@@ -44,12 +43,15 @@ export function mountMobileMenu() {
     wrap.className = CLS.chevron;
     wrap.style.setProperty("--mm-rot", rotateDeg + "deg");
     if (size) wrap.style.setProperty("--mm-size", size);
-
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "0 0 24 24");
     svg.setAttribute("aria-hidden", "true");
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", `${svgSprite}#${symbolId}`);
+    use.setAttributeNS(
+      "http://www.w3.org/1999/xlink",
+      "xlink:href",
+      `${svgSprite}#${symbolId}`
+    );
     use.setAttribute("href", `${svgSprite}#${symbolId}`);
     if (isClose) svg.setAttribute("data-close", "true");
     svg.appendChild(use);
@@ -103,13 +105,10 @@ export function mountMobileMenu() {
   function createRoot() {
     state.root = document.createElement("div");
     state.root.className = CLS.root;
-
     state.sheet = document.createElement("div");
     state.sheet.className = CLS.sheet;
-
     state.stackWrap = document.createElement("div");
     state.sheet.appendChild(state.stackWrap);
-
     state.root.appendChild(state.sheet);
   }
 
@@ -137,7 +136,6 @@ export function mountMobileMenu() {
     closeBtn.addEventListener("click", close);
 
     if (state.stack.length === 0) {
-      // 1-й экран: вместо «Меню» показываем «Войти»
       const pf = state.rootProfileLi?.querySelector("a.login-link");
       if (pf) {
         const loginBtn = document.createElement("a");
@@ -161,22 +159,23 @@ export function mountMobileMenu() {
     rootList.className = CLS.list;
     body.appendChild(rootList);
 
-    // На первом экране НЕ показываем язык в топлайне
     if (state.stack.length === 0) {
-      const topLine = buildTopline({ includeLogin: false, includeLanguage: false });
+      const topLine = buildTopline({
+        includeLogin: false,
+        includeLanguage: false,
+      });
       if (topLine) body.prepend(topLine);
     }
 
-    // Контент по исходному DOM-порядку
     const liChildren = ul.querySelectorAll(":scope > li");
     liChildren.forEach((li) => {
       const role = li.getAttribute("data-role");
-      if (role === "profile" || role === "language-link" || role === "header") return;
+      if (role === "profile" || role === "language-link" || role === "header")
+        return;
       const frag = renderGroup(li);
       if (frag) rootList.appendChild(frag);
     });
 
-    // ЯЗЫК — ПОСЛЕДНИМ ПУНКТОМ (одна ссылка со стрелкой внутри)
     if (state.stack.length === 0) {
       const lg = state.rootLangLi?.querySelector("a.language-link");
       if (lg) {
@@ -210,8 +209,12 @@ export function mountMobileMenu() {
 
   function buildTopline(opts = {}) {
     const { includeLogin = true, includeLanguage = true } = opts;
-    const pf = includeLogin ? state.rootProfileLi?.querySelector("a.login-link") : null;
-    const lg = includeLanguage ? state.rootLangLi?.querySelector("a.language-link") : null;
+    const pf = includeLogin
+      ? state.rootProfileLi?.querySelector("a.login-link")
+      : null;
+    const lg = includeLanguage
+      ? state.rootLangLi?.querySelector("a.language-link")
+      : null;
     if (!pf && !lg) return null;
 
     const topLine = document.createElement("div");
@@ -281,44 +284,35 @@ export function mountMobileMenu() {
 
   function createLinkLi(anchorEl) {
     const href = (anchorEl.getAttribute("href") || "").trim();
-
     const li = document.createElement("li");
-    const row = document.createElement("div");
-    row.className = CLS.item;
-
-    const labelLink = document.createElement("a");
-    labelLink.className = CLS.itemLabel;
-    if (href) labelLink.setAttribute("href", href);
+    const rowLink = document.createElement("a");
+    rowLink.className = CLS.item;
+    if (href) rowLink.setAttribute("href", href);
     else {
-      labelLink.setAttribute("role", "link");
-      labelLink.setAttribute("tabindex", "0");
+      rowLink.setAttribute("role", "link");
+      rowLink.setAttribute("tabindex", "0");
     }
-    labelLink.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
-
-    row.appendChild(labelLink);
-    li.appendChild(row);
+    const label = document.createElement("div");
+    label.className = CLS.itemLabel;
+    label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
+    rowLink.appendChild(label);
+    li.appendChild(rowLink);
     return li;
   }
 
-  // ЯЗЫК как один пункт-ссылка со стрелкой внутри (кликабельно целиком)
   function createLanguageItem(lgAnchorEl) {
     const li = document.createElement("li");
     li.className = CLS.group;
-
     const innerUl = document.createElement("ul");
     innerUl.className = CLS.list;
-
     const rowLi = document.createElement("li");
     const a = document.createElement("a");
-    a.className = CLS.item;           // тот же стиль строки
+    a.className = CLS.item;
     a.href = lgAnchorEl.getAttribute("href") || "#";
-
     const label = document.createElement("div");
     label.className = CLS.itemLabel;
     label.textContent = (lgAnchorEl.textContent || "").trim();
-
-    const chev = icons.chevron("right"); // визуальная стрелка внутри ссылки
-
+    const chev = icons.chevron("right");
     a.appendChild(label);
     a.appendChild(chev);
     rowLi.appendChild(a);
@@ -327,40 +321,36 @@ export function mountMobileMenu() {
     return li;
   }
 
-  // раскрывалка управляется ТОЛЬКО стрелкой
   function createFullRowExpander(anchorEl, makeHiddenNodes) {
     const href = (anchorEl.getAttribute("href") || "").trim();
     const li = document.createElement("li");
-
-    const row = document.createElement("div");
-    row.className = CLS.item;
-
-    const labelLink = document.createElement("a");
-    labelLink.className = CLS.itemLabel;
-    if (href) labelLink.href = href;
+    const rowLink = document.createElement("a");
+    rowLink.className = CLS.item;
+    if (href) rowLink.href = href;
     else {
-      labelLink.setAttribute("role", "link");
-      labelLink.setAttribute("tabindex", "0");
+      rowLink.setAttribute("role", "link");
+      rowLink.setAttribute("tabindex", "0");
     }
-    labelLink.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
-    row.appendChild(labelLink);
-
+    const label = document.createElement("div");
+    label.className = CLS.itemLabel;
+    label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
+    rowLink.appendChild(label);
     const chevron = icons.chevron("down");
     chevron.setAttribute("role", "button");
     chevron.setAttribute("tabindex", "0");
     chevron.style.padding = "8px";
-    row.appendChild(chevron);
+    rowLink.appendChild(chevron);
+    li.appendChild(rowLink);
 
     let isAnimating = false;
     let wrap = null;
 
-    const isCurrentlyOpen = () =>
+    const isOpen = () =>
       !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
 
     const openAnim = () => {
       if (isAnimating) return;
       isAnimating = true;
-
       if (!wrap) {
         wrap = document.createElement("ul");
         wrap.className = `${CLS.list} ${CLS.listCollapsible}`;
@@ -368,17 +358,14 @@ export function mountMobileMenu() {
       } else if (!wrap.isConnected) {
         li.appendChild(wrap);
       }
-
       const nodes = (makeHiddenNodes && makeHiddenNodes()) || [];
       wrap.innerHTML = "";
       nodes.forEach((n) => wrap.appendChild(n));
-
       const el = wrap;
       el.style.height = "0px";
       void el.offsetHeight;
       el.classList.add("is-open");
       el.style.height = el.scrollHeight + "px";
-
       const onEndOpen = (e) => {
         if (e.target !== el || e.propertyName !== "height") return;
         el.style.height = "auto";
@@ -386,20 +373,17 @@ export function mountMobileMenu() {
         el.removeEventListener("transitionend", onEndOpen);
       };
       el.addEventListener("transitionend", onEndOpen);
-
       chevron.style.setProperty("--mm-rot", "180deg");
     };
 
     const closeAnim = () => {
       if (isAnimating || !wrap) return;
       isAnimating = true;
-
       const el = wrap;
       el.style.height = el.scrollHeight + "px";
       void el.offsetHeight;
       el.style.height = "0px";
       el.classList.remove("is-open");
-
       const onEndClose = (e) => {
         if (e.target !== el || e.propertyName !== "height") return;
         el.removeEventListener("transitionend", onEndClose);
@@ -408,7 +392,6 @@ export function mountMobileMenu() {
         isAnimating = false;
       };
       el.addEventListener("transitionend", onEndClose);
-
       chevron.style.setProperty("--mm-rot", "0deg");
     };
 
@@ -416,15 +399,15 @@ export function mountMobileMenu() {
       e.preventDefault();
       e.stopPropagation();
       if (isAnimating) return;
-      if (!isCurrentlyOpen()) openAnim();
+      if (!isOpen()) openAnim();
       else closeAnim();
     };
+
     chevron.addEventListener("click", toggle);
     chevron.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") toggle(e);
     });
 
-    li.appendChild(row);
     return li;
   }
 
@@ -432,22 +415,17 @@ export function mountMobileMenu() {
     const li = document.createElement("li");
     const row = document.createElement("button");
     row.className = CLS.item;
-
     const label = document.createElement("div");
     label.className = CLS.itemLabel;
-
     const header = ul.querySelector(':scope > [data-role="header"]');
     label.textContent = titleTrim(header) || "Раздел";
-
     const chev = icons.chevron("right");
-
     row.appendChild(label);
     row.appendChild(chev);
     row.addEventListener("click", () => {
       pushPanelFromUL(ul, label.textContent);
       slideForward();
     });
-
     li.appendChild(row);
     return li;
   }
