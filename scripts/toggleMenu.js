@@ -336,6 +336,7 @@ export function mountMobileMenu() {
 
     return groupLi;
   }
+  
 //🐟
 // игорь евгеньевич, если вы это заметите, то перейдите пожалуйста по ссылке => https://siemensixone1119.github.io/sensor/assets/koe-chto-ochen-vaznoe/vaznoe.gif
 //🐟
