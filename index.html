@@ -343,62 +343,105 @@
 
     <!-- Боковое меню -->
 
-    <ul class="root-menu" hidden>
+    <ul class="root-menu">
       <li data-role="profile">
-        <a href="" class="login-link">Войти</a
+        <a href="https://www.nppsensor.ru/login" class="login-link">Войти</a
         ><!--<span class="login-text">Имя пользователя</span>-->
       </li>
       <li data-role="language-link">
-        <a href="/en" class="language-link">English</a>
+        <a href="https://www.nppsensor.ru/en" class="language-link">English</a>
       </li>
       <li data-role="group">
         <ul>
           <li data-role="header">Профиль</li>
           <li data-role="group">
-            <a><span class="text-primary">Мой аккаунт</span></a>
-          </li>
-          <li data-role="group">
-            <a><span class="text-primary">Админ-панель</span></a>
-            <a><span class="text-primary">Файлы для скачивания</span></a>
-            <a><span class="text-primary">Ссылки на файлы</span></a>
-            <a><span class="text-primary">Реквизиты</span></a>
-          </li>
-          <li data-role="group">
-            <a
-              ><span class="text-primary"
-                >Статус регистрации АРМ СИ СЕНС</span
-              ></a
+            <a href="https://www.nppsensor.ru/my-user-account"
+              ><span class="text-primary">Мой аккаунт</span></a
             >
           </li>
           <li data-role="group">
-            <a><span class="text-primary">Метрика</span></a>
-            <a><span class="text-primary">Вебмастер</span></a>
+            <a href="https://cp.nppsensor.ru/"
+              ><span class="text-primary">Админ-панель</span></a
+            >
+            <a href="https://cp.nppsensor.ru/documents/manage"
+              ><span class="text-primary">Файлы для скачивания</span></a
+            >
+            <a href="https://www.nppsensor.ru/product/copy-paste"
+              ><span class="text-primary">Ссылки на файлы</span></a
+            >
+            <a href="https://www.nppsensor.ru/contacts#requisites"
+              ><span class="text-primary">Реквизиты</span></a
+            >
           </li>
           <li data-role="group">
-            <a><span class="text-primary">Выйти</span></a>
+            <a
+              role="link"
+              onclick="$.ajax('//www.nppsensor.ru/support/register/test').done(function(data) {message(data)}); document.querySelector('.mobile-menu__header-btn').click();"
+              tabindex="0"
+              id="uniq504"
+              ><span class="text-primary">Статус регистрации АРМ</span
+              ><span class="text-secondary">проверить</span></a
+            >
+          </li>
+          <li data-role="group">
+            <a href="https://metrika.yandex.ru"
+              ><span class="text-primary">Метрика</span></a
+            >
+            <a href="https://webmaster.yandex.ru"
+              ><span class="text-primary">Вебмастер</span></a
+            >
+          </li>
+          <li data-role="group">
+            <a href="https://www.nppsensor.ru/logout"
+              ><span class="text-primary">Выйти</span></a
+            >
           </li>
         </ul>
       </li>
-      <li>
+      <li data-role="group">
         <ul>
           <li data-role="header">О предприятии</li>
           <li data-role="group">
-            <a><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
-            <a><span class="text-primary">История</span></a>
-            <a><span class="text-primary">Новости</span></a>
-            <a><span class="text-primary">Дилеры</span></a>
-            <a><span class="text-primary">Дипломы, патенты</span></a>
-            <a><span class="text-primary">Видеоархив</span></a>
-            <a><span class="text-primary">Вакансии</span></a>
-            <a><span class="text-primary">Политика в области качества</span></a>
-            <a><span class="text-primary">Социальная политика</span></a>
+            <a href="https://www.nppsensor.ru/company"
+              ><span class="text-primary">НПП «СЕНСОР» сегодня</span></a
+            >
+            <a href="https://www.nppsensor.ru/company/history"
+              ><span class="text-primary">История</span></a
+            >
+            <a href="https://www.nppsensor.ru/company/news"
+              ><span class="text-primary">Новости</span></a
+            >
+            <a href="https://www.nppsensor.ru/dealers"
+              ><span class="text-primary">Дилеры</span></a
+            >
+            <a href="https://www.nppsensor.ru/company/license"
+              ><span class="text-primary">Дипломы, патенты</span></a
+            >
+            <a href="https://www.nppsensor.ru/company/video"
+              ><span class="text-primary">Видеоархив</span></a
+            >
+            <a href="https://www.nppsensor.ru/company/vacancy"
+              ><span class="text-primary">Вакансии</span></a
+            >
+            <a href="https://www.nppsensor.ru/company/quality_policy"
+              ><span class="text-primary">Политика в области качества</span></a
+            >
+            <a href="https://www.nppsensor.ru/company/social"
+              ><span class="text-primary">Социальная политика</span></a
+            >
           </li>
         </ul>
         <ul>
           <li data-role="header">Продукция</li>
           <li data-role="group">
-            <a><span class="text-primary">Уровнемеры</span></a>
+            <div data-role="header">
+              <a href="https://www.nppsensor.ru/catalog">Вся продукция</a>
+            </div>
+            <a href="https://www.nppsensor.ru/catalog/level-transmitters"
+              ><span class="text-primary">Уровнемеры</span></a
+            >
             <a
+              href="https://www.nppsensor.ru/catalog/level-sensors-and-indicators"
               ><span class="text-primary"
                 >Датчики и сигнализаторы уровня</span
               ></a
@@ -408,32 +451,49 @@
                 Манометры, преобразователи давления, температуры
               </li>
               <li data-role="group">
+                <div data-role="header">
+                  <a
+                    href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters"
+                    >Все продукты группы</a
+                  >
+                </div>
                 <a
+                  href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/pressure-transmitters"
                   ><span class="text-primary">Преобразователи давления</span></a
                 >
                 <a
+                  href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/temperature-transmitters"
                   ><span class="text-primary"
                     >Преобразователи температуры</span
                   ></a
                 >
+
                 <a
+                  href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/electric-contact-pressure-gauges"
                   ><span class="text-primary"
                     >Электроконтактные манометры</span
                   ></a
                 >
               </li>
             </ul>
-            <a><span class="text-primary">Адаптеры интерфейсов</span></a>
-            <a><span class="text-primary">Газоанализаторы</span></a>
             <a
+              href="https://www.nppsensor.ru/catalog/sens-measuring-system/sens-interface-adapters"
+              ><span class="text-primary">Адаптеры интерфейсов</span></a
+            >
+            <a href="https://www.nppsensor.ru/catalog/gas-analyzers"
+              ><span class="text-primary">Газоанализаторы</span></a
+            >
+            <a href="https://www.nppsensor.ru/catalog/security-and-fire-alarms"
               ><span class="text-primary">Охранно-пожарные оповещатели</span></a
             >
             <a
+              href="https://www.nppsensor.ru/catalog/housings-and-junction-boxes"
               ><span class="text-primary"
                 >Соединительные коробки и корпуса</span
               ></a
             >
             <a
+              href="https://www.nppsensor.ru/catalog/road-tankers-earthing-monitors"
               ><span class="text-primary"
                 >Устройства заземления автоцистерн</span
               ></a
@@ -441,17 +501,28 @@
             <ul>
               <li data-role="header">Клапаны электромагнитные</li>
               <li data-role="group">
+                <div data-role="header">
+                  <a href="https://www.nppsensor.ru/catalog/pipeline-valves"
+                    >Все клапаны СЕНС</a
+                  >
+                </div>
                 <ul>
                   <li data-role="header">Однопроходные</li>
                   <li data-role="group">
-                    <a>
+                    <div data-role="header">
+                      <a
+                        href="https://www.nppsensor.ru/catalog/pipeline-valves/solenoid-valves"
+                        >Все однопроходные клапаны</a
+                      >
+                    </div>
+                    <a href="https://www.nppsensor.ru/product/175">
                       <span class="text-primary">СЕНС-П DN80 PN5</span>
                       <span class="text-secondary"
                         >для приёмки светлых нефтепродуктов самотеком из
                         бензовозов в подземные резервуары на АЗС</span
                       >
                     </a>
-                    <a>
+                    <a href="https://www.nppsensor.ru/product/220">
                       <span class="text-primary"
                         >СЕНС-ПФ DN(15 .. 100)PN25</span
                       >
@@ -459,13 +530,13 @@
                         >для слабоагрессивных и пищевых сред</span
                       >
                     </a>
-                    <a>
+                    <a href="https://www.nppsensor.ru/product/338">
                       <span class="text-primary"
                         >СЕНС DN(15 .. 100)PN25-В(-НО)</span
                       >
                       <span class="text-secondary">для вязких сред</span>
                     </a>
-                    <a>
+                    <a href="https://www.nppsensor.ru/product/445">
                       <span class="text-primary"
                         >СЕНС DN(25 .. 100) PN25-М</span
                       >
@@ -473,18 +544,31 @@
                     </a>
                   </li>
                 </ul>
-                <a><span class="text-primary">Двухпроходные</span></a>
-                <a><span class="text-primary">Донные скоростные</span></a>
                 <a
+                  href="https://www.nppsensor.ru/catalog/pipeline-valves/two-way-solenoid-valves"
+                  ><span class="text-primary">Двухпроходные</span></a
+                >
+                <a
+                  href="https://www.nppsensor.ru/catalog/pipeline-valves/bottom-high-speed-valves"
+                  ><span class="text-primary">Донные скоростные</span></a
+                >
+                <a
+                  href="https://www.nppsensor.ru/catalog/pipeline-valves/sens-valves-control-units"
                   ><span class="text-primary"
                     >Блоки контроля и индикаторы состояния клапанов СЕНС</span
                   ></a
                 >
               </li>
             </ul>
-            <a><span class="text-primary">Программное обеспечение</span></a>
-            <a><span class="text-primary">Блоки питания, коммутации</span></a>
+            <a href="https://www.nppsensor.ru/catalog/software"
+              ><span class="text-primary">Программное обеспечение</span></a
+            >
             <a
+              href="https://www.nppsensor.ru/catalog/sens-measuring-system/sens-power-supply-and-switching-unit"
+              ><span class="text-primary">Блоки питания, коммутации</span></a
+            >
+            <a
+              href="https://www.nppsensor.ru/catalog/indication-and-control-devices"
               ><span class="text-primary"
                 >Приборы индикации, управления</span
               ></a
@@ -494,42 +578,73 @@
         <ul>
           <li data-role="header">Поддержка</li>
           <li data-role="group">
-            <a
+            <a href="https://www.nppsensor.ru/support/treatment"
               ><span class="text-primary">Обращение в сервисную службу</span></a
             >
-            <a><span class="text-primary">Проверить статус обращения</span></a>
-            <a><span class="text-primary">Регистрация АРМ СИ СЕНС</span></a>
-            <a><span class="text-primary">Метрологические услуги</span></a>
-            <a><span class="text-primary">Часто задаваемые вопросы</span></a>
+            <a href="https://www.nppsensor.ru/support/repair-check"
+              ><span class="text-primary">Проверить статус обращения</span></a
+            >
+            <a href="https://www.nppsensor.ru/support/register"
+              ><span class="text-primary">Регистрация АРМ СИ СЕНС</span></a
+            >
+            <a href="https://www.nppsensor.ru/services/metrology"
+              ><span class="text-primary">Метрологические услуги</span></a
+            >
+
+            <a href="https://www.nppsensor.ru/support/knowledge"
+              ><span class="text-primary">Часто задаваемые вопросы</span></a
+            >
           </li>
           <li data-role="group">
-            <div data-role="header">Файлы для скачивания</div>
-            <a><span class="text-primary">Свидетельства и сертификаты</span></a>
-            <a><span class="text-primary">Каталоги продукции</span></a>
-            <a><span class="text-primary">Опросные листы</span></a>
-            <a><span class="text-primary">Руководства по эксплуатации</span></a>
-            <a><span class="text-primary">Программное обеспечение</span></a>
-            <a><span class="text-primary">3D-модели</span></a>
+            <div data-role="header">
+              <a href="https://www.nppsensor.ru/support/downloads"
+                >Файлы для скачивания</a
+              >
+            </div>
+            <a href="https://www.nppsensor.ru/support/downloads/Certificates"
+              ><span class="text-primary">Свидетельства и сертификаты</span></a
+            >
+            <a href="https://www.nppsensor.ru/support/downloads/Catalogues"
+              ><span class="text-primary">Каталоги продукции</span></a
+            >
+            <a href="https://www.nppsensor.ru/support/downloads/Blanks"
+              ><span class="text-primary">Опросные листы</span></a
+            >
+            <a href="https://www.nppsensor.ru/support/downloads/UserManual"
+              ><span class="text-primary">Руководства по эксплуатации</span></a
+            >
+            <a href="https://www.nppsensor.ru/support/downloads/Soft"
+              ><span class="text-primary">Программное обеспечение</span></a
+            >
+            <a href="https://www.nppsensor.ru/support/downloads/3DModels"
+              ><span class="text-primary">3D-модели</span></a
+            >
           </li>
         </ul>
-        <a><span class="text-primary">Контакты</span></a>
-        <a><span class="text-primary">Прайс-лист</span></a>
-        <a><span class="text-primary">Помощь</span></a>
+        <a href="https://www.nppsensor.ru/contacts"
+          ><span class="text-primary">Контакты</span></a
+        >
+        <a href="https://www.nppsensor.ru/price"
+          ><span class="text-primary">Прайс-лист</span></a
+        >
+        <a href="https://www.nppsensor.ru/help/media-compatible"
+          ><span class="text-primary">Помощь</span></a
+        >
       </li>
       <li data-role="group" data-visibility="1">
-        <a>
+        <a href="tel:+78412652121">
           <span class="text-primary">+7 8412 65-21-21</span>
           <span class="text-secondary"
             >Отдел продаж - заказ продукции, выставление счетов</span
           >
         </a>
-        <a>
+        <a href="tel:+78412652155">
           <span class="text-primary">+7 8412 65-21-55</span>
           <span class="text-secondary"
             >Сервисная служба - заказ запчастей, консультации</span
           >
         </a>
-        <a>
+        <a href="tel:+78412652100">
           <span class="text-primary">+7 8412 65-21-00</span>
           <span class="text-secondary">Приёмная - обращения</span>
         </a>
