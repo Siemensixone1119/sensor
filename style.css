@@ -531,6 +531,8 @@ main {
   -webkit-hyphens: auto;
           hyphens: auto;
   text-align: center;
+  padding: 10px;
+  padding-left: 20px;
 }
 
 .mobile-menu__body {
@@ -713,7 +715,7 @@ main {
   border-radius: 30px;
   padding: 15px 20px;
   padding-left: 25px;
-  margin-top: 20px;
+  margin: 25px 0;
 }
 
 .contacts {
@@ -725,7 +727,7 @@ main {
   align-items: center;
   justify-content: space-between;
   transition: transform 0.3s ease;
-  transform: translateY(100%);
+  transform: translateY(150%);
   position: fixed;
   left: 0;
   background-color: #fefefe;
