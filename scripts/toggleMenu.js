@@ -38,6 +38,19 @@ export function mountMobileMenu() {
     rootLangLi: source.querySelector(':scope > li[data-role="language-link"]'),
   };
 
+  // NEW: переменная высоты привязывается к КАЖДОЙ панели
+  function setPanelHeaderHeight(panel) {
+    if (!panel) return;
+    const header = panel.querySelector(`.${CLS.header}`);
+    const h = header?.offsetHeight || 0;
+    panel.style.setProperty("--header-height", `${h}px`);
+  }
+  function updateCurrentPanelHeaderHeight() {
+    const current = state.stack[state.stack.length - 1];
+    setPanelHeaderHeight(current);
+  }
+  const onResize = () => updateCurrentPanelHeaderHeight();
+
   function iconUse(symbolId, rotateDeg = 0, size, isClose = false) {
     const wrap = document.createElement("span");
     wrap.className = CLS.chevron;
@@ -47,11 +60,7 @@ export function mountMobileMenu() {
     svg.setAttribute("viewBox", "0 0 24 24");
     svg.setAttribute("aria-hidden", "true");
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      `${svgSprite}#${symbolId}`
-    );
+    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", `${svgSprite}#${symbolId}`);
     use.setAttribute("href", `${svgSprite}#${symbolId}`);
     if (isClose) svg.setAttribute("data-close", "true");
     svg.appendChild(use);
@@ -63,9 +72,7 @@ export function mountMobileMenu() {
       const rot = { right: 270, down: 0, left: 90, up: 180 }[dir] ?? 0;
       return iconUse("icon-arrow", rot, size);
     },
-    close(size) {
-      return iconUse("icon-menu_close", 0, size, true);
-    },
+    close(size) { return iconUse("icon-menu_close", 0, size, true); },
   };
 
   openBtn?.addEventListener("click", open);
@@ -77,6 +84,10 @@ export function mountMobileMenu() {
     document.body.appendChild(state.root);
     pushPanelFromUL(state.sourceUl, "Меню");
     state.root.classList.add(CLS.open);
+    // NEW: следим за ресайзом пока меню открыто
+    window.addEventListener("resize", onResize, { passive: true });
+    // NEW: сразу выставим для текущей панели
+    updateCurrentPanelHeaderHeight();
   }
 
   function close() {
@@ -92,6 +103,8 @@ export function mountMobileMenu() {
       state.root = state.sheet = state.stackWrap = null;
       document.documentElement.classList.remove("mm-lock");
       document.body.classList.remove("mm-lock", "no-scroll");
+      // NEW: снимаем ресайз
+      window.removeEventListener("resize", onResize);
     };
     const onEnd = (e) => {
       if (e.target !== sheet) return;
@@ -160,27 +173,21 @@ export function mountMobileMenu() {
     body.appendChild(rootList);
 
     if (state.stack.length === 0) {
-      const topLine = buildTopline({
-        includeLogin: false,
-        includeLanguage: false,
-      });
+      const topLine = buildTopline({ includeLogin: false, includeLanguage: false });
       if (topLine) body.prepend(topLine);
     }
 
     const liChildren = ul.querySelectorAll(":scope > li");
     liChildren.forEach((li) => {
       const role = li.getAttribute("data-role");
-      if (role === "profile" || role === "language-link" || role === "header")
-        return;
+      if (role === "profile" || role === "language-link" || role === "header") return;
       const frag = renderGroup(li);
       if (frag) rootList.appendChild(frag);
     });
 
     if (state.stack.length === 0) {
       const lg = state.rootLangLi?.querySelector("a.language-link");
-      if (lg) {
-        rootList.appendChild(createLanguageItem(lg));
-      }
+      if (lg) rootList.appendChild(createLanguageItem(lg));
     }
 
     panel.appendChild(header);
@@ -189,8 +196,10 @@ export function mountMobileMenu() {
     state.stackWrap.appendChild(panel);
     state.stack.push(panel);
 
+    // NEW: когда панель попала в DOM, выставляем её собственную высоту хэдера
     requestAnimationFrame(() => {
       panel.classList.add(CLS.panelActive);
+      setPanelHeaderHeight(panel);                    // <—
       afterPanelAnimation(panel, () => cleanupAllExpansionsExcept(panel));
     });
   }
@@ -204,17 +213,17 @@ export function mountMobileMenu() {
     leaving.classList.remove(CLS.panelEnter, CLS.panelActive);
     leaving.classList.add(CLS.panelLeave);
     requestAnimationFrame(() => leaving.classList.add(CLS.panelActive));
-    setTimeout(() => leaving.remove(), 300);
+    setTimeout(() => {
+      leaving.remove();
+      // NEW: активной становится предыдущая — обновляем её var
+      updateCurrentPanelHeaderHeight();               // <—
+    }, 300);
   }
 
   function buildTopline(opts = {}) {
     const { includeLogin = true, includeLanguage = true } = opts;
-    const pf = includeLogin
-      ? state.rootProfileLi?.querySelector("a.login-link")
-      : null;
-    const lg = includeLanguage
-      ? state.rootLangLi?.querySelector("a.language-link")
-      : null;
+    const pf = includeLogin ? state.rootProfileLi?.querySelector("a.login-link") : null;
+    const lg = includeLanguage ? state.rootLangLi?.querySelector("a.language-link") : null;
     if (!pf && !lg) return null;
 
     const topLine = document.createElement("div");
@@ -345,8 +354,7 @@ export function mountMobileMenu() {
     let isAnimating = false;
     let wrap = null;
 
-    const isOpen = () =>
-      !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
+    const isOpen = () => !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
 
     const openAnim = () => {
       if (isAnimating) return;
@@ -470,9 +478,7 @@ export function mountMobileMenu() {
     panel.addEventListener("transitionend", onEnd);
     setTimeout(() => {
       if (done) return;
-      try {
-        panel.removeEventListener("transitionend", onEnd);
-      } catch {}
+      try { panel.removeEventListener("transitionend", onEnd); } catch {}
       cb();
     }, 500);
   }
