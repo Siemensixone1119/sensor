@@ -26,6 +26,8 @@ export function mountMobileMenu() {
     panelLeave: `${mm}__panel--leave`,
     panelActive: `${mm}__panel--active`,
     listCollapsible: `${mm}__list--collapsible`,
+    langBtn: `${mm}__lang-btn`,
+    itemNoChevron: `${mm}__item--no-chevron`,
   };
 
   const state = {
@@ -38,7 +40,6 @@ export function mountMobileMenu() {
     rootLangLi: source.querySelector(':scope > li[data-role="language-link"]'),
   };
 
-  // NEW: переменная высоты привязывается к КАЖДОЙ панели
   function setPanelHeaderHeight(panel) {
     if (!panel) return;
     const header = panel.querySelector(`.${CLS.header}`);
@@ -50,6 +51,18 @@ export function mountMobileMenu() {
     setPanelHeaderHeight(current);
   }
   const onResize = () => updateCurrentPanelHeaderHeight();
+
+  function applyRootFontSizing(scopeEl, isRoot) {
+    if (!isRoot || !scopeEl) return;
+    if (scopeEl.classList && scopeEl.classList.contains(CLS.itemLabel)) {
+      scopeEl.style.fontSize = "22px";
+      scopeEl.style.lineHeight = "1.2";
+    }
+    scopeEl.querySelectorAll?.(".text-primary").forEach((el) => {
+      el.style.fontSize = "22px";
+      el.style.lineHeight = "1.2";
+    });
+  }
 
   function iconUse(symbolId, rotateDeg = 0, size, isClose = false) {
     const wrap = document.createElement("span");
@@ -84,9 +97,7 @@ export function mountMobileMenu() {
     document.body.appendChild(state.root);
     pushPanelFromUL(state.sourceUl, "Меню");
     state.root.classList.add(CLS.open);
-    // NEW: следим за ресайзом пока меню открыто
     window.addEventListener("resize", onResize, { passive: true });
-    // NEW: сразу выставим для текущей панели
     updateCurrentPanelHeaderHeight();
   }
 
@@ -103,7 +114,6 @@ export function mountMobileMenu() {
       state.root = state.sheet = state.stackWrap = null;
       document.documentElement.classList.remove("mm-lock");
       document.body.classList.remove("mm-lock", "no-scroll");
-      // NEW: снимаем ресайз
       window.removeEventListener("resize", onResize);
     };
     const onEnd = (e) => {
@@ -135,7 +145,7 @@ export function mountMobileMenu() {
 
     const backBtn = document.createElement("button");
     backBtn.className = CLS.headerBtn;
-    backBtn.appendChild(icons.chevron("left"));
+    backBtn.appendChild(icons.chevron("left", "24px"));
     backBtn.addEventListener("click", goBack);
 
     const titleEl = document.createElement("div");
@@ -172,22 +182,22 @@ export function mountMobileMenu() {
     rootList.className = CLS.list;
     body.appendChild(rootList);
 
-    if (state.stack.length === 0) {
-      const topLine = buildTopline({ includeLogin: false, includeLanguage: false });
-      if (topLine) body.prepend(topLine);
-    }
+    const isRoot = state.stack.length === 0;
+
+    const topLine = buildTopline({ includeLogin: false });
+    if (isRoot && topLine) body.prepend(topLine);
 
     const liChildren = ul.querySelectorAll(":scope > li");
     liChildren.forEach((li) => {
       const role = li.getAttribute("data-role");
       if (role === "profile" || role === "language-link" || role === "header") return;
-      const frag = renderGroup(li);
+      const frag = renderGroup(li, isRoot);
       if (frag) rootList.appendChild(frag);
     });
 
-    if (state.stack.length === 0) {
+    if (isRoot) {
       const lg = state.rootLangLi?.querySelector("a.language-link");
-      if (lg) rootList.appendChild(createLanguageItem(lg));
+      if (lg) rootList.appendChild(createLanguageItem(lg, isRoot));
     }
 
     panel.appendChild(header);
@@ -196,10 +206,9 @@ export function mountMobileMenu() {
     state.stackWrap.appendChild(panel);
     state.stack.push(panel);
 
-    // NEW: когда панель попала в DOM, выставляем её собственную высоту хэдера
     requestAnimationFrame(() => {
       panel.classList.add(CLS.panelActive);
-      setPanelHeaderHeight(panel);                    // <—
+      setPanelHeaderHeight(panel);
       afterPanelAnimation(panel, () => cleanupAllExpansionsExcept(panel));
     });
   }
@@ -215,49 +224,41 @@ export function mountMobileMenu() {
     requestAnimationFrame(() => leaving.classList.add(CLS.panelActive));
     setTimeout(() => {
       leaving.remove();
-      // NEW: активной становится предыдущая — обновляем её var
-      updateCurrentPanelHeaderHeight();               // <—
+      updateCurrentPanelHeaderHeight();
     }, 300);
   }
 
   function buildTopline(opts = {}) {
-    const { includeLogin = true, includeLanguage = true } = opts;
+    const { includeLogin = true } = opts;
     const pf = includeLogin ? state.rootProfileLi?.querySelector("a.login-link") : null;
-    const lg = includeLanguage ? state.rootLangLi?.querySelector("a.language-link") : null;
-    if (!pf && !lg) return null;
-
+    if (!pf) return null;
     const topLine = document.createElement("div");
     topLine.className = CLS.topline;
 
-    if (pf) {
-      const a = document.createElement("a");
-      a.href = pf.getAttribute("href") || "#";
-      a.textContent = (pf.textContent || "").trim();
-      topLine.appendChild(a);
-    }
-    if (lg) {
-      const a = document.createElement("a");
-      a.href = lg.getAttribute("href") || "#";
-      a.textContent = (lg.textContent || "").trim();
-      topLine.appendChild(a);
-    }
+    const a = document.createElement("a");
+    a.href = pf.getAttribute("href") || "#";
+    a.textContent = (pf.textContent || "").trim();
+    topLine.appendChild(a);
+
     return topLine;
   }
 
-  function renderGroup(li) {
+  function renderGroup(li, isRoot) {
     const headerEl = li.querySelector(':scope > [data-role="header"]');
-    const links = li.querySelectorAll(":scope > a");
-    const subUls = li.querySelectorAll(":scope > ul");
+    const links = Array.from(li.querySelectorAll(':scope > a'));
+    const children = Array.from(li.children).filter(
+      (el) => el.getAttribute?.('data-role') !== 'header'
+    );
 
-    const visAttr = li.getAttribute("data-visibility");
+    const visAttr = li.getAttribute('data-visibility');
     const hasVis = visAttr !== null;
     let visibleCount = hasVis ? parseInt(visAttr, 10) : links.length;
     if (Number.isNaN(visibleCount)) visibleCount = links.length;
 
-    const groupLi = document.createElement("li");
+    const groupLi = document.createElement('li');
     groupLi.className = CLS.group;
 
-    const innerUl = document.createElement("ul");
+    const innerUl = document.createElement('ul');
     innerUl.className = CLS.list;
     groupLi.appendChild(innerUl);
 
@@ -265,37 +266,71 @@ export function mountMobileMenu() {
       innerUl.classList.add(CLS.listHidden);
     }
 
-    const initialToShow = Math.min(links.length, visibleCount);
-    for (let i = 0; i < initialToShow; i++) {
-      const hasHidden = links.length > visibleCount;
-
-      if (hasHidden && i === initialToShow - 1) {
-        const makeHiddenNodes = () => {
-          const nodes = [];
-          for (let j = visibleCount; j < links.length; j++) {
-            nodes.push(createLinkLi(links[j]));
-          }
-          return nodes;
-        };
-        const expanderLi = createFullRowExpander(links[i], makeHiddenNodes);
-        innerUl.appendChild(expanderLi);
-      } else {
-        innerUl.appendChild(createLinkLi(links[i]));
-      }
+    if (headerEl) {
+      innerUl.appendChild(createGroupHeaderNode(headerEl));
     }
 
-    for (const subUl of subUls) {
-      innerUl.appendChild(createSubmenuLi(subUl));
+    const showLimit = Math.max(0, visibleCount);
+    const hasHidden = links.length > showLimit;
+
+    const makeHiddenNodes = () => {
+      const nodes = [];
+      for (let j = showLimit; j < links.length; j++) {
+        nodes.push(createLinkLi(links[j], isRoot));
+      }
+      return nodes;
+    };
+
+    let linkIndex = 0;
+    for (const child of children) {
+      if (child.tagName === 'A') {
+        if (showLimit === 0) { linkIndex++; continue; }
+        if (hasHidden && linkIndex === showLimit - 1) {
+          innerUl.appendChild(createFullRowExpander(links[linkIndex], makeHiddenNodes, isRoot));
+        } else if (!hasHidden || linkIndex < showLimit) {
+          innerUl.appendChild(createLinkLi(links[linkIndex], isRoot));
+        }
+        linkIndex++;
+      } else if (child.tagName === 'UL') {
+        innerUl.appendChild(createSubmenuLi(child, isRoot));
+      }
     }
 
     return groupLi;
   }
 
-  function createLinkLi(anchorEl) {
+  function createGroupHeaderNode(headerEl) {
+    const wrap = document.createElement('li');
+    wrap.className = CLS.groupHeader;
+
+    const link = headerEl.querySelector('a');
+    const rowEl = link ? document.createElement('a') : document.createElement('div');
+    rowEl.className = CLS.item;
+    if (link) {
+      rowEl.href = link.getAttribute('href') || '#';
+    } else {
+      rowEl.setAttribute('role', 'heading');
+      rowEl.setAttribute('aria-level', '2');
+    }
+
+    const label = document.createElement('div');
+    label.className = CLS.itemLabel;
+    label.textContent = (link ? link.textContent : headerEl.textContent || '').trim();
+
+    const chev = icons.chevron('right', '18px');
+
+    rowEl.appendChild(label);
+    rowEl.appendChild(chev);
+    wrap.appendChild(rowEl);
+    return wrap;
+  }
+
+  function createLinkLi(anchorEl, isRoot) {
     const href = (anchorEl.getAttribute("href") || "").trim();
     const li = document.createElement("li");
     const rowLink = document.createElement("a");
-    rowLink.className = CLS.item;
+    rowLink.className = `${CLS.item} ${CLS.itemNoChevron}`;
+    rowLink.style.paddingRight = "18px";
     if (href) rowLink.setAttribute("href", href);
     else {
       rowLink.setAttribute("role", "link");
@@ -304,24 +339,26 @@ export function mountMobileMenu() {
     const label = document.createElement("div");
     label.className = CLS.itemLabel;
     label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
+    applyRootFontSizing(label, isRoot);
     rowLink.appendChild(label);
     li.appendChild(rowLink);
     return li;
   }
 
-  function createLanguageItem(lgAnchorEl) {
+  function createLanguageItem(lgAnchorEl, isRoot) {
     const li = document.createElement("li");
     li.className = CLS.group;
     const innerUl = document.createElement("ul");
     innerUl.className = CLS.list;
     const rowLi = document.createElement("li");
     const a = document.createElement("a");
-    a.className = CLS.item;
+    a.className = `${CLS.item} ${CLS.langBtn}`;
     a.href = lgAnchorEl.getAttribute("href") || "#";
     const label = document.createElement("div");
     label.className = CLS.itemLabel;
     label.textContent = (lgAnchorEl.textContent || "").trim();
-    const chev = icons.chevron("right");
+    applyRootFontSizing(label, isRoot);
+    const chev = icons.chevron("right", "18px");
     a.appendChild(label);
     a.appendChild(chev);
     rowLi.appendChild(a);
@@ -330,7 +367,7 @@ export function mountMobileMenu() {
     return li;
   }
 
-  function createFullRowExpander(anchorEl, makeHiddenNodes) {
+  function createFullRowExpander(anchorEl, makeHiddenNodes, isRoot) {
     const href = (anchorEl.getAttribute("href") || "").trim();
     const li = document.createElement("li");
     const rowLink = document.createElement("a");
@@ -343,8 +380,9 @@ export function mountMobileMenu() {
     const label = document.createElement("div");
     label.className = CLS.itemLabel;
     label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
+    applyRootFontSizing(label, isRoot);
     rowLink.appendChild(label);
-    const chevron = icons.chevron("down");
+    const chevron = icons.chevron("down", "18px");
     chevron.setAttribute("role", "button");
     chevron.setAttribute("tabindex", "0");
     chevron.style.padding = "8px";
@@ -353,7 +391,6 @@ export function mountMobileMenu() {
 
     let isAnimating = false;
     let wrap = null;
-
     const isOpen = () => !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
 
     const openAnim = () => {
@@ -381,7 +418,7 @@ export function mountMobileMenu() {
         el.removeEventListener("transitionend", onEndOpen);
       };
       el.addEventListener("transitionend", onEndOpen);
-      chevron.style.setProperty("--mm-rot", "180deg");
+      chevron.style.setProperty(" --mm-rot", "180deg");
     };
 
     const closeAnim = () => {
@@ -419,7 +456,7 @@ export function mountMobileMenu() {
     return li;
   }
 
-  function createSubmenuLi(ul) {
+  function createSubmenuLi(ul, isRoot) {
     const li = document.createElement("li");
     const row = document.createElement("button");
     row.className = CLS.item;
@@ -427,7 +464,8 @@ export function mountMobileMenu() {
     label.className = CLS.itemLabel;
     const header = ul.querySelector(':scope > [data-role="header"]');
     label.textContent = titleTrim(header) || "Раздел";
-    const chev = icons.chevron("right");
+    applyRootFontSizing(label, isRoot);
+    const chev = icons.chevron("right", "18px");
     row.appendChild(label);
     row.appendChild(chev);
     row.addEventListener("click", () => {

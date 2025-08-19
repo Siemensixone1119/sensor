@@ -32,8 +32,15 @@ body {
   height: 100%;
 }
 
+html {
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    font-family: $main-font;
+}
+
 body {
-  font-family: $main-font;
   color: $text-color;
   box-sizing: content-box;
   max-width: 100%;
@@ -53,10 +60,12 @@ h6 {
 }
 
 p,
-a {
+a,
+span,
+div {
   margin: 0;
   padding: 0;
-  font-family: inherit;
+  font-family: $main-font;
   color: $text-color;
   text-decoration: none;
 }
@@ -65,7 +74,7 @@ ul {
   padding: 0;
   margin: 0;
   list-style: none;
-  font-family: inherit;
+  font-family: $main-font;
   color: $text-color;
 }
 
@@ -109,7 +118,7 @@ input {
 }
 
 .full-container {
-width: 100%;
+  width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
 }

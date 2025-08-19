@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: pfdintextcomppro-light;
   src: url("./assets/font/pfdintextcomppro-light.woff");
@@ -28,8 +29,15 @@ body {
   height: 100%;
 }
 
-body {
+html {
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+body {
   color: #212121;
   box-sizing: content-box;
   max-width: 100%;
@@ -48,10 +56,12 @@ h6 {
 }
 
 p,
-a {
+a,
+span,
+div {
   margin: 0;
   padding: 0;
-  font-family: inherit;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   color: #212121;
   text-decoration: none;
 }
@@ -60,7 +70,7 @@ ul {
   padding: 0;
   margin: 0;
   list-style: none;
-  font-family: inherit;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   color: #212121;
 }
 
@@ -495,14 +505,13 @@ main {
 }
 
 .mobile-menu__header-btn {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border: 0;
-  background: transparent;
-  padding: 8px 0;
-  cursor: pointer;
-  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  line-height: 0;
+  padding: 30px 0;
 }
 
 .mobile-menu__header-btn:last-child {
@@ -512,27 +521,35 @@ main {
 .mobile-menu__header-btn:first-child {
   padding-left: 15px;
   margin-right: -15px;
+  width: auto;
 }
 .mobile-menu__header-btn:first-child svg {
   min-width: 26px;
   min-height: 26px;
 }
 
+.mobile-menu__header-login {
+  font-size: 18px;
+}
+
 .mobile-menu__header-title {
+  /* твои стили */
   font-weight: 600;
   font-size: 22px;
   flex: 1;
   min-width: 0;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: clip;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  -webkit-hyphens: auto;
-          hyphens: auto;
   text-align: center;
-  padding: 10px;
-  padding-left: 20px;
+  padding: 10px 20px 10px 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-height: 1.25;
 }
 
 .mobile-menu__body {
@@ -606,15 +623,13 @@ main {
 .mobile-menu__item-label {
   display: block;
   line-height: 1.2;
-  font-size: 22px;
+  font-size: 18px;
   min-width: 0;
   white-space: normal;
   overflow: visible;
   text-overflow: clip;
   overflow-wrap: anywhere;
   word-break: break-word;
-  -webkit-hyphens: auto;
-          hyphens: auto;
 }
 
 .mobile-menu__chevron {
@@ -687,32 +702,28 @@ main {
 
 .text-primary {
   display: block;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .text-secondary {
   display: block;
   color: #777;
-  font-size: 15px;
+  font-size: 14px;
   margin-top: 3px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.3;
-}
-
-[data-close] {
-  margin-top: 3px;
 }
 
 [data-role=language-link] a {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
 }
 
-[href="https://www.nppsensor.ru/en"] {
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+.mobile-menu__lang-btn {
+  background-color: #eee;
   border-radius: 30px;
   padding: 15px 20px;
   padding-left: 25px;
@@ -725,6 +736,11 @@ main {
 
 .mobile-menu__panel {
   margin-top: var(--header-height, 0px);
+}
+
+.mobile-menu__group-header .mobile-menu__item-label {
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .contacts {
