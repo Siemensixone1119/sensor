@@ -73,7 +73,11 @@ export function mountMobileMenu() {
     svg.setAttribute("viewBox", "0 0 24 24");
     svg.setAttribute("aria-hidden", "true");
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", `${svgSprite}#${symbolId}`);
+    use.setAttributeNS(
+      "http://www.w3.org/1999/xlink",
+      "xlink:href",
+      `${svgSprite}#${symbolId}`
+    );
     use.setAttribute("href", `${svgSprite}#${symbolId}`);
     if (isClose) svg.setAttribute("data-close", "true");
     svg.appendChild(use);
@@ -85,7 +89,9 @@ export function mountMobileMenu() {
       const rot = { right: 270, down: 0, left: 90, up: 180 }[dir] ?? 0;
       return iconUse("icon-arrow", rot, size);
     },
-    close(size) { return iconUse("icon-menu_close", 0, size, true); },
+    close(size) {
+      return iconUse("icon-menu_close", 0, size, true);
+    },
   };
 
   openBtn?.addEventListener("click", open);
@@ -137,7 +143,7 @@ export function mountMobileMenu() {
 
   function pushPanelFromUL(ul, fallbackTitle) {
     const panel = document.createElement("div");
-    panel.className = `${CLS.panel} ${CLS.panelEnter}`;
+    panel.className = CLS.panel; // только базовый класс!
     panel.style.setProperty("--mm-z", String(state.stack.length + 1));
 
     const header = document.createElement("div");
@@ -190,7 +196,8 @@ export function mountMobileMenu() {
     const liChildren = ul.querySelectorAll(":scope > li");
     liChildren.forEach((li) => {
       const role = li.getAttribute("data-role");
-      if (role === "profile" || role === "language-link" || role === "header") return;
+      if (role === "profile" || role === "language-link" || role === "header")
+        return;
       const frag = renderGroup(li, isRoot);
       if (frag) rootList.appendChild(frag);
     });
@@ -206,10 +213,18 @@ export function mountMobileMenu() {
     state.stackWrap.appendChild(panel);
     state.stack.push(panel);
 
+    // Кадр 1 — добавляем enter
     requestAnimationFrame(() => {
-      panel.classList.add(CLS.panelActive);
-      setPanelHeaderHeight(panel);
-      afterPanelAnimation(panel, () => cleanupAllExpansionsExcept(panel));
+      panel.classList.add(CLS.panelEnter);
+
+      // Кадр 2 — фиксируем layout и добавляем active
+      requestAnimationFrame(() => {
+        void panel.offsetWidth; // форсим reflow для Firefox
+        panel.classList.add(CLS.panelActive);
+
+        setPanelHeaderHeight(panel);
+        afterPanelAnimation(panel, () => cleanupAllExpansionsExcept(panel));
+      });
     });
   }
 
@@ -230,7 +245,9 @@ export function mountMobileMenu() {
 
   function buildTopline(opts = {}) {
     const { includeLogin = true } = opts;
-    const pf = includeLogin ? state.rootProfileLi?.querySelector("a.login-link") : null;
+    const pf = includeLogin
+      ? state.rootProfileLi?.querySelector("a.login-link")
+      : null;
     if (!pf) return null;
     const topLine = document.createElement("div");
     topLine.className = CLS.topline;
@@ -245,20 +262,20 @@ export function mountMobileMenu() {
 
   function renderGroup(li, isRoot) {
     const headerEl = li.querySelector(':scope > [data-role="header"]');
-    const links = Array.from(li.querySelectorAll(':scope > a'));
+    const links = Array.from(li.querySelectorAll(":scope > a"));
     const children = Array.from(li.children).filter(
-      (el) => el.getAttribute?.('data-role') !== 'header'
+      (el) => el.getAttribute?.("data-role") !== "header"
     );
 
-    const visAttr = li.getAttribute('data-visibility');
+    const visAttr = li.getAttribute("data-visibility");
     const hasVis = visAttr !== null;
     let visibleCount = hasVis ? parseInt(visAttr, 10) : links.length;
     if (Number.isNaN(visibleCount)) visibleCount = links.length;
 
-    const groupLi = document.createElement('li');
+    const groupLi = document.createElement("li");
     groupLi.className = CLS.group;
 
-    const innerUl = document.createElement('ul');
+    const innerUl = document.createElement("ul");
     innerUl.className = CLS.list;
     groupLi.appendChild(innerUl);
 
@@ -283,15 +300,20 @@ export function mountMobileMenu() {
 
     let linkIndex = 0;
     for (const child of children) {
-      if (child.tagName === 'A') {
-        if (showLimit === 0) { linkIndex++; continue; }
+      if (child.tagName === "A") {
+        if (showLimit === 0) {
+          linkIndex++;
+          continue;
+        }
         if (hasHidden && linkIndex === showLimit - 1) {
-          innerUl.appendChild(createFullRowExpander(links[linkIndex], makeHiddenNodes, isRoot));
+          innerUl.appendChild(
+            createFullRowExpander(links[linkIndex], makeHiddenNodes, isRoot)
+          );
         } else if (!hasHidden || linkIndex < showLimit) {
           innerUl.appendChild(createLinkLi(links[linkIndex], isRoot));
         }
         linkIndex++;
-      } else if (child.tagName === 'UL') {
+      } else if (child.tagName === "UL") {
         innerUl.appendChild(createSubmenuLi(child, isRoot));
       }
     }
@@ -300,24 +322,28 @@ export function mountMobileMenu() {
   }
 
   function createGroupHeaderNode(headerEl) {
-    const wrap = document.createElement('li');
+    const wrap = document.createElement("li");
     wrap.className = CLS.groupHeader;
 
-    const link = headerEl.querySelector('a');
-    const rowEl = link ? document.createElement('a') : document.createElement('div');
+    const link = headerEl.querySelector("a");
+    const rowEl = link
+      ? document.createElement("a")
+      : document.createElement("div");
     rowEl.className = CLS.item;
     if (link) {
-      rowEl.href = link.getAttribute('href') || '#';
+      rowEl.href = link.getAttribute("href") || "#";
     } else {
-      rowEl.setAttribute('role', 'heading');
-      rowEl.setAttribute('aria-level', '2');
+      rowEl.setAttribute("role", "heading");
+      rowEl.setAttribute("aria-level", "2");
     }
 
-    const label = document.createElement('div');
+    const label = document.createElement("div");
     label.className = CLS.itemLabel;
-    label.textContent = (link ? link.textContent : headerEl.textContent || '').trim();
+    label.textContent = (
+      link ? link.textContent : headerEl.textContent || ""
+    ).trim();
 
-    const chev = icons.chevron('right', '18px');
+    const chev = icons.chevron("right", "18px");
 
     rowEl.appendChild(label);
     rowEl.appendChild(chev);
@@ -391,7 +417,8 @@ export function mountMobileMenu() {
 
     let isAnimating = false;
     let wrap = null;
-    const isOpen = () => !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
+    const isOpen = () =>
+      !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
 
     const openAnim = () => {
       if (isAnimating) return;
@@ -418,7 +445,7 @@ export function mountMobileMenu() {
         el.removeEventListener("transitionend", onEndOpen);
       };
       el.addEventListener("transitionend", onEndOpen);
-      chevron.style.setProperty(" --mm-rot", "180deg");
+      chevron.style.setProperty("--mm-rot", "180deg");
     };
 
     const closeAnim = () => {
@@ -479,9 +506,15 @@ export function mountMobileMenu() {
   function slideForward() {
     const count = state.stack.length;
     if (count < 2) return;
+
     const incoming = state.stack[count - 1];
     incoming.classList.add(CLS.panelEnter);
-    requestAnimationFrame(() => incoming.classList.add(CLS.panelActive));
+
+    requestAnimationFrame(() => {
+      // принудительно читаем layout, чтобы Firefox зафиксировал начальное состояние
+      void incoming.offsetWidth;
+      incoming.classList.add(CLS.panelActive);
+    });
   }
 
   function titleTrim(el) {
@@ -516,7 +549,9 @@ export function mountMobileMenu() {
     panel.addEventListener("transitionend", onEnd);
     setTimeout(() => {
       if (done) return;
-      try { panel.removeEventListener("transitionend", onEnd); } catch {}
+      try {
+        panel.removeEventListener("transitionend", onEnd);
+      } catch {}
       cb();
     }, 500);
   }
