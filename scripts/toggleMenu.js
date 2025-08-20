@@ -146,7 +146,7 @@ export function mountMobileMenu() {
 
   function pushPanelFromUL(ul, fallbackTitle) {
     const panel = document.createElement("div");
-    panel.className = CLS.panel; // только базовый класс!
+    panel.className = CLS.panel;
     panel.style.setProperty("--mm-z", String(state.stack.length + 1));
 
     const header = document.createElement("div");
@@ -218,11 +218,9 @@ export function mountMobileMenu() {
 
     requestAnimationFrame(() => {
       panel.classList.add(CLS.panelEnter);
-
       requestAnimationFrame(() => {
         void panel.offsetWidth;
         panel.classList.add(CLS.panelActive);
-
         setPanelHeaderHeight(panel);
         afterPanelAnimation(panel, () => cleanupAllExpansionsExcept(panel));
       });
@@ -327,25 +325,24 @@ export function mountMobileMenu() {
     wrap.className = CLS.groupHeader;
 
     const link = headerEl.querySelector("a");
-    const rowEl = link
-      ? document.createElement("a")
-      : document.createElement("div");
-    rowEl.className = CLS.item;
     if (link) {
-      rowEl.href = link.getAttribute("href") || "#";
-    } else {
-      rowEl.setAttribute("role", "heading");
-      rowEl.setAttribute("aria-level", "2");
+      const { a: rowEl } = adoptAnchor(link);
+      const chev = icons.groupChevron("18px");
+      rowEl.appendChild(chev);
+      wrap.appendChild(rowEl);
+      return wrap;
     }
+
+    const rowEl = document.createElement("div");
+    rowEl.className = CLS.item;
+    rowEl.setAttribute("role", "heading");
+    rowEl.setAttribute("aria-level", "2");
 
     const label = document.createElement("div");
     label.className = CLS.itemLabel;
-    label.textContent = (
-      link ? link.textContent : headerEl.textContent || ""
-    ).trim();
+    label.textContent = (headerEl.textContent || "").trim();
 
-    const chev = icons.groupChevron("18px");
-
+    const chev = icons.chevron("right", "18px");
     rowEl.appendChild(label);
     rowEl.appendChild(chev);
     wrap.appendChild(rowEl);
@@ -353,22 +350,12 @@ export function mountMobileMenu() {
   }
 
   function createLinkLi(anchorEl, isRoot) {
-    const href = (anchorEl.getAttribute("href") || "").trim();
     const li = document.createElement("li");
-    const rowLink = document.createElement("a");
-    rowLink.className = `${CLS.item} ${CLS.itemNoChevron}`;
-    rowLink.style.paddingRight = "18px";
-    if (href) rowLink.setAttribute("href", href);
-    else {
-      rowLink.setAttribute("role", "link");
-      rowLink.setAttribute("tabindex", "0");
-    }
-    const label = document.createElement("div");
-    label.className = CLS.itemLabel;
-    label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
+    const { a, label } = adoptAnchor(anchorEl);
+    a.classList.add(CLS.itemNoChevron);
+    a.style.paddingRight = "18px";
     applyRootFontSizing(label, isRoot);
-    rowLink.appendChild(label);
-    li.appendChild(rowLink);
+    li.appendChild(a);
     return li;
   }
 
@@ -395,20 +382,10 @@ export function mountMobileMenu() {
   }
 
   function createFullRowExpander(anchorEl, makeHiddenNodes, isRoot) {
-    const href = (anchorEl.getAttribute("href") || "").trim();
     const li = document.createElement("li");
-    const rowLink = document.createElement("a");
-    rowLink.className = CLS.item;
-    if (href) rowLink.href = href;
-    else {
-      rowLink.setAttribute("role", "link");
-      rowLink.setAttribute("tabindex", "0");
-    }
-    const label = document.createElement("div");
-    label.className = CLS.itemLabel;
-    label.innerHTML = anchorEl.innerHTML || (anchorEl.textContent || "").trim();
+    const { a: rowLink, label } = adoptAnchor(anchorEl);
     applyRootFontSizing(label, isRoot);
-    rowLink.appendChild(label);
+
     const chevron = icons.chevron("down", "18px");
     chevron.setAttribute("role", "button");
     chevron.setAttribute("tabindex", "0");
@@ -512,7 +489,6 @@ export function mountMobileMenu() {
     incoming.classList.add(CLS.panelEnter);
 
     requestAnimationFrame(() => {
-      // принудительно читаем layout, чтобы Firefox зафиксировал начальное состояние
       void incoming.offsetWidth;
       incoming.classList.add(CLS.panelActive);
     });
@@ -555,5 +531,18 @@ export function mountMobileMenu() {
       } catch {}
       cb();
     }, 500);
+  }
+
+  function adoptAnchor(anchorEl) {
+    const a = anchorEl.cloneNode(true);
+    a.classList.add(CLS.item);
+    let label = a.querySelector(`.${CLS.itemLabel}`);
+    if (!label) {
+      label = document.createElement("div");
+      label.className = CLS.itemLabel;
+      while (a.firstChild) label.appendChild(a.firstChild);
+      a.appendChild(label);
+    }
+    return { a, label };
   }
 }
