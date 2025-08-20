@@ -724,6 +724,9 @@ main {
   padding-left: 25px;
   margin: 25px 0;
 }
+.mobile-menu__lang-btn div {
+  font-size: 18px !important;
+}
 
 .mobile-menu__header {
   top: calc(-1 * var(--header-height, 0px));

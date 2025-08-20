@@ -38,6 +38,7 @@ export function mountMobileMenu() {
     sourceUl: source,
     rootProfileLi: source.querySelector(':scope > li[data-role="profile"]'),
     rootLangLi: source.querySelector(':scope > li[data-role="language-link"]'),
+    adoptMap: new Map(),
   };
 
   function setPanelHeaderHeight(panel) {
@@ -73,11 +74,7 @@ export function mountMobileMenu() {
     svg.setAttribute("viewBox", "0 0 24 24");
     svg.setAttribute("aria-hidden", "true");
     const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    use.setAttributeNS(
-      "http://www.w3.org/1999/xlink",
-      "xlink:href",
-      `${svgSprite}#${symbolId}`
-    );
+    use.setAttributeNS("http://www.w3.org/1999/xlink","xlink:href",`${svgSprite}#${symbolId}`);
     use.setAttribute("href", `${svgSprite}#${symbolId}`);
     if (isClose) svg.setAttribute("data-close", "true");
     svg.appendChild(use);
@@ -118,6 +115,7 @@ export function mountMobileMenu() {
     const cleanup = () => {
       if (cleaned) return;
       cleaned = true;
+      restoreAdoptedNodes();
       state.stack = [];
       state.root.remove();
       state.root = state.sheet = state.stackWrap = null;
@@ -170,11 +168,10 @@ export function mountMobileMenu() {
     if (state.stack.length === 0) {
       const pf = state.rootProfileLi?.querySelector("a.login-link");
       if (pf) {
-        const loginBtn = document.createElement("a");
-        loginBtn.className = `${CLS.headerBtn} ${mm}__header-login`;
-        loginBtn.href = pf.getAttribute("href") || "#";
-        loginBtn.textContent = (pf.textContent || "Войти").trim();
-        header.appendChild(loginBtn);
+        adoptElement(pf);
+        pf.classList.add(CLS.headerBtn, `${mm}__header-login`);
+        setCleanup(pf, () => pf.classList.remove(CLS.headerBtn, `${mm}__header-login`));
+        header.appendChild(pf);
       } else {
         header.appendChild(titleEl);
       }
@@ -199,8 +196,7 @@ export function mountMobileMenu() {
     const liChildren = ul.querySelectorAll(":scope > li");
     liChildren.forEach((li) => {
       const role = li.getAttribute("data-role");
-      if (role === "profile" || role === "language-link" || role === "header")
-        return;
+      if (role === "profile" || role === "language-link" || role === "header") return;
       const frag = renderGroup(li, isRoot);
       if (frag) rootList.appendChild(frag);
     });
@@ -222,7 +218,6 @@ export function mountMobileMenu() {
         void panel.offsetWidth;
         panel.classList.add(CLS.panelActive);
         setPanelHeaderHeight(panel);
-        afterPanelAnimation(panel, () => cleanupAllExpansionsExcept(panel));
       });
     });
   }
@@ -244,18 +239,10 @@ export function mountMobileMenu() {
 
   function buildTopline(opts = {}) {
     const { includeLogin = true } = opts;
-    const pf = includeLogin
-      ? state.rootProfileLi?.querySelector("a.login-link")
-      : null;
+    const pf = includeLogin ? state.rootProfileLi?.querySelector("a.login-link") : null;
     if (!pf) return null;
     const topLine = document.createElement("div");
     topLine.className = CLS.topline;
-
-    const a = document.createElement("a");
-    a.href = pf.getAttribute("href") || "#";
-    a.textContent = (pf.textContent || "").trim();
-    topLine.appendChild(a);
-
     return topLine;
   }
 
@@ -282,9 +269,7 @@ export function mountMobileMenu() {
       innerUl.classList.add(CLS.listHidden);
     }
 
-    if (headerEl) {
-      innerUl.appendChild(createGroupHeaderNode(headerEl));
-    }
+    if (headerEl) innerUl.appendChild(createGroupHeaderNode(headerEl));
 
     const showLimit = Math.max(0, visibleCount);
     const hasHidden = links.length > showLimit;
@@ -300,14 +285,9 @@ export function mountMobileMenu() {
     let linkIndex = 0;
     for (const child of children) {
       if (child.tagName === "A") {
-        if (showLimit === 0) {
-          linkIndex++;
-          continue;
-        }
+        if (showLimit === 0) { linkIndex++; continue; }
         if (hasHidden && linkIndex === showLimit - 1) {
-          innerUl.appendChild(
-            createFullRowExpander(links[linkIndex], makeHiddenNodes, isRoot)
-          );
+          innerUl.appendChild(createFullRowExpander(links[linkIndex], makeHiddenNodes, isRoot));
         } else if (!hasHidden || linkIndex < showLimit) {
           innerUl.appendChild(createLinkLi(links[linkIndex], isRoot));
         }
@@ -353,7 +333,7 @@ export function mountMobileMenu() {
     const li = document.createElement("li");
     const { a, label } = adoptAnchor(anchorEl);
     a.classList.add(CLS.itemNoChevron);
-    a.style.paddingRight = "18px";
+    a.style.paddingRight = "50px";
     applyRootFontSizing(label, isRoot);
     li.appendChild(a);
     return li;
@@ -365,16 +345,13 @@ export function mountMobileMenu() {
     const innerUl = document.createElement("ul");
     innerUl.className = CLS.list;
     const rowLi = document.createElement("li");
-    const a = document.createElement("a");
-    a.className = `${CLS.item} ${CLS.langBtn}`;
-    a.href = lgAnchorEl.getAttribute("href") || "#";
-    const label = document.createElement("div");
-    label.className = CLS.itemLabel;
-    label.textContent = (lgAnchorEl.textContent || "").trim();
+
+    const { a, label } = adoptAnchor(lgAnchorEl);
+    a.classList.add(CLS.langBtn);
     applyRootFontSizing(label, isRoot);
     const chev = icons.chevron("right", "18px");
-    a.appendChild(label);
     a.appendChild(chev);
+
     rowLi.appendChild(a);
     innerUl.appendChild(rowLi);
     li.appendChild(innerUl);
@@ -395,8 +372,7 @@ export function mountMobileMenu() {
 
     let isAnimating = false;
     let wrap = null;
-    const isOpen = () =>
-      !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
+    const isOpen = () => !!(wrap && wrap.isConnected && wrap.classList.contains("is-open"));
 
     const openAnim = () => {
       if (isAnimating) return;
@@ -484,10 +460,8 @@ export function mountMobileMenu() {
   function slideForward() {
     const count = state.stack.length;
     if (count < 2) return;
-
     const incoming = state.stack[count - 1];
     incoming.classList.add(CLS.panelEnter);
-
     requestAnimationFrame(() => {
       void incoming.offsetWidth;
       incoming.classList.add(CLS.panelActive);
@@ -498,51 +472,45 @@ export function mountMobileMenu() {
     return (el?.textContent || "").trim();
   }
 
-  function cleanupOpenExpansions(scopeEl) {
-    if (!scopeEl) return;
-    scopeEl.querySelectorAll(`.${CLS.listCollapsible}`).forEach((el) => {
-      const li = el.closest("li");
-      el.remove();
-      const chev = li?.querySelector(`.${CLS.chevron}`);
-      if (chev) chev.style.setProperty("--mm-rot", "0deg");
-    });
+  function adoptElement(el) {
+    state.adoptMap.set(el, { parent: el.parentNode, next: el.nextSibling, cleanup: null });
+    return el;
   }
-
-  function cleanupAllExpansionsExcept(exceptPanel) {
-    state.stack.forEach((panel) => {
-      if (panel !== exceptPanel) cleanupOpenExpansions(panel);
-    });
+  function setCleanup(el, fn) {
+    const rec = state.adoptMap.get(el);
+    if (rec) rec.cleanup = fn;
   }
-
-  function afterPanelAnimation(panel, cb) {
-    let done = false;
-    const onEnd = (e) => {
-      if (done) return;
-      if (e.target !== panel || e.propertyName !== "transform") return;
-      done = true;
-      panel.removeEventListener("transitionend", onEnd);
-      cb();
-    };
-    panel.addEventListener("transitionend", onEnd);
-    setTimeout(() => {
-      if (done) return;
-      try {
-        panel.removeEventListener("transitionend", onEnd);
-      } catch {}
-      cb();
-    }, 500);
+  function restoreAdoptedNodes() {
+    state.adoptMap.forEach((rec, node) => {
+      try { rec.cleanup?.(); } catch {}
+      if (!rec.parent) return;
+      if (rec.next && rec.next.parentNode === rec.parent) rec.parent.insertBefore(node, rec.next);
+      else rec.parent.appendChild(node);
+    });
+    state.adoptMap.clear();
   }
 
   function adoptAnchor(anchorEl) {
-    const a = anchorEl.cloneNode(true);
+    adoptElement(anchorEl);
+    const a = anchorEl;
     a.classList.add(CLS.item);
     let label = a.querySelector(`.${CLS.itemLabel}`);
+    let createdLabel = false;
     if (!label) {
+      createdLabel = true;
       label = document.createElement("div");
       label.className = CLS.itemLabel;
       while (a.firstChild) label.appendChild(a.firstChild);
       a.appendChild(label);
     }
+    setCleanup(a, () => {
+      if (createdLabel) {
+        while (label.firstChild) a.appendChild(label.firstChild);
+        label.remove();
+      }
+      a.classList.remove(CLS.item, CLS.itemNoChevron, CLS.langBtn, CLS.headerBtn, `${mm}__header-login`);
+      a.style.removeProperty("padding-right");
+    });
     return { a, label };
   }
 }
