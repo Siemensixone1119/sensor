@@ -625,6 +625,7 @@ main {
   text-overflow: clip;
   overflow-wrap: anywhere;
   word-break: break-word;
+  padding-right: 24px;
 }
 
 .mobile-menu__chevron {
