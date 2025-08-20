@@ -89,6 +89,9 @@ export function mountMobileMenu() {
       const rot = { right: 270, down: 0, left: 90, up: 180 }[dir] ?? 0;
       return iconUse("icon-arrow", rot, size);
     },
+    groupChevron(size) {
+      return iconUse("icon-arrow-right", 0, size);
+    },
     close(size) {
       return iconUse("icon-menu_close", 0, size, true);
     },
@@ -151,7 +154,7 @@ export function mountMobileMenu() {
 
     const backBtn = document.createElement("button");
     backBtn.className = CLS.headerBtn;
-    backBtn.appendChild(icons.chevron("left", "24px"));
+    backBtn.appendChild(icons.chevron("left", "18px"));
     backBtn.addEventListener("click", goBack);
 
     const titleEl = document.createElement("div");
@@ -213,13 +216,11 @@ export function mountMobileMenu() {
     state.stackWrap.appendChild(panel);
     state.stack.push(panel);
 
-    // Кадр 1 — добавляем enter
     requestAnimationFrame(() => {
       panel.classList.add(CLS.panelEnter);
 
-      // Кадр 2 — фиксируем layout и добавляем active
       requestAnimationFrame(() => {
-        void panel.offsetWidth; // форсим reflow для Firefox
+        void panel.offsetWidth;
         panel.classList.add(CLS.panelActive);
 
         setPanelHeaderHeight(panel);
@@ -343,7 +344,7 @@ export function mountMobileMenu() {
       link ? link.textContent : headerEl.textContent || ""
     ).trim();
 
-    const chev = icons.chevron("right", "18px");
+    const chev = icons.groupChevron("18px");
 
     rowEl.appendChild(label);
     rowEl.appendChild(chev);

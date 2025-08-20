@@ -65,8 +65,7 @@
 
   &__close-btn {
     z-index: 9999;
-    padding-right: 10px;
-    padding-top: 10px;
+    padding: 18px;
     margin-left: auto;
     position: fixed;
     top: 0;
@@ -74,8 +73,8 @@
   }
 
   &__close-btn-icon {
-    width: 44px;
-    height: 44px;
+    width: 18px;
+    height: 18px;
   }
 
   &__group--info {

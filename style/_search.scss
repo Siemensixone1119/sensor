@@ -64,21 +64,25 @@
     font-family: $main-font;
   }
 
-  &__arrow {
-    width: 27px;
-    height: 27px;
-    transform: rotate(90deg);
-  }
+  button {
+    padding: 19px 15px;
+    .search__clear {
+      width: 18px;
+      height: 18px;
 
-  &__clear {
-    width: 44px;
-    height: 44px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-  &__clear--visible {
-    opacity: 1;
+    .search__clear--visible {
+      opacity: 1;
+    }
+
+    .search__arrow {
+      width: 18px;
+      height: 18px;
+      transform: rotate(90deg);
+    }
   }
 
   &__result {

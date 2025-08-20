@@ -63,14 +63,8 @@
 }
 
 .mobile-menu__header-btn:first-child {
-  padding-left: 15px;
-  margin-right: -15px;
+  padding: 20px 15px;
   width: auto;
-
-  svg {
-    min-width: 26px;
-    min-height: 26px;
-  }
 }
 .mobile-menu__header-login {
   font-size: 18px;
@@ -79,7 +73,7 @@
 .mobile-menu__header-title {
   /* твои стили */
   font-weight: 600;
-  font-size: 22px;
+  font-size: 18px;
   flex: 1;
   min-width: 0;
   text-align: center;
@@ -287,6 +281,11 @@
 .mobile-menu__group-header {
   .mobile-menu__item-label {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
   }
+}
+
+[data-close="true"] {
+  width: 18px !important;
+  height: 18px !important;
 }
