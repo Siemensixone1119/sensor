@@ -38,7 +38,6 @@ export function mountMobileMenu() {
     sourceUl: source,
     rootProfileLi: source.querySelector(':scope > li[data-role="profile"]'),
     rootLangLi: source.querySelector(':scope > li[data-role="language-link"]'),
-    adoptMap: new Map(),
   };
 
   function setPanelHeaderHeight(panel) {
@@ -115,7 +114,6 @@ export function mountMobileMenu() {
     const cleanup = () => {
       if (cleaned) return;
       cleaned = true;
-      restoreAdoptedNodes();
       state.stack = [];
       state.root.remove();
       state.root = state.sheet = state.stackWrap = null;
@@ -168,10 +166,9 @@ export function mountMobileMenu() {
     if (state.stack.length === 0) {
       const pf = state.rootProfileLi?.querySelector("a.login-link");
       if (pf) {
-        adoptElement(pf);
-        pf.classList.add(CLS.headerBtn, `${mm}__header-login`);
-        setCleanup(pf, () => pf.classList.remove(CLS.headerBtn, `${mm}__header-login`));
-        header.appendChild(pf);
+        const loginBtn = pf.cloneNode(true);
+        loginBtn.classList.add(CLS.headerBtn, `${mm}__header-login`);
+        header.appendChild(loginBtn);
       } else {
         header.appendChild(titleEl);
       }
@@ -306,7 +303,7 @@ export function mountMobileMenu() {
 
     const link = headerEl.querySelector("a");
     if (link) {
-      const { a: rowEl } = adoptAnchor(link);
+      const { a: rowEl } = cloneAnchor(link);
       const chev = icons.groupChevron("18px");
       rowEl.appendChild(chev);
       wrap.appendChild(rowEl);
@@ -331,7 +328,7 @@ export function mountMobileMenu() {
 
   function createLinkLi(anchorEl, isRoot) {
     const li = document.createElement("li");
-    const { a, label } = adoptAnchor(anchorEl);
+    const { a, label } = cloneAnchor(anchorEl);
     a.classList.add(CLS.itemNoChevron);
     a.style.paddingRight = "50px";
     applyRootFontSizing(label, isRoot);
@@ -346,7 +343,7 @@ export function mountMobileMenu() {
     innerUl.className = CLS.list;
     const rowLi = document.createElement("li");
 
-    const { a, label } = adoptAnchor(lgAnchorEl);
+    const { a, label } = cloneAnchor(lgAnchorEl);
     a.classList.add(CLS.langBtn);
     applyRootFontSizing(label, isRoot);
     const chev = icons.chevron("right", "18px");
@@ -360,7 +357,7 @@ export function mountMobileMenu() {
 
   function createFullRowExpander(anchorEl, makeHiddenNodes, isRoot) {
     const li = document.createElement("li");
-    const { a: rowLink, label } = adoptAnchor(anchorEl);
+    const { a: rowLink, label } = cloneAnchor(anchorEl);
     applyRootFontSizing(label, isRoot);
 
     const chevron = icons.chevron("down", "18px");
@@ -472,45 +469,16 @@ export function mountMobileMenu() {
     return (el?.textContent || "").trim();
   }
 
-  function adoptElement(el) {
-    state.adoptMap.set(el, { parent: el.parentNode, next: el.nextSibling, cleanup: null });
-    return el;
-  }
-  function setCleanup(el, fn) {
-    const rec = state.adoptMap.get(el);
-    if (rec) rec.cleanup = fn;
-  }
-  function restoreAdoptedNodes() {
-    state.adoptMap.forEach((rec, node) => {
-      try { rec.cleanup?.(); } catch {}
-      if (!rec.parent) return;
-      if (rec.next && rec.next.parentNode === rec.parent) rec.parent.insertBefore(node, rec.next);
-      else rec.parent.appendChild(node);
-    });
-    state.adoptMap.clear();
-  }
-
-  function adoptAnchor(anchorEl) {
-    adoptElement(anchorEl);
-    const a = anchorEl;
+  function cloneAnchor(anchorEl) {
+    const a = anchorEl.cloneNode(true);
     a.classList.add(CLS.item);
     let label = a.querySelector(`.${CLS.itemLabel}`);
-    let createdLabel = false;
     if (!label) {
-      createdLabel = true;
       label = document.createElement("div");
       label.className = CLS.itemLabel;
       while (a.firstChild) label.appendChild(a.firstChild);
       a.appendChild(label);
     }
-    setCleanup(a, () => {
-      if (createdLabel) {
-        while (label.firstChild) a.appendChild(label.firstChild);
-        label.remove();
-      }
-      a.classList.remove(CLS.item, CLS.itemNoChevron, CLS.langBtn, CLS.headerBtn, `${mm}__header-login`);
-      a.style.removeProperty("padding-right");
-    });
     return { a, label };
   }
 }
