@@ -1,6 +1,6 @@
 export function mountMobileMenu() {
   const mm = "mobile-menu";
-  const svgSprite = "./assets/image/symbol-defs.svg";
+  const svgSprite = "";
   const source = document.querySelector(".root-menu");
   const openBtn = document.getElementById("open-menu");
   if (!source) throw new Error("Элемент не найден");
