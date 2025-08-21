@@ -173,6 +173,63 @@ input {
   border-top: 0.5px solid #e3e3e3;
 }
 
+.footer-menu {
+  z-index: 1;
+  padding: 0;
+  overflow: hidden;
+}
+
+.tab {
+  position: relative;
+}
+.tab input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.tab__label .arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s;
+  fill: #fefefe;
+}
+.tab input:checked + .tab__label .arrow {
+  transform: rotate(180deg);
+}
+.tab__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.tab input:checked ~ .tab__content {
+  max-height: 300px;
+}
+.tab .tab:has(input:checked) + .tab label {
+  border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
+}
+.tab__content li a {
+  display: block;
+  padding: 18px;
+  color: #212121;
+  background-color: #292361;
+  text-decoration: none;
+  color: #fefefe;
+}
+
+.tab__label,
+.footer-menu > li > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  font-size: 18px;
+  color: #fefefe;
+  background: #292361;
+  font-weight: 600;
+  border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
+  color: white;
+}
+
 @media screen and (max-width: 359px) {
   .connect {
     padding: 32px 10px;
@@ -397,63 +454,6 @@ main {
   color: #fefefe;
   padding: 10px;
   transition: transform 0.3s linear;
-}
-
-.menu {
-  z-index: 1;
-  padding: 0;
-  overflow: hidden;
-}
-
-.tab {
-  position: relative;
-}
-.tab input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-.tab__label .arrow {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s;
-  fill: #fefefe;
-}
-.tab input:checked + .tab__label .arrow {
-  transform: rotate(180deg);
-}
-.tab__content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
-.tab input:checked ~ .tab__content {
-  max-height: 300px;
-}
-.tab .tab:has(input:checked) + .tab label {
-  border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
-}
-.tab__content li a {
-  display: block;
-  padding: 18px;
-  color: #212121;
-  background-color: #292361;
-  text-decoration: none;
-  color: #fefefe;
-}
-
-.tab__label,
-.menu > li > a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px;
-  font-size: 18px;
-  color: #fefefe;
-  background: #292361;
-  font-weight: 600;
-  border-top: 0.25px solid rgba(90, 96, 112, 0.5411764706);
-  color: white;
 }
 
 .mobile-menu {
