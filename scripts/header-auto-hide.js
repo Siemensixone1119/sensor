@@ -1,65 +1,99 @@
 export function initHeaderAutoHide() {
-  const docEl = document.documentElement;
   const overlay = document.querySelector(".header__overlay");
-  const inner = document.querySelector(".header__overlay-inner");
-  const search = document.querySelector(".header__overlay-search");
-  if (!overlay || !inner || !search) return;
+  const inner   = document.querySelector(".header__overlay-inner");
+  const search  = document.querySelector(".header__overlay-search");
+  const content = document.querySelector(".x-scroll") || document.querySelector("main");
+  if (!overlay || !inner || !search || !content) return;
 
-  let H_INNER = inner.offsetHeight;
-  let H_SEARCH = search.offsetHeight;
+  // метрики (целые px)
+  let H_INNER   = Math.round(inner.offsetHeight);
+  let H_SEARCH  = Math.round(search.offsetHeight);
+  let H_OVERLAY = Math.round(overlay.offsetHeight);
 
-  let reveal = H_INNER;
-  let lastY = window.scrollY;
-  let ticking = false;
+  // состояние
+  let offset = H_INNER;           // видимая высота верхней полосы [0..H_INNER]
+  const headerHeight = H_INNER;   // фикс для читаемости
+  let lastScrollTop = getScrollY();
 
-  const draw = () => {
-    const y = Math.round(-H_INNER + reveal);
-    overlay.style.transform = `translate3d(0, ${y}px, 0)`;
-    docEl.style.setProperty(
-      "--sticky-top",
-      `${Math.round(reveal + H_SEARCH)}px`
-    );
-  };
+  // helpers
+  function getScrollY() {
+    const y = window.scrollY ?? document.documentElement.scrollTop ?? 0;
+    return Math.max(0, y); // защищаемся от отрицательных значений (iOS bounce)
+  }
+  function updateStickyTop() {
+    const visibleHeader = Math.round(offset + H_SEARCH);
+    document.documentElement.style.setProperty("--sticky-top", `${visibleHeader}px`);
+  }
 
-  const onScrollLogic = () => {
-    const y = window.scrollY;
-    const delta = lastY - y;
-
-    if (delta !== 0) {
-      reveal += delta;
-      if (reveal < 0) reveal = 0;
-      else if (reveal > H_INNER) reveal = H_INNER;
-
-      draw();
-    }
-    lastY = y;
-  };
-
-  const onScroll = () => {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(() => {
-        onScrollLogic();
-        ticking = false;
-      });
-    }
-  };
-
-  const recalc = () => {
-    const prev = H_INNER;
-    H_INNER = inner.offsetHeight;
-    H_SEARCH = search.offsetHeight;
-
-    if (prev > 0) {
-      const frac = reveal / prev;
-      reveal = Math.max(0, Math.min(1, frac)) * H_INNER;
+  function draw() {
+    if (offset > 0) {
+      overlay.style.transform = `translateY(${-headerHeight + offset}px)`;
     } else {
-      reveal = H_INNER;
+      overlay.style.transform = `translateY(calc(${H_OVERLAY - H_INNER}px - 100%))`;
     }
+    updateStickyTop();
+  }
+
+  function onScroll() {
+    const currentScroll = getScrollY();
+    let delta = lastScrollTop - currentScroll;
+
+    // если на самом верху страницы — всегда полностью раскрываем верхнюю полосу
+    if (currentScroll <= 0) {
+      offset = headerHeight;
+      draw();
+      lastScrollTop = 0;
+      return;
+    }
+
+    if (delta > 0) {
+      // скролл вверх — раскрываем
+      offset = Math.min(offset + delta, headerHeight);
+    } else if (delta < 0) {
+      // скролл вниз — скрываем
+      offset = Math.max(offset + delta, 0);
+    }
+
+    // лёгкий snap возле границ, чтобы не залипать полуприкрытым
+    const EPS = 6; // px (можешь увеличить до 8–10, если всё ещё ловишь полутона)
+    if (offset > headerHeight - EPS && delta > 0) offset = headerHeight;
+    if (offset < EPS && delta < 0)               offset = 0;
+
     draw();
-  };
+    lastScrollTop = currentScroll;
+  }
+
+  function recalc() {
+    const prevInner = H_INNER;
+
+    H_INNER   = Math.round(inner.offsetHeight);
+    H_SEARCH  = Math.round(search.offsetHeight);
+    H_OVERLAY = Math.round(overlay.offsetHeight);
+
+    // если мы у верхней кромки — раскрыть полностью; иначе сохранить долю раскрытия
+    if (getScrollY() <= 0) {
+      offset = H_INNER;
+    } else {
+      const frac = prevInner > 0 ? (offset / prevInner) : 1;
+      offset = Math.max(0, Math.min(1, frac)) * H_INNER;
+    }
+
+    // сдвиг контента (как в твоём демо — через transform)
+  
+
+    draw();
+  }
+
+  // старт
+
+  updateStickyTop();
   draw();
+
+  // события
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", recalc, { passive: true });
-  window.addEventListener("orientationchange", recalc, { passive: true });
+  window.addEventListener("orientationchange", () => {
+    // маленькая задержка помогает после поворота экрана
+    setTimeout(recalc, 150);
+  }, { passive: true });
 }

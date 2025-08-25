@@ -384,14 +384,15 @@ input {
 }
 .header__overlay {
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   transform: translateY(0);
   transition: none;
   will-change: transform;
   transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .header__overlay-inner {
@@ -415,7 +416,8 @@ input {
 }
 
 main {
-  padding-top: 122px;
+  padding-top: 107px;
+  transform: translateY(var(--header-offset, 0px));
 }
 
 .message__btn {
@@ -452,7 +454,6 @@ main {
   background-color: #b30006;
   color: #fefefe;
   padding: 10px;
-  transition: transform 0.3s linear;
 }
 
 .mobile-menu {

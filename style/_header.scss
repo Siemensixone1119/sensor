@@ -1,5 +1,7 @@
 @use "./variable" as *;
+
 .header {
+
   // Верхняя часть
   &__top {
     display: flex;
@@ -47,6 +49,7 @@
     font-size: 0.75rem;
     color: $second-text;
   }
+
   &__phone-button {
     padding: 18px 15px;
     display: flex;
@@ -126,6 +129,7 @@
     flex: 0 0 auto;
     margin-left: 8px;
   }
+
   &__search {
     justify-content: space-between;
     display: flex;
@@ -160,16 +164,15 @@
   }
 }
 
-.header__overlay {
+.header__overlay{
   position: fixed;
-  top: 0px;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
   transform: translateY(0);
   transition: none;
   will-change: transform;
   transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .header__overlay-inner {
@@ -191,3 +194,4 @@
   box-shadow: 0 0 5px #aaa;
   height: 50px;
 }
+

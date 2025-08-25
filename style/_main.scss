@@ -1,8 +1,10 @@
 @use "./variable" as *;
 
 main {
-  padding-top: 122px;
+  padding-top: 107px;
+  transform: translateY(var(--header-offset, 0px));
 }
+
 
 .message__btn {
   width: 64px;
@@ -38,5 +40,4 @@ main {
   background-color: $accent-color;
   color: $second-text;
   padding: 10px;
-  transition: transform 0.3s linear;
 }
