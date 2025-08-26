@@ -2,11 +2,41 @@ import { renderResentRequest } from "./renderResentRequest.js";
 
 export function search() {
   // базовая ссылка
-    const BASE_URL = "https://www.nppsensor.ru/search";
+  const BASE_URL = "https://www.nppsensor.ru/search";
   // ссылки на элементы
   const form = document.querySelector(".search form");
   const input = form.querySelector("input");
   const result = document.querySelector(".search__result");
+  const resultList = result.querySelector(".search__result-list");
+
+  // debounce, чтобы не нагружать импортирую сторонии библиотеки
+  function debounce(fn, delay = 500) {
+    let timer;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  // при вводе
+  input.addEventListener(
+    "input",
+    debounce(() => {
+      const inputValue = input.value.trim();
+
+      if (inputValue.length > 2) {
+        fetch(`${BASE_URL}?q=${encodeURIComponent(inputValue)}`)
+          .then((response) => response.text())
+          .then((resultHTML) => {
+            resultList.innerHTML = "";
+            resultList.insertAdjacentHTML("beforeend", resultHTML);
+          })
+          .catch(() => console.log("Bad request"));
+      } else {
+        resultList.innerHTML = "";
+      }
+    }, 500)
+  );
 
   // получение массива последних запросов
   let recentRequest = JSON.parse(localStorage.getItem("recent_request")) || [];
@@ -36,6 +66,19 @@ export function search() {
     window.location.href = `${BASE_URL}?q=${encodeURIComponent(inputValue)}`;
   });
 
-  // рендер недавних запросов
-  renderResentRequest(result, recentRequest, true);
+  result.addEventListener("click", (e) => {
+    // Ищем ИМЕННО кнопку удаления
+    const btn = e.target.closest(".search__recent-remove");
+    if (!btn || !result.contains(btn)) return; // клик не по кнопке — выходим
+
+    const key = btn.dataset.key;
+    if (!key) return;
+
+    // удаляем из массива по ключу (а не по индексу)
+    const decoded = decodeURIComponent(key);
+    recentRequest = recentRequest.filter((item) => item.request !== decoded);
+
+    localStorage.setItem("recent_request", JSON.stringify(recentRequest));
+    renderResentRequest(result, recentRequest, true);
+  });
 }

@@ -3,8 +3,8 @@ import { renderResentRequest } from "./renderResentRequest.js";
 export function initSearchOverlay() {
   const search   = document.querySelector(".search");
   const input    = search?.querySelector(".search__input");
-  const backBtn  = search?.querySelector(".search__wrap > button:first-child");
-  const clearBtn = search?.querySelector(".search__wrap > button:last-child");
+  const backBtn  = search?.querySelector(".search__arrow");
+  const clearBtn = search?.querySelector(".search__clear");
   const result   = search?.querySelector(".search__result");
   const openBtn = document?.querySelector(".header__search");
 
