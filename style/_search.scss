@@ -64,8 +64,34 @@
     font-family: $main-font;
   }
 
+  &__recent {
+    a {
+      font-weight: 400 !important;
+      width: 100%;
+    }
+
+    div{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__recent-clear {
+    width: 15px;
+      height: 15px;
+  }
+
+  &__recent-text {
+    display: inline-block;
+    padding: 15px;
+  }
+
+
+
   button {
     padding: 19px 15px;
+
     .search__clear {
       width: 18px;
       height: 18px;
@@ -85,6 +111,10 @@
     }
   }
 
+  form {
+    width: 100%;
+  }
+
   &__result {
     background-color: $second-text;
     display: block;
@@ -97,11 +127,13 @@
     background-color: $second-text;
     overflow-y: auto;
     z-index: 10000;
+
     li {
       svg {
         transform: rotate(-90deg);
       }
     }
+
     a {
       display: flex;
       align-items: center;
