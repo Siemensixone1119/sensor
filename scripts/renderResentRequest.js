@@ -32,5 +32,6 @@ export function renderResentRequest(result, recentRequest, rerender = false) {
     `);
   });
 
+  
   result.prepend(recentWrap);
 }

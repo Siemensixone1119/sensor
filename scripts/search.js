@@ -8,6 +8,8 @@ export function search() {
   const input = form.querySelector("input");
   const result = document.querySelector(".search__result");
   const resultList = result.querySelector(".search__result-list");
+  const clearBtn = document.querySelector(".search__clear-btn");
+  const loader = document.querySelector(".search__loader");
 
   // debounce, чтобы не нагружать импортирую сторонии библиотеки
   function debounce(fn, delay = 500) {
@@ -24,16 +26,33 @@ export function search() {
     debounce(() => {
       const inputValue = input.value.trim();
 
-      if (inputValue.length > 2) {
-        fetch(`${BASE_URL}?q=${encodeURIComponent(inputValue)}`)
+      if (inputValue.length >= 2) {
+        result.innerHTML = "";
+        fetch(`${BASE_URL}?qs=${encodeURIComponent(inputValue)}`)
           .then((response) => response.text())
           .then((resultHTML) => {
+            clearBtn.classList.add("is-hidden");
+            loader.classList.remove("is-hidden");
             resultList.innerHTML = "";
             resultList.insertAdjacentHTML("beforeend", resultHTML);
           })
-          .catch(() => console.log("Bad request"));
+          .catch(() => console.log("Bad request"))
+          .finally(() => {
+            clearBtn.classList.remove("is-hidden");
+            loader.classList.add("is-hidden");
+          });
+      } else if (inputValue.length === 1) {
+        result.innerHTML = "";
+        document.createElement("span");
+        result.insertAdjacentHTML(
+          "beforeend",
+          `
+            <span class="search__recent-text">Введите минимум 2 символа</span>
+          `
+        );
       } else {
         resultList.innerHTML = "";
+        renderResentRequest(result, recentRequest, true);
       }
     }, 500)
   );
@@ -67,14 +86,12 @@ export function search() {
   });
 
   result.addEventListener("click", (e) => {
-    // Ищем ИМЕННО кнопку удаления
     const btn = e.target.closest(".search__recent-remove");
-    if (!btn || !result.contains(btn)) return; // клик не по кнопке — выходим
+    if (!btn || !result.contains(btn)) return;
 
     const key = btn.dataset.key;
     if (!key) return;
 
-    // удаляем из массива по ключу (а не по индексу)
     const decoded = decodeURIComponent(key);
     recentRequest = recentRequest.filter((item) => item.request !== decoded);
 
