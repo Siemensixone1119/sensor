@@ -1,17 +1,17 @@
 import { renderResentRequest } from "./renderResentRequest.js";
 
 export function search() {
-  // базовая ссылка
   const BASE_URL = "https://www.nppsensor.ru/search";
-  // ссылки на элементы
-  const form = document.querySelector(".search form");
-  const input = form.querySelector("input");
-  const result = document.querySelector(".search__result");
-  const resultList = result.querySelector(".search__result-list");
-  const clearBtn = document.querySelector(".search__clear-btn");
-  const loader = document.querySelector(".search__loader");
 
-  // debounce, чтобы не нагружать импортирую сторонии библиотеки
+  const form       = document.querySelector(".search form");
+  const input      = form.querySelector("input");
+  const result     = document.querySelector(".search__result");
+  const resultList = result.querySelector(".search__result-list");
+  const clearBtn   = document.querySelector(".search__clear-btn");
+  const loader     = document.querySelector(".search__loader");
+
+  let recentRequest = JSON.parse(localStorage.getItem("recent_request")) || [];
+
   function debounce(fn, delay = 500) {
     let timer;
     return function (...args) {
@@ -20,68 +20,78 @@ export function search() {
     };
   }
 
-  // при вводе
+  let currentCtrl = null;
+
   input.addEventListener(
     "input",
     debounce(() => {
       const inputValue = input.value.trim();
+      const inputLength = inputValue.length;
 
-      if (inputValue.length >= 2) {
+      if (inputLength >= 2) {
         result.innerHTML = "";
-        fetch(`${BASE_URL}?qs=${encodeURIComponent(inputValue)}`)
+        if (currentCtrl) currentCtrl.abort();
+        currentCtrl = new AbortController();
+
+        loader.classList.remove("is-hidden");
+        clearBtn.classList.add("is-hidden");
+
+        fetch(`${BASE_URL}?qs=${encodeURIComponent(inputValue)}`, { signal: currentCtrl.signal })
           .then((response) => response.text())
           .then((resultHTML) => {
-            clearBtn.classList.add("is-hidden");
-            loader.classList.remove("is-hidden");
+            if (currentCtrl?.signal.aborted) return;
             resultList.innerHTML = "";
             resultList.insertAdjacentHTML("beforeend", resultHTML);
           })
-          .catch(() => console.log("Bad request"))
+          .catch((err) => {
+            if (err.name !== "AbortError") console.log("Bad request", err);
+          })
           .finally(() => {
-            clearBtn.classList.remove("is-hidden");
+            if (!currentCtrl || currentCtrl.signal.aborted) return;
             loader.classList.add("is-hidden");
+            clearBtn.classList.remove("is-hidden");
+            currentCtrl = null;
           });
-      } else if (inputValue.length === 1) {
+
+      } else if (inputLength === 1) {
         result.innerHTML = "";
-        document.createElement("span");
+        if (currentCtrl) { currentCtrl.abort(); currentCtrl = null; }
+        resultList.innerHTML = "";
         result.insertAdjacentHTML(
           "beforeend",
-          `
-            <span class="search__recent-text">Введите минимум 2 символа</span>
-          `
+          `<span class="search__recent-text">Введите минимум 2 символа</span>`
         );
+        loader.classList.add("is-hidden");
+        clearBtn.classList.remove("is-hidden");
+
       } else {
+        result.innerHTML = "";
+        if (currentCtrl) { currentCtrl.abort(); currentCtrl = null; }
         resultList.innerHTML = "";
         renderResentRequest(result, recentRequest, true);
+        loader.classList.add("is-hidden");
+        clearBtn.classList.remove("is-hidden");
       }
     }, 500)
   );
 
-  // получение массива последних запросов
-  let recentRequest = JSON.parse(localStorage.getItem("recent_request")) || [];
-
-  // при сабмите
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const inputValue = input.value.trim();
     if (!inputValue) return;
 
-    // чтобы не было повторов в массиве
     recentRequest = recentRequest.filter((item) => item.request !== inputValue);
-    // добавление в массив
+
     recentRequest.push({
       request: inputValue,
       url: `${BASE_URL}?q=${encodeURIComponent(inputValue)}`,
     });
 
-    // чтобы не более 5
     if (recentRequest.length > 5) recentRequest.shift();
 
-    // запись в локал стордж
     localStorage.setItem("recent_request", JSON.stringify(recentRequest));
 
-    // редирект
     window.location.href = `${BASE_URL}?q=${encodeURIComponent(inputValue)}`;
   });
 
@@ -98,4 +108,6 @@ export function search() {
     localStorage.setItem("recent_request", JSON.stringify(recentRequest));
     renderResentRequest(result, recentRequest, true);
   });
+
+  renderResentRequest(result, recentRequest, true);
 }
