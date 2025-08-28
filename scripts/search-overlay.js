@@ -47,6 +47,7 @@ export function initSearchOverlay() {
       search.classList.remove(CLS.closing);
     }, { once: true });
     result.innerHTML=""
+    input.value=""
   };
 
   const clear = () => {
