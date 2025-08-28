@@ -46,6 +46,7 @@ export function initSearchOverlay() {
       search.classList.add(CLS.noTrans);
       search.classList.remove(CLS.closing);
     }, { once: true });
+    result.innerHTML=""
   };
 
   const clear = () => {
