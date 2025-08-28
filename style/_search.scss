@@ -213,6 +213,6 @@
 .search.search--loading .search__clear-btn {
   opacity: 0;
   position: absolute;
-  top: 0;
+  top: -100vw;
   pointer-events: none;
 }
