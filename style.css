@@ -978,17 +978,20 @@ main {
   display: inline-block;
   padding: 15px;
 }
+.search__recent-item {
+  width: 100%;
+}
+.search__recent-body {
+  display: flex;
+  flex-direction: column;
+}
 .search button {
   padding: 19px 15px;
 }
 .search button .search__clear {
   width: 18px;
   height: 18px;
-  opacity: 0;
   transition: opacity 0.3s ease;
-}
-.search button .search__clear--visible {
-  opacity: 1;
 }
 .search button .search__arrow {
   width: 18px;
@@ -1026,6 +1029,51 @@ main {
 }
 .search__result a:last-child {
   border-bottom: 1px solid #ccc;
+}
+
+.search .search__hint {
+  display: none;
+}
+
+.search .search__recent {
+  display: none;
+}
+
+.search .animation_block {
+  display: none;
+}
+
+.search.search--hint .search__hint {
+  display: block;
+}
+
+.search.search--history .search__recent {
+  display: block;
+}
+
+.search.search--loading .animation_block {
+  display: block;
+}
+
+.search .search__clear-btn {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.search.search--has-text .search__clear-btn {
+  opacity: 1;
+  position: static;
+  pointer-events: auto;
+}
+
+.search.search--loading .search__clear-btn {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
 }
 
 .loader {

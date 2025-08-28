@@ -756,7 +756,7 @@
 
   <div class="search">
     <div class="search__wrap" focusable="false">
-      <button aria-label="Назад">
+      <button aria-label="Назад" type="button">
         <svg class="search__arrow" aria-hidden="true" focusable="false">
           <use xlink:href="#icon-arrow"></use>
         </svg>
@@ -765,58 +765,22 @@
         <input type="search" class="search__input" aria-label="Поиск по сайту" autocomplete="off"
           placeholder=" Найти продукцию, файлы, программное обеспечение" />
       </form>
-      <button class="search__clear-btn" aria-label="Очистить">
+      <button class="search__clear-btn" aria-label="Очистить"  type="button">
         <svg class="search__clear" aria-hidden="true" focusable="false">
           <use xlink:href="#icon-menu_close"></use>
         </svg>
       </button>
-      <div class="animation_block is-hidden">
+      <div class="animation_block">
         <div class="loader"></div>
       </div>
     </div>
     <div class="search__result">
-      <!-- <div class="search__recent">
-        <div>
-          <a href="/">Недавний запрос 1</a>
-        </div>
-        <div>
-          <a href="/">Недавний запрос 2</a>
-        </div>
-        <div>
-          <a href="/">Недавний запрос 3</a>
-        </div>
-      </div> -->
+      <span class="search__recent-text search__hint">Введите минимум 2 символа</span>
+      <div class="search__recent">
+        <span class="search__recent-text">Вы искали:</span>
+        <div class="search__recent-body"></div>
+      </div>
       <div class="search__result-list">
-        <!-- <div class="search__result-item">
-        <a href="/">Продукция</a>
-        <a href="/">Результат поиска 1</a>
-        <a href="/">Результат поиска 2</a>
-      </div>
-      <div class="search__result-item">
-        <a href="/">Продукция</a>
-        <a href="/">Результат поиска 1</a>
-        <a href="/">Результат поиска 2</a>
-      </div>
-      <div class="search__result-item">
-        <a href="/">Продукция</a>
-        <a href="/">Результат поиска 1</a>
-        <a href="/">Результат поиска 2</a>
-      </div>
-      <div class="search__result-item">
-        <a href="/">Продукция</a>
-        <a href="/">Результат поиска 1</a>
-        <a href="/">Результат поиска 2</a>
-      </div>
-      <div class="search__result-item">
-        <a href="/">Продукция</a>
-        <a href="/">Результат поиска 1</a>
-        <a href="/">Результат поиска 2</a>
-      </div>
-      <div class="search__result-item">
-        <a href="/">Продукция</a>
-        <a href="/">Результат поиска 1</a>
-        <a href="/">Результат поиска 2</a>
-      </div> -->
       </div>
     </div>
   </div>

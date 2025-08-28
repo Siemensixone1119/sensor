@@ -1,28 +1,25 @@
-export function renderResentRequest(result, recentRequest, rerender = false) {
+export function renderResentRequest(result, history, rerender = false, baseUrl = "/search") {
   if (!result) return;
+  const wrap = result.querySelector(".search__recent");
+  const body = wrap?.querySelector(".search__recent-body");
+  if (!wrap || !body) return;
 
-  // очистка старых запросов
-  if (rerender) {
-    const old = result.querySelector(".search__recent");
-    if (old) old.remove();
+  if (rerender) body.innerHTML = "";
+
+  if (!history?.length) {
+    body.innerHTML = "";
+    return;
   }
-  if (!recentRequest?.length) return;
 
-  // создание контейнера для запросов
-  const recentWrap = document.createElement("div");
-  recentWrap.className = "search__recent";
+  body.innerHTML = "";
 
-  // текст в контейнере
-  recentWrap.insertAdjacentHTML("beforeend", `
-    <span class="search__recent-text">Вы недавно искали:</span>
-  `);
-
-  // отрисовка каждого запроса
-  recentRequest.forEach(item => {
-    const key = encodeURIComponent(item.request);
-    recentWrap.insertAdjacentHTML("beforeend", `
+  // рендер результатов
+  history.forEach(q => {
+    const key  = encodeURIComponent(q);
+    const href = `${baseUrl}?q=${encodeURIComponent(q)}`;
+    body.insertAdjacentHTML("beforeend", `
       <div class="search__recent-item">
-        <a href="${item.url}" class="search__recent-link">${item.request}</a>
+        <a href="${href}" class="search__recent-link">${q}</a>
         <button type="button" class="search__recent-remove" data-key="${key}" aria-label="Удалить запрос">
           <svg class="search__recent-clear" aria-hidden="true" focusable="false">
             <use xlink:href="#icon-menu_close"></use>
@@ -31,7 +28,4 @@ export function renderResentRequest(result, recentRequest, rerender = false) {
       </div>
     `);
   });
-
-  
-  result.prepend(recentWrap);
 }

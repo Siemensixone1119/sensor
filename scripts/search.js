@@ -1,126 +1,260 @@
 import { renderResentRequest } from "./renderResentRequest.js";
 
 export function search() {
+  // базовая ссылка
   const BASE_URL = "https://www.nppsensor.ru/search";
 
-  const form       = document.querySelector(".search form");
-  const input      = form.querySelector("input");
-  const result     = document.querySelector(".search__result");
-  const resultList = result.querySelector(".search__result-list");
-  const clearBtn   = document.querySelector(".search__clear-btn");
-  const loader     = document.querySelector(".animation_block");
+  const root = document.querySelector(".search");
+  if (!root) return;
 
-  let recentRequest = JSON.parse(localStorage.getItem("recent_request")) || [];
+  const form = root.querySelector("form");
+  const input = root.querySelector(".search__input");
+  const result = root.querySelector(".search__result");
+  const list = result?.querySelector(".search__result-list");
+  if (!form || !input || !result || !list) return;
 
-  function debounce(fn, delay = 500) {
-    let timer;
-    return function (...args) {
-      clearTimeout(timer);
-      timer = setTimeout(() => fn.apply(this, args), delay);
-    };
-  }
+  const LS_KEY = "searchHistory";
+  // переход со старого ключа
+  const OLD_KEY = "recent_request";
 
-  let currentCtrl = null;
+  // приводит все элемента масива(в хранилище) к строке
+  const normalize = (arr) =>
+    (Array.isArray(arr) ? arr : [])
+      .map((x) =>
+        typeof x === "string"
+          ? x
+          : x && typeof x.request === "string"
+          ? x.request
+          : null
+      )
+      .filter(Boolean);
 
-  input.addEventListener(
-    "input",
-    debounce(() => {
-      const inputValue  = input.value.trim();
-      const inputLength = inputValue.length;
+  // миграция из старго ключа в новый
+  (function migrate() {
+    const oldRaw = localStorage.getItem(OLD_KEY);
+    if (!oldRaw) return;
+    try {
+      const merged = Array.from(
+        new Set([
+          ...normalize(JSON.parse(localStorage.getItem(LS_KEY) || "[]")),
+          ...normalize(JSON.parse(oldRaw)),
+        ])
+      ).slice(-5);
+      if (merged.length) localStorage.setItem(LS_KEY, JSON.stringify(merged));
+      localStorage.removeItem(OLD_KEY);
+    } catch {}
+  })();
 
-      if (inputLength >= 2) {
-        result.innerHTML = "";
-        resultList.innerHTML = "";
+  //
+  const readHistory = () =>
+    normalize(JSON.parse(localStorage.getItem(LS_KEY) || "[]"));
+  const writeHistory = (arr) => {
+    const uniq = Array.from(
+      new Set(arr.filter((s) => typeof s === "string" && s.trim()))
+    );
+    if (uniq.length)
+      localStorage.setItem(LS_KEY, JSON.stringify(uniq.slice(-5)));
+    else localStorage.removeItem(LS_KEY);
+    window.dispatchEvent(new CustomEvent("recent:updated"));
+  };
+  const addToHistory = (q) =>
+    writeHistory([...readHistory().filter((x) => x !== q), q]);
+  const removeFromHist = (q) =>
+    writeHistory(readHistory().filter((x) => x !== q));
 
-        const hint = result.querySelector(".search__hint");
-        if (hint) hint.remove();
-        const recent = result.querySelector(".search__recent");
-        if (recent) recent.remove();
+  // а это состояния qs
+  let currentCtrl = null; // AbortController
+  let fetchTimer = null; // debounce таймер
+  let isSubmitting = false;
+  let activeFetches = 0; // для стабильного лоадера
+  let lastIssued = 0; // токены для актуальности
+  let latestToken = 0;
 
-        if (currentCtrl) currentCtrl.abort();
-        currentCtrl = new AbortController();
+  const nextToken = () => ++lastIssued;
 
-        loader.classList.remove("is-hidden");
-        clearBtn.classList.add("is-hidden");
+  // модификаторы состояния
+  let ui = { hasText: false, hint: false, history: false, loading: false };
+  const applyClasses = () => {
+    root.classList.toggle("search--has-text", ui.hasText);
+    root.classList.toggle("search--hint", ui.hint);
+    root.classList.toggle("search--history", ui.history);
+    root.classList.toggle("search--loading", ui.loading);
+  };
 
-        fetch(`${BASE_URL}?qs=${encodeURIComponent(inputValue)}`, { signal: currentCtrl.signal })
-          .then((response) => response.text())
-          .then((resultHTML) => {
-            if (currentCtrl?.signal.aborted) return;
-            resultList.insertAdjacentHTML("beforeend", resultHTML);
-            if (!result.contains(resultList)) {
-              result.appendChild(resultList);
-            }
-          })
-          .catch((err) => {
-            if (err.name !== "AbortError") console.log("Bad request", err);
-          })
-          .finally(() => {
-            if (!currentCtrl || currentCtrl.signal.aborted) return;
-            loader.classList.add("is-hidden");
-            clearBtn.classList.remove("is-hidden");
-            currentCtrl = null;
-          });
+  const setState = (patch) => {
+    ui = { ...ui, ...patch };
+    applyClasses();
+  };
 
-      } else if (inputLength === 1) {
-        result.innerHTML = "";
-        if (currentCtrl) { currentCtrl.abort(); currentCtrl = null; }
-        resultList.innerHTML = "";
+  const abortCurrent = () => {
+    if (currentCtrl) {
+      currentCtrl.abort();
+      currentCtrl = null;
+    }
+  };
+  const cancelPendingFetch = () => {
+    if (fetchTimer) {
+      clearTimeout(fetchTimer);
+      fetchTimer = null;
+    }
+  };
 
-        let hint = result.querySelector(".search__hint");
-        if (!hint) {
-          hint = document.createElement("span");
-          hint.className = "search__hint search__recent-text";
-          result.appendChild(hint);
-        }
-        hint.textContent = "Введите минимум 2 символа";
+  const showLoader = () => {
+    activeFetches++;
+    setState({ loading: true });
+  };
+  const hideLoaderMaybe = () => {
+    activeFetches = Math.max(0, activeFetches - 1);
+    if (activeFetches === 0) setState({ loading: false });
+  };
 
-        loader.classList.add("is-hidden");
-        clearBtn.classList.remove("is-hidden");
+  // обновление истории при ответе
+  const queueFetch = (query) => {
+    if (isSubmitting) return;
+    cancelPendingFetch();
+    fetchTimer = setTimeout(() => {
+      fetchTimer = null;
+      if (isSubmitting) return;
 
-      } else {
-        result.innerHTML = "";
-        if (currentCtrl) { currentCtrl.abort(); currentCtrl = null; }
-        resultList.innerHTML = "";
-        renderResentRequest(result, recentRequest, true);
+      const now = input.value.trim();
+      if (now.length < 2 || now !== query) return;
 
-        loader.classList.add("is-hidden");
-        clearBtn.classList.remove("is-hidden");
-      }
-    }, 500)
-  );
+      //аборт предыдущего qs
+      abortCurrent();
 
+      const token = nextToken();
+      latestToken = token;
+
+      currentCtrl = new AbortController();
+      showLoader();
+
+      fetch(`${BASE_URL}?qs=${encodeURIComponent(query)}`, {
+        signal: currentCtrl.signal,
+      })
+        .then((r) => r.text())
+        .then((html) => {
+          // игнор того, что помле сабмита
+          if (
+            isSubmitting ||
+            currentCtrl?.signal.aborted ||
+            token !== latestToken
+          )
+            return;
+
+          // обновление контента
+          list.replaceChildren();
+          list.insertAdjacentHTML("afterbegin", html);
+        })
+        .catch((err) => {
+          if (err.name !== "AbortError") console.log("Bad request", err);
+        })
+        .finally(() => {
+          if (token === latestToken) currentCtrl = null;
+          hideLoaderMaybe();
+        });
+    }, 500);
+  };
+
+  // интерфейс ввода
+  const applyUIForValue = () => {
+    const val = input.value.trim();
+    const len = val.length;
+
+    if (len === 0) {
+      cancelPendingFetch();
+      abortCurrent();
+      renderResentRequest(result, readHistory(), true, BASE_URL);
+      setState({
+        hasText: false,
+        hint: false,
+        history: readHistory().length > 0,
+        loading: activeFetches > 0,
+      });
+      return;
+    }
+    if (len === 1) {
+      cancelPendingFetch();
+      abortCurrent();
+      setState({
+        hasText: true,
+        hint: true,
+        history: false,
+        loading: activeFetches > 0,
+      });
+      return;
+    }
+
+    // >= 2
+    setState({
+      hasText: true,
+      hint: false,
+      history: false,
+      loading: activeFetches > 0,
+    });
+    queueFetch(val);
+  };
+
+  input.addEventListener("input", applyUIForValue);
+
+  root.addEventListener("click", (e) => {
+    const clearBtn = e.target.closest(".search__clear-btn");
+    if (clearBtn) {
+      input.value = "";
+      applyUIForValue();
+      input.focus();
+      return;
+    }
+
+    const rm = e.target.closest(".search__recent-remove");
+    if (rm && result.contains(rm)) {
+      const key = rm.dataset.key;
+      if (!key) return;
+      const decoded = decodeURIComponent(key);
+      removeFromHist(decoded);
+      renderResentRequest(result, readHistory(), true, BASE_URL);
+      if (readHistory().length === 0) setState({ history: false });
+    }
+  });
+
+  // блокировка при сабмите
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    const val = input.value.trim();
+    if (val.length < 2) {
+      setState({ hasText: !!val, hint: true, history: false });
+      return;
+    }
 
-    const inputValue = input.value.trim();
-    if (!inputValue) return;
+    isSubmitting = true;
+    cancelPendingFetch();
+    abortCurrent();
+    activeFetches = 0;
+    setState({ loading: false, history: false, hint: false });
 
-    recentRequest = recentRequest.filter((item) => item.request !== inputValue);
-    recentRequest.push({
-      request: inputValue,
-      url: `${BASE_URL}?q=${encodeURIComponent(inputValue)}`,
-    });
-    if (recentRequest.length > 5) recentRequest.shift();
-
-    localStorage.setItem("recent_request", JSON.stringify(recentRequest));
-
-    window.location.href = `${BASE_URL}?q=${encodeURIComponent(inputValue)}`;
+    addToHistory(val);
+    window.location.href = `${BASE_URL}?q=${encodeURIComponent(val)}`;
   });
 
-  result.addEventListener("click", (e) => {
-    const btn = e.target.closest(".search__recent-remove");
-    if (!btn || !result.contains(btn)) return;
-
-    const key = btn.dataset.key;
-    if (!key) return;
-
-    const decoded = decodeURIComponent(key);
-    recentRequest = recentRequest.filter((item) => item.request !== decoded);
-
-    localStorage.setItem("recent_request", JSON.stringify(recentRequest));
-    renderResentRequest(result, recentRequest, true);
+  // подстраховка при уходе
+  window.addEventListener("beforeunload", () => {
+    isSubmitting = true;
+    cancelPendingFetch();
+    abortCurrent();
   });
 
-  renderResentRequest(result, recentRequest, true);
+  // синхронизация между вкладками
+  window.addEventListener("storage", (ev) => {
+    if (ev.key === LS_KEY && input.value.trim().length === 0) {
+      renderResentRequest(result, readHistory(), true, BASE_URL);
+      setState({ history: readHistory().length > 0 });
+    }
+  });
+  window.addEventListener("recent:updated", () => {
+    if (input.value.trim().length === 0) {
+      renderResentRequest(result, readHistory(), true, BASE_URL);
+      setState({ history: readHistory().length > 0 });
+    }
+  });
+
+  applyUIForValue();
 }
