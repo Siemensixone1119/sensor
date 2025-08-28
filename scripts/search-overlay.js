@@ -49,11 +49,12 @@ export function initSearchOverlay() {
   };
 
   const clear = () => {
-    input.value = "";
-    showClear();
-    const list = result.querySelector(".search__list");
-    if (list) list.innerHTML = "";
-  };
+  input.value = "";
+  showClear();
+  result.innerHTML = "";
+  renderResentRequest(result, recentRequest, true);
+  input.focus();
+};
 
   openBtn.addEventListener("click", open);
   backBtn.addEventListener("click", close);
