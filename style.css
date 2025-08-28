@@ -1076,6 +1076,11 @@ main {
   pointer-events: none;
 }
 
+.search.search--hint .search__result-list,
+.search.search--history .search__result-list {
+  display: none;
+}
+
 .loader {
   border: 3px dotted #920;
   border-radius: 50%;

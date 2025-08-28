@@ -216,3 +216,8 @@
   top: -100vw;
   pointer-events: none;
 }
+
+.search.search--hint .search__result-list,
+.search.search--history .search__result-list {
+  display: none;
+}
