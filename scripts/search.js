@@ -8,7 +8,7 @@ export function search() {
   const result     = document.querySelector(".search__result");
   const resultList = result.querySelector(".search__result-list");
   const clearBtn   = document.querySelector(".search__clear-btn");
-  const loader     = document.querySelector(".search__loader");
+  const loader     = document.querySelector(".animation_block");
 
   let recentRequest = JSON.parse(localStorage.getItem("recent_request")) || [];
 
@@ -25,11 +25,18 @@ export function search() {
   input.addEventListener(
     "input",
     debounce(() => {
-      const inputValue = input.value.trim();
+      const inputValue  = input.value.trim();
       const inputLength = inputValue.length;
 
       if (inputLength >= 2) {
         result.innerHTML = "";
+        resultList.innerHTML = "";
+
+        const hint = result.querySelector(".search__hint");
+        if (hint) hint.remove();
+        const recent = result.querySelector(".search__recent");
+        if (recent) recent.remove();
+
         if (currentCtrl) currentCtrl.abort();
         currentCtrl = new AbortController();
 
@@ -40,8 +47,10 @@ export function search() {
           .then((response) => response.text())
           .then((resultHTML) => {
             if (currentCtrl?.signal.aborted) return;
-            resultList.innerHTML = "";
             resultList.insertAdjacentHTML("beforeend", resultHTML);
+            if (!result.contains(resultList)) {
+              result.appendChild(resultList);
+            }
           })
           .catch((err) => {
             if (err.name !== "AbortError") console.log("Bad request", err);
@@ -57,10 +66,15 @@ export function search() {
         result.innerHTML = "";
         if (currentCtrl) { currentCtrl.abort(); currentCtrl = null; }
         resultList.innerHTML = "";
-        result.insertAdjacentHTML(
-          "beforeend",
-          `<span class="search__recent-text">Введите минимум 2 символа</span>`
-        );
+
+        let hint = result.querySelector(".search__hint");
+        if (!hint) {
+          hint = document.createElement("span");
+          hint.className = "search__hint search__recent-text";
+          result.appendChild(hint);
+        }
+        hint.textContent = "Введите минимум 2 символа";
+
         loader.classList.add("is-hidden");
         clearBtn.classList.remove("is-hidden");
 
@@ -69,6 +83,7 @@ export function search() {
         if (currentCtrl) { currentCtrl.abort(); currentCtrl = null; }
         resultList.innerHTML = "";
         renderResentRequest(result, recentRequest, true);
+
         loader.classList.add("is-hidden");
         clearBtn.classList.remove("is-hidden");
       }
@@ -82,12 +97,10 @@ export function search() {
     if (!inputValue) return;
 
     recentRequest = recentRequest.filter((item) => item.request !== inputValue);
-
     recentRequest.push({
       request: inputValue,
       url: `${BASE_URL}?q=${encodeURIComponent(inputValue)}`,
     });
-
     if (recentRequest.length > 5) recentRequest.shift();
 
     localStorage.setItem("recent_request", JSON.stringify(recentRequest));

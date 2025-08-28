@@ -1026,4 +1026,28 @@ main {
 }
 .search__result a:last-child {
   border-bottom: 1px solid #ccc;
+}
+
+.loader {
+  border: 3px dotted #920;
+  border-radius: 50%;
+  animation: loader-animation 3s linear infinite;
+  width: 18px;
+  height: 18px;
+}
+
+.animation_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+}
+
+@keyframes loader-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
 }/*# sourceMappingURL=style.css.map */
