@@ -201,7 +201,6 @@
   position: absolute;
   top: 0;
   pointer-events: none;
-  transition: opacity .2s;
 }
 
 .search.search--has-text .search__clear-btn {
@@ -220,4 +219,12 @@
 .search.search--hint .search__result-list,
 .search.search--history .search__result-list {
   display: none;
+}
+
+.search .search__result-list {
+  display: none;
+}
+
+.search.search--results .search__result-list {
+  display: block;
 }
