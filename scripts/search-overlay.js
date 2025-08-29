@@ -13,7 +13,6 @@ export function initSearchOverlay() {
     noScroll: "no-scroll",
   };
 
-  // открытие поиска
   const open = () => {
     if (root.classList.contains(CLS.open)) return;
     root.classList.remove(CLS.noTrans, CLS.closing);
@@ -23,7 +22,6 @@ export function initSearchOverlay() {
     input.focus();
   };
 
-  // закрытие поиска
   const close = () => {
     if (!root.classList.contains(CLS.open)) return;
     root.classList.remove(CLS.open);

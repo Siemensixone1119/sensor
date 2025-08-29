@@ -8,12 +8,10 @@ export function renderResentRequest(result, history, rerender = false, baseUrl =
 
   if (!history?.length) {
     body.innerHTML = "";
-    return;
+    return; // видимостью управляет контейнерный класс
   }
 
   body.innerHTML = "";
-
-  // рендер результатов
   history.forEach(q => {
     const key  = encodeURIComponent(q);
     const href = `${baseUrl}?q=${encodeURIComponent(q)}`;
