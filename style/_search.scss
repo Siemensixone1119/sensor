@@ -107,6 +107,11 @@
 
   &__clue {
     gap: 10px;
+    display: inline-block;
+    padding: 15px;
+    margin: 25px 15px;
+    background-color: #c1d3e08a;
+    border-radius: 20px;
   }
 
   &__clue-icon {
@@ -114,14 +119,6 @@
     max-height: 24px;
     fill: $text-color;
 
-  }
-
-  .clue {
-    display: inline-block;
-    padding: 15px;
-    margin: 25px 15px;
-    background-color: #c1d3e08a;
-    border-radius: 20px;
   }
 
   button {
@@ -204,7 +201,7 @@
 }
 
 .search.search--hint .search__hint {
-  display: block;
+  display: flex;
 }
 
 .search.search--history .search__recent {
@@ -250,6 +247,6 @@
   display: none;
 }
 
-.search.search--empty .search__clue {
+.search.search--empty .search__clue:not(.search__hint) {
   display: flex;
 }

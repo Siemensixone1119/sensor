@@ -987,18 +987,16 @@ main {
 }
 .search__clue {
   gap: 10px;
-}
-.search__clue-icon {
-  max-width: 24px;
-  max-height: 24px;
-  fill: #212121;
-}
-.search .clue {
   display: inline-block;
   padding: 15px;
   margin: 25px 15px;
   background-color: rgba(193, 211, 224, 0.5411764706);
   border-radius: 20px;
+}
+.search__clue-icon {
+  max-width: 24px;
+  max-height: 24px;
+  fill: #212121;
 }
 .search button {
   padding: 19px 15px;
@@ -1059,7 +1057,7 @@ main {
 }
 
 .search.search--hint .search__hint {
-  display: block;
+  display: flex;
 }
 
 .search.search--history .search__recent {
@@ -1105,7 +1103,7 @@ main {
   display: none;
 }
 
-.search.search--empty .search__clue {
+.search.search--empty .search__clue:not(.search__hint) {
   display: flex;
 }
 

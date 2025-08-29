@@ -116,7 +116,7 @@ export function search() {
     }
   };
 
-// отмена debounce
+  // отмена debounce
   const cancelPendingFetch = () => {
     if (fetchTimer) {
       clearTimeout(fetchTimer);
@@ -174,7 +174,7 @@ export function search() {
           // фиксируем текст, для которого показаны результаты, и включаем их видимость
           const now2 = input.value.trim();
           renderedQuery = now2;
-          setState({ results: true });
+          setState({ results: true, history: false }); // NEW: как только пришёл ответ — показываем результаты и прячем историю
         })
         .catch((err) => {
           if (err.name !== "AbortError") console.log("Bad request", err);
@@ -191,7 +191,7 @@ export function search() {
     const val = input.value.trim();
     const len = val.length;
 
-     // len = 0
+    // len = 0
     if (len === 0) {
       renderedQuery = "";
       cancelPendingFetch();
@@ -209,7 +209,7 @@ export function search() {
       return;
     }
 
-     // len = 2
+    // len = 2
     if (len === 1) {
       renderedQuery = "";
       cancelPendingFetch();
@@ -227,13 +227,17 @@ export function search() {
 
     // len >= 2
     const isNewQuery = val !== renderedQuery;
+    const hasHist = readHistory().length > 0; // NEW: есть ли вообще история
+
     setState({
       hasText: true,
       hint: false,
-      history: false,
+      // NEW: если это новый запрос — держим историю на экране, пока не придёт ответ
+      history: isNewQuery && hasHist,
+      // NEW: новые быстрые результаты пока прячем (старые не показываем)
       results: !isNewQuery,
       loading: activeFetches > 0,
-        empty: false,
+      empty: false,
     });
     queueFetch(val);
   };
