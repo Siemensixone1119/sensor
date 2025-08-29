@@ -174,7 +174,7 @@ export function search() {
           // фиксируем текст, для которого показаны результаты, и включаем их видимость
           const now2 = input.value.trim();
           renderedQuery = now2;
-          setState({ results: true, history: false }); // NEW: как только пришёл ответ — показываем результаты и прячем историю
+          setState({ results: true, history: false }); // NEW: при ответе — показываем результаты и прячем историю
         })
         .catch((err) => {
           if (err.name !== "AbortError") console.log("Bad request", err);
@@ -202,14 +202,14 @@ export function search() {
         hasText: false,
         hint: false,
         history: hist.length > 0,
-        results: false,
+        results: false,                 // список быстрых результатов скрыт
         loading: activeFetches > 0,
         empty: true,
       });
       return;
     }
 
-    // len = 2
+    // len = 1
     if (len === 1) {
       renderedQuery = "";
       cancelPendingFetch();
@@ -218,7 +218,7 @@ export function search() {
         hasText: true,
         hint: true,
         history: false,
-        results: false,
+        results: false,                 // список быстрых результатов скрыт
         loading: activeFetches > 0,
         empty: false,
       });
@@ -226,16 +226,11 @@ export function search() {
     }
 
     // len >= 2
-    const isNewQuery = val !== renderedQuery;
-    const hasHist = readHistory().length > 0; // NEW: есть ли вообще история
-
     setState({
       hasText: true,
       hint: false,
-      // NEW: если это новый запрос — держим историю на экране, пока не придёт ответ
-      history: isNewQuery && hasHist,
-      // NEW: новые быстрые результаты пока прячем (старые не показываем)
-      results: !isNewQuery,
+      history: false,
+      results: true,
       loading: activeFetches > 0,
       empty: false,
     });
