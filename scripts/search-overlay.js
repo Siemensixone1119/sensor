@@ -4,6 +4,7 @@ export function initSearchOverlay() {
   const input   = root?.querySelector(".search__input");
   const backBtn = root?.querySelector("[aria-label='Назад'], .search__back-btn");
   const openBtn = document?.querySelector(".header__search");
+
   if (!root || !input) return;
 
   const CLS = {
@@ -28,7 +29,7 @@ export function initSearchOverlay() {
     root.classList.add(CLS.closing);
     document.body.classList.remove(CLS.noScroll);
 
-    // 👉 скажем поиску «закрываться»: прервать fetch'и и очистить результаты
+    // прерывание запроса и debounce
     window.dispatchEvent(new Event("search:close"));
 
     root.addEventListener("transitionend", (e) => {
@@ -37,7 +38,7 @@ export function initSearchOverlay() {
       root.classList.remove(CLS.closing);
     }, { once: true });
 
-    // очистка поля (история/подсказка нарисуются сами по input)
+    // очистка поля
     input.value = "";
     input.dispatchEvent(new Event("input", { bubbles: true }));
   };

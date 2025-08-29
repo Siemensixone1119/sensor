@@ -105,6 +105,21 @@
     flex-direction: column;
   }
 
+  &__clue {
+    padding: 15px;
+    margin: 25px 15px;
+    background-color: #c1d3e08a;
+    border-radius: 20px;
+    gap: 10px;
+  }
+
+  &__clue-icon {
+    max-width: 24px;
+    max-height: 24px;
+    fill: $text-color;
+    margin-top: 3px;
+  }
+
   button {
     padding: 19px 15px;
 
@@ -198,8 +213,6 @@
 
 .search .search__clear-btn {
   opacity: 0;
-  position: absolute;
-  top: 0;
   pointer-events: none;
 }
 
@@ -227,4 +240,12 @@
 
 .search.search--results .search__result-list {
   display: block;
+}
+
+.search .search__clue {
+  display: none;
+}
+
+.search.search--empty .search__clue {
+  display: flex;
 }

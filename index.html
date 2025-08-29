@@ -235,37 +235,16 @@
           d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z">
         </path>
       </symbol>
-      <symbol id="icon-loader" viewBox="0 0 40 40">
-        <g transform="translate(20,20)" fill="#be0027">
-          <g>
-            <g transform="rotate(0)   translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <g transform="rotate(45)  translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <g transform="rotate(90)  translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <g transform="rotate(135)  translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <g transform="rotate(180) translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <g transform="rotate(225) translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <g transform="rotate(270) translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <g transform="rotate(315) translate(0,-14)">
-              <circle r="2.2" />
-            </g>
-            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1s"
-              repeatCount="indefinite" />
-          </g>
-        </g>
+      <symbol id="icon-clue" viewBox="0 0 32 32">
+        <path
+          d="M16 22.333c-0.264-0.003-0.517-0.11-0.703-0.297s-0.293-0.439-0.297-0.703v-6.667c0-0.265 0.105-0.52 0.293-0.707s0.442-0.293 0.707-0.293 0.52 0.105 0.707 0.293c0.188 0.187 0.293 0.442 0.293 0.707v6.667c-0.003 0.264-0.11 0.517-0.297 0.703s-0.439 0.293-0.703 0.297z">
+        </path>
+        <path
+          d="M16 12.333c-0.264-0.003-0.517-0.11-0.703-0.297s-0.293-0.439-0.297-0.703v-0.667c0-0.265 0.105-0.52 0.293-0.707s0.442-0.293 0.707-0.293 0.52 0.105 0.707 0.293c0.188 0.188 0.293 0.442 0.293 0.707v0.667c-0.003 0.264-0.11 0.517-0.297 0.703s-0.439 0.293-0.703 0.297z">
+        </path>
+        <path
+          d="M16 28c-2.373 0-4.693-0.704-6.667-2.022s-3.511-3.193-4.42-5.385c-0.908-2.193-1.146-4.606-0.683-6.933s1.606-4.466 3.284-6.144 3.816-2.821 6.144-3.284c2.328-0.463 4.741-0.225 6.933 0.683s4.067 2.446 5.385 4.42c1.319 1.973 2.022 4.293 2.022 6.667 0 3.183-1.264 6.235-3.515 8.485s-5.303 3.515-8.485 3.515zM16 6c-1.978 0-3.911 0.587-5.556 1.685s-2.926 2.661-3.683 4.488c-0.757 1.827-0.955 3.838-0.569 5.778s1.338 3.722 2.737 5.12 3.18 2.351 5.12 2.737c1.94 0.386 3.951 0.188 5.778-0.569s3.389-2.039 4.488-3.683c1.099-1.645 1.685-3.578 1.685-5.556 0-2.652-1.054-5.196-2.929-7.071s-4.419-2.929-7.071-2.929z">
+        </path>
       </symbol>
     </defs>
   </svg>
@@ -765,7 +744,7 @@
         <input type="search" class="search__input" aria-label="Поиск по сайту" autocomplete="off"
           placeholder=" Найти продукцию, файлы, программное обеспечение" />
       </form>
-      <button class="search__clear-btn" aria-label="Очистить"  type="button">
+      <button class="search__clear-btn" aria-label="Очистить" type="button">
         <svg class="search__clear" aria-hidden="true" focusable="false">
           <use xlink:href="#icon-menu_close"></use>
         </svg>
@@ -775,6 +754,12 @@
       </div>
     </div>
     <div class="search__result">
+      <div class="search__clue">
+        <svg class="search__clue-icon" aria-hidden="true" focusable="false">
+          <use xlink:href="#icon-clue"></use>
+        </svg>
+        <span>Попробуйте поиск по ключевому слову или серийному номеру, например, «ПМП» или «адаптер»</span>
+      </div>
       <span class="search__recent-text search__hint">Введите минимум 2 символа</span>
       <div class="search__recent">
         <span class="search__recent-text">Вы искали:</span>

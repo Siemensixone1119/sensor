@@ -1,3 +1,4 @@
+// renderResentRequest.js
 export function renderResentRequest(result, history, rerender = false, baseUrl = "/search") {
   if (!result) return;
   const wrap = result.querySelector(".search__recent");
@@ -8,7 +9,7 @@ export function renderResentRequest(result, history, rerender = false, baseUrl =
 
   if (!history?.length) {
     body.innerHTML = "";
-    return; // видимостью управляет контейнерный класс
+    return;
   }
 
   body.innerHTML = "";

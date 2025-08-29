@@ -985,6 +985,19 @@ main {
   display: flex;
   flex-direction: column;
 }
+.search__clue {
+  padding: 15px;
+  margin: 25px 15px;
+  background-color: rgba(193, 211, 224, 0.5411764706);
+  border-radius: 20px;
+  gap: 10px;
+}
+.search__clue-icon {
+  max-width: 24px;
+  max-height: 24px;
+  fill: #212121;
+  margin-top: 3px;
+}
 .search button {
   padding: 19px 15px;
 }
@@ -1057,10 +1070,7 @@ main {
 
 .search .search__clear-btn {
   opacity: 0;
-  position: absolute;
-  top: 0;
   pointer-events: none;
-  transition: opacity 0.2s;
 }
 
 .search.search--has-text .search__clear-btn {
@@ -1079,6 +1089,22 @@ main {
 .search.search--hint .search__result-list,
 .search.search--history .search__result-list {
   display: none;
+}
+
+.search .search__result-list {
+  display: none;
+}
+
+.search.search--results .search__result-list {
+  display: block;
+}
+
+.search .search__clue {
+  display: none;
+}
+
+.search.search--empty .search__clue {
+  display: flex;
 }
 
 .loader {
