@@ -30,6 +30,10 @@
   min-height: 100svh;
   max-height: 100dvh;
 
+  form{
+    position: relative;
+  }
+
   &__loader {
     width: 32px;
     height: 32px;
@@ -119,6 +123,18 @@
     max-height: 24px;
     fill: $text-color;
 
+  }
+
+  &__label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: gray;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: -1;
   }
 
   button {
@@ -243,10 +259,16 @@
   display: block;
 }
 
-.search .search__clue {
+.search .search__clue, 
+.search .search__label {
   display: none;
 }
 
-.search.search--empty .search__clue:not(.search__hint) {
+.search.search--empty .search__clue:not(.search__hint)
+ {
   display: flex;
+}
+
+.search.search--empty .search__label{
+  display: inline-block;
 }

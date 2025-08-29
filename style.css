@@ -922,6 +922,9 @@ main {
   min-height: 100svh;
   max-height: 100dvh;
 }
+.search form {
+  position: relative;
+}
 .search__loader {
   width: 32px;
   height: 32px;
@@ -997,6 +1000,17 @@ main {
   max-width: 24px;
   max-height: 24px;
   fill: #212121;
+}
+.search__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: gray;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: -1;
 }
 .search button {
   padding: 19px 15px;
@@ -1099,12 +1113,17 @@ main {
   display: block;
 }
 
-.search .search__clue {
+.search .search__clue,
+.search .search__label {
   display: none;
 }
 
 .search.search--empty .search__clue:not(.search__hint) {
   display: flex;
+}
+
+.search.search--empty .search__label {
+  display: inline-block;
 }
 
 .loader {
