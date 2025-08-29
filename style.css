@@ -986,17 +986,19 @@ main {
   flex-direction: column;
 }
 .search__clue {
-  padding: 15px;
-  margin: 25px 15px;
-  background-color: rgba(193, 211, 224, 0.5411764706);
-  border-radius: 20px;
   gap: 10px;
 }
 .search__clue-icon {
   max-width: 24px;
   max-height: 24px;
   fill: #212121;
-  margin-top: 3px;
+}
+.search .clue {
+  display: inline-block;
+  padding: 15px;
+  margin: 25px 15px;
+  background-color: rgba(193, 211, 224, 0.5411764706);
+  border-radius: 20px;
 }
 .search button {
   padding: 19px 15px;
