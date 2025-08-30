@@ -136,7 +136,6 @@ export function search() {
     if (activeFetches === 0) setState({ loading: false });
   };
 
-  // НЕ очищаем список при старте; прячем его для нового текста и показываем только на ответ
   const queueFetch = (query) => {
     if (isSubmitting) return;
     cancelPendingFetch();
@@ -174,7 +173,7 @@ export function search() {
           // фиксируем текст, для которого показаны результаты, и включаем их видимость
           const now2 = input.value.trim();
           renderedQuery = now2;
-          setState({ results: true, history: false }); // NEW: при ответе — показываем результаты и прячем историю
+          setState({ results: true, history: false });
         })
         .catch((err) => {
           if (err.name !== "AbortError") console.log("Bad request", err);
@@ -191,34 +190,36 @@ export function search() {
     const val = input.value.trim();
     const len = val.length;
 
-    // len = 0
+     // len = 0
     if (len === 0) {
       renderedQuery = "";
       cancelPendingFetch();
       abortCurrent();
+      list.replaceChildren();
       const hist = readHistory();
       renderResentRequest(result, hist, true, BASE_URL);
       setState({
         hasText: false,
         hint: false,
         history: hist.length > 0,
-        results: false,                 // список быстрых результатов скрыт
+        results: false,
         loading: activeFetches > 0,
         empty: true,
       });
       return;
     }
 
-    // len = 1
+     // len = 2
     if (len === 1) {
       renderedQuery = "";
       cancelPendingFetch();
       abortCurrent();
+      list.replaceChildren();
       setState({
         hasText: true,
         hint: true,
         history: false,
-        results: false,                 // список быстрых результатов скрыт
+        results: false,
         loading: activeFetches > 0,
         empty: false,
       });
@@ -319,7 +320,7 @@ export function search() {
     renderedQuery = "";
 
     list.replaceChildren();
-    setState({ loading: false, results: false }); // подсказку/историю расставит input-событие из initSearchOverlay
+    setState({ loading: false, results: false });
   });
 
   // подстраховка при уходе
@@ -333,6 +334,7 @@ export function search() {
   const rerenderHistoryIfEmptyInput = () => {
     if (input.value.trim().length === 0) {
       renderedQuery = "";
+      list.replaceChildren();
       const hist = readHistory();
       renderResentRequest(result, hist, true, BASE_URL);
       setState({
