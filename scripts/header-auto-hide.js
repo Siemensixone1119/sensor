@@ -41,7 +41,7 @@ export function initHeaderAutoHide() {
       return;
     }
 
-    if (Math.abs(delta) < 0.5) delta = 0;
+    // if (Math.abs(delta) < 0.5) delta = 0;
 
     if (delta > 0) {
       offset = Math.min(offset + delta, headerHeight);
