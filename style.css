@@ -64,6 +64,7 @@ div {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   color: #212121;
   text-decoration: none;
+  font-weight: 400;
 }
 
 ul {
@@ -1150,4 +1151,185 @@ main {
   to {
     transform: rotate(1turn);
   }
+}
+h1 {
+  font-family: "pfdintextcomppro-light", sans-serif;
+  font-size: 1.8rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.product {
+  overflow: hidden;
+}
+.product__title {
+  font-size: 1.5rem;
+  font-family: "pfdintextcomppro-light", sans-serif;
+  margin: 7px 0;
+  display: inline-block;
+}
+.product__title + ul + p {
+  color: #33c;
+}
+.product__title + ul li {
+  padding-left: 15px;
+  position: relative;
+}
+.product__title + ul li::before {
+  content: "•";
+  color: #838383;
+  font-size: 13px;
+  position: absolute;
+  left: 0;
+  top: 15%;
+}
+.product__butn-cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.product__butn {
+  background-color: #b30006;
+  color: #fefefe;
+  padding: 15px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 10px;
+  text-align: center;
+}
+.product__butn--wicon {
+  background-color: #fefefe;
+  color: #212121;
+  border: 1px solid #838383;
+}
+.product__text {
+  text-indent: 2em;
+  text-align: justify;
+}
+.product__text--red {
+  color: #b30006;
+  font-weight: 500;
+  text-indent: 0;
+}
+.product__text--blue {
+  color: #292361;
+  font-weight: 500;
+  text-indent: 0;
+}
+.product__text--little {
+  font-size: 14px;
+  text-indent: 0;
+}
+.product__note {
+  padding: 10px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+.product__note--bold {
+  font-weight: 500;
+}
+.product svg {
+  width: 18px;
+  height: 18px;
+}
+.product__slider-contain {
+  position: relative;
+  max-width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.product__btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+.product__btn--left {
+  left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product__btn--left svg {
+  transform: rotate(90deg);
+}
+.product__btn--right {
+  right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product__btn--right svg {
+  transform: rotate(-90deg);
+}
+.product__slider {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+.product__slider li {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product__slider img {
+  width: 93vw;
+  height: 93vw;
+}
+.product__order {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  margin: 0;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+.product__order-title {
+  font-size: 40px;
+  font-weight: 800;
+  font-family: "pfdintextcomppro-light", sans-serif;
+  display: inline-block;
+  margin: 20px 0;
+}
+.product__order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.product__order-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+.product__order-step {
+  font-family: "pfdintextcomppro-regular", sans-serif;
+  font-size: 55px;
+  font-weight: 500;
+}
+.product__order-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.product__order-text {
+  text-align: justify;
+  color: #666666;
+}
+.product__order-text a {
+  color: #b30006;
+}
+.product__cert {
+  font-weight: 500;
+  margin: 30px 0;
 }/*# sourceMappingURL=style.css.map */
