@@ -1,20 +1,60 @@
 @use "./variable" as *;
 
-h1 {
-  font-family: $font-family;
-  font-size: 1.8rem;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
 .product {
-  overflow: hidden;
+  // overflow: hidden;
+
+  &__title--main {
+    font-family: $font-family;
+    font-size: 26px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: max-height 0.3s ease;
+    max-height: 3em;
+  }
+
+  &__title--main.expanded {
+    -webkit-line-clamp: unset;
+    max-height: none;
+  }
+
+  &__butn-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+
+
+
+  &__butn {
+    padding: 12px 15px;
+    width: calc(50vw - 22px);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  &__butn:first-child {
+    background-color: #ffd9da;
+    color: #b30006;
+  }
+
+  &__butn:last-child {
+    background-color: #b30006;
+    color: white;
+  }
 
   &__title {
-    font-size: 1.5rem;
+    font-size: 22px;
     font-family: $font-family;
-    // font-weight: 400;
+    font-weight: 400;
     margin: 7px 0;
     display: inline-block;
   }
@@ -25,20 +65,22 @@ h1 {
   }
 
   &__note {
-    padding: 10px 16px;
-    background-color: #eee;
-    // border: 1px solid #ccc;
+    padding-top: 10px;
+    // padding-bottom: 10px;
     border-radius: 15px;
-    margin-top: 10px;
     text-indent: 0;
-    color: #666666;
-    font-size: 16px;
+
+
+    span {
+      color: #666666;
+      font-size: 16px;
+    }
   }
 
   &__note--bold {
-    font-weight: 500;
-    font-size: 30px;
-    color: $accent-color;
+    font-weight: 700;
+    font-size: 18px !important;
+    color: $accent-color !important;
   }
 
   svg {
@@ -202,20 +244,37 @@ h1 {
   }
 
   .slider__item {
-    width: 100vw;
-    height: 100vw;
+    width: 350px;
+    height: 350px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
   }
 
-  &__breadcrumb {
-    font-size: 14px;
-    color: #666666;
-    padding: var(--page-gutter);
+  &__breadcrumb-cont {
+    padding: 15px;
+    overflow: hidden;
   }
 
-  &__docs-list{
+  &__breadcrumb::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__breadcrumb {
+    overflow-x: auto;
+    display: flex;
+    gap: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    span {
+      font-size: 14px;
+      color: #a4a4a4;
+      text-wrap: nowrap;
+    }
+  }
+
+  &__docs-list {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -236,17 +295,20 @@ h1 {
   &__docs-link {
     display: flex;
     width: auto;
-    // align-items: flex-start;
-    // justify-content: space-between;
     gap: 30px;
-    p{
+
+    p {
       text-align: left;
     }
   }
 
-  &__docs-size{
+  &__docs-size {
     padding-left: 65px;
     color: #818181;
+  }
+
+  &__desc {
+    padding-inline: var(--page-gutter);
   }
 }
 
@@ -254,6 +316,11 @@ h1 {
   position: relative;
   max-width: 600px;
   margin: 20px auto;
+  margin-bottom: 10px;
+}
+
+.description__toggle {
+  display: none;
 }
 
 .description__text {
@@ -261,51 +328,76 @@ h1 {
   overflow: hidden;
   line-height: 1.5em;
   transition: max-height 0.4s ease;
+}
 
-  p {
-    text-align: justify;
+.product__descript {
+  position: relative;
+  max-height: 150px;
+  padding-top: 20px;
+  overflow: hidden;
+
+  .description__fade {
+    bottom: 0;
   }
 }
 
-.description.expanded .description__text {
-  max-height: 1000px;
+.product__descript+div {
+  display: flex;
+  width: 100%;
+
+  a {
+    margin-left: auto;
+  }
 }
 
 .description__fade {
   position: absolute;
-  bottom: 3em;
+  bottom: 25px;
   left: 0;
   right: 0;
-  height: 8em;
+  height: 6em;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
   pointer-events: none;
   transition: opacity 0.3s;
 }
 
-.description.expanded .description__fade {
+.description__btn {
+  margin-top: 10px;
+  font-size: 14px;
+  user-select: none;
+  margin-left: auto;
+}
+
+.description__btn::after {
+  content: "Развернуть";
+}
+
+.description__toggle:checked~.description__text {
+  max-height: 1000px;
+}
+
+.description__toggle:checked~.description__fade {
   opacity: 0;
 }
 
-.description__toggle {
-  display: block;
-  margin: 10px auto 0;
-  background: none;
-  border: 1px solid #ccc;
-  padding: 10px 15px;
-  border-radius: 6px;
-  width: 100%;
-  font-family: $main-font;
-  box-shadow: $shadow;
-  z-index: 100;
-  position: relative;
+.description__toggle:checked~.description__btn-wrap .description__btn::after {
+  content: "Свернуть";
 }
 
 .compare {
   border: 1px solid #ddd;
   max-width: 100%;
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
   margin-top: 5px;
   margin-bottom: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.compare::-webkit-scrollbar {
+  display: none;
 }
 
 .compare__scroll {
@@ -314,14 +406,15 @@ h1 {
 
 .compare__row {
   display: grid;
-  grid-template-columns: 1fr;
   border-bottom: 1px solid #eee;
 }
 
 .compare__row--header {
   background: #fff;
   z-index: 5;
-  position: relative;
+  position: sticky;
+  top: 0;
+  min-width: 600px;
 }
 
 .compare__feature {
@@ -329,13 +422,6 @@ h1 {
   font-weight: 500;
   border-right: 1px solid #ddd;
   background: #f9f9f9;
-  z-index: 10;
-  position: relative;
-
-  p {
-    width: calc(100vw - 60px);
-    position: fixed;
-  }
 }
 
 .compare__values {
@@ -347,4 +433,41 @@ h1 {
   padding: 10px;
   text-align: center;
   border-right: 1px solid #eee;
+}
+
+.product__gorizontal {
+  display: block;
+}
+
+@media (min-width: 715px) {
+  .product__gorizontal {
+    display: flex;
+    max-width: 100%;
+    padding: var(--page-gutter);
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .product__desc {
+    width: 50%;
+    padding: 0;
+    padding-left: var(--page-gutter);
+  }
+
+  .product__slider-cont {
+    width: 50%;
+  }
+
+  .product__title--main {
+    margin-top: 0;
+  }
+
+  .product__butn-cont {
+    gap: 10px;
+  }
+
+  .product__slider{
+    width: 50vw;
+    height: 50vw;
+  }
 }

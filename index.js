@@ -8,7 +8,7 @@ import { search } from "./scripts/search.js";
 import { slider } from "./scripts/product-slider.js";
 import { bgElement } from "./scripts/bcg-element.js";
 import { certSlider } from "./scripts/product-slider.js";
-import { hideDesk } from "./scripts/product-desc.js";
+import { hideTitle } from "./scripts/product-desc.js";
 import { heightTable } from "./scripts/product-table.js";
 
 initHeaderAutoHide();
@@ -20,5 +20,6 @@ search();
 slider();
 bgElement();
 certSlider();
-hideDesk();
+// hideDesk();
+hideTitle();
 heightTable();
