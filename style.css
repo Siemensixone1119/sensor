@@ -1480,8 +1480,7 @@ main {
 }
 
 .compare {
-  border: 1px solid #ddd;
-  max-width: 100%;
+  min-width: 100vw;
   overflow-x: auto;
   overflow-y: auto;
   max-height: 600px;
@@ -1495,43 +1494,46 @@ main {
   display: none;
 }
 
-.compare__scroll {
-  min-width: 600px;
-}
-
-.compare__row {
-  display: grid;
-  border-bottom: 1px solid #eee;
+.compare__title {
+  padding-inline: var(--page-gutter);
 }
 
 .compare__row--header {
-  background: #fff;
   z-index: 5;
   position: sticky;
   top: 0;
-  min-width: 600px;
+  display: flex;
+}
+.compare__row--header .compare__cell {
+  background-color: #fff;
 }
 
 .compare__feature {
-  padding: 10px;
-  font-weight: 500;
-  border-right: 1px solid #ddd;
-  background: #f9f9f9;
+  margin: 15px;
+  color: #666666;
+  position: sticky;
+  left: var(--page-gutter);
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline-block;
 }
 
-.compare__values {
-  display: grid;
-  grid-auto-flow: column;
+.compare-cont {
+  display: flex;
+  justify-content: space-between;
 }
 
-.compare__value {
+.compare__row {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.compare__cell {
+  border-bottom: 1px solid #eee;
   padding: 10px;
   text-align: center;
-  border-right: 1px solid #eee;
-}
-
-.product__gorizontal {
-  display: block;
+  min-width: calc(50vw - var(--page-gutter));
+  flex: 1;
 }
 
 @media (min-width: 715px) {
