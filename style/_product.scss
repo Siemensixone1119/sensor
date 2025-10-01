@@ -407,12 +407,14 @@
   -ms-overflow-style: none;
 }
 
-.compare__footnote{
+.compare__footnote {
   padding-bottom: 15px;
-  span{
+
+  span {
     font-size: 14px;
   }
 }
+
 .compare::-webkit-scrollbar {
   display: none;
 }
@@ -472,6 +474,7 @@
     position: sticky;
     display: block;
     left: var(--page-gutter);
+    max-width: calc(100vw - var(--page-gutter) * 3);
   }
 }
 

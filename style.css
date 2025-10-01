@@ -1571,6 +1571,7 @@ main {
   position: sticky;
   display: block;
   left: var(--page-gutter);
+  max-width: calc(100vw - var(--page-gutter) * 3);
 }
 
 .compare__cell:last-child {
