@@ -247,11 +247,13 @@
         </path>
       </symbol>
       <symbol id="icon-download" viewBox="0 0 32 32">
-        <path fill="none" stroke="#000" style="stroke: var(--color1, #000)" stroke-linejoin="miter"
-          stroke-linecap="butt" stroke-miterlimit="10" stroke-width="10.3316" d="M16 3.355v11.053"></path>
-        <path d="M25.415 13.145h-18.828l9.413 9.41 9.415-9.41z"></path>
-        <path fill="none" stroke="#000" style="stroke: var(--color1, #000)" stroke-linejoin="round"
-          stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.0995" d="M3.428 18.763v9.882h25.144v-9.882">
+        <path fill="#818181"
+          d="M15.998 0.664c0.631 0 1.143 0.512 1.143 1.143v20.915l8.207-8.208c0.446-0.446 1.17-0.446 1.616-0s0.446 1.17 0 1.616l-10.158 10.159c-0.214 0.214-0.505 0.335-0.808 0.335s-0.594-0.12-0.808-0.335l-10.159-10.159c-0.446-0.446-0.446-1.17 0-1.616s1.17-0.446 1.616 0l8.208 8.208v-20.915c0-0.631 0.512-1.143 1.143-1.143zM0.632 30.223c0-0.631 0.512-1.143 1.143-1.143h28.445c0.631 0 1.143 0.512 1.143 1.143s-0.512 1.143-1.143 1.143h-28.445c-0.631 0-1.143-0.512-1.143-1.143z">
+        </path>
+      </symbol>
+      <symbol id="icon-link" viewBox="0 0 32 32">
+        <path fill="#818181"
+          d="M27.359 4.6c-1.655-1.655-4.335-1.655-5.99 0l-7.985 7.985c-1.655 1.655-1.655 4.335 0 5.99 0.551 0.551 0.551 1.445 0 1.997s-1.445 0.551-1.997 0c-2.757-2.757-2.757-7.226 0-9.983l7.985-7.985c2.757-2.757 7.226-2.757 9.983 0s2.757 7.226 0 9.983l-1.234 1.232c-0.552 0.551-1.446 0.55-1.997-0.002s-0.55-1.446 0.002-1.997l1.232-1.23c1.655-1.655 1.655-4.335 0-5.99zM18.532 11.429c0.551-0.551 1.445-0.551 1.997 0 2.757 2.757 2.757 7.226 0 9.983l-7.985 7.985c-2.757 2.757-7.226 2.757-9.983 0s-2.757-7.226 0-9.983l1.231-1.231c0.551-0.551 1.445-0.551 1.997 0s0.551 1.445 0 1.997l-1.231 1.231c-1.655 1.655-1.655 4.335 0 5.99s4.335 1.655 5.99 0l7.985-7.985c1.655-1.655 1.655-4.335 0-5.99-0.551-0.551-0.551-1.445 0-1.997z">
         </path>
       </symbol>
     </defs>
@@ -371,7 +373,9 @@
             </p>
             <div class="product__butn-cont">
               <button class="product__butn">
-                Опросный лист
+                <svg>
+                  <use xlink:href="#icon-download"></use>
+                </svg>Опросный лист
               </button>
               <button class="product__butn">
                 В корзину
@@ -520,232 +524,372 @@
         <div class="compare">
           <!-- Шапка -->
           <div class="compare__row compare__row--header">
-            <div class="compare__cell">Товар 1</div>
-            <div class="compare__cell">Товар 2Товар 2Товар 2</div>
-            <div class="compare__cell">Товар 3</div>
-            <div class="compare__cell">Товар 4</div>
-            <div class="compare__cell">Товар 5</div>
-            <div class="compare__cell">Товар 6</div>
+            <div class="compare__cell">Исполнение 1</div>
+            <div class="compare__cell">Исполнение 2</div>
+            <div class="compare__cell">Исполнение 3</div>
+            <div class="compare__cell">Исполнение 4</div>
+            <div class="compare__cell">Исполнение 5</div>
+            <div class="compare__cell">Исполнение 6</div>
+            <div class="compare__cell">Исполнение 7</div>
+            <div class="compare__cell">Исполнение 8</div>
           </div>
 
           <div class="compare__row">
-            <span class="compare__feature">Характеристика 1</span>
+            <span class="compare__feature">
+              Номинальный диаметр (DN), мм
+            </span>
             <div class="compare-cont">
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
+              <div class="compare__cell"><span>15</span></div>
+              <div class="compare__cell"><span>20</span></div>
+              <div class="compare__cell"><span>25</span></div>
+              <div class="compare__cell"><span>32</span></div>
+              <div class="compare__cell"><span>40</span></div>
+              <div class="compare__cell"><span>50</span></div>
+              <div class="compare__cell"><span>80</span></div>
+              <div class="compare__cell"><span>100</span></div>
             </div>
           </div>
 
           <div class="compare__row">
-            <div class="compare__feature">Характеристика 2</div>
+            <span class="compare__feature">
+              Эффективный диаметр, мм
+            </span>
             <div class="compare-cont">
-              <div class="compare__cell">7</div>
-              <div class="compare__cell">8</div>
-              <div class="compare__cell">9</div>
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
+              <div class="compare__cell"><span>15</span></div>
+              <div class="compare__cell"><span>20</span></div>
+              <div class="compare__cell"><span>25</span></div>
+              <div class="compare__cell"><span>32</span></div>
+              <div class="compare__cell"><span>40</span></div>
+              <div class="compare__cell"><span>50</span></div>
+              <div class="compare__cell" style="--data-cell: 2">80</div>
             </div>
           </div>
 
           <div class="compare__row">
-            <div class="compare__feature">Характеристика 3</div>
+            <span class="compare__feature">
+              Номинальное давление (PN), кгс/см²
+            </span>
             <div class="compare-cont">
-              <div class="compare__cell">15</div>
-              <div class="compare__cell">16</div>
-              <div class="compare__cell">17</div>
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
+              <div class="compare__cell" style="--data-cell: 8"><span>16; 25; 40</span></div>
             </div>
           </div>
 
           <div class="compare__row">
-            <div class="compare__feature">Характеристика 3</div>
+            <span class="compare__feature">
+              Перепад давлений (ΔP) в прямом направлении, кгс/см²
+            </span>
             <div class="compare-cont">
-              <div class="compare__cell">15</div>
-              <div class="compare__cell">16</div>
-              <div class="compare__cell">17</div>
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
+              <div class="compare__cell" style="--data-cell: 8"><span>от 0 до PN</span></div>
             </div>
           </div>
 
           <div class="compare__row">
-            <div class="compare__feature">Характеристика 3</div>
+            <span class="compare__feature">
+              Перепад давлений (ΔP) в обратном направлении, кгс/см²
+            </span>
             <div class="compare-cont">
-              <div class="compare__cell">15</div>
-              <div class="compare__cell">16</div>
-              <div class="compare__cell">17</div>
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
+              <div class="compare__cell" style="--data-cell: 8"><span>не применяется <sup>1)</sup></span></div>
             </div>
           </div>
 
           <div class="compare__row">
-            <div class="compare__feature">Характеристика 3</div>
+            <span class="compare__feature">
+              Пробное давление, кгс/см²
+            </span>
             <div class="compare-cont">
-              <div class="compare__cell">15</div>
-              <div class="compare__cell">16</div>
-              <div class="compare__cell">17</div>
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
+              <div class="compare__cell" style="--data-cell: 8"><span>1,5·PN</span></div>
             </div>
           </div>
 
           <div class="compare__row">
-            <div class="compare__feature">Характеристика 3</div>
+            <span class="compare__feature">
+              Герметичность затвора по ГОСТ Р 54808
+            </span>
             <div class="compare-cont">
-              <div class="compare__cell">15</div>
-              <div class="compare__cell">16</div>
-              <div class="compare__cell">17</div>
-              <div class="compare__cell">1</div>
-              <div class="compare__cell">2</div>
-              <div class="compare__cell">3</div>
+              <div class="compare__cell" style="--data-cell: 8"><span>класс «А»</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Тип уплотнения затвора
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>металл - фторопласт</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Напряжение питания
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 3"><span>220 В (AC/DC)</span></div>
+              <div class="compare__cell" style="--data-cell: 2"><span>110 В (DC)</span></div>
+              <div class="compare__cell" style="--data-cell: 3"><span>24 В (DC)</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Потребляемая мощность (PФ / PУД), Вт
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>300 / 10</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Продолжительность включения, %
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>100</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Частота включения, цикл / мин, не более
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>6</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Температура рабочей среды, ℃
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>от -50 до +80 (кратковременно до +100)
+                  от 5 до 195 – для исполнения «-200C»</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Температура окружающей среды, ℃
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>от -50 (от -60 - по заказу) до +60</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Маркировка взрывозащиты
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8">
+                <span>
+                  неэлектрическая часть: 1Ex h IIC T6 Gb X; 1Ex h IIC
+                  T6...T3 Gb X (для
+                  исполнения «-200C»)
+                  привод и датчик конечных положений СЕНС-ДКП: 1Ex db IIC T4 Gb X</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Положение на трубопроводе
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>приводом вверх ±90° (приводом горизонтально – для
+                  исполнения «-200C»)</span></div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Тип присоединения
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>фланцевое исп. F по ГОСТ 33259-2015 (другое - по
+                  заказу)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare__row">
+            <span class="compare__feature">
+              Тип присоединения
+            </span>
+            <div class="compare-cont">
+              <div class="compare__cell" style="--data-cell: 8"><span>фланцевое исп. F по ГОСТ 33259-2015 (другое - по
+                  заказу)</span>
+              </div>
             </div>
           </div>
         </div>
+        <div class="layout compare__footnote">
+          <span><sup>1)</sup><span> При подаче давления в обратном направлении клапан
+              без устройства обратной
+              герметичности откроется</span></span>
+        </div>
+      </div>
 
 
 
-        <div class="layout">
+      <div class="layout">
 
-          <div class="product__docs">
-            <h2 class="product__docs-title">Инструкции и сертификаты</h2>
-            <ul class="product__docs-list">
-              <li class="product__docs-item">
+        <div class="product__docs">
+          <h2 class="product__docs-title">Сертификаты</h2>
+          <ul class="product__docs-list">
 
-              </li>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-link"></use>
+                  </svg>
+                </div>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/link.svg" alt="Ссылка">
-                  </div>
+                <p>Сертификат СДС ИНТЕРГАЗСЕРТ</p>
+              </a>
+            </li>
 
-                  <p>Сертификат СДС ИНТЕРГАЗСЕРТ</p>
-                </a>
-              </li>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-link"></use>
+                  </svg>
+                </div>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/link.svg" alt="Ссылка">
-                  </div>
+                <p>Сертификат соответствия ГОСТ 30546.1-98,
+                  ГОСТ 30546.2-98, ГОСТ 30546.3-98 (сейсмостойкость 9 баллов по шкале MSK-64),
+                  НП 031-01 (I категория сейсмостойкости)</p>
+              </a>
+            </li>
 
-                  <p>Сертификат соответствия ГОСТ 30546.1-98,
-                    ГОСТ 30546.2-98, ГОСТ 30546.3-98 (сейсмостойкость 9 баллов по шкале MSK-64),
-                    НП 031-01 (I категория сейсмостойкости)</p>
-                </a>
-              </li>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-link"></use>
+                  </svg>
+                </div>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/link.svg" alt="Ссылка">
-                  </div>
+                <p>Сертификат соответствия ТР ТС 012/2011
+                  "О безопасности оборудования для работы во взрывоопасных средах"</p>
+              </a>
+            </li>
 
-                  <p>Сертификат соответствия ТР ТС 012/2011
-                    "О безопасности оборудования для работы во взрывоопасных средах"</p>
-                </a>
-              </li>
+          </ul>
+        </div>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
 
-                  <p>Руководство по эксплуатации Клапан СЕНС-ПР DN100 PN25 [-ДКП]</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
+        <div class="product__docs">
+          <h2 class="product__docs-title">Инструкции и сертификаты</h2>
+          <ul class="product__docs-list">
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
 
-                  <p>Руководство по эксплуатации Клапан СЕНС-ПР DN150 PN25 [-ДКП]</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
+                <p>Руководство по эксплуатации Клапан СЕНС-ПР DN100 PN25 [-ДКП]</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
 
-                  <p>Руководство по эксплуатации Клапаны СЕНС-ПР DN(10, 15, 20) PN(16, 25) [-200С]</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
+                <p>Руководство по эксплуатации Клапан СЕНС-ПР DN150 PN25 [-ДКП]</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
 
-                  <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
+                <p>Руководство по эксплуатации Клапаны СЕНС-ПР DN(10, 15, 20) PN(16, 25) [-200С]</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
 
-                  <p>Информация о кабельных вводах и их комплектации</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
+                <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
 
-                  <p>3D-модели клапана СЕНС-ПР DN100 PN25 (-СВ)</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
+                <p>Информация о кабельных вводах и их комплектации</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
 
-                  <p>3D-модели клапана СЕНС-ПР DN100 PN25 -200C (-СВ)</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
+                <p>3D-модели клапана СЕНС-ПР DN100 PN25 (-СВ)</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
 
-              <li class="product__docs-item">
-                <a href="" class="product__docs-link">
-                  <div class="product__docs-icon">
-                    <img src="./assets/image/download.svg" alt="Скачать">
-                  </div>
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
 
-                  <p>3D-модели клапана СЕНС-ПР DN100 PN25 -ДП1 (-УОГ, полнопроходный) (-СВ)</p>
-                </a>
-                <p class="product__docs-size">1.5Мб</p>
-              </li>
-            </ul>
-          </div>
+                <p>3D-модели клапана СЕНС-ПР DN100 PN25 -200C (-СВ)</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
+
+            <li class="product__docs-item">
+              <a href="" class="product__docs-link">
+                <div class="product__docs-icon">
+                  <svg>
+                    <use xlink:href="#icon-download"></use>
+                  </svg>
+                </div>
+
+                <p>3D-модели клапана СЕНС-ПР DN100 PN25 -ДП1 (-УОГ, полнопроходный) (-СВ)</p>
+              </a>
+              <p class="product__docs-size">1.5Мб</p>
+            </li>
+          </ul>
+        </div>
   </main>
 
   <footer>

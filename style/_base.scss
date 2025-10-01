@@ -99,6 +99,10 @@ input {
   --page-gutter: 15px;
 }
 
+.upper{
+  text-transform: uppercase;
+}
+
 @media (max-width: 359px) {
   :root {
     --page-gutter: 10px;
