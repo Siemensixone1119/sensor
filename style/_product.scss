@@ -68,7 +68,7 @@
     font-size: 22px;
     font-family: $font-family;
     font-weight: 400;
-    margin: 7px 0;
+    margin: 10px 0;
     display: inline-block;
   }
 
@@ -155,54 +155,7 @@
     }
   }
 
-  &__order {
-    background-color: #eee;
-    border: 1px solid #ccc;
-    margin: 0;
-    margin-top: 20px;
-    padding-bottom: 20px;
-  }
 
-  &__order-title {
-    font-size: 40px;
-    font-weight: 800;
-    font-family: $font-family;
-    display: inline-block;
-    margin: 20px 0;
-  }
-
-  &__order-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  &__order-item {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 40px;
-  }
-
-  &__order-step {
-    font-family: $second-family;
-    font-size: 55px;
-    font-weight: 500;
-  }
-
-  &__order-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  &__order-text {
-    color: #666666;
-
-    a {
-      color: $accent-color;
-    }
-  }
 
   &__cert {
     display: flex;
@@ -293,39 +246,131 @@
   }
 
   &__docs-icon {
-    min-width: 32px;
-    height: 32px;
-    background-color: #f2f2f2;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-width: 46px;
+    height: 46px;
+
+    img {
+      width: 46px;
+    }
   }
 
   &__docs-link {
     display: flex;
     width: auto;
-    gap: 30px;
+    gap: 15px;
+    min-height: 65px;
 
     p {
       text-align: left;
     }
+
+    span {
+      font-size: 12px;
+    }
+
+    .cont {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 
   &__docs-size {
-    padding-left: 65px;
     color: #818181;
+    font-size: 14px;
   }
 
   &__desc {
     padding-inline: var(--page-gutter);
+    position: relative;
   }
+
+.product {
+  &__order {
+    // background-color: #eee;
+    margin: 20px 0;
+  }
+
+  &__order-checkbox {
+    display: none;
+  }
+
+  &__order-title {
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    span {
+      font-size: 40px;
+      font-family: $font-family;
+    }
+  }
+
+  &__order-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  &__order-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  // при клике раскрываем
+  &__order-checkbox:checked ~ .product__order-list {
+    max-height: 2000px; // большое значение для раскрытия
+  }
+
+  // поворот стрелки при раскрытии
+  &__order-checkbox:checked ~ .product__order-title .product__order-icon {
+    transform: rotate(180deg);
+  }
+
+  &__order-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  &__order-item:last-child{
+    padding-bottom: 20px;
+  }
+
+  &__order-step {
+    font-family: $second-family;
+    font-size: 55px;
+    font-weight: 500;
+  }
+
+  &__order-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__order-text {
+    color: #666;
+
+    a {
+      color: $accent-color;
+    }
+  }
+}
+
 }
 
 .description {
   position: relative;
-  max-width: 600px;
-  margin: 20px auto;
+  // max-width: 600px;
+  margin: 20px var(--page-gutter);
   margin-bottom: 10px;
 
   li {
@@ -336,6 +381,11 @@
       font-size: 13px;
     }
   }
+}
+
+.description__text.o {
+  max-height: max-content;
+  // padding: 10px 0;
 }
 
 .description__toggle {
@@ -394,7 +444,7 @@
 }
 
 .description__toggle:checked~.description__text {
-  max-height: 1000px;
+  max-height: max-content;
 }
 
 .description__toggle:checked~.description__fade {
@@ -436,11 +486,10 @@
   z-index: 5;
   position: sticky;
   top: 0;
-  // min-width: 200%;
   display: flex;
-  // gap: 15px;
   background-color: #fff;
   border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
 
   .compare__cell {
     padding: 15px;
@@ -467,6 +516,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
+  // border-top: 1px solid #eee;
 }
 
 .compare__row {
@@ -493,6 +543,10 @@
 
 .compare__cell:last-child {
   border: none;
+}
+
+.h {
+  font-size: 14px;
 }
 
 @media (min-width: 715px) {

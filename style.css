@@ -1213,7 +1213,7 @@ main {
   font-size: 22px;
   font-family: "pfdintextcomppro-light", sans-serif;
   font-weight: 400;
-  margin: 7px 0;
+  margin: 10px 0;
   display: inline-block;
 }
 .product__text {
@@ -1281,47 +1281,6 @@ main {
 .product__slider img {
   width: 80vw;
   height: 80vw;
-}
-.product__order {
-  background-color: #eee;
-  border: 1px solid #ccc;
-  margin: 0;
-  margin-top: 20px;
-  padding-bottom: 20px;
-}
-.product__order-title {
-  font-size: 40px;
-  font-weight: 800;
-  font-family: "pfdintextcomppro-light", sans-serif;
-  display: inline-block;
-  margin: 20px 0;
-}
-.product__order-list {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-.product__order-item {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 40px;
-}
-.product__order-step {
-  font-family: "pfdintextcomppro-regular", sans-serif;
-  font-size: 55px;
-  font-weight: 500;
-}
-.product__order-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.product__order-text {
-  color: #666666;
-}
-.product__order-text a {
-  color: #b30006;
 }
 .product__cert {
   display: flex;
@@ -1398,34 +1357,102 @@ main {
   padding-bottom: 30px;
 }
 .product__docs-icon {
-  min-width: 32px;
-  height: 32px;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-width: 46px;
+  height: 46px;
+}
+.product__docs-icon img {
+  width: 46px;
 }
 .product__docs-link {
   display: flex;
   width: auto;
-  gap: 30px;
+  gap: 15px;
+  min-height: 65px;
 }
 .product__docs-link p {
   text-align: left;
 }
+.product__docs-link span {
+  font-size: 12px;
+}
+.product__docs-link .cont {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .product__docs-size {
-  padding-left: 65px;
   color: #818181;
+  font-size: 14px;
 }
 .product__desc {
   padding-inline: var(--page-gutter);
+  position: relative;
+}
+.product .product__order {
+  margin: 20px 0;
+}
+.product .product__order-checkbox {
+  display: none;
+}
+.product .product__order-title {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.product .product__order-title span {
+  font-size: 40px;
+  font-family: "pfdintextcomppro-light", sans-serif;
+}
+.product .product__order-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+.product .product__order-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.product .product__order-checkbox:checked ~ .product__order-list {
+  max-height: 2000px;
+}
+.product .product__order-checkbox:checked ~ .product__order-title .product__order-icon {
+  transform: rotate(180deg);
+}
+.product .product__order-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+.product .product__order-item:last-child {
+  padding-bottom: 20px;
+}
+.product .product__order-step {
+  font-family: "pfdintextcomppro-regular", sans-serif;
+  font-size: 55px;
+  font-weight: 500;
+}
+.product .product__order-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.product .product__order-text {
+  color: #666;
+}
+.product .product__order-text a {
+  color: #b30006;
 }
 
 .description {
   position: relative;
-  max-width: 600px;
-  margin: 20px auto;
+  margin: 20px var(--page-gutter);
   margin-bottom: 10px;
 }
 .description li p::before {
@@ -1433,6 +1460,11 @@ main {
   color: rgb(153, 153, 153);
   margin-right: 1em;
   font-size: 13px;
+}
+
+.description__text.o {
+  max-height: -moz-max-content;
+  max-height: max-content;
 }
 
 .description__toggle {
@@ -1491,7 +1523,8 @@ main {
 }
 
 .description__toggle:checked ~ .description__text {
-  max-height: 1000px;
+  max-height: -moz-max-content;
+  max-height: max-content;
 }
 
 .description__toggle:checked ~ .description__fade {
@@ -1535,6 +1568,7 @@ main {
   display: flex;
   background-color: #fff;
   border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
 }
 .compare__row--header .compare__cell {
   padding: 15px;
@@ -1586,6 +1620,10 @@ main {
 
 .compare__cell:last-child {
   border: none;
+}
+
+.h {
+  font-size: 14px;
 }
 
 @media (min-width: 715px) {
