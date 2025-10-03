@@ -1379,9 +1379,17 @@ main {
   flex-direction: column;
   gap: 8px;
 }
-.product__docs-size {
+.product__docs-size, .product__docs-size span {
   color: #818181;
-  font-size: 11.3px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.product__docs-size svg, .product__docs-size span svg {
+  fill: #818181;
+  width: 16px;
+  height: 16px;
 }
 .product__desc {
   padding-inline: var(--page-gutter);
