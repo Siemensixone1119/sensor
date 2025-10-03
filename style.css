@@ -1214,7 +1214,6 @@ main {
   font-family: "pfdintextcomppro-light", sans-serif;
   font-weight: 400;
   margin: 10px 0;
-  display: inline-block;
 }
 .product__text {
   text-indent: 2em;
@@ -1382,33 +1381,32 @@ main {
 }
 .product__docs-size {
   color: #818181;
-  font-size: 14px;
+  font-size: 11.3px;
 }
 .product__desc {
   padding-inline: var(--page-gutter);
   position: relative;
 }
-.product .product__order {
-  margin: 20px 0;
+.product .product__order-subtitle {
+  font-weight: 400;
 }
 .product .product__order-checkbox {
   display: none;
 }
 .product .product__order-title {
-  padding: 20px 0;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
+  position: relative;
+  z-index: 100;
 }
 .product .product__order-title span {
-  font-size: 40px;
   font-family: "pfdintextcomppro-light", sans-serif;
 }
 .product .product__order-icon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   transition: transform 0.3s ease;
 }
 .product .product__order-list {
@@ -1437,6 +1435,7 @@ main {
   font-family: "pfdintextcomppro-regular", sans-serif;
   font-size: 55px;
   font-weight: 500;
+  color: #9d9d9d;
 }
 .product .product__order-content {
   display: flex;
@@ -1498,7 +1497,7 @@ main {
 
 .description__fade {
   position: absolute;
-  bottom: 25px;
+  top: 1.8em;
   left: 0;
   right: 0;
   height: 6em;
@@ -1520,6 +1519,7 @@ main {
   content: "Развернуть";
   display: block;
   border-bottom: 1px dotted #000;
+  margin-bottom: 20px;
 }
 
 .description__toggle:checked ~ .description__text {
@@ -1537,13 +1537,8 @@ main {
 
 .compare {
   min-width: 100vw;
-  overflow-x: auto;
-  overflow-y: auto;
-  max-height: 60vh;
   margin-top: 5px;
   margin-bottom: 20px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 .compare__footnote {
@@ -1553,27 +1548,51 @@ main {
   font-size: 14px;
 }
 
-.compare::-webkit-scrollbar {
+.compare__scroll::-webkit-scrollbar,
+.compare__row--header::-webkit-scrollbar {
   display: none;
 }
 
 .compare__title {
   padding-inline: var(--page-gutter);
 }
+.compare__title label {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.compare__row--header-scroll {
+  display: flex;
+  overflow-x: auto;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
 
 .compare__row--header {
   z-index: 5;
   position: sticky;
-  top: 0;
+  top: var(--sticky-top, 0px);
   display: flex;
   background-color: #fff;
   border-bottom: 1px solid #eee;
   border-top: 1px solid #eee;
+  width: 100vw;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .compare__row--header .compare__cell {
   padding: 15px;
   background-color: #fff;
   width: 50vw;
+}
+
+.compare__scroll {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .compare__feature {
@@ -1620,6 +1639,33 @@ main {
 
 .compare__cell:last-child {
   border: none;
+}
+
+#compare-toggle ~ .compare {
+  max-height: 0;
+  display: none;
+}
+
+#compare-toggle:checked ~ .compare {
+  max-height: -moz-max-content;
+  max-height: max-content;
+  display: block;
+}
+
+.compare__title label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.compare__title label svg {
+  transition: transform 0.3s ease;
+  width: 16px;
+  height: 16px;
+}
+
+/* когда чекбокс включён — крутим svg */
+#compare-toggle:checked + .compare__title label svg {
+  transform: rotate(180deg);
 }
 
 .h {
