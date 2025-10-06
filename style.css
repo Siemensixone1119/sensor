@@ -1341,9 +1341,10 @@ main {
   color: #a4a4a4;
   text-wrap: nowrap;
 }
-.product__breadcrumb span::after {
+.product .product__breadcrumb li:not(:last-child) > span::after {
   content: ">";
   margin: 0 15px;
+  color: #a4a4a4;
 }
 .product__docs-list {
   display: flex;
@@ -1377,6 +1378,7 @@ main {
   flex-direction: column;
   gap: 8px;
   line-height: 1.2;
+  margin-bottom: 20px;
 }
 .product__docs-size, .product__docs-size span {
   color: #999999;

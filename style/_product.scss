@@ -230,10 +230,12 @@
       text-wrap: nowrap;
     }
 
-    span::after {
-      content: ">";
-      margin: 0 15px;
-    }
+  }
+
+  .product__breadcrumb li:not(:last-child)>span::after {
+    content: ">";
+    margin: 0 15px;
+    color: #a4a4a4;
   }
 
   &__docs-list {
@@ -273,6 +275,7 @@
       flex-direction: column;
       gap: 8px;
       line-height: 1.2;
+      margin-bottom: 20px;
     }
   }
 
