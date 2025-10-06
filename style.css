@@ -1052,9 +1052,7 @@ main {
   transform: rotate(-90deg);
 }
 .search__result a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   padding: 10px 15px;
 }
 .search__result a:first-child {
@@ -1361,6 +1359,7 @@ main {
 }
 .product__docs-icon img {
   width: 46px;
+  padding-top: 5px;
 }
 .product__docs-link {
   display: flex;
@@ -1371,25 +1370,34 @@ main {
 .product__docs-link p {
   text-align: left;
 }
-.product__docs-link span {
-  font-size: 12px;
+.product__docs-link .product__docs-desc {
+  color: #666;
 }
 .product__docs-link .cont {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  line-height: 1.2;
 }
 .product__docs-size, .product__docs-size span {
-  color: #818181;
+  color: #999999;
   font-size: 12px;
   display: flex;
   align-items: center;
   gap: 5px;
 }
 .product__docs-size svg, .product__docs-size span svg {
-  fill: #818181;
+  fill: #999999;
   width: 16px;
   height: 16px;
+}
+.product__docs-size > span::after {
+  content: "|";
+  color: #999999;
+  font-size: 12px;
+}
+.product__docs-size > span:last-child::after {
+  content: "";
 }
 .product__desc {
   padding-inline: var(--page-gutter);
@@ -1469,70 +1477,55 @@ main {
   font-size: 13px;
 }
 
-.description__text.o {
-  max-height: -moz-max-content;
-  max-height: max-content;
-}
-
 .description__toggle {
   display: none;
 }
 
 .description__text {
-  max-height: 7em;
+  max-height: 8em;
   overflow: hidden;
-  line-height: 1.5em;
-  transition: max-height 0.4s ease;
+  line-height: 1.6;
+  transition: max-height 0.6s ease-in-out;
 }
 
-.product__descript {
-  position: relative;
-  max-height: 150px;
-  padding-top: 20px;
-  overflow: hidden;
-}
-.product__descript .description__fade {
-  bottom: 0;
-}
-
-.product__descript + div {
-  display: flex;
-  width: 100%;
-}
-.product__descript + div a {
-  margin-left: auto;
+.description__text.o {
+  max-height: -moz-max-content;
+  max-height: max-content;
 }
 
 .description__fade {
   position: absolute;
-  top: 1.8em;
+  top: 2em;
   left: 0;
   right: 0;
   height: 6em;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
   pointer-events: none;
-  transition: opacity 0.3s;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 .description__btn {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 14px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   margin-left: auto;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s ease;
 }
-
 .description__btn::after {
   content: "Развернуть";
-  display: block;
-  border-bottom: 1px dotted #000;
-  margin-bottom: 20px;
+  border-bottom: 1px dotted currentColor;
+  margin-bottom: 15px;
 }
 
 .description__toggle:checked ~ .description__text {
-  max-height: -moz-max-content;
-  max-height: max-content;
+  max-height: 15000px;
 }
 
 .description__toggle:checked ~ .description__fade {
@@ -1541,6 +1534,10 @@ main {
 
 .description__toggle:checked ~ .description__btn-wrap .description__btn::after {
   content: "Свернуть";
+}
+
+.description__toggle:checked ~ .description__btn-wrap .description__btn svg {
+  transform: rotate(180deg);
 }
 
 .compare {

@@ -251,6 +251,7 @@
 
     img {
       width: 46px;
+      padding-top: 5px;
     }
   }
 
@@ -264,29 +265,41 @@
       text-align: left;
     }
 
-    span {
-      font-size: 12px;
+    .product__docs-desc {
+      color: #666;
     }
 
     .cont {
       display: flex;
       flex-direction: column;
       gap: 8px;
+      line-height: 1.2;
     }
   }
 
   &__docs-size,
   &__docs-size span {
-    color: #818181;
+    color: #999999;
     font-size: 12px;
     display: flex;
     align-items: center;
     gap: 5px;
-    svg{
-      fill: #818181;
+
+    svg {
+      fill: #999999;
       width: 16px;
       height: 16px;
     }
+  }
+
+  &__docs-size>span::after {
+    content: "|";
+    color: #999999;
+    font-size: 12px;
+  }
+
+  &__docs-size>span:last-child::after {
+    content: "";
   }
 
   &__desc {
@@ -337,12 +350,10 @@
       gap: 30px;
     }
 
-    // при клике раскрываем
     &__order-checkbox:checked~.product__order-list {
-      max-height: 2000px; // большое значение для раскрытия
+      max-height: 2000px;
     }
 
-    // поворот стрелки при раскрытии
     &__order-checkbox:checked~.product__order-title .product__order-icon {
       transform: rotate(180deg);
     }
@@ -383,7 +394,6 @@
 
 .description {
   position: relative;
-  // max-width: 600px;
   margin: 20px var(--page-gutter);
   margin-bottom: 10px;
 
@@ -397,69 +407,53 @@
   }
 }
 
-.description__text.o {
-  max-height: max-content;
-  // padding: 10px 0;
-}
-
 .description__toggle {
   display: none;
 }
 
 .description__text {
-  max-height: 7em;
+  max-height: 8em;
   overflow: hidden;
-  line-height: 1.5em;
-  transition: max-height 0.4s ease;
+  line-height: 1.6;
+  transition: max-height 0.6s ease-in-out;
 }
 
-.product__descript {
-  position: relative;
-  max-height: 150px;
-  padding-top: 20px;
-  overflow: hidden;
-
-  .description__fade {
-    bottom: 0;
-  }
-}
-
-.product__descript+div {
-  display: flex;
-  width: 100%;
-
-  a {
-    margin-left: auto;
-  }
+.description__text.o{
+  max-height: max-content;
 }
 
 .description__fade {
   position: absolute;
-  top: 1.8em;
+  top: 2em;
   left: 0;
   right: 0;
   height: 6em;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
   pointer-events: none;
-  transition: opacity 0.3s;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 .description__btn {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 14px;
   user-select: none;
   margin-left: auto;
-}
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s ease;
 
-.description__btn::after {
-  content: "Развернуть";
-  display: block;
-  border-bottom: 1px dotted #000;
-  margin-bottom: 20px;
+  &::after {
+    content: "Развернуть";
+    border-bottom: 1px dotted currentColor;
+    margin-bottom: 15px;
+  }
 }
 
 .description__toggle:checked~.description__text {
-  max-height: max-content;
+  max-height: 15000px;
 }
 
 .description__toggle:checked~.description__fade {
@@ -468,6 +462,10 @@
 
 .description__toggle:checked~.description__btn-wrap .description__btn::after {
   content: "Свернуть";
+}
+
+.description__toggle:checked~.description__btn-wrap .description__btn svg {
+  transform: rotate(180deg);
 }
 
 .compare {

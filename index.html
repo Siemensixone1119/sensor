@@ -396,7 +396,7 @@
         </div>
         <div class="description">
           <input type="checkbox" class="description__toggle" id="desc1">
-          <div class="description__text">
+          <div class="description__text" id="desc-block">
             <section>
               <h2 class="product__title">Применение</h2>
               <p class="product__text">
@@ -471,7 +471,16 @@
           </div>
         </div>
       </div>
+      <script>
+        const checkbox = document.querySelector("#desc1");
+        const description = document.querySelector("#desc-block");
 
+        checkbox.addEventListener("change", () => {
+          if (!checkbox.checked) {
+            description.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      </script>
       <!-- <h2 class="product__title compare__title">Характеристики</h2>
         <div class="compare">
           <div class="compare__row compare__row--header">
@@ -1009,8 +1018,8 @@
                 <div class="cont">
                   <p>Сертификат соответствия ТР ТС 012/2011
                     "О безопасности оборудования для работы во взрывоопасных средах"</p>
-                  <span>1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
-                  <p class="product__docs-size"> <span>pdf</span> | <span>510,11 КБ</span> | <span>
+                  <span class="product__docs-desc">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
+                  <p class="product__docs-size"> <span>pdf</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1027,8 +1036,8 @@
                 <div class="cont">
                   <p>Сертификат соответствия ТР ТС 012/2011
                     "О безопасности оборудования для работы во взрывоопасных средах"</p>
-                  <span>1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
-                  <p class="product__docs-size"> <span>pdf</span> | <span>510,11 КБ</span> | <span>
+                  <span class="product__docs-desc">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
+                  <p class="product__docs-size"> <span>pdf</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1044,9 +1053,8 @@
                 <div class="cont">
                   <p>Сертификат соответствия ТР ТС 012/2011
                     "О безопасности оборудования для работы во взрывоопасных средах"</p>
-                  <span>1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
-                  <p class="product__docs-size"> <span>pdf</span> | <span>510,11 КБ</span> | <span>
-                      <svg>
+                  <span class="product__docs-desc">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
+                  <p class="product__docs-size"> <span>pdf</span><span>510,11 КБ</span><span><svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
                 </div>
@@ -1069,9 +1077,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1087,9 +1095,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1105,9 +1113,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1123,9 +1131,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1141,9 +1149,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1159,9 +1167,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1177,9 +1185,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1195,9 +1203,9 @@
 
                 <div class="cont">
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
-                  <span>применяется для
+                  <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span> | <span>510,11 КБ</span> | <span>
+                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
