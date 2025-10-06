@@ -327,13 +327,13 @@
       <div class="product__breadcrumb-cont">
         <ul class="product__breadcrumb">
           <li>
-            <span>Каталог продукции ></span>
+            <span>Каталог продукции</span>
           </li>
           <li>
-            <span>Клапаны ></span>
+            <span>Клапаны</span>
           </li>
           <li>
-            <span>Клапаны электромагнитные ></span>
+            <span>Клапаны электромагнитные</span>
           </li>
           <li>
             <span>СЕНС-П DN(80 .. 100)PN5</span>
@@ -449,7 +449,7 @@
           </div>
           <div class="description__text o">
             <section>
-              <!-- <h2 class="product__title">Особенности</h2> -->
+              <h2 class="product__title">Особенности</h2>
               <ul>
                 <li>
                   <p>включен в реестр российской промышленной продукции</p>
@@ -471,124 +471,6 @@
           </div>
         </div>
       </div>
-      <script>
-        const checkbox = document.querySelector("#desc1");
-        const description = document.querySelector("#desc-block");
-
-        checkbox.addEventListener("change", () => {
-          if (!checkbox.checked) {
-            description.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        });
-      </script>
-      <!-- <h2 class="product__title compare__title">Характеристики</h2>
-        <div class="compare">
-          <div class="compare__row compare__row--header">
-            <div class="compare__values">
-              <div class="compare__value">товар1</div>
-              <div class="compare__value">товар2</div>
-              <div class="compare__value">товар3</div>
-            </div>
-          </div>
-          <div class="compare__scroll">
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>
-                  Группа механического исполнения по ГОСТ 30631 по устойчивости к
-                  воздействию механических внешних воздействующих факторов
-                </p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">1</div>
-                <div class="compare__value">2</div>
-                <div class="compare__value">3</div>
-              </div>
-            </div>
-
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>Сопротивление изоляции между входными и выходными клеммами, между входными
-                  клеммами и клеммой заземления, между выходными клеммами и клеммой заземления, МОм, не менее</p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">4</div>
-                <div class="compare__value">5</div>
-                <div class="compare__value">6</div>
-              </div>
-            </div>
-
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>Пределы допускаемой основной погрешности преобразования измеренного
-                  значения уровня в токовый сигнал (для модели с токовым сигналом 4–20 мА), % приведённый к диапазону
-                </p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">7</div>
-                <div class="compare__value">8</div>
-                <div class="compare__value">9</div>
-              </div>
-            </div>
-
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>Пределы допускаемой основной погрешности измерений уровня для цифровых
-                  кодированных выходных сигналов, в зависимости от варианта исполнения и диапазона измерений, мм</p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">7</div>
-                <div class="compare__value">8</div>
-                <div class="compare__value">9</div>
-              </div>
-            </div>
-
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>Изменение выходного напряжения при изменении выходного тока от
-                  максимального до тока холостого хода, %, не более</p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">7</div>
-                <div class="compare__value">8</div>
-                <div class="compare__value">9</div>
-              </div>
-            </div>
-
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>Изменение выходного напряжения при изменении выходного тока от
-                  максимального до тока холостого хода, %, не более</p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">7</div>
-                <div class="compare__value">8</div>
-                <div class="compare__value">9</div>
-              </div>
-            </div>
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>Изменение выходного напряжения при изменении выходного тока от
-                  максимального до тока холостого хода, %, не более</p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">7</div>
-                <div class="compare__value">8</div>
-                <div class="compare__value">9</div>
-              </div>
-            </div>
-            <div class="compare__row">
-              <div class="compare__feature">
-                <p>Изменение выходного напряжения при изменении выходного тока от
-                  максимального до тока холостого хода, %, не более</p>
-              </div>
-              <div class="compare__values">
-                <div class="compare__value">7</div>
-                <div class="compare__value">8</div>
-                <div class="compare__value">9</div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       <input type="checkbox" id="compare-toggle" hidden>
       <h2 class="compare__title">
         <label for="compare-toggle">
@@ -1007,7 +889,15 @@
       <div class="layout">
 
         <div class="product__docs">
-          <h2 class="product__title">Сертификаты</h2>
+          <input type="checkbox" id="cert-toggle" hidden>
+          <h2 class="cert__title">
+            <label for="cert-toggle">
+              <span class="product__title">Сертефикаты</span>
+              <svg>
+                <use xlink:href="#icon-arrow"></use>
+              </svg>
+            </label>
+          </h2>
           <ul class="product__docs-list">
 
             <li class="product__docs-item">
@@ -1066,7 +956,15 @@
 
 
         <div class="product__docs">
-          <h2 class="product__title">Файлы</h2>
+          <input type="checkbox" id="file-toggle" hidden>
+          <h2 class="cert__title">
+            <label for="file-toggle">
+              <span class="product__title">Файлы</span>
+              <svg>
+                <use xlink:href="#icon-arrow"></use>
+              </svg>
+            </label>
+          </h2>
           <ul class="product__docs-list">
 
             <li class="product__docs-item">

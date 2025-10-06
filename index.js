@@ -25,3 +25,11 @@ certSlider();
 hideTitle();
 // heightTable();
 syncScroll();
+const checkbox = document.querySelector("#desc1");
+const description = document.querySelector("#desc-block");
+
+checkbox.addEventListener("change", () => {
+  if (!checkbox.checked) {
+    description.scrollIntoView({ block: "start" });
+  }
+});
