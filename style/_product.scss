@@ -1,5 +1,9 @@
 @use "./variable" as *;
 
+:root {
+  --cols: 2;
+}
+
 .product {
   // overflow: hidden;
 
@@ -401,15 +405,13 @@
   margin: 20px var(--page-gutter);
   margin-bottom: 10px;
 
-  li {
-    p::before {
-      content: "•";
-      color: rgb(153, 153, 153);
-      margin-right: 1em;
-      font-size: 13px;
-      position: absolute;
-      left: 0;
-    }
+  ul {
+    list-style: disc !important;
+  }
+
+  li::marker {
+    // content: "•";
+    color: rgb(153, 153, 153);
   }
 }
 
@@ -427,10 +429,10 @@
 .description__text.o {
   max-height: max-content;
 
-  li p {
-    padding-left: 1em;
-    padding-bottom: 8px;
-  }
+  // li p {
+  //   padding-left: 1em;
+  //   padding-bottom: 8px;
+  // }
 }
 
 .description__fade {
@@ -461,24 +463,77 @@
   align-items: center;
   gap: 5px;
 
-  &::after {
-    content: "Развернуть";
-    border-bottom: 1px dotted currentColor;
-    margin-bottom: 15px;
-  }
+  // &::after {
+  //   content: "Развернуть";
+  //   border-bottom: 1px dotted currentColor;
+  //   margin-bottom: 15px;
+  // }
+}
+
+.description__btn .close {
+  display: none;
+}
+
+.description__btn .open {
+  display: inline-block;
 }
 
 .description__toggle:checked~.description__text {
   max-height: 15000px;
 }
 
+.description__toggle:checked+.description__text+.description__fade+.description__btn-wrap .open {
+  display: none;
+}
+
+.description__toggle:checked+.description__text+.description__fade+.description__btn-wrap .close {
+  display: inline-block;
+}
+
+.description ul {
+  list-style-type: disc;
+  padding-left: 1em;
+  margin: 0;
+}
+
+.description li {
+  color: #333;
+  line-height: 1.6;
+
+  &::marker {
+    color: rgb(153, 153, 153);
+    font-size: 14px;
+  }
+}
+
+// .description ul {
+//   list-style-type: disc;
+//   padding-left: 1.5em;
+//   margin: 0;
+// }
+
+// .description li {
+//   color: #333;
+//   line-height: 1.6;
+
+//   &::marker {
+//     color: rgb(153, 153, 153);
+//     font-size: 14px;
+//   }
+// }
+
+// .description span {
+//   margin-left: 0;
+// }
+
+
 // .description__toggle:checked~.description__fade {
 //   opacity: 0;
 // }
 
-.description__toggle:checked~.description__btn-wrap .description__btn::after {
-  content: "Свернуть";
-}
+// .description__toggle:checked~.description__btn-wrap .description__btn::after {
+//   content: "Свернуть";
+// }
 
 .description__toggle:checked~.description__btn-wrap .description__btn svg {
   transform: rotate(180deg);
@@ -531,8 +586,8 @@
   top: var(--sticky-top, 0px);
   display: flex;
   background-color: #fff;
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
+  // border-bottom: 1px solid #eee;
+  // border-top: 1px solid #eee;
   width: 100vw;
   overflow-x: scroll;
   scrollbar-width: none;
@@ -541,7 +596,7 @@
   .compare__cell {
     padding: 15px;
     background-color: #fff;
-    width: calc(50vw);
+    width: calc((1/var(--cols)) * 100vw);
   }
 }
 
@@ -552,23 +607,30 @@
 }
 
 .compare__feature {
-  margin: 15px 0;
-  color: #a3a3a3;
+  padding: 10px var(--page-gutter);
+  padding-bottom: 0;
+  color: #909090;
   position: sticky;
-  left: var(--page-gutter);
+  left: 0;
   width: fit-content;
   display: block;
   max-width: calc(100vw - var(--page-gutter));
 }
 
 .compare__feature--bold {
+  color: #212121;
+  font-size: 17px;
+  font-weight: 700
+}
+
+.compare__feature--semibold {
   font-weight: 700;
 }
 
 .compare-cont {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #eee;
+  // border-bottom: 1px solid #eee;
   // border-top: 1px solid #eee;
 }
 
@@ -577,13 +639,27 @@
   // padding: 0 var(--page-gutter);
 }
 
+
+.compare__row:nth-child(even) {
+  background-color: #f3f3f3;
+  border: none;
+
+  .compare-cont {
+    border: none
+  }
+
+  .compare__cell {
+    // border-bottom: 1px solid #d2d2d2;
+  }
+}
+
 .compare__cell {
-  padding: 15px 7.5px;
-  text-align: center;
-  width: calc(50vw * var(--data-cell, 1));
-  border-right: 1px solid #eee;
+  padding: 10px var(--page-gutter);
+  width: calc((1 / var(--cols)) * 100vw * var(--data-cell, 1));
+  // border-right: 1px solid #eee;
   // border-left: 1px solid gray;
   display: flex;
+  color: #212121;
 
   span {
     width: fit-content;
@@ -673,5 +749,23 @@
 
   .product__slider {
     width: 50vw;
+  }
+}
+
+@media (min-width: 320px) {
+  :root {
+    --cols: 2;
+  }
+}
+
+@media (min-width: 600px) {
+  :root {
+    --cols: 3;
+  }
+}
+
+@media (min-width: 800px) {
+  :root {
+    --cols: 4;
   }
 }
