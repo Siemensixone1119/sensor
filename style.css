@@ -1237,6 +1237,7 @@ main {
 .product svg {
   width: 18px;
   height: 18px;
+  fill: #212121;
 }
 .product__slider-contain {
   position: relative;
@@ -1495,6 +1496,7 @@ main {
 .product__close-btn svg {
   width: 18px;
   height: 18px;
+  fill: #212121;
 }
 .product__content {
   padding: var(--page-gutter);
@@ -1735,6 +1737,7 @@ main {
   justify-content: center;
   height: -moz-fit-content;
   height: fit-content;
+  padding-top: 1px;
   padding-left: 5px;
 }
 .compare__cell svg {

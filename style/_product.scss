@@ -102,6 +102,7 @@
   svg {
     width: 18px;
     height: 18px;
+    fill: #212121;
   }
 
   &__slider-contain {
@@ -424,6 +425,7 @@
     svg {
       width: 18px;
       height: 18px;
+      fill: #212121;
     }
   }
 
@@ -724,7 +726,7 @@
     align-items: center;
     justify-content: center;
     height: fit-content;
-    // padding-top: 3.5px;
+    padding-top: 1px;
     padding-left: 5px;
   }
 
