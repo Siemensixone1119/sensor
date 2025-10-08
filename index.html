@@ -265,6 +265,11 @@
           d="M0.988 24.934c0.644 1.845 1.652 3.294 2.996 4.307 1.513 1.142 3.492 1.763 5.88 1.847v-0.002c0.025 0.002 0.049 0.002 0.074 0.002h12.924c1.963 0 3.070-0.869 5.142-2.925v3.835h2.142v-7.498h-7.498v2.142h3.846c-1.89 1.874-2.496 2.303-3.632 2.303-0.126 0-12.407 0-12.942 0-7.525-0.274-7.948-6.322-7.725-14.834 0.032-1.215 0.062-2.363 0.046-3.446l-2.142 0.033c0.016 1.039-0.014 2.165-0.045 3.357-0.094 3.577-0.2 7.632 0.933 10.877z">
         </path>
       </symbol>
+      <symbol id="icon-info" viewBox="0 0 32 32">
+        <path
+          d="M16 2.667c-7.365 0-13.333 5.969-13.333 13.333s5.969 13.333 13.333 13.333c7.365 0 13.333-5.969 13.333-13.333s-5.969-13.333-13.333-13.333zM17.333 22.667h-2.667v-8h2.667zM17.333 12h-2.667v-2.667h2.667z">
+        </path>
+      </symbol>
     </defs>
   </svg>
 
@@ -564,7 +569,15 @@
               Перепад давлений (ΔP) в обратном направлении, кгс/см²
             </span>
             <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 8"><span>не применяется <sup>1)</sup></span></div>
+              <div class="compare__cell" style="--data-cell: 8"><span>не применяется
+                  <button>
+                    <svg>
+                      <use xlink:href="#icon-info"></use>
+                    </svg>
+                  </button>
+                  <span></span>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -1641,6 +1654,23 @@
       <use xlink:href="#icon-message"></use>
     </svg>
   </button>
+
+  <!-- описание продукции -->
+
+  <div class="product__backdrop">
+    <div class="product__quest">
+      <button class="product__close-btn">
+        <svg>
+          <use xlink:href="#icon-menu_close"></use>
+        </svg>
+      </button>
+      <div class="product__content">
+        <span> При подаче давления в обратном направлении клапан
+          без устройства обратной
+          герметичности откроется</span>
+      </div>
+    </div>
+  </div>
 
 </body>
 

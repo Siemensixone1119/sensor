@@ -11,6 +11,7 @@ import { certSlider } from "./scripts/product-slider.js";
 import { hideTitle } from "./scripts/product-desc.js";
 import { heightTable } from "./scripts/product-table.js";
 import { syncScroll } from "./scripts/syncScroll.js";
+import { toggleSnoska } from "./scripts/product-snoska.js";
 
 initHeaderAutoHide();
 initSearchOverlay();
@@ -25,6 +26,8 @@ certSlider();
 hideTitle();
 // heightTable();
 syncScroll();
+toggleSnoska();
+
 const checkbox = document.querySelector("#desc1");
 const description = document.querySelector("#desc-block");
 
