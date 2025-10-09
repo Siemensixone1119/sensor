@@ -13,8 +13,8 @@
 <body>
   <!-- svg спрайт -->
 
-  <svg aria-hidden="true" style="position: absolute; overflow: hidden" version="1.1"
-    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg aria-hidden="true" style="position: absolute; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
       <symbol id="icon-arrow" viewBox="0 0 64 32">
         <path
@@ -575,7 +575,9 @@
                       <use xlink:href="#icon-info"></use>
                     </svg>
                   </button>
-                  <span></span>
+                  <span class="compare__info-text" hidden>При подаче давления в обратном направлении клапан
+                    без устройства обратной
+                    герметичности откроется</span>
                 </span>
               </div>
             </div>
@@ -595,7 +597,14 @@
               Герметичность затвора по ГОСТ Р 54808
             </span>
             <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 8"><span>класс «А»</span></div>
+              <div class="compare__cell" style="--data-cell: 8"><span>класс «А»
+                  <button>
+                    <svg>
+                      <use xlink:href="#icon-info"></use>
+                    </svg>
+                  </button>
+                  <span class="compare__info-text" hidden>gdfgdgfgdgddg</span>
+                </span></div>
             </div>
           </div>
 
@@ -1659,15 +1668,9 @@
 
   <div class="product__backdrop">
     <div class="product__quest">
-      <button class="product__close-btn">
-        <svg>
-          <use xlink:href="#icon-menu_close"></use>
-        </svg>
-      </button>
+      <div class="product__line"></div>
       <div class="product__content">
-        <span> При подаче давления в обратном направлении клапан
-          без устройства обратной
-          герметичности откроется</span>
+        <span></span>
       </div>
     </div>
   </div>

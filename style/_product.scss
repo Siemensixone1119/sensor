@@ -442,7 +442,7 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
-    
+
     transform: translateY(100%);
   }
 
@@ -703,7 +703,13 @@
     // border-bottom: 1px solid #d2d2d2;
   }
 }
-
+.product__line{
+  width: 60vw;
+  background-color: #a2a2a2;
+  height: 4px;
+  border-radius: 8px;
+  margin: 15px calc((100vw - 60vw) / 2);
+}
 .compare__cell {
   padding: 10px var(--page-gutter);
   width: calc((1 / var(--cols)) * 100vw * var(--data-cell, 1));
@@ -716,18 +722,16 @@
   span {
     width: fit-content;
     position: sticky;
-    display: flex;
     left: var(--page-gutter);
     max-width: calc(100vw - var(--page-gutter) * 3);
   }
 
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: fit-content;
-    padding-top: 1px;
-    padding-left: 5px;
+    margin-left: 2px;
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
+    margin-right: 5px;
   }
 
   svg {
