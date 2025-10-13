@@ -1487,6 +1487,7 @@ main {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  min-height: 30%;
 }
 .product__close-btn {
   padding: 18px;
@@ -1660,6 +1661,7 @@ main {
   top: var(--sticky-top, 0px);
   display: flex;
   background-color: #fff;
+  border-bottom: 1px solid #eee;
   width: 100vw;
   overflow-x: scroll;
   scrollbar-width: none;
