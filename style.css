@@ -1201,7 +1201,7 @@ main {
   gap: 5px;
 }
 .product__butn svg {
-  fill: #b30006;
+  fill: #b30006 !important;
 }
 .product__butn:first-child {
   border: 1px solid #d5d5d5;
