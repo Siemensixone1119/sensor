@@ -378,7 +378,7 @@
   display: flex !important;
   align-items: center;
   width: 100%;
-  gap: 5%;
+  gap: 20px;
 
   .open-title {
     font-size: 22px;
@@ -496,10 +496,12 @@
 
   &__btn .close {
     display: none;
+    border-bottom: 1px dotted #212121;
   }
 
   &__btn .open {
     display: inline-block;
+    border-bottom: 1px dotted #212121;
   }
 
   & ul {
