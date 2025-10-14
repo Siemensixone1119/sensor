@@ -1,7 +1,7 @@
 export function syncScroll() {
   document.addEventListener("DOMContentLoaded", () => {
-    const headerScroll = document.querySelector(".compare__row--header");
-    const bodyScroll = document.querySelector(".compare__scroll");
+    const headerScroll = document.querySelector(".compare__header");
+    const bodyScroll = document.querySelector(".compare__body");
 
     let isSyncingHeader = false;
     let isSyncingBody = false;

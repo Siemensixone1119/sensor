@@ -329,7 +329,7 @@
 
   <main>
     <div class="product">
-      <div class="product__breadcrumb-cont">
+      <div class="product__breadcrumbs">
         <ul class="product__breadcrumb">
           <li>
             <span>Каталог продукции</span>
@@ -363,8 +363,8 @@
       </div> -->
 
       <div>
-        <div class="product__gorizontal">
-          <div class="product__slider-cont">
+        <div class="product__gallery">
+          <div class="product-gallery__slider">
             <div class="product__slider-contain">
               <ul class="product__slider">
                 <li class="slider__item set-bg" data-setbg="./assets/image/img1.jpg">
@@ -380,7 +380,7 @@
               </div>
             </div>
           </div>
-          <div class="product__desc">
+          <div class="product-gallery__desc">
             <h1 class="product__title--main">Волноводный рефлекс-радарный уровнемер СЕНС УМВ</h1>
             <p class="h">Нормально закрытые. Ручной дублер. Сигнализатор положения затвора на твердотельном реле.
               Сердечник привода изолирован от рабочей среды. Односторонняя подача среды.</p>
@@ -401,7 +401,7 @@
         </div>
         <div class="description">
           <input type="checkbox" class="description__toggle" id="desc1">
-          <div class="description__text" id="desc-block">
+          <div class="description__content" id="desc-block">
             <section>
               <h2 class="product__title">Применение</h2>
               <p class="product__text">
@@ -448,15 +448,15 @@
                 Цепи питания и сигнализации датчика положений гальванически развязаны.
               </p>
             </section>
+            <div class="description__fade"></div>
           </div>
-          <div class="description__fade"></div>
-          <div style="display: flex;" class="description__btn-wrap">
+          <div style="display: flex;" class="description__controls">
             <label for="desc1" class="description__btn">
               <span class="open">Развернуть</span>
               <span class="close">Свернуть</span>
             </label>
           </div>
-          <div class="description__text o">
+          <div class="description__content o">
             <section>
               <h2 class="product__title">Особенности</h2>
               <ul>
@@ -481,12 +481,12 @@
         </div>
       </div>
       <input type="checkbox" id="compare-toggle" hidden>
-      <h2 class="compare__title">
-        <label for="compare-toggle">
-          <span class="product__title">Все характеристики</span>
+      <h2 class="layout">
+        <label for="compare-toggle" class="open-title__contain">
           <svg>
             <use xlink:href="#icon-arrow"></use>
           </svg>
+          <span class="open-title">Все характеристики</span>
         </label>
       </h2>
 
@@ -494,13 +494,13 @@
 
       <div class="compare">
         <!-- Шапка -->
-        <span class="compare__feature">
-          Исполнение
-        </span>
-        <div class="compare__row--header">
 
-          <div class="compare__row--header-scroll">
-            <div class="compare-cont">
+        <div class="compare__header">
+          <span class="compare__feature">
+            Исполнение
+          </span>
+          <div class="compare__header-scroll">
+            <div class="compare__content">
               <div class="compare__cell"><span>1</span></div>
               <div class="compare__cell"><span>2</span></div>
               <div class="compare__cell"><span>3</span></div>
@@ -513,13 +513,13 @@
           </div>
         </div>
 
-        <div class="compare__scroll">
+        <div class="compare__body">
 
           <div class="compare__row">
             <span class="compare__feature">
               Номинальный диаметр (DN), мм
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell"><span>15</span></div>
               <div class="compare__cell"><span>20</span></div>
               <div class="compare__cell"><span>25</span></div>
@@ -535,7 +535,7 @@
             <span class="compare__feature">
               Эффективный диаметр, мм
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell"><span>15</span></div>
               <div class="compare__cell"><span>20</span></div>
               <div class="compare__cell"><span>25</span></div>
@@ -550,7 +550,7 @@
             <span class="compare__feature">
               Номинальное давление (PN), кгс/см²
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>16; 25; 40</span></div>
             </div>
           </div>
@@ -559,7 +559,7 @@
             <span class="compare__feature">
               Перепад давлений (ΔP) в прямом направлении, кгс/см²
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>от 0 до PN</span></div>
             </div>
           </div>
@@ -568,7 +568,7 @@
             <span class="compare__feature">
               Перепад давлений (ΔP) в обратном направлении, кгс/см²
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>не применяется
                   <button>
                     <svg>
@@ -587,7 +587,7 @@
             <span class="compare__feature">
               Пробное давление, кгс/см²
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>1,5·PN</span></div>
             </div>
           </div>
@@ -596,7 +596,7 @@
             <span class="compare__feature">
               Герметичность затвора по ГОСТ Р 54808
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>класс «А»
                   <button>
                     <svg>
@@ -612,7 +612,7 @@
             <span class="compare__feature">
               Тип уплотнения затвора
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>металл - фторопласт</span></div>
             </div>
           </div>
@@ -621,7 +621,7 @@
             <span class="compare__feature">
               Напряжение питания
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 3"><span>220 В (AC/DC)</span></div>
               <div class="compare__cell" style="--data-cell: 2"><span>110 В (DC)</span></div>
               <div class="compare__cell" style="--data-cell: 3"><span>24 В (DC)</span></div>
@@ -632,7 +632,7 @@
             <span class="compare__feature">
               Потребляемая мощность (PФ / PУД), Вт
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>300 / 10</span></div>
             </div>
           </div>
@@ -641,7 +641,7 @@
             <span class="compare__feature">
               Продолжительность включения, %
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>100</span></div>
             </div>
           </div>
@@ -650,7 +650,7 @@
             <span class="compare__feature">
               Частота включения, цикл / мин, не более
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>6</span></div>
             </div>
           </div>
@@ -659,7 +659,7 @@
             <span class="compare__feature">
               Температура рабочей среды, ℃
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>от -50 до +80 (кратковременно до +100)
                   от 5 до 195 – для исполнения «-200C»</span></div>
             </div>
@@ -669,7 +669,7 @@
             <span class="compare__feature">
               Температура окружающей среды, ℃
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>от -50 (от -60 - по заказу) до +60</span></div>
             </div>
           </div>
@@ -678,7 +678,7 @@
             <span class="compare__feature">
               Маркировка взрывозащиты
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8">
                 <span>
                   неэлектрическая часть: 1Ex h IIC T6 Gb X; 1Ex h IIC
@@ -693,7 +693,7 @@
             <span class="compare__feature">
               Положение на трубопроводе
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>приводом вверх ±90° (приводом горизонтально –
                   для
                   исполнения «-200C»)</span></div>
@@ -704,7 +704,7 @@
             <span class="compare__feature">
               Тип присоединения
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>фланцевое исп. F по ГОСТ 33259-2015 (другое - по
                   заказу)</span>
               </div>
@@ -715,178 +715,179 @@
             <span class="compare__feature">
               Тип присоединения
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell" style="--data-cell: 8"><span>фланцевое исп. F по ГОСТ 33259-2015 (другое - по
                   заказу)</span>
               </div>
             </div>
           </div>
 
-          <div class="compare__row">
-            <span class="compare__feature  compare__feature--bold">
-              Габаритные размеры, мм
-            </span>
+          <div class="compare__row-cont">
+            <div class="compare__row">
+              <span class="compare__feature  compare__feature--bold">
+                Массогабаритные характеристики
+              </span>
+              <span class="compare__feature  compare__feature--semibold">
+                Габаритные размеры, мм
+              </span>
 
-            <span class="compare__feature">
-              А, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell"><span>318</span></div>
-              <div class="compare__cell"><span>325</span></div>
-              <div class="compare__cell"><span>338</span></div>
-              <div class="compare__cell"><span>345</span></div>
-              <div class="compare__cell"><span>399</span></div>
-              <div class="compare__cell"><span>404</span></div>
-              <div class="compare__cell"><span>481</span></div>
-              <div class="compare__cell"><span>486</span></div>
+              <span class="compare__feature">
+                А, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell"><span>318</span></div>
+                <div class="compare__cell"><span>325</span></div>
+                <div class="compare__cell"><span>338</span></div>
+                <div class="compare__cell"><span>345</span></div>
+                <div class="compare__cell"><span>399</span></div>
+                <div class="compare__cell"><span>404</span></div>
+                <div class="compare__cell"><span>481</span></div>
+                <div class="compare__cell"><span>486</span></div>
+              </div>
+
+              <span class="compare__feature">
+                Б, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 4"><span>294</span></div>
+                <div class="compare__cell"><span>346</span></div>
+                <div class="compare__cell"><span>343</span></div>
+                <div class="compare__cell"><span>386</span></div>
+                <div class="compare__cell"><span>391</span></div>
+              </div>
+
+              <span class="compare__feature">
+                В
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
+              </div>
             </div>
 
-            <span class="compare__feature">
-              Б, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 4"><span>294</span></div>
-              <div class="compare__cell"><span>346</span></div>
-              <div class="compare__cell"><span>343</span></div>
-              <div class="compare__cell"><span>386</span></div>
-              <div class="compare__cell"><span>391</span></div>
+            <div class="compare__row">
+              <span class="compare__feature  compare__feature--semibold">
+                Габаритные размеры исп. «-ДКП», мм
+              </span>
+
+              <span class="compare__feature">
+                А, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell"><span>383</span></div>
+                <div class="compare__cell"><span>390</span></div>
+                <div class="compare__cell"><span>403</span></div>
+                <div class="compare__cell"><span>410</span></div>
+                <div class="compare__cell"><span>461</span></div>
+                <div class="compare__cell"><span>463</span></div>
+                <div class="compare__cell"><span>548</span></div>
+                <div class="compare__cell"><span>555</span></div>
+              </div>
+
+              <span class="compare__feature">
+                Б, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 4"><span>358</span></div>
+                <div class="compare__cell"><span>400</span></div>
+                <div class="compare__cell"><span>402</span></div>
+                <div class="compare__cell"><span>453</span></div>
+                <div class="compare__cell"><span>458</span></div>
+              </div>
+
+              <span class="compare__feature">
+                В
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
+              </div>
             </div>
 
-            <span class="compare__feature">
-              В
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
-            </div>
-          </div>
+            <div class="compare__row">
+              <span class="compare__feature  compare__feature--semibold">
+                Габаритные размеры исп. «-200C», мм
+              </span>
 
-          <div class="compare__row">
-            <span class="compare__feature compare__feature--bold">
-              Габаритные размеры исп. «-ДКП», мм
-            </span>
+              <span class="compare__feature">
+                А, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell"><span>368</span></div>
+                <div class="compare__cell"><span>375</span></div>
+                <div class="compare__cell"><span>388</span></div>
+                <div class="compare__cell"><span>395</span></div>
+                <div class="compare__cell"><span>447</span></div>
+                <div class="compare__cell"><span>449</span></div>
+                <div class="compare__cell"><span>533</span></div>
+                <div class="compare__cell"><span>538</span></div>
+              </div>
 
-            <span class="compare__feature  compare__feature--semibold">
-              Габаритные размеры исп. «-ДКП», мм
-            </span>
+              <span class="compare__feature">
+                Б, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 4"><span>344</span></div>
+                <div class="compare__cell"><span>389</span></div>
+                <div class="compare__cell"><span>388</span></div>
+                <div class="compare__cell"><span>438</span></div>
+                <div class="compare__cell"><span>443</span></div>
+              </div>
 
-            <span class="compare__feature">
-              А, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell"><span>383</span></div>
-              <div class="compare__cell"><span>390</span></div>
-              <div class="compare__cell"><span>403</span></div>
-              <div class="compare__cell"><span>410</span></div>
-              <div class="compare__cell"><span>461</span></div>
-              <div class="compare__cell"><span>463</span></div>
-              <div class="compare__cell"><span>548</span></div>
-              <div class="compare__cell"><span>555</span></div>
-            </div>
-
-            <span class="compare__feature">
-              Б, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 4"><span>358</span></div>
-              <div class="compare__cell"><span>400</span></div>
-              <div class="compare__cell"><span>402</span></div>
-              <div class="compare__cell"><span>453</span></div>
-              <div class="compare__cell"><span>458</span></div>
+              <span class="compare__feature">
+                В
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
+              </div>
             </div>
 
-            <span class="compare__feature">
-              В
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
-            </div>
-          </div>
+            <div class="compare__row">
+              <span class="compare__feature  compare__feature--semibold">
+                Габаритные размеры исп. «-ДКП-200C», мм
+              </span>
 
-          <div class="compare__row">
-            <span class="compare__feature  compare__feature--semibold">
-              Габаритные размеры исп. «-200C», мм
-            </span>
+              <span class="compare__feature">
+                А, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell"><span>428</span></div>
+                <div class="compare__cell"><span>435</span></div>
+                <div class="compare__cell"><span>448</span></div>
+                <div class="compare__cell"><span>455</span></div>
+                <div class="compare__cell"><span>507</span></div>
+                <div class="compare__cell"><span>509</span></div>
+                <div class="compare__cell"><span>586</span></div>
+                <div class="compare__cell"><span>591</span></div>
+              </div>
 
-            <span class="compare__feature">
-              А, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell"><span>368</span></div>
-              <div class="compare__cell"><span>375</span></div>
-              <div class="compare__cell"><span>388</span></div>
-              <div class="compare__cell"><span>395</span></div>
-              <div class="compare__cell"><span>447</span></div>
-              <div class="compare__cell"><span>449</span></div>
-              <div class="compare__cell"><span>533</span></div>
-              <div class="compare__cell"><span>538</span></div>
-            </div>
+              <span class="compare__feature">
+                Б, не более
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 4"><span>404</span></div>
+                <div class="compare__cell"><span>446</span></div>
+                <div class="compare__cell"><span>448</span></div>
+                <div class="compare__cell"><span>491</span></div>
+                <div class="compare__cell"><span>496</span></div>
+              </div>
 
-            <span class="compare__feature">
-              Б, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 4"><span>344</span></div>
-              <div class="compare__cell"><span>389</span></div>
-              <div class="compare__cell"><span>388</span></div>
-              <div class="compare__cell"><span>438</span></div>
-              <div class="compare__cell"><span>443</span></div>
-            </div>
-
-            <span class="compare__feature">
-              В
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
-            </div>
-          </div>
-
-          <div class="compare__row">
-            <span class="compare__feature  compare__feature--semibold">
-              Габаритные размеры исп. «-ДКП-200C», мм
-            </span>
-
-            <span class="compare__feature">
-              А, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell"><span>428</span></div>
-              <div class="compare__cell"><span>435</span></div>
-              <div class="compare__cell"><span>448</span></div>
-              <div class="compare__cell"><span>455</span></div>
-              <div class="compare__cell"><span>507</span></div>
-              <div class="compare__cell"><span>509</span></div>
-              <div class="compare__cell"><span>586</span></div>
-              <div class="compare__cell"><span>591</span></div>
-            </div>
-
-            <span class="compare__feature">
-              Б, не более
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 4"><span>404</span></div>
-              <div class="compare__cell"><span>446</span></div>
-              <div class="compare__cell"><span>448</span></div>
-              <div class="compare__cell"><span>491</span></div>
-              <div class="compare__cell"><span>496</span></div>
-            </div>
-
-            <span class="compare__feature">
-              В
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
-              <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
+              <span class="compare__feature">
+                В
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 2"><span>132</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>196</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>230</span></div>
+                <div class="compare__cell" style="--data-cell: 2"><span>308</span></div>
+              </div>
             </div>
           </div>
 
@@ -894,7 +895,7 @@
             <span class="compare__feature">
               Масса, кг, не более
             </span>
-            <div class="compare-cont">
+            <div class="compare__content">
               <div class="compare__cell"><span>14</span></div>
               <div class="compare__cell"><span>15</span></div>
               <div class="compare__cell"><span>18</span></div>
@@ -906,12 +907,17 @@
             </div>
           </div>
 
-          <div class="compare__row">
-            <span class="compare__feature">
-              Полный срок службы, лет
-            </span>
-            <div class="compare-cont">
-              <div class="compare__cell" style="--data-cell: 8"><span>40</span></div>
+          <div class="n">
+            <div class="compare__row">
+              <span class="compare__feature compare__feature--bold">
+                Параметры надежности
+              </span>
+              <span class="compare__feature">
+                Полный срок службы, лет
+              </span>
+              <div class="compare__content">
+                <div class="compare__cell" style="--data-cell: 8"><span>40</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -919,28 +925,28 @@
 
       <div class="layout">
 
-        <div class="product__docs">
+        <div class="product-section">
           <input type="checkbox" id="cert-toggle" hidden>
-          <h2 class="cert__title">
-            <label for="cert-toggle">
-              <span class="product__title">Сертефикаты</span>
+          <h2>
+            <label for="cert-toggle" class="open-title__contain">
               <svg>
                 <use xlink:href="#icon-arrow"></use>
               </svg>
+              <span class="open-title">Сертефикаты</span>
             </label>
           </h2>
           <ul class="product__docs-list">
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/cert.jpg" alt="">
                 </div>
                 <div class="cont">
                   <p>Сертификат соответствия ТР ТС 012/2011
                     "О безопасности оборудования для работы во взрывоопасных средах"</p>
                   <span class="product__docs-desc">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
-                  <p class="product__docs-size"> <span>pdf</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>pdf</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -948,9 +954,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/cert.jpg" alt="">
                 </div>
 
@@ -958,7 +964,7 @@
                   <p>Сертификат соответствия ТР ТС 012/2011
                     "О безопасности оборудования для работы во взрывоопасных средах"</p>
                   <span class="product__docs-desc">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
-                  <p class="product__docs-size"> <span>pdf</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>pdf</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -966,16 +972,16 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/cert.jpg" alt="">
                 </div>
                 <div class="cont">
                   <p>Сертификат соответствия ТР ТС 012/2011
                     "О безопасности оборудования для работы во взрывоопасных средах"</p>
                   <span class="product__docs-desc">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</span>
-                  <p class="product__docs-size"> <span>pdf</span><span>510,11 КБ</span><span><svg>
+                  <p class="product-section__meta"> <span>pdf</span><span>510,11 КБ</span><span><svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
                 </div>
@@ -988,19 +994,19 @@
 
         <div class="product__docs">
           <input type="checkbox" id="file-toggle" hidden>
-          <h2 class="cert__title">
-            <label for="file-toggle">
-              <span class="product__title">Файлы</span>
+          <h2>
+            <label for="file-toggle" class="open-title__contain">
               <svg>
                 <use xlink:href="#icon-arrow"></use>
               </svg>
+              <span class="open-title">Файлы</span>
             </label>
           </h2>
           <ul class="product__docs-list">
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1008,7 +1014,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1016,9 +1022,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1026,7 +1032,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1034,9 +1040,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1044,7 +1050,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1052,9 +1058,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1062,7 +1068,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1070,9 +1076,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1080,7 +1086,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1088,9 +1094,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1098,7 +1104,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1106,9 +1112,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1116,7 +1122,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1124,9 +1130,9 @@
               </a>
             </li>
 
-            <li class="product__docs-item">
-              <a href="" class="product__docs-link">
-                <div class="product__docs-icon">
+            <li class="product-section__item">
+              <a href="" class="product-section__link">
+                <div class="product-section__icon">
                   <img src="./assets/image/exe.png" alt="">
                 </div>
 
@@ -1134,7 +1140,7 @@
                   <p>Информационное письмо о начале производства фланцев по ГОСТ 33259-2015 (Версия: 1.0.18)</p>
                   <span class="product__docs-desc">применяется для
                     настройки уровнемера СЕНС УМВ с протоколом HART 6</span>
-                  <p class="product__docs-size"> <span>exe</span><span>510,11 КБ</span><span>
+                  <p class="product-section__meta"> <span>exe</span><span>510,11 КБ</span><span>
                       <svg>
                         <use xlink:href="#icon-date"></use>
                       </svg><span>12.12.2023</span></span></p>
@@ -1144,25 +1150,23 @@
           </ul>
         </div>
 
-        <section class="product__order full-bcg">
-          <!-- чекбокс для управления -->
-          <input type="checkbox" id="order-toggle" class="product__order-checkbox">
+        <section class="order full-bcg">
+          <input type="checkbox" id="order-toggle" class="order__checkbox">
+          <h2>
+            <label for="order-toggle" class="open-title__contain">
+              <svg>
+                <use xlink:href="#icon-arrow"></use>
+              </svg>
+              <span class="open-title">Как заказать?</span>
+            </label>
+          </h2>
 
-          <!-- заголовок, который работает как кнопка -->
-          <label for="order-toggle" class="product__order-title">
-            <span class="product__title">Как заказать?</span>
-            <svg class="product__order-icon">
-              <use xlink:href="#icon-arrow"></use>
-            </svg>
-          </label>
-
-          <!-- список шагов -->
-          <ul class="product__order-list">
-            <li class="product__order-item">
-              <span class="product__order-step">1</span>
-              <div class="product__order-content">
-                <h3 class="product__order-subtitle">Запрос</h3>
-                <p class="product__order-text">
+          <ul class="order__list">
+            <li class="order__item">
+              <span class="order__step">1</span>
+              <div class="order__content">
+                <h3 class="order__subtitle">Запрос</h3>
+                <p class="order__text">
                   Пришлите реквизиты своей организации и заполненный
                   <a href="">опросный лист</a>, требования к оборудованию или описание задачи на адрес отдела продаж –
                   <a href="mailto:op@nppsensor.ru">op@nppsensor.ru</a>
@@ -1170,52 +1174,52 @@
               </div>
             </li>
 
-            <li class="product__order-item">
-              <span class="product__order-step">2</span>
-              <div class="product__order-content">
-                <h3 class="product__order-subtitle">Решение</h3>
-                <p class="product__order-text">
+            <li class="order__item">
+              <span class="order__step">2</span>
+              <div class="order__content">
+                <h3 class="order__subtitle">Решение</h3>
+                <p class="order__text">
                   Уточним детали, подберём оборудование, найдём оптимальное решение вашей задачи
                 </p>
               </div>
             </li>
 
-            <li class="product__order-item">
-              <span class="product__order-step">3</span>
-              <div class="product__order-content">
-                <h3 class="product__order-subtitle">Договор</h3>
-                <p class="product__order-text">
+            <li class="order__item">
+              <span class="order__step">3</span>
+              <div class="order__content">
+                <h3 class="order__subtitle">Договор</h3>
+                <p class="order__text">
                   Согласуем технические характеристики оборудования, его цену, порядок оплаты, сроки и адрес поставки
                 </p>
               </div>
             </li>
 
-            <li class="product__order-item">
-              <span class="product__order-step">4</span>
-              <div class="product__order-content">
-                <h3 class="product__order-subtitle">Производство</h3>
-                <p class="product__order-text">
+            <li class="order__item">
+              <span class="order__step">4</span>
+              <div class="order__content">
+                <h3 class="order__subtitle">Производство</h3>
+                <p class="order__text">
                   Своевременно изготовим и бережно упакуем ваше оборудование
                 </p>
               </div>
             </li>
 
-            <li class="product__order-item">
-              <span class="product__order-step">5</span>
-              <div class="product__order-content">
-                <h3 class="product__order-subtitle">Доставка</h3>
-                <p class="product__order-text">
+            <li class="order__item">
+              <span class="order__step">5</span>
+              <div class="order__content">
+                <h3 class="order__subtitle">Доставка</h3>
+                <p class="order__text">
                   Отгрузим оборудование самовывозом, отправим до терминала транспортной компании или по согласованному
                   адресу
                 </p>
               </div>
             </li>
 
-            <li class="product__order-item">
-              <span class="product__order-step">6</span>
-              <div class="product__order-content">
-                <h3 class="product__order-subtitle">Сопровождение</h3>
-                <p class="product__order-text">
+            <li class="order__item">
+              <span class="order__step">6</span>
+              <div class="order__content">
+                <h3 class="order__subtitle">Сопровождение</h3>
+                <p class="order__text">
                   Проведём гарантийное обслуживание, окажем оперативную техническую поддержку в течение всего срока
                   службы
                   оборудования
