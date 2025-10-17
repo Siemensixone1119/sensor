@@ -17,6 +17,7 @@ export function toggleSnoska() {
       .closest("span")
       .querySelector(".compare__info-text");
     productDesc.classList.add(CLS.visible_opacity);
+    productDesc.classList.add(CLS.visible_transform);
     desc.classList.add(CLS.visible_transform);
     desc.classList.add(CLS.visible);
     document.body.classList.add(CLS.noScroll);
@@ -32,6 +33,7 @@ export function toggleSnoska() {
       "transitionend",
       () => {
         productDesc.classList.remove(CLS.visible_opacity);
+        productDesc.classList.remove(CLS.visible_transform);
       },
       { once: true }
     );
@@ -44,6 +46,7 @@ export function toggleSnoska() {
       },
       { once: true }
     );
+    document.body.classList.remove(CLS.noScroll);
   }
 
   openDesc.forEach((openBtn) => openBtn.addEventListener("click", open));

@@ -886,25 +886,6 @@ h2 label svg {
   }
 }
 
-// @media (min-width: 320px) {
-//   :root {
-//     --cols: 2;
-//   }
-// }
-
-// @media (min-width: 600px) {
-//   :root {
-//     --cols: 3;
-//   }
-// }
-
-// @media (min-width: 800px) {
-//   :root {
-//     --cols: 4;
-//   }
-// }
-
-
 .compare__cell {
   width: calc(var(--col-width) * var(--data-cell, 1));
 }
@@ -912,7 +893,6 @@ h2 label svg {
 .compare__cell,
 .compare__header .compare__cell {
   flex: calc(var(--col-width, 100%) * var(--data-cell, 1));
-  // box-sizing: border-box;
 }
 
 .compare__row {
@@ -920,68 +900,7 @@ h2 label svg {
   flex: 100%;
   min-width: max-content;
   flex-direction: column;
-  // background-color: #fff;
 }
-
-// .compare__content {
-//   display: flex;
-//   flex-wrap: nowrap;
-//   flex: 1 1 auto;
-//   width: max-content;
-// }
-
-// @media (max-width: 599px) {
-//   .compare__content {
-//     --col-width: 50vw;
-//     /* показываем 2 колонки */
-//   }
-
-//   /* 1 колонка */
-//   .compare__content:not(:has(.compare__cell:nth-child(2))) {
-//     --col-width: 100vw;
-//   }
-// }
-
-// @media (min-width: 600px) and (max-width: 799px) {
-//   .compare__content {
-//     --col-width: calc(100vw / 3);
-//     /* 3 колонки */
-//   }
-
-//   /* 2 колонки */
-//   .compare__content:not(:has(.compare__cell:nth-child(3))) {
-//     --col-width: 50vw;
-//   }
-
-//   /* 1 колонка */
-//   .compare__content:not(:has(.compare__cell:nth-child(2))) {
-//     --col-width: 100vw;
-//   }
-// }
-
-// @media (min-width: 800px) {
-//   .compare__content {
-//     --col-width: calc(100vw / 4);
-//     /* 4 колонки */
-//   }
-
-//   /* 3 колонки */
-//   .compare__content:not(:has(.compare__cell:nth-child(4))) {
-//     --col-width: calc(100vw / 3);
-//   }
-
-//   /* 2 колонки */
-//   .compare__content:not(:has(.compare__cell:nth-child(3))) {
-//     --col-width: 50vw;
-//   }
-
-//   /* 1 колонка */
-//   .compare__content:not(:has(.compare__cell:nth-child(2))) {
-//     --col-width: 100vw;
-//   }
-// }
-
-
 
 @media (max-width: 599px) {
   .compare__content {
