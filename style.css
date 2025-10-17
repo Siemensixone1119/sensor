@@ -1154,10 +1154,6 @@ main {
     transform: rotate(1turn);
   }
 }
-:root {
-  --cols: 2;
-}
-
 .product__title--main {
   font-family: "pfdintextcomppro-light", sans-serif;
   font-size: 26px;
@@ -1450,10 +1446,22 @@ main {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.5s ease-in-out;
   transform: translateY(100%);
+  opacity: 0;
 }
-.product--visible {
+.product--visible-opacity {
+  opacity: 1;
+}
+.product--visible-transform {
   transform: translateY(0);
+}
+.product--close-opacity {
+  transform: translateY(100%);
+  opacity: 1;
+}
+.product--close-transform {
+  opacity: 1;
 }
 .product__line {
   width: 60vw;
@@ -1717,7 +1725,6 @@ main {
 .compare__header__cell {
   padding: 15px var(--page-gutter);
   background-color: #fff;
-  width: calc(1 / var(--cols) * 100vw);
   position: relative;
   margin: 0 !important;
 }
@@ -1762,7 +1769,8 @@ main {
 }
 .compare__content {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex: 1;
 }
 .compare__row {
   min-width: -moz-max-content;
@@ -1781,7 +1789,6 @@ main {
 .compare__cell {
   margin: 10px 0;
   padding: 3px var(--page-gutter);
-  width: calc(1 / var(--cols) * 100vw * var(--data-cell, 1));
   border-right: 1px solid #d2d2d2;
   display: flex;
   color: #212121;
@@ -1807,7 +1814,7 @@ main {
   fill: #909090;
 }
 .compare__cell:last-child {
-  border: none;
+  border: none !important;
 }
 .compare__title label {
   cursor: pointer;
@@ -1885,18 +1892,124 @@ h2 label svg {
     width: 50vw;
   }
 }
-@media (min-width: 320px) {
-  :root {
-    --cols: 2;
+.compare__cell {
+  width: calc(var(--col-width) * var(--data-cell, 1));
+}
+
+.compare__cell,
+.compare__header .compare__cell {
+  flex: calc(var(--col-width, 100%) * var(--data-cell, 1));
+}
+
+.compare__row {
+  display: flex;
+  flex: 100%;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  flex-direction: column;
+}
+
+@media (max-width: 599px) {
+  .compare__content {
+    --col-width: 50vw;
+  }
+  .compare__content:not(:has(.compare__cell:nth-child(2))),
+  .compare__content:has([data-cell]) {
+    --col-width: 100vw;
+  }
+  .compare__content:has(.compare__cell[data-cell]) {
+    --col-width: 50vw;
   }
 }
-@media (min-width: 600px) {
-  :root {
-    --cols: 3;
+@media (min-width: 600px) and (max-width: 799px) {
+  .compare__content {
+    --col-width: calc(100vw / 3);
+  }
+  .compare__content:not(:has(.compare__cell:nth-child(3))) {
+    --col-width: 50vw;
+  }
+  .compare__content:not(:has(.compare__cell:nth-child(2))),
+  .compare__content:has([data-cell]) {
+    --col-width: 100vw;
+  }
+  .compare__content:has(.compare__cell[data-cell]) {
+    --col-width: calc(100vw / 3);
   }
 }
 @media (min-width: 800px) {
-  :root {
-    --cols: 4;
+  .compare__content {
+    --col-width: calc(100vw / 4);
   }
+  .compare__content:not(:has(.compare__cell:nth-child(4))) {
+    --col-width: calc(100vw / 3);
+  }
+  .compare__content:not(:has(.compare__cell:nth-child(3))) {
+    --col-width: 50vw;
+  }
+  .compare__content:not(:has(.compare__cell:nth-child(2))),
+  .compare__content:has([data-cell]) {
+    --col-width: 100vw;
+  }
+  .compare__content:has(.compare__cell[data-cell]) {
+    --col-width: calc(100vw / 4);
+  }
+}
+.compare__cell[data-cell="1"] {
+  --data-cell: 1;
+}
+
+.compare__cell[data-cell="2"] {
+  --data-cell: 2;
+}
+
+.compare__cell[data-cell="3"] {
+  --data-cell: 3;
+}
+
+.compare__cell[data-cell="4"] {
+  --data-cell: 4;
+}
+
+.compare__cell[data-cell="5"] {
+  --data-cell: 5;
+}
+
+.compare__cell[data-cell="6"] {
+  --data-cell: 6;
+}
+
+.compare__cell[data-cell="7"] {
+  --data-cell: 7;
+}
+
+.compare__cell[data-cell="8"] {
+  --data-cell: 8;
+}
+
+.compare__cell[data-cell="9"] {
+  --data-cell: 9;
+}
+
+.compare__cell[data-cell="10"] {
+  --data-cell: 10;
+}
+
+.compare__cell[data-cell="11"] {
+  --data-cell: 11;
+}
+
+.compare__cell[data-cell="12"] {
+  --data-cell: 12;
+}
+
+.compare__cell[data-cell="13"] {
+  --data-cell: 13;
+}
+
+.compare__cell[data-cell="14"] {
+  --data-cell: 14;
+}
+
+.compare__cell[data-cell="15"] {
+  --data-cell: 15;
 }/*# sourceMappingURL=style.css.map */
