@@ -7,8 +7,6 @@ export function toggleSnoska() {
   const CLS = {
     visible_opacity: "product--visible-opacity",
     visible_transform: "product--visible-transform",
-    close_opacity: "product--close-opacity",
-    close_transform: "product--close-transform",
     noScroll: "no-scroll",
   };
 
@@ -19,7 +17,6 @@ export function toggleSnoska() {
     productDesc.classList.add(CLS.visible_opacity);
     productDesc.classList.add(CLS.visible_transform);
     desc.classList.add(CLS.visible_transform);
-    desc.classList.add(CLS.visible);
     document.body.classList.add(CLS.noScroll);
     span.textContent = infoText.textContent;
   }
@@ -43,10 +40,10 @@ export function toggleSnoska() {
       () => {
         desc.classList.remove(CLS.visible_transform);
         span.innerHTML = "";
+        document.body.classList.remove(CLS.noScroll);
       },
       { once: true }
     );
-    document.body.classList.remove(CLS.noScroll);
   }
 
   openDesc.forEach((openBtn) => openBtn.addEventListener("click", open));
@@ -54,7 +51,7 @@ export function toggleSnoska() {
   productDesc.addEventListener("click", (e) => {
     console.log(e.target.className);
 
-    if (e.target.className != "product__quest product--visible") {
+    if (!e.target.closest(".product__quest")) {
       close();
     }
   });

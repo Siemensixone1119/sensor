@@ -1456,13 +1456,6 @@ main {
 .product--visible-transform {
   transform: translateY(0);
 }
-.product--close-opacity {
-  transform: translateY(100%);
-  opacity: 1;
-}
-.product--close-transform {
-  opacity: 1;
-}
 .product__line {
   width: 60vw;
   background-color: #a2a2a2;
