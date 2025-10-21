@@ -1,82 +1,120 @@
 export function toggleSnoska() {
   const productDesc = document.querySelector(".product__backdrop");
-  const openDesc = document.querySelectorAll(".compare__cell button");
+  if (!productDesc) return;
+
+  const openDesc = document.querySelectorAll(".compare__cell");
   const desc = productDesc.querySelector(".product__quest");
-  const span = productDesc.querySelector("span");
+  const header = productDesc.querySelector(".product__snoska-header");
+  const content = productDesc.querySelector(".product__snoska-content");
+  if (!desc || !header || !content) return;
 
   const CLS = {
-    visible_opacity: "product--visible-opacity",
-    visible_transform: "product--visible-transform",
+    visible: "product--visible",
+    closing: "product--closing",
     noScroll: "no-scroll",
   };
 
-  function open(e) {
-    const infoText = e.currentTarget
-      .closest("span")
-      .querySelector(".compare__info-text");
-    productDesc.classList.add(CLS.visible_opacity);
-    productDesc.classList.add(CLS.visible_transform);
-    desc.classList.add(CLS.visible_transform);
-    document.body.classList.add(CLS.noScroll);
-    span.textContent = infoText.textContent;
+  let activeInfoBlock = null;
+  let originalParent = null;
+
+  openDesc.forEach((cell) => {
+    const infoBlocks = cell.querySelectorAll("[data-info]");
+    if (!infoBlocks.length) return;
+
+    infoBlocks.forEach((infoBlock) => {
+      let targetDiv = infoBlock.closest("div");
+      if (targetDiv === infoBlock) {
+        targetDiv =
+          infoBlock.previousElementSibling || cell.querySelector("div");
+      }
+      if (!targetDiv) return;
+
+      const btnText = infoBlock.dataset.buttonText || "i";
+
+      if (
+        !infoBlock.nextElementSibling ||
+        !infoBlock.nextElementSibling.classList.contains("compare__info-btn")
+      ) {
+        infoBlock.insertAdjacentHTML(
+          "afterend",
+          `<button type="button" class="compare__info-btn" aria-label="Показать описание">${btnText}</button>`
+        );
+      }
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".compare__info-btn");
+    if (!btn) return;
+    open(btn);
+  });
+
+  function open(btn) {
+    const cell = btn.closest(".compare__cell");
+    const infoBlock = cell.querySelector("[data-info]");
+    if (!infoBlock) return;
+
+    activeInfoBlock = infoBlock;
+    originalParent = infoBlock.parentElement;
+
+    const caption = infoBlock.dataset.caption?.trim() || "";
+    const hasCaption = caption.length > 0;
+    const hasContent = infoBlock.innerHTML.trim().length > 0;
+
+    if (!hasCaption && !hasContent) return;
+
+    header.textContent = caption;
+    header.style.display = hasCaption ? "" : "none";
+
+    content.innerHTML = "";
+    content.appendChild(infoBlock);
+    infoBlock.hidden = false;
+
+    productDesc.classList.add(CLS.visible);
+
+    const onTransitionEnd = (e) => {
+      if (e.target === productDesc) {
+        document.body.classList.add(CLS.noScroll);
+        productDesc.removeEventListener("transitionend", onTransitionEnd);
+      }
+    };
+    productDesc.addEventListener("transitionend", onTransitionEnd, {
+      once: true,
+    });
   }
 
   function close() {
-    desc.classList.remove(CLS.visible);
-    productDesc.classList.remove(CLS.visible_opacity);
-    desc.classList.remove(CLS.visible_transform);
+    productDesc.classList.add(CLS.closing);
 
-    productDesc.addEventListener(
-      "transitionend",
-      () => {
-        productDesc.classList.remove(CLS.visible_opacity);
-        productDesc.classList.remove(CLS.visible_transform);
-      },
-      { once: true }
-    );
+    const onTransitionEnd = () => {
+      productDesc.classList.remove(CLS.visible, CLS.closing);
+      desc.removeEventListener("transitionend", onTransitionEnd);
+      document.body.classList.remove(CLS.noScroll);
 
-    desc.addEventListener(
-      "transitionend",
-      () => {
-        desc.classList.remove(CLS.visible_transform);
-        span.innerHTML = "";
-        document.body.classList.remove(CLS.noScroll);
-      },
-      { once: true }
-    );
+      if (activeInfoBlock && originalParent) {
+        activeInfoBlock.hidden = true;
+        originalParent.appendChild(activeInfoBlock);
+        activeInfoBlock = null;
+        originalParent = null;
+      }
+    };
+
+    desc.addEventListener("transitionend", onTransitionEnd, { once: true });
   }
-
-  openDesc.forEach((openBtn) => openBtn.addEventListener("click", open));
 
   productDesc.addEventListener("click", (e) => {
-    console.log(e.target.className);
-
-    if (!e.target.closest(".product__quest")) {
-      close();
-    }
+    if (!e.target.closest(".product__quest")) close();
   });
 
-  desc.addEventListener("touchstart", handleTouchStart, false);
-  desc.addEventListener("touchmove", handleTouchMove, false);
-
   let yDown = null;
-
-  function handleTouchStart(evt) {
-    const { clientY } = evt.touches[0];
-    yDown = clientY;
-  }
-
-  function handleTouchMove(evt) {
-    if (!yDown) {
-      return;
-    }
-
-    const { clientY } = evt.touches[0];
-    const yDiff = yDown - clientY;
-
-    if (yDiff < -10) {
-      close();
-    }
+  desc.addEventListener(
+    "touchstart",
+    (evt) => (yDown = evt.touches[0].clientY)
+  );
+  desc.addEventListener("touchmove", (evt) => {
+    if (!yDown) return;
+    const yDiff = yDown - evt.touches[0].clientY;
+    if (yDiff < -10) close();
     yDown = null;
-  }
+  });
 }

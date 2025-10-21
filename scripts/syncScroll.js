@@ -21,6 +21,5 @@ export function syncScroll() {
       }
       isSyncingBody = false;
     });
-    console.log(1);
   });
 }

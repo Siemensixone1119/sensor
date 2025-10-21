@@ -8,8 +8,7 @@ import { search } from "./scripts/search.js";
 import { slider } from "./scripts/product-slider.js";
 import { bgElement } from "./scripts/bcg-element.js";
 import { certSlider } from "./scripts/product-slider.js";
-import { hideTitle } from "./scripts/product-desc.js";
-import { heightTable } from "./scripts/product-table.js";
+// import { hideTitle } from "./scripts/product-desc.js";
 import { syncScroll } from "./scripts/syncScroll.js";
 import { toggleSnoska } from "./scripts/product-snoska.js";
 
@@ -22,9 +21,7 @@ search();
 slider();
 bgElement();
 certSlider();
-// hideDesk();
-hideTitle();
-// heightTable();
+// hideTitle();
 syncScroll();
 toggleSnoska();
 
