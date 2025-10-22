@@ -1477,6 +1477,9 @@ main {
   display: inline-block;
   padding-bottom: 10px;
 }
+.product__depiction {
+  font-size: 14px;
+}
 
 .open-title__contain {
   display: flex !important;
@@ -1672,25 +1675,35 @@ main {
   transform: rotate(180deg);
 }
 
-.compare:not(:has(.compare__header)) .compare__row:nth-child(even) {
+.compare:not(:has(.compare__header)) .compare__row:nth-child(odd) {
   background-color: #f3f3f3;
 }
 
-.compare:not(:has(.compare__header)) .compare__row:nth-child(odd) {
+.compare:not(:has(.compare__header)) .compare__row:nth-child(even) {
   background-color: #fff;
 }
 
-.compare__body:has(> .compare__row-cont:first-child .compare__feature--bold) > .compare__row-cont:first-child .compare__row:first-child .compare__feature--bold {
-  background-color: #fff;
-  display: block;
-  width: 100%;
+.compare__body:has(> .compare__row-cont:first-child > .compare__feature--bold) > .compare__row-cont:first-child > .compare__feature--bold {
+  background-color: #fff !important;
   padding-bottom: 10px;
 }
-.compare__body:has(> .compare__row-cont:first-child .compare__feature--bold) > .compare__row-cont:first-child .compare__row:nth-child(odd) {
-  background-color: #f3f3f3 !important;
-}
-.compare__body:has(> .compare__row-cont:first-child .compare__feature--bold) > .compare__row-cont:first-child .compare__row:nth-child(even) {
+.compare__body:has(> .compare__row-cont:first-child > .compare__feature--bold) > .compare__row-cont:first-child > .compare__row:nth-of-type(odd) {
   background-color: #fff;
+}
+.compare__body:has(> .compare__row-cont:first-child > .compare__feature--bold) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.compare__body:has(> .compare__row-cont:first-child > .compare__feature--bold) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) .compare__cell {
+  border-right: 1px solid #d2d2d2;
+}
+.compare__body:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) > .compare__row-cont:first-child > .compare__row:nth-of-type(odd) {
+  background-color: #fff;
+}
+.compare__body:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.compare__body:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) .compare__cell {
+  border-right: 1px solid #d2d2d2;
 }
 
 .compare {
@@ -1699,17 +1712,14 @@ main {
   margin-bottom: 20px;
 }
 .compare__info-btn {
-  border-radius: 50px;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 4px 7px;
   color: #fff;
   background-color: #ccc;
-  margin: 5px;
-  margin-left: 2.5px;
+  border-radius: 10px;
+  padding: 2px 4px;
+  margin-right: 6px;
+  margin-left: 3px;
   line-height: 1;
-  font-weight: 400;
-  min-width: 21px;
+  min-width: 18px;
 }
 .compare__footnote {
   padding-bottom: 15px;
@@ -1756,18 +1766,23 @@ main {
   position: relative;
   margin: 0 !important;
 }
-.compare__header__cell span {
+.compare__header__cell .compare__cell-inner {
   width: -moz-fit-content;
   width: fit-content;
   position: sticky;
   left: var(--page-gutter);
-  max-width: calc(100vw - var(--page-gutter) * 3);
+  max-width: calc(100vw - var(--page-gutter));
   padding: 0;
 }
 .compare__body {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  position: relative;
+}
+.compare__body > div {
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 .compare__feature {
   padding: 10px var(--page-gutter);
@@ -1799,14 +1814,17 @@ main {
 .compare__row:nth-child(odd) .compare__cell {
   border-right: 1px solid #d2d2d2;
 }
-.compare__row-cont > div:nth-child(odd) {
+.compare__row-cont > .compare__feature--bold {
   background-color: #fff;
 }
-.compare__row-cont > div:nth-child(even) {
+.compare__row-cont > .compare__row:nth-of-type(odd) {
   background-color: #f3f3f3;
 }
-.compare__row-cont > div:nth-child(even) .compare__cell {
+.compare__row-cont > .compare__row:nth-of-type(odd) .compare__cell {
   border-right: 1px solid #d2d2d2;
+}
+.compare__row-cont > .compare__row:nth-of-type(even) {
+  background-color: #fff;
 }
 .compare__content {
   display: flex;
@@ -1824,9 +1842,9 @@ main {
   display: flex;
   color: #212121;
   position: relative;
-  line-height: 1;
+  line-height: 1.2;
 }
-.compare__cell div {
+.compare__cell .compare__cell-inner {
   width: -moz-fit-content;
   width: fit-content;
   position: sticky;
@@ -1884,10 +1902,6 @@ main {
 
 h2 label svg {
   transition: transform 0.3s ease;
-}
-
-.h {
-  font-size: 14px;
 }
 
 @media (min-width: 715px) {
@@ -2036,4 +2050,58 @@ h2 label svg {
 
 .compare__cell[data-cell="15"] {
   --data-cell: 15;
+}
+
+.product__backdrop {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 99998;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.product__quest {
+  width: 100vw;
+  max-height: 75vh;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 99999;
+  background-color: #fff;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* === открытие === */
+.product__backdrop.product--visible {
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: 0s;
+}
+
+.product__backdrop.product--visible .product__quest {
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+/* === закрытие === */
+.product__backdrop.product--closing .product__quest {
+  transform: translateY(100%);
+  transition-delay: 0s;
+}
+
+.product__backdrop.product--closing {
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0.25s;
 }/*# sourceMappingURL=style.css.map */
