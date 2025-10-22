@@ -843,14 +843,12 @@
     display: flex;
     color: #212121;
     position: relative;
-    line-height: 1.2;
 
     .compare__cell-inner {
       width: fit-content;
       position: sticky;
       left: var(--page-gutter);
-      max-width: calc(100vw - var(--page-gutter) * 3);
-      line-height: 1;
+      line-height: 1.2;
     }
 
     svg {
