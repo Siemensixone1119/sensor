@@ -50,12 +50,11 @@ export function toggleSnoska() {
   });
 
   function open(btn) {
-    const cell = btn.closest(".compare__cell");
-    const infoBlock = cell.querySelector("[data-info]");
-    if (!infoBlock) return;
+    const infoBlock = btn.previousElementSibling?.matches("[data-info]")
+      ? btn.previousElementSibling
+      : null;
 
-    activeInfoBlock = infoBlock;
-    originalParent = infoBlock.parentElement;
+    if (!infoBlock) return;
 
     const caption = infoBlock.dataset.caption?.trim() || "";
     const hasCaption = caption.length > 0;
@@ -66,9 +65,11 @@ export function toggleSnoska() {
     header.textContent = caption;
     header.style.display = hasCaption ? "" : "none";
 
+    const clone = infoBlock.cloneNode(true);
+    clone.hidden = false;
+
     content.innerHTML = "";
-    content.appendChild(infoBlock);
-    infoBlock.hidden = false;
+    content.appendChild(clone);
 
     productDesc.classList.add(CLS.visible);
 
@@ -81,6 +82,20 @@ export function toggleSnoska() {
     productDesc.addEventListener("transitionend", onTransitionEnd, {
       once: true,
     });
+  }
+
+  function close() {
+    productDesc.classList.add(CLS.closing);
+
+    const onTransitionEnd = () => {
+      productDesc.classList.remove(CLS.visible, CLS.closing);
+      desc.removeEventListener("transitionend", onTransitionEnd);
+      document.body.classList.remove(CLS.noScroll);
+
+      content.innerHTML = "";
+    };
+
+    desc.addEventListener("transitionend", onTransitionEnd, { once: true });
   }
 
   function close() {
