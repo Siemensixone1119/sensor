@@ -1688,19 +1688,19 @@ main {
   padding-bottom: 10px;
 }
 .compare__body:has(> .compare__row-cont:first-child > .compare__feature--bold) > .compare__row-cont:first-child > .compare__row:nth-of-type(odd) {
-  background-color: #fff;
+  background-color: #f3f3f3;
 }
 .compare__body:has(> .compare__row-cont:first-child > .compare__feature--bold) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: #fff;
 }
 .compare__body:has(> .compare__row-cont:first-child > .compare__feature--bold) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) .compare__cell {
   border-right: 1px solid #d2d2d2;
 }
 .compare__body:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) > .compare__row-cont:first-child > .compare__row:nth-of-type(odd) {
-  background-color: #fff;
+  background-color: #f3f3f3;
 }
 .compare__body:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: #fff;
 }
 .compare__body:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) .compare__cell {
   border-right: 1px solid #d2d2d2;

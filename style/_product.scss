@@ -647,11 +647,11 @@
       }
 
       >.compare__row:nth-of-type(odd) {
-        background-color: #fff;
+        background-color: #f3f3f3;
       }
 
       >.compare__row:nth-of-type(even) {
-        background-color: #f3f3f3;
+        background-color: #fff;
 
         .compare__cell {
           border-right: 1px solid #d2d2d2;
@@ -663,11 +663,11 @@
   &:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) {
     >.compare__row-cont:first-child {
       >.compare__row:nth-of-type(odd) {
-        background-color: #fff;
+        background-color: #f3f3f3;
       }
 
       >.compare__row:nth-of-type(even) {
-        background-color: #f3f3f3;
+        background-color: #fff;
 
         .compare__cell {
           border-right: 1px solid #d2d2d2;
