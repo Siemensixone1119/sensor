@@ -14,23 +14,15 @@ export function toggleSnoska() {
     noScroll: "no-scroll",
   };
 
-  let activeInfoBlock = null;
-  let originalParent = null;
+  let isAnimating = false;
+  let animationTimer = null;
 
   openDesc.forEach((cell) => {
     const infoBlocks = cell.querySelectorAll("[data-info]");
     if (!infoBlocks.length) return;
 
     infoBlocks.forEach((infoBlock) => {
-      let targetDiv = infoBlock.closest("div");
-      if (targetDiv === infoBlock) {
-        targetDiv =
-          infoBlock.previousElementSibling || cell.querySelector("div");
-      }
-      if (!targetDiv) return;
-
       const btnText = infoBlock.dataset.buttonText || "i";
-
       if (
         !infoBlock.nextElementSibling ||
         !infoBlock.nextElementSibling.classList.contains("compare__info-btn")
@@ -46,6 +38,7 @@ export function toggleSnoska() {
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".compare__info-btn");
     if (!btn) return;
+    if (isAnimating || productDesc.classList.contains(CLS.visible)) return;
     open(btn);
   });
 
@@ -53,13 +46,11 @@ export function toggleSnoska() {
     const infoBlock = btn.previousElementSibling?.matches("[data-info]")
       ? btn.previousElementSibling
       : null;
-
     if (!infoBlock) return;
 
     const caption = infoBlock.dataset.caption?.trim() || "";
     const hasCaption = caption.length > 0;
     const hasContent = infoBlock.innerHTML.trim().length > 0;
-
     if (!hasCaption && !hasContent) return;
 
     header.textContent = caption;
@@ -72,49 +63,36 @@ export function toggleSnoska() {
     content.appendChild(clone);
 
     productDesc.classList.add(CLS.visible);
+    isAnimating = true;
 
-    const onTransitionEnd = (e) => {
-      if (e.target === productDesc) {
-        document.body.classList.add(CLS.noScroll);
-        productDesc.removeEventListener("transitionend", onTransitionEnd);
-      }
-    };
-    productDesc.addEventListener("transitionend", onTransitionEnd, {
-      once: true,
-    });
+    clearTimeout(animationTimer);
+    animationTimer = setTimeout(endAnimation, 600);
+
+    function endAnimation() {
+      if (!isAnimating) return;
+      isAnimating = false;
+      document.body.classList.add(CLS.noScroll);
+    }
+
+    productDesc.addEventListener("transitionend", endAnimation, { once: true });
   }
 
   function close() {
+    if (isAnimating || !productDesc.classList.contains(CLS.visible)) return;
     productDesc.classList.add(CLS.closing);
+    isAnimating = true;
 
-    const onTransitionEnd = () => {
+    clearTimeout(animationTimer);
+    animationTimer = setTimeout(endClose, 600);
+
+    function endClose() {
       productDesc.classList.remove(CLS.visible, CLS.closing);
-      desc.removeEventListener("transitionend", onTransitionEnd);
       document.body.classList.remove(CLS.noScroll);
-
       content.innerHTML = "";
-    };
+      isAnimating = false;
+    }
 
-    desc.addEventListener("transitionend", onTransitionEnd, { once: true });
-  }
-
-  function close() {
-    productDesc.classList.add(CLS.closing);
-
-    const onTransitionEnd = () => {
-      productDesc.classList.remove(CLS.visible, CLS.closing);
-      desc.removeEventListener("transitionend", onTransitionEnd);
-      document.body.classList.remove(CLS.noScroll);
-
-      if (activeInfoBlock && originalParent) {
-        activeInfoBlock.hidden = true;
-        originalParent.appendChild(activeInfoBlock);
-        activeInfoBlock = null;
-        originalParent = null;
-      }
-    };
-
-    desc.addEventListener("transitionend", onTransitionEnd, { once: true });
+    desc.addEventListener("transitionend", endClose, { once: true });
   }
 
   productDesc.addEventListener("click", (e) => {
