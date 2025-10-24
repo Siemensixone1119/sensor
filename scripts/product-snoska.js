@@ -1,28 +1,30 @@
 export function toggleSnoska() {
-  const productDesc = document.querySelector(".product__backdrop");
-  if (!productDesc) return;
+  const footnote = document.querySelector(".footnote");
+  if (!footnote) return;
 
-  const openDesc = document.querySelectorAll(".compare__cell");
-  const desc = productDesc.querySelector(".product__quest");
-  const header = productDesc.querySelector(".product__snoska-header");
-  const content = productDesc.querySelector(".product__snoska-content");
-  if (!desc || !header || !content) return;
+  const backdrop = footnote.querySelector(".footnote__backdrop");
+  const quest = footnote.querySelector(".footnote__quest");
+  const header = footnote.querySelector(".footnote__header");
+  const content = footnote.querySelector(".footnote__content");
+  const openCells = document.querySelectorAll(".compare__cell");
+
+  if (!quest || !header || !content) return;
 
   const CLS = {
-    visible: "product--visible",
-    closing: "product--closing",
+    visible: "footnote__visible",
     noScroll: "no-scroll",
   };
 
-  let isAnimating = false;
-  let animationTimer = null;
+  let activeInfoBlock = null;
+  let originalParent = null;
 
-  openDesc.forEach((cell) => {
+  openCells.forEach((cell) => {
     const infoBlocks = cell.querySelectorAll("[data-info]");
     if (!infoBlocks.length) return;
 
     infoBlocks.forEach((infoBlock) => {
       const btnText = infoBlock.dataset.buttonText || "i";
+
       if (
         !infoBlock.nextElementSibling ||
         !infoBlock.nextElementSibling.classList.contains("compare__info-btn")
@@ -38,14 +40,16 @@ export function toggleSnoska() {
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".compare__info-btn");
     if (!btn) return;
-    if (isAnimating || productDesc.classList.contains(CLS.visible)) return;
     open(btn);
   });
 
   function open(btn) {
-    const infoBlock = btn.previousElementSibling?.matches("[data-info]")
-      ? btn.previousElementSibling
-      : null;
+    const cell = btn.closest(".compare__cell");
+    const infoBlocks = Array.from(cell.querySelectorAll("[data-info]"));
+    const btnIndex = Array.from(
+      cell.querySelectorAll(".compare__info-btn")
+    ).indexOf(btn);
+    const infoBlock = infoBlocks[btnIndex];
     if (!infoBlock) return;
 
     const caption = infoBlock.dataset.caption?.trim() || "";
@@ -56,55 +60,48 @@ export function toggleSnoska() {
     header.textContent = caption;
     header.style.display = hasCaption ? "" : "none";
 
-    const clone = infoBlock.cloneNode(true);
-    clone.hidden = false;
-
-    content.innerHTML = "";
-    content.appendChild(clone);
-
-    productDesc.classList.add(CLS.visible);
-    isAnimating = true;
-
-    clearTimeout(animationTimer);
-    animationTimer = setTimeout(endAnimation, 600);
-
-    function endAnimation() {
-      if (!isAnimating) return;
-      isAnimating = false;
-      document.body.classList.add(CLS.noScroll);
-    }
-
-    productDesc.addEventListener("transitionend", endAnimation, { once: true });
+    content.innerHTML = infoBlock.innerHTML;
+    footnote.classList.add(CLS.visible);
+    document.body.classList.add(CLS.noScroll);
   }
 
   function close() {
-    if (isAnimating || !productDesc.classList.contains(CLS.visible)) return;
-    productDesc.classList.add(CLS.closing);
-    isAnimating = true;
+    if (!footnote.classList.contains(CLS.visible)) return;
 
-    clearTimeout(animationTimer);
-    animationTimer = setTimeout(endClose, 600);
+    quest.style.transform = "translateY(100%)";
+    backdrop.style.opacity = "0";
 
-    function endClose() {
-      productDesc.classList.remove(CLS.visible, CLS.closing);
+    quest.offsetHeight;
+
+    const onEnd = () => {
+      footnote.classList.remove(CLS.visible);
+      quest.style.transform = "";
+      backdrop.style.opacity = "";
       document.body.classList.remove(CLS.noScroll);
-      content.innerHTML = "";
-      isAnimating = false;
-    }
 
-    desc.addEventListener("transitionend", endClose, { once: true });
+      if (activeInfoBlock && originalParent) {
+        activeInfoBlock.hidden = true;
+        originalParent.appendChild(activeInfoBlock);
+        activeInfoBlock = null;
+        originalParent = null;
+      }
+
+      quest.removeEventListener("transitionend", onEnd);
+    };
+
+    quest.addEventListener("transitionend", onEnd, { once: true });
   }
 
-  productDesc.addEventListener("click", (e) => {
-    if (!e.target.closest(".product__quest")) close();
+  footnote.addEventListener("click", (e) => {
+    if (!e.target.closest(".footnote__quest")) close();
   });
 
   let yDown = null;
-  desc.addEventListener(
+  quest.addEventListener(
     "touchstart",
     (evt) => (yDown = evt.touches[0].clientY)
   );
-  desc.addEventListener("touchmove", (evt) => {
+  quest.addEventListener("touchmove", (evt) => {
     if (!yDown) return;
     const yDiff = yDown - evt.touches[0].clientY;
     if (yDiff < -10) close();

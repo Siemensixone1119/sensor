@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Сенсор</title>
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style/css/main.css">
+    <link rel="stylesheet" href="./style/css/product_page.css" />
   <link rel="shortcut icon" href="./assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="./index.js" defer></script>
 </head>
@@ -453,29 +454,23 @@
               <div class="description__fade"></div>
             </div>
           </label>
-          <div style="display: flex;" class="description__controls">
-            <label for="desc1" class="description__btn">
-              <span class="open">Развернуть</span>
-              <span class="close">Свернуть</span>
-            </label>
-          </div>
           <div class="description__peculiarities">
             <section>
               <h2 class="product__title">Особенности</h2>
-              <ul>
-                <li>
+              <ul class="description__list">
+                <li class="desription__list-item">
                   <span>включен в реестр российской промышленной продукции</span>
                 </li>
-                <li>
+                <li class="desription__list-item">
                   <span>исполнение для эксплуатации при температуре окружающей среды от -60 °C</span>
                 </li>
-                <li>
+                <li class="desription__list-item">
                   <span>исполнение для температур рабочей среды до 195 °С</span>
                 </li>
-                <li>
+                <li class="desription__list-item">
                   <span>местный световой указатель положения затвора</span>
                 </li>
-                <li>
+                <li class="desription__list-item">
                   <span>датчик конечных положений затвора (для DN25 .. 100)</span>
                 </li>
               </ul>
@@ -2243,12 +2238,14 @@
 
   <!-- описание продукции -->
 
-  <div class="product__backdrop">
-    <div class="product__quest">
-      <div class="product__line"></div>
-      <div class="product__content">
-        <span class="product__snoska-header"></span>
-        <div class="product__snoska-content"></div>
+  <div class="footnote">
+    <div class="footnote__backdrop">
+    </div>
+    <div class="footnote__quest">
+      <div class="footnote__line"></div>
+      <div class="footnote__cont">
+        <span class="footnote__header"></span>
+        <div class="footnote__content"></div>
       </div>
     </div>
   </div>

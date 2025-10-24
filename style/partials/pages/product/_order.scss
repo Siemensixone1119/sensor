@@ -1,0 +1,59 @@
+@use "../../base/variable"  as *;
+
+.order {
+  &__subtitle {
+    font-weight: 400;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6 ease;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__checkbox:checked~.order__list {
+    max-height: 2000px;
+  }
+
+  &__checkbox:checked~.order__title .order labek svg {
+    transform: rotate(180deg);
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  &__item:last-child {
+    padding-bottom: 20px;
+  }
+
+  &__step {
+    font-family: $second-family;
+    font-size: 55px;
+    font-weight: 500;
+    color: #9d9d9d;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__text {
+    color: #666;
+
+    a {
+      color: $accent-color;
+    }
+  }
+}

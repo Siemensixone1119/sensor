@@ -1,0 +1,49 @@
+.open-title__contain {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+
+  .open-title {
+    font-size: 22px;
+    font-family: "pfdintextcomppro-regular", sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+  }
+}
+
+
+#compare-toggle~.compare,
+#cert-toggle~.product__docs-list,
+#file-toggle~.product__docs-list {
+  max-height: 0;
+  opacity: 0;
+  display: none;
+}
+
+#compare-toggle:checked~.compare,
+#cert-toggle:checked~.product__docs-list,
+#file-toggle:checked~.product__docs-list {
+  max-height: max-content;
+  opacity: 1;
+  display: block;
+}
+
+#compare-toggle:checked+h2 label svg,
+#cert-toggle:checked+h2 label svg,
+#file-toggle:checked+h2 label svg {
+  transform: rotate(180deg);
+}
+
+
+#compare-toggle:checked~h2 label svg,
+#cert-toggle:checked~h2 label svg,
+#file-toggle:checked~h2 label svg,
+#order-toggle:checked~h2 label svg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+h2 label svg {
+  transition: transform 0.3s ease;
+}

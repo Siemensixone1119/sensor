@@ -1,0 +1,284 @@
+@use "../../base/mixins"  as *;
+
+.compare:not(:has(.compare__header)):not(:has(.compare__row-cont:first-child .compare__feature--bold)) {
+  .compare__row-cont:first-child {
+    >.compare__row:nth-of-type(odd) {
+      background-color: transparent;
+    }
+
+    >.compare__row:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+  }
+}
+
+.compare__body {
+  &:has(> .compare__row-cont:first-child > .compare__feature--bold) {
+    >.compare__row-cont:first-child {
+      >.compare__feature--bold {
+        padding-bottom: 10px;
+      }
+
+      >.compare__row:nth-of-type(odd) {
+        background-color: #f3f3f3;
+      }
+
+      >.compare__row:nth-of-type(even) {
+
+        .compare__cell {
+          border-right: 1px solid #d2d2d2;
+        }
+      }
+    }
+  }
+
+  &:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) {
+    >.compare__row-cont:first-child {
+      >.compare__row:nth-of-type(odd) {
+        background-color: #f3f3f3;
+      }
+
+      >.compare__row:nth-of-type(even) {
+        .compare__cell {
+          border-right: 1px solid #d2d2d2;
+        }
+      }
+    }
+  }
+}
+
+.compare {
+  min-width: 100vw;
+  margin-top: 5px;
+  margin-bottom: 20px;
+
+  &__info-btn {
+    color: #fff;
+    background-color: #ccc;
+
+    border-radius: 10px;
+    padding: 2px 4px;
+    margin-right: 6px;
+    margin-left: 3px;
+    line-height: 1;
+    min-width: 18px;
+  }
+
+  &__body::-webkit-scrollbar,
+  &__header::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__header-scroll {
+    display: flex;
+    overflow-x: auto;
+    min-width: max-content;
+    display: flex;
+    width: 100vw;
+    overflow: unset;
+  }
+
+  &__header {
+    z-index: 5;
+    position: sticky;
+    top: var(--sticky-top, 0px);
+    background-color: #fff;
+    border-bottom: 1px solid #d2d2d2;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+
+    &__cell {
+      padding: 15px var(--page-gutter);
+      background-color: #fff;
+
+      position: relative;
+      margin: 0 !important;
+
+      .compare__cell-inner {
+        width: fit-content;
+        position: sticky;
+        left: var(--page-gutter);
+        max-width: calc(100vw - var(--page-gutter));
+        padding: 0;
+      }
+    }
+  }
+
+  &__body {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+  }
+
+  &__feature {
+    padding: 10px var(--page-gutter) 0;
+    color: #909090;
+    position: sticky;
+    left: 0;
+    width: fit-content;
+    display: block;
+    max-width: 100vw;
+  }
+
+  &__feature--bold {
+    padding-top: 25px;
+    color: #212121;
+    font-size: 20px;
+    font-weight: 700
+  }
+
+  &__feature--semibold {
+    font-weight: 700;
+  }
+
+  &__row:nth-child(odd) {
+    background-color: #f3f3f3;
+    border: none;
+
+    .compare__content {
+      border: none
+    }
+
+    .compare__cell {
+      border-right: 1px solid #d2d2d2;
+    }
+  }
+
+
+  &__row-cont {
+
+    min-width: max-content;
+
+    >.compare__feature--bold {
+      background-color: #fff;
+    }
+
+    >.compare__row:nth-of-type(odd) {
+      background-color: #f3f3f3;
+
+      .compare__cell {
+        border-right: 1px solid #d2d2d2;
+      }
+    }
+
+    >.compare__row:nth-of-type(even) {
+      background-color: #fff;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  &__row {
+    min-width: max-content;
+  }
+
+  &__cell {
+    margin: 10px 0;
+    padding: 3px var(--page-gutter);
+    border-right: 1px solid #d2d2d2;
+    display: flex;
+    color: #212121;
+    position: relative;
+
+    .compare__cell-inner {
+      position: relative;
+      display: block;
+      width: fit-content;
+      position: sticky;
+      left: var(--page-gutter);
+      line-height: 1.2;
+      max-width: calc(100vw - var(--page-gutter) * 2);
+    }
+
+    svg {
+      fill: #909090;
+    }
+  }
+
+  &__cell:last-child {
+    border: none !important;
+  }
+
+  &__cell {
+    width: calc(var(--col-width) * var(--data-cell, 1));
+  }
+
+  &__cell,
+  &__header &__cell {
+    flex: calc(var(--col-width, 100%) * var(--data-cell, 1));
+  }
+
+  &__row {
+    display: flex;
+    flex: 100%;
+    min-width: max-content;
+    flex-direction: column;
+  }
+}
+
+
+@media (max-width: 599px) {
+  .compare__content {
+    --col-width: 50vw;
+  }
+
+  .compare__content:not(:has(.compare__cell:nth-child(2))),
+  .compare__content:has([data-cell]) {
+    --col-width: 100vw;
+  }
+
+  .compare__content:has(.compare__cell[data-cell]) {
+    --col-width: 50vw;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 799px) {
+  .compare__content {
+    --col-width: calc(100vw / 3);
+  }
+
+  .compare__content:not(:has(.compare__cell:nth-child(3))) {
+    --col-width: 50vw;
+  }
+
+  .compare__content:not(:has(.compare__cell:nth-child(2))),
+  .compare__content:has([data-cell]) {
+    --col-width: 100vw;
+  }
+
+  .compare__content:has(.compare__cell[data-cell]) {
+    --col-width: calc(100vw / 3);
+  }
+}
+
+@media (min-width: 800px) {
+  .compare__content {
+    --col-width: calc(100vw / 4);
+  }
+
+  .compare__content:not(:has(.compare__cell:nth-child(4))) {
+    --col-width: calc(100vw / 3);
+  }
+
+  .compare__content:not(:has(.compare__cell:nth-child(3))) {
+    --col-width: 50vw;
+  }
+
+  .compare__content:not(:has(.compare__cell:nth-child(2))),
+  .compare__content:has([data-cell]) {
+    --col-width: 100vw;
+  }
+
+  .compare__content:has(.compare__cell[data-cell]) {
+    --col-width: calc(100vw / 4);
+  }
+}
+
+@include cell-widths;

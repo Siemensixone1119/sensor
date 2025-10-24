@@ -1,0 +1,52 @@
+@use "./variable" as *;
+
+.is-hidden {
+  display: none !important;
+}
+
+.neg-m {
+  margin: -15px;
+}
+
+:root {
+  --page-gutter: 15px;
+}
+
+.upper{
+  text-transform: uppercase;
+}
+
+@media (max-width: 359px) {
+  :root {
+    --page-gutter: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: 15px;
+  }
+}
+
+.layout {
+  padding-inline: var(--page-gutter);
+}
+
+.full-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.full-bcg {
+  margin-inline: calc(var(--page-gutter) * -1);
+  padding-inline: var(--page-gutter);
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+  -webkit-appearance: none;
+}
