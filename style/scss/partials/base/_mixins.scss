@@ -1,0 +1,13 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin cell-widths($max: 15) {
+  @for $i from 1 through $max {
+    .compare__cell[data-cell="#{$i}"] {
+      --data-cell: #{$i};
+    }
+  }
+}

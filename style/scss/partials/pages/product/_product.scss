@@ -2,25 +2,22 @@
 @use "../../base/mixins" as *;
 
 .product {
-  &__title--main {
+  h1.title span {
     font-family: $font-family;
     font-size: 26px;
     font-weight: 400;
     margin-top: 20px;
     margin-bottom: 10px;
-    display: inline-block;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     transition: max-height 0.3s ease;
-    max-height: 3em;
   }
 
-  &__title--main.expanded {
+  h1.title:has(>label.open-title__contain>input:checked) span {
     -webkit-line-clamp: unset;
-    max-height: none;
   }
 
   &__butn-cont {
@@ -63,7 +60,7 @@
   }
 
   &__text {
-    text-indent: 2em;
+    text-indent: 32px;
   }
 
   &__note {
@@ -84,6 +81,8 @@
   }
 
   svg {
+    min-width: 18px;
+    min-height: 18px;
     width: 18px;
     height: 18px;
     fill: #212121;
@@ -197,100 +196,7 @@
     background-repeat: no-repeat;
   }
 
-  &__breadcrumbs {
-    overflow: hidden;
-    padding-bottom: 0;
-  }
-
-  &__breadcrumb {
-    overflow-x: auto;
-    display: flex;
-    padding: 15px;
-
-    span {
-      font-size: 14px;
-      color: #a4a4a4;
-      text-wrap: nowrap;
-    }
-
-  }
-
-  .product__breadcrumb li:not(:last-child)>span::after {
-    content: ">";
-    margin: 0 15px;
-    color: #a4a4a4;
-  }
-
-  &__docs-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 30px;
-    padding-bottom: 30px;
-  }
-
-  &-section__icon {
-    min-width: 46px;
-    height: 46px;
-
-    img {
-      width: 46px;
-      padding-top: 5px;
-    }
-  }
-
-  &-section__link {
-    display: flex;
-    width: auto;
-    gap: 15px;
-    min-height: 65px;
-
-    p {
-      text-align: left;
-    }
-
-    .product__docs-desc {
-      color: #666;
-    }
-
-    .cont {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-  }
-
-  &-section__meta,
-  &-section__meta span {
-    color: #999999;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    white-space: nowrap;
-
-    svg {
-      fill: #999999;
-      width: 16px;
-      height: 16px;
-      margin-left: 1px
-    }
-  }
-
-  &-section__meta>span::after {
-    content: "|";
-    color: #999999;
-    font-size: 12px;
-  }
-
-  &-section__meta>span:last-child::after {
-    content: "";
-  }
-
   &-gallery__desc {
-    padding-inline: var(--page-gutter);
     position: relative;
   }
 
@@ -334,7 +240,6 @@
     &-gallery__desc {
       width: 50%;
       padding: 0;
-      padding-left: var(--page-gutter);
     }
 
     &-gallery__slider {

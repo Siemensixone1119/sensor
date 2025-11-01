@@ -38,7 +38,7 @@
 .mobile-menu__header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
   position: fixed;
@@ -71,7 +71,6 @@
 }
 
 .mobile-menu__header-title {
-  /* твои стили */
   font-weight: 600;
   font-size: 18px;
   flex: 1;

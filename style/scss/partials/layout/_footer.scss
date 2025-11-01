@@ -21,7 +21,7 @@
 
   &__title {
     font-weight: 600;
-    font-size: 1.2rem !important;
+    font-size: 19px !important;
   }
 }
 
@@ -30,7 +30,7 @@
   flex-direction: column;
 
   &__disclaimer {
-    font-size: 0.9rem;
+    font-size: 14px;
     padding: 16px 15px;
   }
 
@@ -39,7 +39,7 @@
   }
 
   &__copyright {
-    font-size: 0.9rem;
+    font-size: 14px;
     padding: 0 15px;
     padding-bottom: 16px;
     margin-left: auto;
@@ -144,7 +144,7 @@
     }
 
     &__link {
-      font-size: 0.9rem;
+      font-size: 14px;
     }
   }
 }

@@ -1,0 +1,22 @@
+.breadcrumbs {
+  overflow: hidden;
+  padding-bottom: 0;
+
+  .breadcrumb {
+    overflow-x: auto;
+    display: flex;
+    padding: 15px;
+
+    span {
+      font-size: 14px;
+      color: #a4a4a4;
+      text-wrap: nowrap;
+    }
+  }
+
+  .breadcrumb li:not(:last-child)>span::after {
+    content: ">";
+    margin: 0 15px;
+    color: #a4a4a4;
+  }
+}

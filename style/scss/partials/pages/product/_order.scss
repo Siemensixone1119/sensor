@@ -9,9 +9,11 @@
     display: none;
   }
 
-  &__list {
+  &__cont{
     max-height: 0;
-    overflow: hidden;
+  }
+
+  &__list {
     transition: max-height 0.6 ease;
     display: flex;
     flex-direction: column;

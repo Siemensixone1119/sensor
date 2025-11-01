@@ -8,7 +8,7 @@ export function toggleSnoska() {
   const content = footnote.querySelector(".footnote__content");
   const openCells = document.querySelectorAll(".compare__cell");
 
-  if (!quest || !header || !content) return;
+  if (!quest || !header || !content || !backdrop || !openCells) return;
 
   const CLS = {
     visible: "footnote__visible",

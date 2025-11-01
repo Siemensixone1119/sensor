@@ -2,7 +2,7 @@
 
 .contacts {
   box-shadow: $shadow;
-  font-size: 1rem;
+  font-size: 16px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
 
   &__subtext {
     margin: 4px 0px;
-    font-size: 0.8rem;
+    font-size: 13px;
     color: #212121d7;
   }
 
@@ -96,17 +96,17 @@
       gap: 4vh;
     }
     .contacts__link {
-      font-size: 1.1rem;
+      font-size: 17.5px;
       color: $accent-color;
     }
 
     .contacts__desc {
       margin-top: 3px;
-      font-size: 0.8rem;
+      font-size: 13px;
     }
 
     .contacts__desc:nth-child(2) {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 

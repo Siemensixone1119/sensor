@@ -12,34 +12,25 @@
   }
 }
 
-
-#compare-toggle~.compare,
-#cert-toggle~.product__docs-list,
-#file-toggle~.product__docs-list {
+h2.title:has(>.open-title__contain>input)~* {
   max-height: 0;
   opacity: 0;
   display: none;
 }
 
-#compare-toggle:checked~.compare,
-#cert-toggle:checked~.product__docs-list,
-#file-toggle:checked~.product__docs-list {
+
+h2.title:has(>.open-title__contain>input:checked)~* {
   max-height: max-content;
   opacity: 1;
   display: block;
 }
 
-#compare-toggle:checked+h2 label svg,
-#cert-toggle:checked+h2 label svg,
-#file-toggle:checked+h2 label svg {
+h2.title:has(>.open-title__contain>input:checked) label svg {
   transform: rotate(180deg);
 }
 
 
-#compare-toggle:checked~h2 label svg,
-#cert-toggle:checked~h2 label svg,
-#file-toggle:checked~h2 label svg,
-#order-toggle:checked~h2 label svg {
+h2.title:has(>.open-title__contain>input:checked) label svg {
   transform: rotate(180deg);
   transition: transform 0.3s ease;
 }

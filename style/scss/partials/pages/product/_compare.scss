@@ -1,6 +1,6 @@
-@use "../../base/mixins"  as *;
+@use "../../base/mixins" as *;
 
-.compare:not(:has(.compare__header)):not(:has(.compare__row-cont:first-child .compare__feature--bold)) {
+.compare:not(:has(.compare__header)):not(:has(.compare__row-cont:first-child .compare__title-categories)) {
   .compare__row-cont:first-child {
     >.compare__row:nth-of-type(odd) {
       background-color: transparent;
@@ -13,11 +13,8 @@
 }
 
 .compare__body {
-  &:has(> .compare__row-cont:first-child > .compare__feature--bold) {
+  &:has(> .compare__row-cont:first-child > .compare__title-categories) {
     >.compare__row-cont:first-child {
-      >.compare__feature--bold {
-        padding-bottom: 10px;
-      }
 
       >.compare__row:nth-of-type(odd) {
         background-color: #f3f3f3;
@@ -32,7 +29,7 @@
     }
   }
 
-  &:not(:has(> .compare__row-cont:first-child > .compare__feature--bold)) {
+  &:not(:has(> .compare__row-cont:first-child > .compare__title-categories)) {
     >.compare__row-cont:first-child {
       >.compare__row:nth-of-type(odd) {
         background-color: #f3f3f3;
@@ -50,7 +47,9 @@
 .compare {
   min-width: 100vw;
   margin-top: 5px;
-  margin-bottom: 20px;
+  --cells-visible: 4;
+  --col-width: calc(100vw / var(--cells-visible));
+
 
   &__info-btn {
     color: #fff;
@@ -88,12 +87,8 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
 
-
-    &__cell {
-      padding: 15px var(--page-gutter);
-      background-color: #fff;
-
-      position: relative;
+    .compare__cell {
+      padding: 10px var(--page-gutter) !important;
       margin: 0 !important;
 
       .compare__cell-inner {
@@ -123,14 +118,14 @@
     max-width: 100vw;
   }
 
-  &__feature--bold {
-    padding-top: 25px;
+  &__title-categories {
+    padding-top: 20px;
     color: #212121;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700
   }
 
-  &__feature--semibold {
+  &__title-group {
     font-weight: 700;
   }
 
@@ -152,20 +147,12 @@
 
     min-width: max-content;
 
-    >.compare__feature--bold {
-      background-color: #fff;
-    }
-
     >.compare__row:nth-of-type(odd) {
       background-color: #f3f3f3;
 
       .compare__cell {
         border-right: 1px solid #d2d2d2;
       }
-    }
-
-    >.compare__row:nth-of-type(even) {
-      background-color: #fff;
     }
   }
 
@@ -180,8 +167,8 @@
   }
 
   &__cell {
-    margin: 10px 0;
-    padding: 3px var(--page-gutter);
+    margin: 5px 0;
+    padding: 1px var(--page-gutter);
     border-right: 1px solid #d2d2d2;
     display: flex;
     color: #212121;
@@ -223,62 +210,74 @@
   }
 }
 
-
 @media (max-width: 599px) {
-  .compare__content {
-    --col-width: 50vw;
+  .compare {
+    --cells-visible: 2;
   }
 
   .compare__content:not(:has(.compare__cell:nth-child(2))),
   .compare__content:has([data-cell]) {
-    --col-width: 100vw;
+    --cells-visible: 1;
   }
 
   .compare__content:has(.compare__cell[data-cell]) {
-    --col-width: 50vw;
+    --cells-visible: 2;
+  }
+
+  .compare {
+    --col-width: calc(100vw / var(--cells-visible));
   }
 }
 
 @media (min-width: 600px) and (max-width: 799px) {
-  .compare__content {
-    --col-width: calc(100vw / 3);
+  .compare {
+    --cells-visible: 3;
   }
 
   .compare__content:not(:has(.compare__cell:nth-child(3))) {
-    --col-width: 50vw;
+    --cells-visible: 2;
   }
 
   .compare__content:not(:has(.compare__cell:nth-child(2))),
   .compare__content:has([data-cell]) {
-    --col-width: 100vw;
+    --cells-visible: 1;
   }
 
   .compare__content:has(.compare__cell[data-cell]) {
-    --col-width: calc(100vw / 3);
+    --cells-visible: 3;
+  }
+
+  .compare {
+    --col-width: calc(100vw / var(--cells-visible));
   }
 }
 
 @media (min-width: 800px) {
-  .compare__content {
-    --col-width: calc(100vw / 4);
+  .compare {
+    --cells-visible: 4;
   }
 
   .compare__content:not(:has(.compare__cell:nth-child(4))) {
-    --col-width: calc(100vw / 3);
+    --cells-visible: 3;
   }
 
   .compare__content:not(:has(.compare__cell:nth-child(3))) {
-    --col-width: 50vw;
+    --cells-visible: 2;
   }
 
   .compare__content:not(:has(.compare__cell:nth-child(2))),
   .compare__content:has([data-cell]) {
-    --col-width: 100vw;
+    --cells-visible: 1;
   }
 
   .compare__content:has(.compare__cell[data-cell]) {
-    --col-width: calc(100vw / 4);
+    --cells-visible: 4;
+  }
+
+  .compare {
+    --col-width: calc(100vw / var(--cells-visible));
   }
 }
+
 
 @include cell-widths;
