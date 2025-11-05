@@ -46,22 +46,6 @@ input[type=search]::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
-.product h1.title span {
-  font-family: "pfdintextcomppro-light", sans-serif;
-  font-size: 26px;
-  font-weight: 400;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: max-height 0.3s ease;
-}
-.product h1.title:has(> label.open-title__contain > input:checked) span {
-  -webkit-line-clamp: unset;
-}
 .product__butn-cont {
   display: flex;
   align-items: center;
@@ -261,53 +245,11 @@ input[type=search]::-webkit-search-results-decoration {
     width: 50vw;
   }
 }
-.open-title__contain {
-  display: flex !important;
-  align-items: center;
-  width: 100%;
-  gap: 20px;
-}
-.open-title__contain .open-title {
-  font-size: 22px;
-  font-family: "pfdintextcomppro-regular", sans-serif;
-  font-weight: 400;
-  margin: 10px 0;
-}
-
-h2.title:has(> .open-title__contain > input) ~ * {
-  max-height: 0;
-  opacity: 0;
-  display: none;
-}
-
-h2.title:has(> .open-title__contain > input:checked) ~ * {
-  max-height: -moz-max-content;
-  max-height: max-content;
-  opacity: 1;
-  display: block;
-}
-
-h2.title:has(> .open-title__contain > input:checked) label svg {
-  transform: rotate(180deg);
-}
-
-h2.title:has(> .open-title__contain > input:checked) label svg {
-  transform: rotate(180deg);
-  transition: transform 0.3s ease;
-}
-
-h2 label svg {
-  transition: transform 0.3s ease;
-}
-
 .order__subtitle {
   font-weight: 400;
 }
 .order__checkbox {
   display: none;
-}
-.order__cont {
-  max-height: 0;
 }
 .order__list {
   transition: max-height 0.6 ease;
@@ -789,40 +731,40 @@ h2 label svg {
   transform: translateY(0);
 }
 
-.files__list {
+.files-list {
   display: flex;
   flex-direction: column;
   gap: 30px;
   margin-top: 15px;
 }
-.files__icon {
+.files-list__icon {
   min-width: 46px;
   height: 46px;
 }
-.files__icon img {
+.files-list__icon img {
   width: 46px;
   padding-top: 5px;
 }
-.files__link {
+.files-list__link {
   display: flex;
   width: auto;
   gap: 15px;
   min-height: 65px;
 }
-.files__link p {
+.files-list__link p {
   text-align: left;
 }
-.files__desc {
+.files-list__desc {
   color: #666;
 }
-.files__meta-cont {
+.files-list__meta-cont {
   display: flex;
   flex-direction: column;
   gap: 8px;
   line-height: 1.2;
   margin-bottom: 20px;
 }
-.files__meta, .files__meta span {
+.files-list__meta, .files-list__meta span {
   color: #999999;
   font-size: 12px;
   display: flex;
@@ -830,15 +772,15 @@ h2 label svg {
   gap: 5px;
   white-space: nowrap;
 }
-.files__meta > span::after {
+.files-list__meta > span::after {
   content: "|";
   color: #999999;
   font-size: 12px;
 }
-.files__meta > span:last-child::after {
+.files-list__meta > span:last-child::after {
   content: "";
 }
-.files__meta > span:last-child::before {
+.files-list__meta > span:last-child::before {
   content: url("../../../../../assets/image/date.svg");
   width: 16px;
   height: 16px;

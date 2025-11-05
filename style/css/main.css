@@ -1151,22 +1151,79 @@ main {
     transform: rotate(1turn);
   }
 }
-.breadcrumbs {
+nav.breadcrumbs {
   overflow: hidden;
   padding-bottom: 0;
 }
-.breadcrumbs .breadcrumb {
+nav.breadcrumbs .breadcrumbs__list {
   overflow-x: auto;
   display: flex;
   padding: 15px;
 }
-.breadcrumbs .breadcrumb span {
+nav.breadcrumbs .breadcrumbs__list .breadcrumbs__item > .link {
   font-size: 14px;
   color: #a4a4a4;
   text-wrap: nowrap;
 }
-.breadcrumbs .breadcrumb li:not(:last-child) > span::after {
+nav.breadcrumbs .breadcrumbs__item:not(:last-child) > .link::after {
   content: ">";
   margin: 0 15px;
   color: #a4a4a4;
+}
+
+.openable-section__label {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+.openable-section__label .openable-section__title-text {
+  font-size: 22px;
+  font-family: "pfdintextcomppro-regular", sans-serif;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+h2.openable-section__title ~ * {
+  max-height: 0;
+  opacity: 0;
+  display: none;
+}
+
+h2.openable-section__title:has(.openable-section__control:checked) ~ * {
+  max-height: -moz-max-content;
+  max-height: max-content;
+  opacity: 1;
+  display: block;
+}
+
+h2.openable-section__title:has(.openable-section__control:checked) .openable-section__label .openable-section__icon {
+  transform: rotate(180deg);
+}
+
+h2.openable-section__title:has(.openable-section__control:checked) .openable-section__label .openable-section__icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+h2.openable-section__title .openable-section__label .openable-section__icon {
+  transition: transform 0.3s ease;
+}
+
+h1.title span {
+  font-family: "pfdintextcomppro-light", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-height 0.3s ease;
+}
+
+h1.title:has(> label.open-title__contain > input:checked) span {
+  -webkit-line-clamp: unset;
 }/*# sourceMappingURL=main.css.map */

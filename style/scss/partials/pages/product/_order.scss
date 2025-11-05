@@ -1,16 +1,13 @@
 @use "../../base/variable"  as *;
 
 .order {
+
   &__subtitle {
     font-weight: 400;
   }
 
   &__checkbox {
     display: none;
-  }
-
-  &__cont{
-    max-height: 0;
   }
 
   &__list {
