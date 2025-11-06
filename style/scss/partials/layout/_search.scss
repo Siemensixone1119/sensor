@@ -1,9 +1,6 @@
 @use "../base/variable" as *;
 
 .search--open {
-  // opacity: 1 !important;
-  // visibility: visible !important;
-  // transition: opacity 0.3s ease !important;
   transform: translateX(0) !important;
 }
 
@@ -30,7 +27,7 @@
   min-height: 100svh;
   max-height: 100dvh;
 
-  form{
+  form {
     position: relative;
   }
 
@@ -48,7 +45,6 @@
     background-color: $second-text;
     display: flex;
     align-items: center;
-    //   border-bottom: 1px solid #ccc;
 
     button {
       padding: 6px 6px;
@@ -127,7 +123,7 @@
 
   }
 
-  &__label{
+  &__label {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -184,11 +180,6 @@
     a {
       display: block;
       padding: 10px 15px;
-    }
-
-    a:first-child {
-      font-size: 18px;
-      font-weight: 600;
     }
 
     a:last-child {
@@ -259,16 +250,15 @@
   display: block;
 }
 
-.search .search__clue, 
+.search .search__clue,
 .search .search__label {
   display: none;
 }
 
-.search.search--empty .search__clue:not(.search__hint)
- {
+.search.search--empty .search__clue:not(.search__hint) {
   display: flex;
 }
 
-.search.search--empty .search__label{
+.search.search--empty .search__label {
   display: inline-block;
 }

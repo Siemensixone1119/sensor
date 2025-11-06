@@ -60,10 +60,17 @@ div {
   font-weight: 400;
 }
 
-ul, ol {
+header ul,
+header ol,
+footer ul,
+footer ol {
+  list-style: none;
+}
+
+ul,
+ol {
   padding: 0;
   margin: 0;
-  list-style: none;
   font-family: $main-font;
   color: $text-color;
 }
