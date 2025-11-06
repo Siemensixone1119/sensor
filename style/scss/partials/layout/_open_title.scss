@@ -54,6 +54,6 @@ h1.title span {
   transition: max-height 0.3s ease;
 }
 
-h1.title:has(> label.open-title__contain > input:checked) span {
+h1.title:has(>.clamped-text > .clamped-text__control:checked) span {
   -webkit-line-clamp: unset;
 }
