@@ -1093,6 +1093,10 @@ main {
   display: block;
   padding: 10px 15px;
 }
+.search__result a:first-child {
+  font-size: 18px;
+  font-weight: 600;
+}
 .search__result a:last-child {
   border-bottom: 1px solid #ccc;
 }
@@ -1144,8 +1148,11 @@ main {
   display: none;
 }
 
-.search .search__result-list i {
+.search .search__result-list {
   display: none;
+}
+
+.search__result-list i {
   font-style: normal;
   background-color: yellow;
   padding: 0 1px;

@@ -30,7 +30,7 @@
   min-height: 100svh;
   max-height: 100dvh;
 
-  form {
+  form{
     position: relative;
   }
 
@@ -127,7 +127,7 @@
 
   }
 
-  &__label {
+  &__label{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -186,6 +186,11 @@
       padding: 10px 15px;
     }
 
+    a:first-child {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
     a:last-child {
       border-bottom: 1px solid #ccc;
     }
@@ -239,26 +244,31 @@
   display: none;
 }
 
-.search .search__result-list i{
+.search .search__result-list {
   display: none;
+}
+
+.search__result-list i {
   font-style: normal;
   background-color: yellow;
   padding: 0 1px;
 }
 
+
 .search.search--results .search__result-list {
   display: block;
 }
 
-.search .search__clue,
+.search .search__clue, 
 .search .search__label {
   display: none;
 }
 
-.search.search--empty .search__clue:not(.search__hint) {
+.search.search--empty .search__clue:not(.search__hint)
+ {
   display: flex;
 }
 
-.search.search--empty .search__label {
+.search.search--empty .search__label{
   display: inline-block;
 }
