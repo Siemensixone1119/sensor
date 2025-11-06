@@ -1,0 +1,30 @@
+.peculiarities {
+
+  &__list {
+    list-style-type: disc;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  &__list-item {
+    color: #333;
+  }
+
+  &__list-item::marker {
+    color: rgb(153, 153, 153);
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 715px) {
+  .peculiarities {
+    h2.title {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -12,9 +12,15 @@
   --page-gutter: 15px;
 }
 
-.upper{
+.upper {
   text-transform: uppercase;
 }
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
 
 @media (max-width: 359px) {
   :root {
@@ -40,7 +46,6 @@
 
 .full-bcg {
   margin-inline: calc(var(--page-gutter) * -1);
-  // padding-inline: var(--page-gutter);
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -49,4 +54,37 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
   -webkit-appearance: none;
+}
+
+p {
+  text-indent: 32px;
+  margin-top: 7px;
+  line-height: 1.4;
+}
+
+span {
+  line-height: 1.3;
+}
+
+ul,
+ol {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+li::marker {
+  margin-left: 32px
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 15px 0;
 }

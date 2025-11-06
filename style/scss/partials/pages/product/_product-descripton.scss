@@ -1,0 +1,57 @@
+@use "../../base/mixins" as *;
+@use "../../base/variable" as *;
+
+.product-description {
+
+  &__button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--page-gutter);
+    padding-top: 20px;
+  }
+
+  &__button {
+    @include flex-center;
+    padding: 12px 15px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 14px;
+    min-width: 155px;
+    gap: 5px;
+  }
+
+  &__button-icon {
+    fill: $accent-color !important;
+  }
+
+  &__button:first-child {
+    border: 1px solid #d5d5d5;
+    color: #b30006;
+  }
+
+  &__button:last-child {
+    background-color: #b30006;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .product-description {
+    &__button-wrapper {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+}
+
+@media (min-width: 715px) {
+  .product-description {
+    h1.title {
+      margin-top: 0;
+    }
+
+    &__button-wrapper {
+      padding-top: 15px;
+    }
+  }
+}

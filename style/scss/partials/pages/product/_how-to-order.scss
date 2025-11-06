@@ -1,6 +1,6 @@
-@use "../../base/variable"  as *;
+@use "../../base/variable" as *;
 
-.order {
+.how-to-order {
 
   &__subtitle {
     font-weight: 400;
@@ -11,10 +11,10 @@
   }
 
   &__list {
-    transition: max-height 0.6 ease;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin: 0;
   }
 
   &__checkbox:checked~.order__list {
@@ -48,10 +48,10 @@
     gap: 10px;
   }
 
-  &__text {
+  &__description {
     color: #666;
 
-    a {
+    >a {
       color: $accent-color;
     }
   }

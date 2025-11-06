@@ -1,0 +1,50 @@
+.product-slider {
+  &__wrapper {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  &__item {
+    width: 350px;
+    height: 350px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 2%;
+    right: 3%;
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #bbb;
+    cursor: pointer;
+    transition: width .3s ease, background .3s ease;
+  }
+
+  &__dot.active {
+    background: #333;
+    width: 13px;
+    border-radius: 50px;
+  }
+}
+

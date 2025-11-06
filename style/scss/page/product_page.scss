@@ -1,7 +1,11 @@
 @use "../partials/base/base" as *;
 @use "../partials/pages/product/product";
-@use "../partials/pages/product/order";
+@use "../partials/pages/product/how-to-order";
 @use "../partials/pages/product/description";
+@use "../partials/pages/product/peculiarities";
 @use "../partials/pages/product/compare";
 @use "../partials/pages/product/footnote";
-@use "../partials/pages/product/files";
+@use "../partials/pages/product/files-list";
+@use "../partials/pages/product/product-price";
+@use "../partials/pages/product/product-slider";
+@use "../partials/pages/product/product-descripton"

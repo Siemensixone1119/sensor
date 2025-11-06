@@ -6,7 +6,6 @@ import { mountMobileMenu } from "./scripts/toggleMenu.js";
 import { search } from "./scripts/search.js";
 import { slider } from "./scripts/product-slider.js";
 import { bgElement } from "./scripts/bcg-element.js";
-import { certSlider } from "./scripts/product-slider.js";
 import { syncScroll } from "./scripts/syncScroll.js";
 import { toggleSnoska } from "./scripts/product-snoska.js";
 
@@ -18,6 +17,5 @@ mountMobileMenu();
 search();
 slider();
 bgElement();
-certSlider();
 syncScroll();
 toggleSnoska();
