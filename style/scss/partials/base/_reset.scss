@@ -43,9 +43,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 20px;
   margin: 0;
   padding: 0;
+  line-height: 1.4;
 }
 
 p,
@@ -58,6 +58,7 @@ div {
   color: $text-color;
   text-decoration: none;
   font-weight: 400;
+  line-height: 1.4;
 }
 
 header ul,
@@ -65,6 +66,10 @@ header ol,
 footer ul,
 footer ol {
   list-style: none;
+}
+
+header li, footer li{
+  margin-left: 0;
 }
 
 ul,

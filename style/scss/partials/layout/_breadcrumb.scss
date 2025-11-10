@@ -6,17 +6,27 @@ nav.breadcrumbs {
     overflow-x: auto;
     display: flex;
     padding: 15px;
-
-    .breadcrumbs__item > .link {
-      font-size: 14px;
-      color: #a4a4a4;
-      text-wrap: nowrap;
-    }
+    list-style: none;
+    gap: 30px;
+    margin: 0;
   }
 
-  .breadcrumbs__item:not(:last-child) > .link::after {
+  .breadcrumbs__item{
+    margin-left: 0;
+  }
+
+  .breadcrumbs__item:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  .breadcrumbs__item>.link {
+    font-size: 14px;
+    color: #a4a4a4;
+    text-wrap: nowrap;
+  }
+
+  .breadcrumbs__item:not(:first-child)::marker {
     content: ">";
-    margin: 0 15px;
     color: #a4a4a4;
   }
 }

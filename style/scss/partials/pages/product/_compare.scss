@@ -44,6 +44,10 @@
   }
 }
 
+h2:has(+div.compare) {
+  margin-bottom: 5px !important;
+}
+
 .compare {
   min-width: 100vw;
   margin-top: 5px;

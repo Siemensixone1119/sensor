@@ -54,21 +54,25 @@ input[type=search]::-webkit-search-results-decoration {
 p {
   text-indent: 32px;
   margin-top: 7px;
-  line-height: 1.4;
-}
-
-span {
-  line-height: 1.3;
 }
 
 ul,
 ol {
   margin-top: 5px;
   margin-bottom: 10px;
+  list-style: none;
+}
+ul li::marker,
+ol li::marker {
+  margin-left: 32px;
 }
 
-li::marker {
-  margin-left: 32px;
+main ul {
+  list-style: disc;
+}
+
+main ol {
+  list-style: decimal;
 }
 
 h1 {
@@ -84,11 +88,35 @@ h6 {
   margin: 15px 0;
 }
 
-.product h2.title {
-  font-size: 22px;
+.title {
   font-family: "pfdintextcomppro-regular", sans-serif;
   font-weight: 400;
 }
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
 .product svg {
   min-width: 18px;
   min-height: 18px;
@@ -128,7 +156,7 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin: 0;
+  padding: 0;
 }
 .how-to-order__checkbox:checked ~ .order__list {
   max-height: 2000px;
@@ -140,6 +168,7 @@ h6 {
   display: flex;
   align-items: flex-start;
   gap: 40px;
+  margin-left: 0;
 }
 .how-to-order__item:last-child {
   padding-bottom: 20px;
@@ -265,6 +294,7 @@ h6 {
 }
 .peculiarities__list-item {
   color: #333;
+  margin-left: 0;
 }
 .peculiarities__list-item::marker {
   color: rgb(153, 153, 153);
@@ -295,6 +325,10 @@ h6 {
 }
 .compare__body:not(:has(> .compare__row-cont:first-child > .compare__title-categories)) > .compare__row-cont:first-child > .compare__row:nth-of-type(even) .compare__cell {
   border-right: 1px solid #d2d2d2;
+}
+
+h2:has(+ div.compare) {
+  margin-bottom: 5px !important;
 }
 
 .compare {
@@ -610,14 +644,15 @@ h6 {
 .files-list {
   display: flex;
   flex-direction: column;
-  gap: 30px;
   margin-top: 15px;
+  padding: 0;
 }
 .files-list__item {
   display: flex;
   width: auto;
   gap: 15px;
   min-height: 65px;
+  margin-left: 0;
 }
 .files-list__wrapper--icon {
   min-width: 46px;
@@ -708,6 +743,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 0;
 }
 .product-slider__pagination {
   display: flex;
