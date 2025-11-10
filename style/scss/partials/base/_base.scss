@@ -67,19 +67,16 @@ ol {
   margin-bottom: 10px;
   list-style: none;
 
-  li::marker{
-   margin-left: 32px;
-  }
 }
 
 main ul {
   list-style: disc;
-  // padding-left: 32px;
+  padding-left: 32px;
 }
 
 main ol {
   list-style: decimal;
-  // padding-left: 32px;
+  padding-left: 32px;
 }
 
 

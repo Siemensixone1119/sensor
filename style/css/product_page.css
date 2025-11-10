@@ -62,17 +62,15 @@ ol {
   margin-bottom: 10px;
   list-style: none;
 }
-ul li::marker,
-ol li::marker {
-  margin-left: 32px;
-}
 
 main ul {
   list-style: disc;
+  padding-left: 32px;
 }
 
 main ol {
   list-style: decimal;
+  padding-left: 32px;
 }
 
 h1 {
@@ -336,6 +334,7 @@ h2:has(+ div.compare) {
   margin-top: 5px;
   --cells-visible: 4;
   --col-width: calc(100vw / var(--cells-visible));
+  margin-inline: calc(var(--page-gutter) * -1);
 }
 .compare__info-btn {
   color: #fff;
