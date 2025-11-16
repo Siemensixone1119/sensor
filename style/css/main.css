@@ -1263,7 +1263,7 @@ nav.breadcrumbs .breadcrumbs__item:not(:first-child) {
 nav.breadcrumbs .breadcrumbs__item > .link {
   font-size: 14px;
   color: #a4a4a4;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
 nav.breadcrumbs .breadcrumbs__item:not(:first-child)::marker {
   content: ">";

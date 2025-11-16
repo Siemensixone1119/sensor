@@ -235,7 +235,7 @@ h6 {
 .description__open-background {
   position: absolute;
   bottom: 0;
-  left: var(--page-gutter);
+  left: 0;
   background-color: #fff;
   width: calc(100vw - var(--page-gutter) * 2);
   height: 65px;
