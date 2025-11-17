@@ -11,18 +11,21 @@ nav.breadcrumbs {
     margin: 0;
   }
 
-  .breadcrumbs__item{
+  .breadcrumbs__item {
     margin-left: 0;
+
+    >* {
+      font-size: 14px;
+      color: #a4a4a4;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+      text-indent: 0;
+    }
   }
 
   .breadcrumbs__item:not(:first-child) {
     padding-left: 20px;
-  }
-
-  .breadcrumbs__item>.link {
-    font-size: 14px;
-    color: #a4a4a4;
-    white-space: nowrap;
   }
 
   .breadcrumbs__item:not(:first-child)::marker {

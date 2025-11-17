@@ -625,6 +625,7 @@ h2:has(+ div.compare) {
 .footnote__cont {
   padding: var(--page-gutter);
   padding-top: 0;
+  overflow-y: hidden;
 }
 .footnote__header {
   font-size: 20px;
@@ -711,6 +712,7 @@ h2:has(+ div.compare) {
 .product-price {
   display: flex;
   gap: 8px;
+  padding-top: 10px;
 }
 .product-price__cost {
   font-weight: 700;
@@ -718,12 +720,11 @@ h2:has(+ div.compare) {
   color: #b30006 !important;
 }
 .product-price div {
-  padding-top: 10px;
   color: #666666;
   font-size: 16px;
 }
 
-.product-slider__wrapper {
+.product-slider {
   position: relative;
   max-width: 100%;
   overflow: hidden;
@@ -768,6 +769,9 @@ h2:has(+ div.compare) {
   border-radius: 50px;
 }
 
+.product-description__text {
+  font-size: 14px;
+}
 .product-description__button-wrapper {
   display: flex;
   align-items: center;

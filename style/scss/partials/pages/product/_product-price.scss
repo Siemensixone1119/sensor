@@ -3,6 +3,7 @@
 .product-price {
   display: flex;
   gap: 8px;
+  padding-top: 10px;
 
   &__cost {
     font-weight: 700;
@@ -11,7 +12,6 @@
   }
 
   div {
-    padding-top: 10px;
     color: #666666;
     font-size: 16px;
   }

@@ -42,6 +42,7 @@
   &__cont {
     padding: var(--page-gutter);
     padding-top: 0;
+    overflow-y: hidden;
   }
 
   &__header {

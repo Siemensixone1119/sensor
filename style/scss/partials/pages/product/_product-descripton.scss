@@ -3,6 +3,10 @@
 
 .product-description {
 
+  &__text{
+    font-size: 14px;
+  }
+
   &__button-wrapper {
     display: flex;
     align-items: center;
