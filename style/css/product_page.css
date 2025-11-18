@@ -625,12 +625,16 @@ h2:has(+ div.compare) {
   overflow-y: auto;
   min-height: 30%;
 }
+.footnote__line-wrapper {
+  width: 100%;
+  padding: 15px 0;
+}
 .footnote__line {
   width: 60vw;
   background-color: #a2a2a2;
   min-height: 4px;
   border-radius: 8px;
-  margin: 15px auto;
+  margin: 0 auto;
 }
 .footnote__cont {
   padding: var(--page-gutter);

@@ -26,7 +26,10 @@ export function toggleSnoska() {
       }
 
       if (btnText && btnText.trim() !== "") {
-        if (!block.nextElementSibling || !block.nextElementSibling.classList.contains("compare__info-btn")) {
+        if (
+          !block.nextElementSibling ||
+          !block.nextElementSibling.classList.contains("compare__info-btn")
+        ) {
           block.insertAdjacentHTML(
             "afterend",
             `<button type="button" class="compare__info-btn">${btnText}</button>`
@@ -108,13 +111,35 @@ export function toggleSnoska() {
   footnote.addEventListener("click", (e) => {
     if (!e.target.closest(".footnote__quest")) close();
   });
+let startY = null;
+let draggingLine = false;
 
-  let yDown = null;
-  quest.addEventListener("touchstart", (evt) => (yDown = evt.touches[0].clientY));
-  quest.addEventListener("touchmove", (evt) => {
-    if (!yDown) return;
-    const yDiff = yDown - evt.touches[0].clientY;
-    if (yDiff < -10) close();
-    yDown = null;
+const line = footnote.querySelector(".footnote__line-wrapper");
+
+if (line) {
+  line.addEventListener("touchstart", (evt) => {
+    if (!evt.touches?.length) return;
+    draggingLine = true;
+    startY = evt.touches[0].clientY;
   });
+
+  line.addEventListener("touchmove", (evt) => {
+    if (!draggingLine || startY === null || !evt.touches?.length) return;
+
+    const currentY = evt.touches[0].clientY;
+    const diff = currentY - startY;
+
+    if (diff > 20) {
+      draggingLine = false;
+      startY = null;
+      close();
+    }
+  });
+
+  line.addEventListener("touchend", () => {
+    draggingLine = false;
+    startY = null;
+  });
+}
+
 }
