@@ -1,0 +1,27 @@
+@use "../base/mixins" as *;
+@use "../base/variable" as *;
+
+.button {
+  @include flex-center;
+  padding: 12px 15px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px;
+  min-width: 155px;
+  gap: 5px;
+  height: 40px;
+
+  .button__icon {
+    fill: $accent-color !important;
+  }
+}
+
+.button__white {
+  border: 1px solid #d5d5d5;
+  color: #b30006;
+}
+
+.button__red {
+  background-color: #b30006;
+  color: white;
+}

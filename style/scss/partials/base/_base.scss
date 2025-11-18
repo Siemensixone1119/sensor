@@ -79,6 +79,11 @@ main ol {
   padding-left: 32px;
 }
 
+main ul li::marker,
+main ol li::marker{
+  color: rgb(153, 153, 153);
+}
+
 
 h1 {
   margin-top: 20px;
@@ -91,6 +96,8 @@ h4,
 h5,
 h6 {
   margin: 15px 0;
+  font-family: $second-family;
+  font-weight: 400;
 }
 
 .title {

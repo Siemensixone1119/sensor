@@ -4,15 +4,15 @@ nav.breadcrumbs {
 
   .breadcrumbs__list {
     overflow-x: auto;
-    display: flex;
     padding: 15px;
     list-style: none;
-    gap: 30px;
     margin: 0;
+    white-space: nowrap;
   }
 
   .breadcrumbs__item {
     margin-left: 0;
+    display: inline-block;
 
     >* {
       font-size: 14px;
@@ -24,12 +24,9 @@ nav.breadcrumbs {
     }
   }
 
-  .breadcrumbs__item:not(:first-child) {
-    padding-left: 20px;
-  }
-
-  .breadcrumbs__item:not(:first-child)::marker {
+  .breadcrumbs__item:not(:last-child)::after {
     content: ">";
     color: #a4a4a4;
+    padding: 0 10px;
   }
 }

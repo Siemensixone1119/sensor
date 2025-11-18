@@ -3,47 +3,39 @@
 
 .product-description {
 
-  &__text{
+  &__short-info {
     font-size: 14px;
   }
 
   &__button-wrapper {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-areas:
+      "btn1 btn2"
+      "btn3 btn3";
     gap: var(--page-gutter);
     padding-top: 20px;
-  }
 
-  &__button {
-    @include flex-center;
-    padding: 12px 15px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 14px;
-    min-width: 155px;
-    gap: 5px;
-  }
+    button:first-child {
+      grid-area: btn1;
+    }
 
-  &__button-icon {
-    fill: $accent-color !important;
-  }
+    button:nth-child(2) {
+      grid-area: btn2 !important;
+    }
 
-  &__button:first-child {
-    border: 1px solid #d5d5d5;
-    color: #b30006;
-  }
-
-  &__button:last-child {
-    background-color: #b30006;
-    color: white;
+    button:last-child {
+      grid-area: btn3;
+    }
   }
 }
 
 @media screen and (max-width: 400px) {
   .product-description {
     &__button-wrapper {
-      flex-wrap: wrap;
-      gap: 10px;
+      grid-template-areas:
+        "btn1"
+        "btn2"
+        "btn3";
     }
   }
 }

@@ -48,6 +48,14 @@ h2:has(+div.compare) {
   margin-bottom: 5px !important;
 }
 
+.compare:not(:is(main *)) {
+  .compare {
+    &__header {
+      top: 0;
+    }
+  }
+}
+
 .compare {
   min-width: 100vw;
   margin-top: 5px;

@@ -6,63 +6,85 @@ export function toggleSnoska() {
   const quest = footnote.querySelector(".footnote__quest");
   const header = footnote.querySelector(".footnote__header");
   const content = footnote.querySelector(".footnote__content");
-  const openCells = document.querySelectorAll(".compare__cell");
-
-  if (!quest || !header || !content || !backdrop || !openCells) return;
 
   const CLS = {
     visible: "footnote__visible",
     noScroll: "no-scroll",
   };
 
-  let activeInfoBlock = null;
-  let originalParent = null;
+  function processInfoBlocks(root = document) {
+    const blocks = root.querySelectorAll("[data-info]");
 
-  openCells.forEach((cell) => {
-    const infoBlocks = cell.querySelectorAll("[data-info]");
-    if (!infoBlocks.length) return;
+    blocks.forEach((block) => {
+      const btnText = block.dataset.buttonText;
+      const triggerPrev = block.dataset.trigger === "prev";
 
-    infoBlocks.forEach((infoBlock) => {
-      const btnText = infoBlock.dataset.buttonText || "i";
+      if (triggerPrev) {
+        const prev = block.previousElementSibling;
+        if (prev) prev.classList.add("snoska-trigger-prev");
+        return;
+      }
 
-      if (
-        !infoBlock.nextElementSibling ||
-        !infoBlock.nextElementSibling.classList.contains("compare__info-btn")
-      ) {
-        infoBlock.insertAdjacentHTML(
-          "afterend",
-          `<button type="button" class="compare__info-btn" aria-label="Показать описание">${btnText}</button>`
-        );
+      if (btnText && btnText.trim() !== "") {
+        if (!block.nextElementSibling || !block.nextElementSibling.classList.contains("compare__info-btn")) {
+          block.insertAdjacentHTML(
+            "afterend",
+            `<button type="button" class="compare__info-btn">${btnText}</button>`
+          );
+        }
+      } else {
+        block.classList.add("snoska-trigger");
       }
     });
-  });
+  }
+
+  processInfoBlocks();
 
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".compare__info-btn");
-    if (!btn) return;
-    open(btn);
+    if (btn) {
+      const infoBlock = btn.previousElementSibling;
+      open(infoBlock);
+      return;
+    }
+
+    const triggerSelf = e.target.closest(".snoska-trigger");
+    if (triggerSelf) {
+      open(triggerSelf);
+      return;
+    }
+
+    const triggerPrev = e.target.closest(".snoska-trigger-prev");
+    if (triggerPrev) {
+      const infoBlock = triggerPrev.nextElementSibling;
+      open(infoBlock);
+      return;
+    }
   });
 
-  function open(btn) {
-    const cell = btn.closest(".compare__cell");
-    const infoBlocks = Array.from(cell.querySelectorAll("[data-info]"));
-    const btnIndex = Array.from(
-      cell.querySelectorAll(".compare__info-btn")
-    ).indexOf(btn);
-    const infoBlock = infoBlocks[btnIndex];
+  function open(infoBlock) {
     if (!infoBlock) return;
 
     const caption = infoBlock.dataset.caption?.trim() || "";
-    const hasCaption = caption.length > 0;
-    const hasContent = infoBlock.innerHTML.trim().length > 0;
-    if (!hasCaption && !hasContent) return;
-
+    header.style.display = caption ? "" : "none";
     header.textContent = caption;
-    header.style.display = hasCaption ? "" : "none";
 
-    content.innerHTML = infoBlock.innerHTML;
+    content.innerHTML = "";
+    const clone = infoBlock.cloneNode(true);
+    Array.from(clone.attributes).forEach((attr) =>
+      attr.name.startsWith("data-") ? {} : clone.removeAttribute(attr.name)
+    );
+
+    clone.childNodes.forEach((node) => {
+      if (node.nodeType === 1 || node.nodeType === 3) {
+        content.appendChild(node.cloneNode(true));
+      }
+    });
+
     footnote.classList.add(CLS.visible);
     document.body.classList.add(CLS.noScroll);
+
+    quest.scrollTop = 0;
   }
 
   function close() {
@@ -70,7 +92,6 @@ export function toggleSnoska() {
 
     quest.style.transform = "translateY(100%)";
     backdrop.style.opacity = "0";
-
     quest.offsetHeight;
 
     const onEnd = () => {
@@ -78,14 +99,6 @@ export function toggleSnoska() {
       quest.style.transform = "";
       backdrop.style.opacity = "";
       document.body.classList.remove(CLS.noScroll);
-
-      if (activeInfoBlock && originalParent) {
-        activeInfoBlock.hidden = true;
-        originalParent.appendChild(activeInfoBlock);
-        activeInfoBlock = null;
-        originalParent = null;
-      }
-
       quest.removeEventListener("transitionend", onEnd);
     };
 
@@ -97,10 +110,7 @@ export function toggleSnoska() {
   });
 
   let yDown = null;
-  quest.addEventListener(
-    "touchstart",
-    (evt) => (yDown = evt.touches[0].clientY)
-  );
+  quest.addEventListener("touchstart", (evt) => (yDown = evt.touches[0].clientY));
   quest.addEventListener("touchmove", (evt) => {
     if (!yDown) return;
     const yDiff = yDown - evt.touches[0].clientY;
