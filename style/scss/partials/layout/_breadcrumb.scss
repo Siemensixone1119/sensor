@@ -8,11 +8,16 @@ nav.breadcrumbs {
     list-style: none;
     margin: 0;
     white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-size: 0;
   }
 
   .breadcrumbs__item {
     margin-left: 0;
     display: inline-block;
+    
 
     >* {
       font-size: 14px;
@@ -24,15 +29,16 @@ nav.breadcrumbs {
     }
   }
 
-  .breadcrumbs__item:not(:last-child)::after {
+  .breadcrumbs__item:not(:first-child)::before {
     content: "";
     background-image: url("./../../assets/image/arrow.svg");
     background-repeat: no-repeat;
     background-position: center;
     fill: #a4a4a4;
     width: 10px;
-    height: 8px;
+    height: 10px;
     display: inline-block;
     transform: rotate(-90deg);
+    margin: 0 15px;
   }
 }

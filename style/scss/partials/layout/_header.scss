@@ -177,7 +177,7 @@
 
 .header__overlay-inner {
   background: $accent-color;
-  color: white;
+  color: #fff;
   text-align: center;
   height: 57px;
   display: flex;
@@ -186,11 +186,11 @@
 }
 
 .header__overlay-search {
-  background: white;
+  background: #fff;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  color: white;
+  color: #fff;
   box-shadow: 0 0 5px #aaa;
   height: 50px;
 }

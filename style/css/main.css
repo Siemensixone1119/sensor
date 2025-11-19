@@ -495,7 +495,7 @@ input {
 
 .header__overlay-inner {
   background: #b30006;
-  color: white;
+  color: #fff;
   text-align: center;
   height: 57px;
   display: flex;
@@ -504,11 +504,11 @@ input {
 }
 
 .header__overlay-search {
-  background: white;
+  background: #fff;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  color: white;
+  color: #fff;
   box-shadow: 0 0 5px #aaa;
   height: 50px;
 }
@@ -1259,6 +1259,10 @@ nav.breadcrumbs .breadcrumbs__list {
   list-style: none;
   margin: 0;
   white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: 0;
 }
 nav.breadcrumbs .breadcrumbs__item {
   margin-left: 0;
@@ -1272,16 +1276,17 @@ nav.breadcrumbs .breadcrumbs__item > * {
   padding: 0;
   text-indent: 0;
 }
-nav.breadcrumbs .breadcrumbs__item:not(:last-child)::after {
+nav.breadcrumbs .breadcrumbs__item:not(:first-child)::before {
   content: "";
   background-image: url("./../../assets/image/arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
   fill: #a4a4a4;
   width: 10px;
-  height: 8px;
+  height: 10px;
   display: inline-block;
   transform: rotate(-90deg);
+  margin: 0 15px;
 }
 
 .openable-section__label {
@@ -1358,12 +1363,12 @@ h1.title:has(> .clamped-text > .clamped-text__control:checked) span {
   fill: #b30006 !important;
 }
 
-.button__white {
+.button__survey-list {
   border: 1px solid #d5d5d5;
   color: #b30006;
 }
 
-.button__red {
+.button__add-to-cart {
   background-color: #b30006;
-  color: white;
+  color: #fff;
 }/*# sourceMappingURL=main.css.map */
