@@ -29,6 +29,25 @@
 
 }
 
+.extra-question {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    border-top-left-radius: 0;
+    margin-bottom: var(--page-gutter);
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &__name {
+    display: block;
+    padding: 15px;
+  }
+}
+
 // #extra-info h3 {
 //   padding-left: 32px;
 //   text-decoration: underline;

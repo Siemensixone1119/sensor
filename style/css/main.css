@@ -1273,9 +1273,15 @@ nav.breadcrumbs .breadcrumbs__item > * {
   text-indent: 0;
 }
 nav.breadcrumbs .breadcrumbs__item:not(:last-child)::after {
-  content: ">";
-  color: #a4a4a4;
-  padding: 0 10px;
+  content: "";
+  background-image: url("./../../assets/image/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  fill: #a4a4a4;
+  width: 10px;
+  height: 8px;
+  display: inline-block;
+  transform: rotate(-90deg);
 }
 
 .openable-section__label {

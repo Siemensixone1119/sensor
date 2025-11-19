@@ -142,6 +142,23 @@ h6 {
   grid-area: block4;
 }
 
+.extra-question {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.extra-question__item {
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  border-top-left-radius: 0;
+  margin-bottom: var(--page-gutter);
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.15);
+}
+.extra-question__name {
+  display: block;
+  padding: 15px;
+}
+
 @media (min-width: 715px) {
   .product__wrapper {
     display: grid;
@@ -222,41 +239,19 @@ h6 {
   display: none;
 }
 .description__content {
-  max-height: 183px;
+  max-height: 145px;
   overflow: hidden;
 }
 .description__content label {
   pointer-events: none;
 }
-.description__open-overlay {
-  position: absolute;
-  bottom: 55px;
-  left: 0;
-  right: 0;
-  height: 48px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.3 ease, transform 0.3s ease;
-}
-.description__open-background {
+.description__open {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #fff;
   width: calc(100vw - var(--page-gutter) * 2);
-  height: 65px;
-  margin-bottom: -10px;
-  padding-inline: var(--page-gutter);
-}
-.description__open-half {
-  width: 24px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-top: 1px solid #e3e3e3;
-  width: 100%;
-  height: 50%;
+  height: 35px;
+  border-bottom: 1px solid #e3e3e3;
 }
 .description__open-button {
   background-color: #fff;
@@ -268,10 +263,12 @@ h6 {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -65%;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: visible;
+  z-index: 1;
+  top: 50%;
+  border: 1px solid #e3e3e3;
 }
 .description__toggle:checked + .description__content {
   max-height: 15000px;
@@ -603,14 +600,14 @@ h2:has(+ div.compare) {
   z-index: 99998;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   transition: opacity 0.4s ease;
   transform: translateY(100%);
   opacity: 0;
 }
 .footnote__quest {
   width: 100vw;
-  max-height: 75vh;
+  max-height: 95vh;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -630,8 +627,8 @@ h2:has(+ div.compare) {
   padding: 15px 0;
 }
 .footnote__line {
-  width: 60vw;
-  background-color: #a2a2a2;
+  width: 20vw;
+  background-color: #6c6c6c;
   min-height: 4px;
   border-radius: 8px;
   margin: 0 auto;
@@ -643,8 +640,11 @@ h2:has(+ div.compare) {
 .footnote__header {
   font-size: 20px;
   font-weight: 500;
-  display: inline-block;
-  padding-bottom: 10px;
+  display: block;
+  padding: var(--page-gutter) 0;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
 }
 .footnote__visible .footnote__backdrop {
   opacity: 1;
@@ -790,24 +790,19 @@ h2:has(+ div.compare) {
   font-size: 14px;
 }
 .product-description__button-wrapper {
-  display: grid;
-  grid-template-areas: "btn1 btn2" "btn3 btn3";
+  display: flex;
   gap: var(--page-gutter);
   padding-top: 20px;
+  flex-direction: column;
 }
-.product-description__button-wrapper button:first-child {
-  grid-area: btn1;
-}
-.product-description__button-wrapper button:nth-child(2) {
-  grid-area: btn2 !important;
-}
-.product-description__button-wrapper button:last-child {
-  grid-area: btn3;
+.product-description__button-wrap {
+  display: flex;
+  gap: var(--page-gutter);
 }
 
 @media screen and (max-width: 400px) {
-  .product-description__button-wrapper {
-    grid-template-areas: "btn1" "btn2" "btn3";
+  .product-description__button-wrap {
+    flex-direction: column;
   }
 }
 @media (min-width: 715px) {

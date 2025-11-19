@@ -332,14 +332,14 @@
     <nav class="breadcrumbs">
 
       <ul class="breadcrumbs__list">
-        <li class="breadcrumbs__item">
-          <a href="" class="link">Каталог продукции</a>
+        <li class="breadcrumbs__item">    
+          <a href="" class="link">Каталог продукции</a>    
+        </li>   
+        <li class="breadcrumbs__item">   
+          <a href="" class="link">Клапаны</a>   
         </li>
-        <li class="breadcrumbs__item">
-          <a href="" class="link">Клапаны</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="" class="link">Клапаны электромагнитные</a>
+        <li class="breadcrumbs__item">   
+          <a href="" class="link">Клапаны электромагнитные</a>   
         </li>
         <li class="breadcrumbs__item">
           <a href="" class="link">СЕНС-П DN(80 .. 100)PN5</a>
@@ -377,13 +377,15 @@
             <div class="product-price__comment">не включая НДС</div>
           </div>
           <div class="product-description__button-wrapper">
-            <button class="button button__white">
-              <svg class="button__icon">
-                <use xlink:href="#icon-download"></use>
-              </svg>
-              Опросный лист
-            </button>
-            <button class="button button__red">В корзину</button>
+            <div class="product-description__button-wrap">
+              <button class="button button__white">
+                <svg class="button__icon">
+                  <use xlink:href="#icon-download"></use>
+                </svg>
+                Опросный лист
+              </button>
+              <button class="button button__red">В корзину</button>
+            </div>
             <button class="button button__red">В корзину</button>
           </div>
         </div>
@@ -454,16 +456,11 @@
               </p>
             </section>
             <label for="desc1">
-              <div class="description-open">
-                <div class="description__open-overlay"></div>
-                <div class="description__open-background">
-                  <div class="description__open-half">
-                    <div class="description__open-button">
-                      <svg class="description__open-icon">
-                        <use xlink:href="#icon-arrow"></use>
-                      </svg>
-                    </div>
-                  </div>
+              <div class="description__open">
+                <div class="description__open-button">
+                  <svg class="description__open-icon">
+                    <use xlink:href="#icon-arrow"></use>
+                  </svg>
                 </div>
               </div>
             </label>
@@ -2522,10 +2519,10 @@
             <span class="openable-section__title-text">Дополнительная информация</span>
           </label>
         </h2>
-        <ul>
-          <li>
-            <h3>С какими системами и терминалами спутникового мониторинга
-              совместимы устройства «СЕНС»?</h3>
+        <ul class="extra-question">
+          <li class="extra-question__item">
+            <span class="extra-question__name">С какими системами и терминалами спутникового мониторинга
+              совместимы устройства «СЕНС»?</span>
             <div data-trigger="prev" data-info data-caption="С какими системами и терминалами спутникового мониторинга
           совместимы устройства «СЕНС»?">
               <p>Выбор конкретной системы телематики определяется лишь поддерживаемым ею терминалом. К примеру, система
@@ -2593,8 +2590,8 @@
             </div>
           </li>
 
-          <li>
-            <h3>Принцип работы ПМП-201</h3>
+          <li class="extra-question__item">
+            <span class="extra-question__name">Принцип работы ПМП-201</span>
             <div data-info data-caption="Заголовок шторки 1" data-trigger="prev">
               <p><strong>Измерение уровня жидкости</strong> основано на эффекте магнитострикции. Через звукопровод,
                 расположенный внутри направляющей ПМП, пропускается импульс тока, который создает вокруг звукопровода по
@@ -2629,8 +2626,8 @@
             </div>
           </li>
 
-          <li>
-            <h3>ПМП. Варианты исполнения</h3>
+          <li class="extra-question__item">
+            <span class="extra-question__name">ПМП. Варианты исполнения</span>
             <div data-info data-caption="Заголовок шторки 1" data-trigger="prev">
               <div class="compare">
                 <div class="compare__body">
@@ -3584,11 +3581,12 @@
   <!-- описание продукции -->
 
   <div class="footnote">
-    <div class="footnote__backdrop"></div>
-    <div class="footnote__quest">
+    <div class="footnote__backdrop">
       <div class="footnote__line-wrapper">
         <div class="footnote__line"></div>
       </div>
+    </div>
+    <div class="footnote__quest">
       <div class="footnote__cont">
         <span class="footnote__header"></span>
         <div class="footnote__content"></div>

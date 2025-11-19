@@ -8,34 +8,22 @@
   }
 
   &__button-wrapper {
-    display: grid;
-    grid-template-areas:
-      "btn1 btn2"
-      "btn3 btn3";
+    display: flex;
     gap: var(--page-gutter);
     padding-top: 20px;
+    flex-direction: column;
+  }
 
-    button:first-child {
-      grid-area: btn1;
-    }
-
-    button:nth-child(2) {
-      grid-area: btn2 !important;
-    }
-
-    button:last-child {
-      grid-area: btn3;
-    }
+  &__button-wrap {
+    display: flex;
+    gap: var(--page-gutter);
   }
 }
 
 @media screen and (max-width: 400px) {
   .product-description {
-    &__button-wrapper {
-      grid-template-areas:
-        "btn1"
-        "btn2"
-        "btn3";
+    &__button-wrap {
+      flex-direction: column;
     }
   }
 }
