@@ -153,11 +153,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0;
     }
 
     .contacts__social-link {
       display: block;
       padding: 16px 32px;
+      line-height: 0;
     }
 
     .contacts__social-icon {
