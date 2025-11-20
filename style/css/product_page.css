@@ -170,6 +170,7 @@ h6 {
 }
 .how-to-order__subtitle {
   font-weight: 400;
+  margin: 0;
 }
 .how-to-order__checkbox {
   display: none;
@@ -216,6 +217,10 @@ h6 {
 .description {
   position: relative;
   line-height: 1.4;
+}
+.description .title {
+  margin: 15px 0 9px;
+  line-height: 1;
 }
 .description__toggle {
   display: none;
@@ -285,6 +290,10 @@ h6 {
     margin-bottom: 0;
   }
 }
+.peculiarities .title {
+  margin: 15px 0 9px;
+  line-height: 1;
+}
 .peculiarities__list {
   list-style-type: disc;
   padding-left: 16px;
@@ -332,8 +341,12 @@ h2:has(+ div.compare) {
   margin-bottom: 5px !important;
 }
 
+.compare:is(.footnote *) .compare__header {
+  top: 34px;
+}
+
 .compare:not(:is(main *)) .compare__header {
-  top: 0;
+  top: 34px;
 }
 
 .compare {
@@ -597,7 +610,6 @@ h2:has(+ div.compare) {
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 99998;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
@@ -607,7 +619,7 @@ h2:has(+ div.compare) {
 }
 .footnote__quest {
   width: 100vw;
-  max-height: 95vh;
+  max-height: 85vh;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -625,6 +637,10 @@ h2:has(+ div.compare) {
 .footnote__line-wrapper {
   width: 100%;
   padding: 15px 0;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1000;
 }
 .footnote__line {
   width: 20vw;
@@ -642,9 +658,8 @@ h2:has(+ div.compare) {
   font-weight: 500;
   display: block;
   padding: var(--page-gutter) 0;
-  position: sticky;
-  top: 0;
   background-color: #fff;
+  padding-top: 0;
 }
 .footnote__visible .footnote__backdrop {
   opacity: 1;

@@ -1,5 +1,10 @@
 .peculiarities {
 
+  .title{
+    margin: 15px 0 9px;
+    line-height: 1;
+  }
+
   &__list {
     list-style-type: disc;
     padding-left: 16px;

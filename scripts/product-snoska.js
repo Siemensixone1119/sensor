@@ -1,20 +1,14 @@
 export function toggleSnoska() {
-  const footnote = document.querySelector(".footnote");
-  if (!footnote) return;
-
-  const backdrop = footnote.querySelector(".footnote__backdrop");
-  const quest = footnote.querySelector(".footnote__quest");
-  const header = footnote.querySelector(".footnote__header");
-  const content = footnote.querySelector(".footnote__content");
-
   const CLS = {
     visible: "footnote__visible",
     noScroll: "no-scroll",
   };
 
+  const BASE_Z = 200000;
+  const sheetStack = [];
+
   function processInfoBlocks(root = document) {
     const blocks = root.querySelectorAll("[data-info]");
-
     blocks.forEach((block) => {
       const btnText = block.dataset.buttonText;
       const triggerPrev = block.dataset.trigger === "prev";
@@ -25,7 +19,7 @@ export function toggleSnoska() {
         return;
       }
 
-      if (btnText && btnText.trim() !== "") {
+      if (btnText && btnText.trim()) {
         if (
           !block.nextElementSibling ||
           !block.nextElementSibling.classList.contains("compare__info-btn")
@@ -46,27 +40,48 @@ export function toggleSnoska() {
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".compare__info-btn");
     if (btn) {
-      const infoBlock = btn.previousElementSibling;
-      open(infoBlock);
+      open(btn.previousElementSibling);
       return;
     }
-
-    const triggerSelf = e.target.closest(".snoska-trigger");
-    if (triggerSelf) {
-      open(triggerSelf);
+    const self = e.target.closest(".snoska-trigger");
+    if (self) {
+      open(self);
       return;
     }
-
-    const triggerPrev = e.target.closest(".snoska-trigger-prev");
-    if (triggerPrev) {
-      const infoBlock = triggerPrev.nextElementSibling;
-      open(infoBlock);
+    const prev = e.target.closest(".snoska-trigger-prev");
+    if (prev) {
+      open(prev.nextElementSibling);
       return;
     }
   });
 
   function open(infoBlock) {
-    if (!infoBlock) return;
+    const base = document.querySelector(".footnote");
+    const layer = base.cloneNode(true);
+
+    document.body.appendChild(layer);
+
+    const backdrop = layer.querySelector(".footnote__backdrop");
+    const quest = layer.querySelector(".footnote__quest");
+    const header = layer.querySelector(".footnote__header");
+    const content = layer.querySelector(".footnote__content");
+
+    layer.appendChild(backdrop);
+    layer.appendChild(quest);
+
+    const index = sheetStack.length;
+
+    const backdropZ = BASE_Z + index * 2;
+    const sheetZ = BASE_Z + index * 2 + 1;
+
+    backdrop.style.zIndex = backdropZ;
+    quest.style.zIndex = sheetZ;
+
+    if (index > 0) {
+      const prev = sheetStack[index - 1];
+      prev.backdrop.style.opacity = "0";
+      prev.backdrop.style.pointerEvents = "none";
+    }
 
     const caption = infoBlock.dataset.caption?.trim() || "";
     header.style.display = caption ? "" : "none";
@@ -74,72 +89,152 @@ export function toggleSnoska() {
 
     content.innerHTML = "";
     const clone = infoBlock.cloneNode(true);
-    Array.from(clone.attributes).forEach((attr) =>
-      attr.name.startsWith("data-") ? {} : clone.removeAttribute(attr.name)
-    );
-
-    clone.childNodes.forEach((node) => {
-      if (node.nodeType === 1 || node.nodeType === 3) {
-        content.appendChild(node.cloneNode(true));
+    Array.from(clone.attributes).forEach((attr) => {
+      if (!attr.name.startsWith("data-")) clone.removeAttribute(attr.name);
+    });
+    clone.childNodes.forEach((n) => {
+      if (n.nodeType === 1 || n.nodeType === 3) {
+        content.appendChild(n.cloneNode(true));
       }
     });
 
-    footnote.classList.add(CLS.visible);
-    document.body.classList.add(CLS.noScroll);
-
     quest.scrollTop = 0;
+
+    sheetStack.push({ layer, backdrop, quest });
+
+    backdrop.style.opacity = "1";
+    backdrop.style.pointerEvents = "auto";
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        layer.classList.add(CLS.visible);
+        attachDrag(layer, quest, backdrop);
+      });
+    });
+
+    document.body.classList.add(CLS.noScroll);
   }
 
   function close() {
-    if (!footnote.classList.contains(CLS.visible)) return;
+    if (sheetStack.length === 0) return;
 
+    const { layer, backdrop: topBack, quest } = sheetStack.pop();
+
+    const prev = sheetStack[sheetStack.length - 1];
+    const prevBack = prev ? prev.backdrop : null;
+
+    if (prevBack) {
+      prevBack.style.transition = "opacity .3s ease";
+      prevBack.style.pointerEvents = "auto";
+    }
+
+    topBack.style.transition = "opacity .3s ease";
+    quest.style.transition = "transform .3s ease";
+
+    topBack.style.opacity = "0";
     quest.style.transform = "translateY(100%)";
-    backdrop.style.opacity = "0";
-    quest.offsetHeight;
 
-    const onEnd = () => {
-      footnote.classList.remove(CLS.visible);
-      quest.style.transform = "";
-      backdrop.style.opacity = "";
-      document.body.classList.remove(CLS.noScroll);
-      quest.removeEventListener("transitionend", onEnd);
-    };
+    if (prevBack) {
+      prevBack.style.opacity = "1";
+    }
 
-    quest.addEventListener("transitionend", onEnd, { once: true });
+    quest.addEventListener(
+      "transitionend",
+      () => {
+        layer.remove();
+        if (!prevBack) {
+          document.body.classList.remove(CLS.noScroll);
+        }
+        rebuildZ();
+      },
+      { once: true }
+    );
   }
 
-  footnote.addEventListener("click", (e) => {
-    if (!e.target.closest(".footnote__quest")) close();
-  });
-let startY = null;
-let draggingLine = false;
+  function rebuildZ() {
+    sheetStack.forEach((item, i) => {
+      item.backdrop.style.zIndex = BASE_Z + i * 2;
+      item.layer.style.zIndex = BASE_Z + i * 2 + 1;
+    });
+  }
 
-const line = footnote.querySelector(".footnote__line-wrapper");
+  function attachDrag(layer, quest, backdrop) {
+    let startY = 0;
+    let deltaY = 0;
+    let dragging = false;
+    let gesture = "undecided";
 
-if (line) {
-  line.addEventListener("touchstart", (evt) => {
-    if (!evt.touches?.length) return;
-    draggingLine = true;
-    startY = evt.touches[0].clientY;
-  });
+    quest.addEventListener("touchstart", (e) => {
+      const t = e.touches[0];
+      startY = t.clientY;
+      deltaY = 0;
+      dragging = false;
+      gesture = "undecided";
+    });
 
-  line.addEventListener("touchmove", (evt) => {
-    if (!draggingLine || startY === null || !evt.touches?.length) return;
+    quest.addEventListener(
+      "touchmove",
+      (e) => {
+        const t = e.touches[0];
+        deltaY = t.clientY - startY;
 
-    const currentY = evt.touches[0].clientY;
-    const diff = currentY - startY;
+        if (gesture === "undecided") {
+          if (deltaY < 0) {
+            gesture = "scroll";
+            return;
+          }
+          if (quest.scrollTop > 0) {
+            gesture = "scroll";
+            return;
+          }
+          if (deltaY > 10) {
+            gesture = "drag";
+            dragging = true;
+            quest.style.transition = "none";
+          } else {
+            return;
+          }
+        }
 
-    if (diff > 20) {
-      draggingLine = false;
-      startY = null;
+        if (gesture === "scroll") return;
+
+        if (gesture === "drag" && dragging) {
+          if (deltaY > 0) {
+            quest.style.transform = `translateY(${deltaY}px)`;
+            const h = quest.offsetHeight;
+            const p = Math.min(deltaY / h, 1);
+            backdrop.style.opacity = String(1 - p);
+            e.preventDefault();
+          }
+        }
+      },
+      { passive: false }
+    );
+
+    quest.addEventListener("touchend", () => {
+      if (gesture !== "drag") return;
+
+      dragging = false;
+
+      if (deltaY > 130) {
+        close();
+      } else {
+        quest.style.transition = "transform .3s ease";
+        quest.style.transform = "";
+        backdrop.style.opacity = "1";
+      }
+
+      gesture = "undecided";
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (sheetStack.length === 0) return;
+
+    const top = sheetStack[sheetStack.length - 1];
+
+    if (e.target === top.backdrop) {
       close();
     }
   });
-
-  line.addEventListener("touchend", () => {
-    draggingLine = false;
-    startY = null;
-  });
-}
-
 }

@@ -690,6 +690,10 @@ main {
   margin: 0;
 }
 
+.mobile-menu__list:has(> li > .mobile-menu__lang-btn) > li {
+  padding: 25px 0;
+}
+
 .mobile-menu__list--hidden {
   display: none !important;
 }
@@ -821,7 +825,6 @@ main {
   border-radius: 30px;
   padding: 15px 20px;
   padding-left: 25px;
-  margin: 25px 0;
 }
 .mobile-menu__lang-btn div {
   font-size: 18px !important;
@@ -883,6 +886,7 @@ main {
 }
 .contacts__logo-icon {
   height: 80px;
+  margin-bottom: 10px;
 }
 .contacts__text {
   margin-top: 10px;
@@ -926,6 +930,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 4vh;
+  margin: 0;
 }
 .contacts__group--phones .contacts__item {
   display: flex;
@@ -1252,11 +1257,11 @@ main {
     transform: rotate(1turn);
   }
 }
-nav.breadcrumbs {
+.breadcrumbs {
   overflow: hidden;
   padding-bottom: 0;
 }
-nav.breadcrumbs .breadcrumbs__list {
+.breadcrumbs .breadcrumbs__list {
   overflow-x: auto;
   padding: 15px;
   list-style: none;
@@ -1267,11 +1272,11 @@ nav.breadcrumbs .breadcrumbs__list {
   align-items: center;
   font-size: 0;
 }
-nav.breadcrumbs .breadcrumbs__item {
-  margin-left: 0;
-  display: inline-block;
+.breadcrumbs .breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
 }
-nav.breadcrumbs .breadcrumbs__item > * {
+.breadcrumbs .breadcrumbs__item > * {
   font-size: 14px;
   color: #a4a4a4;
   white-space: nowrap;
@@ -1279,17 +1284,14 @@ nav.breadcrumbs .breadcrumbs__item > * {
   padding: 0;
   text-indent: 0;
 }
-nav.breadcrumbs .breadcrumbs__item:not(:first-child)::before {
+.breadcrumbs .breadcrumbs__item:not(:first-child)::before {
   content: "";
-  background-image: url("./../../assets/image/arrow.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  fill: #a4a4a4;
-  width: 10px;
-  height: 10px;
+  border: solid #a4a4a4;
+  border-width: 0 1px 1px 0;
   display: inline-block;
-  transform: rotate(-90deg);
-  margin: 0 15px;
+  padding: 3px;
+  transform: rotate(-45deg) translate(-1px, -1px);
+  margin: 0 var(--page-gutter);
 }
 
 .openable-section__label {

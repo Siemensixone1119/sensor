@@ -36,11 +36,9 @@ export function initSearchOverlay() {
       if (e.propertyName !== "transform") return;
       root.classList.add(CLS.noTrans);
       root.classList.remove(CLS.closing);
+      input.value = "";
+       input.dispatchEvent(new Event("input", { bubbles: true }));
     }, { once: true });
-
-    // очистка поля
-    input.value = "";
-    input.dispatchEvent(new Event("input", { bubbles: true }));
   };
 
   openBtn && openBtn.addEventListener("click", open);

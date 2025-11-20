@@ -1,4 +1,4 @@
-nav.breadcrumbs {
+.breadcrumbs {
   overflow: hidden;
   padding-bottom: 0;
 
@@ -15,9 +15,9 @@ nav.breadcrumbs {
   }
 
   .breadcrumbs__item {
-    margin-left: 0;
-    display: inline-block;
-    
+    display: inline-flex;
+    align-items: center;
+
 
     >* {
       font-size: 14px;
@@ -31,14 +31,12 @@ nav.breadcrumbs {
 
   .breadcrumbs__item:not(:first-child)::before {
     content: "";
-    background-image: url("./../../assets/image/arrow.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    fill: #a4a4a4;
-    width: 10px;
-    height: 10px;
+    border: solid #a4a4a4;
+    border-width: 0 1px 1px 0;
     display: inline-block;
-    transform: rotate(-90deg);
-    margin: 0 15px;
+    padding: 3px;
+    transform: rotate(-45deg) translate(-1px, -1px);
+    margin: 0 var(--page-gutter);
+
   }
 }

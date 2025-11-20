@@ -3,7 +3,6 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    z-index: 99998;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
@@ -14,7 +13,7 @@
 
   &__quest {
     width: 100vw;
-    max-height: 95vh;
+    max-height: 85vh;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -33,6 +32,10 @@
   &__line-wrapper {
     width: 100%;
     padding: 15px 0;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1000;
   }
 
   &__line {
@@ -53,9 +56,8 @@
     font-weight: 500;
     display: block;
     padding: var(--page-gutter) 0;
-    position: sticky;
-    top: 0;
     background-color: #fff;
+    padding-top: 0;
   }
 
   &__visible {
