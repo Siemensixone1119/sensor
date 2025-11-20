@@ -4,11 +4,6 @@
   position: relative;
   line-height: 1.4;
 
-  .title{
-    margin: 15px 0 9px;
-    line-height: 1;
-  }
-
   &__toggle {
     display: none;
   }
@@ -81,7 +76,7 @@
   .description {
     margin-top: 0;
 
-    h2.title {
+    h2 {
       margin-bottom: 0;
     }
   }

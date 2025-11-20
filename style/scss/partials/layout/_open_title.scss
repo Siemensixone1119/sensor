@@ -46,7 +46,7 @@
   color: aqua;
 }
 
-h1.title span {
+h1 span {
   font-family: $font-family;
   font-size: 26px;
   font-weight: 400;
@@ -58,6 +58,6 @@ h1.title span {
   transition: max-height 0.3s ease;
 }
 
-h1.title:has(>.clamped-text > .clamped-text__control:checked) span {
+h1:has(>.clamped-text > .clamped-text__control:checked) span {
   -webkit-line-clamp: unset;
 }

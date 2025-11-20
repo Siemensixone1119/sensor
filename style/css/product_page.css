@@ -53,7 +53,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 p {
   text-indent: 32px;
-  margin-top: 7px;
+  margin: 5px 0 10px;
 }
 
 ul,
@@ -88,7 +88,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 15px 0;
+  margin: 20px 0 5px;
   font-family: "pfdintextcomppro-regular", sans-serif;
   font-weight: 400;
 }
@@ -218,10 +218,6 @@ h6 {
   position: relative;
   line-height: 1.4;
 }
-.description .title {
-  margin: 15px 0 9px;
-  line-height: 1;
-}
 .description__toggle {
   display: none;
 }
@@ -286,13 +282,9 @@ h6 {
   .description {
     margin-top: 0;
   }
-  .description h2.title {
+  .description h2 {
     margin-bottom: 0;
   }
-}
-.peculiarities .title {
-  margin: 15px 0 9px;
-  line-height: 1;
 }
 .peculiarities__list {
   list-style-type: disc;
@@ -312,7 +304,7 @@ h6 {
 }
 
 @media (min-width: 715px) {
-  .peculiarities h2.title {
+  .peculiarities h2 {
     margin-top: 10px;
     margin-bottom: 0;
   }
@@ -821,7 +813,7 @@ h2:has(+ div.compare) {
   }
 }
 @media (min-width: 715px) {
-  .product-description h1.title {
+  .product-description h1 {
     margin-top: 0;
   }
   .product-description__button-wrapper {

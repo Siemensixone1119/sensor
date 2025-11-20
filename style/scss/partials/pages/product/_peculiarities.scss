@@ -1,10 +1,5 @@
 .peculiarities {
 
-  .title{
-    margin: 15px 0 9px;
-    line-height: 1;
-  }
-
   &__list {
     list-style-type: disc;
     padding-left: 16px;
@@ -27,7 +22,7 @@
 
 @media (min-width: 715px) {
   .peculiarities {
-    h2.title {
+    h2 {
       margin-top: 10px;
       margin-bottom: 0;
     }
