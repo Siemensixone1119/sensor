@@ -25,20 +25,27 @@ export function initSearchOverlay() {
 
   const close = () => {
     if (!root.classList.contains(CLS.open)) return;
+
     root.classList.remove(CLS.open);
     root.classList.add(CLS.closing);
     document.body.classList.remove(CLS.noScroll);
 
-    // прерывание запроса и debounce
-    window.dispatchEvent(new Event("search:close"));
-
-    root.addEventListener("transitionend", (e) => {
+    const finish = (e) => {
+      if (e.target !== root) return;
       if (e.propertyName !== "transform") return;
+
+      root.removeEventListener("transitionend", finish);
+
       root.classList.add(CLS.noTrans);
       root.classList.remove(CLS.closing);
+
+      window.dispatchEvent(new Event("search:close"));
+
       input.value = "";
-       input.dispatchEvent(new Event("input", { bubbles: true }));
-    }, { once: true });
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    };
+
+    root.addEventListener("transitionend", finish);
   };
 
   openBtn && openBtn.addEventListener("click", open);

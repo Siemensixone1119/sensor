@@ -3,7 +3,6 @@ import { renderResentRequest } from "./renderResentRequest.js";
 export function search() {
   const BASE_URL = "https://www.nppsensor.ru/search";
 
-  // ссылки на элементы
   const search = document.querySelector(".search");
   if (!search) return;
 
@@ -13,11 +12,9 @@ export function search() {
   const list = result?.querySelector(".search__result-list");
   if (!form || !input || !result || !list) return;
 
-  // local storage
-  const LS_KEY = "searchHistory"; // текущее значение
-  const OLD_KEY = "recent_request"; // старое значение
+  const LS_KEY = "searchHistory";
+  const OLD_KEY = "recent_request";
 
-  // это чтобы все значение в хранилище были преведены к строке
   const normalize = (arr) =>
     (Array.isArray(arr) ? arr : [])
       .map((x) => (typeof x === "string" ? x : x?.request))
@@ -25,18 +22,13 @@ export function search() {
       .map((s) => s.trim())
       .filter(Boolean);
 
-  // обновление записей в хранилище
   (function migrate() {
     const oldRaw = localStorage.getItem(OLD_KEY);
     if (!oldRaw) return;
     try {
-      const current = normalize(
-        JSON.parse(localStorage.getItem(LS_KEY) || "[]")
-      );
+      const current = normalize(JSON.parse(localStorage.getItem(LS_KEY) || "[]"));
       const legacy = normalize(JSON.parse(oldRaw));
-      // добавление нового зпроса в хранилище
       const combined = [...legacy, ...current];
-      // фильруем элементы в количестве 5 штук
       const dedup = combined
         .filter((q, i) => combined.lastIndexOf(q) === i)
         .slice(-5);
@@ -45,44 +37,34 @@ export function search() {
     localStorage.removeItem(OLD_KEY);
   })();
 
-  // чтение истории поиска
   const readHistory = () =>
     normalize(JSON.parse(localStorage.getItem(LS_KEY) || "[]"));
 
-  // запись истории поиска
   const writeHistory = (arr) => {
-    const uniq = Array.from(
-      // только уникальные запросы
-      new Set(arr.filter((s) => typeof s === "string" && s.trim()))
-    );
+    const uniq = Array.from(new Set(arr.filter((s) => s.trim())));
     if (uniq.length)
       localStorage.setItem(LS_KEY, JSON.stringify(uniq.slice(-5)));
     else localStorage.removeItem(LS_KEY);
 
-    // кастомное событие, оповещает об обновлении истории поиска
     window.dispatchEvent(new CustomEvent("recent:updated"));
   };
 
-  // добавление в историю поиска
   const addToHistory = (q) =>
     writeHistory([...readHistory().filter((x) => x !== q), q]);
 
-  // удаление из истории
   const removeFromHist = (q) =>
     writeHistory(readHistory().filter((x) => x !== q));
 
-  // состояния qs
-  let currentCtrl = null; // AbortController активного fetch
-  let fetchTimer = null; // debounce
-  let isSubmitting = false; // сабмит формы
-  let activeFetches = 0; // счётчик, чтобы лоадер не мигал
-  let lastIssued = 0; // токены для актуальности ответов
+  let currentCtrl = null;
+  let fetchTimer = null;
+  let isSubmitting = false;
+  let activeFetches = 0;
+  let lastIssued = 0;
   let latestToken = 0;
-  let renderedQuery = ""; // текст, для которого сейчас отображены быстрые результаты
+  let renderedQuery = "";
 
   const nextToken = () => ++lastIssued;
 
-  // флаги для классов
   let ui = {
     hasText: false,
     hint: false,
@@ -92,7 +74,6 @@ export function search() {
     empty: false,
   };
 
-  // модификаторы состояния css
   const applyClasses = () => {
     search.classList.toggle("search--has-text", ui.hasText);
     search.classList.toggle("search--hint", ui.hint);
@@ -102,13 +83,11 @@ export function search() {
     search.classList.toggle("search--empty", ui.empty);
   };
 
-  // обновление нескольких флагов за раз
   const setState = (patch) => {
     ui = { ...ui, ...patch };
     applyClasses();
   };
 
-  // отмена запроса
   const abortCurrent = () => {
     if (currentCtrl) {
       currentCtrl.abort();
@@ -116,7 +95,6 @@ export function search() {
     }
   };
 
-  // отмена debounce
   const cancelPendingFetch = () => {
     if (fetchTimer) {
       clearTimeout(fetchTimer);
@@ -124,13 +102,11 @@ export function search() {
     }
   };
 
-  // показ лоадера
   const showLoader = () => {
     activeFetches++;
     setState({ loading: true });
   };
 
-  // скрытие лоадера
   const hideLoaderMaybe = () => {
     activeFetches = Math.max(0, activeFetches - 1);
     if (activeFetches === 0) setState({ loading: false });
@@ -154,7 +130,6 @@ export function search() {
       currentCtrl = new AbortController();
       showLoader();
 
-      // быстрый запрос
       fetch(`${BASE_URL}?qs=${encodeURIComponent(query)}`, {
         signal: currentCtrl.signal,
       })
@@ -170,7 +145,6 @@ export function search() {
           list.replaceChildren();
           list.insertAdjacentHTML("afterbegin", html);
 
-          // фиксируем текст, для которого показаны результаты, и включаем их видимость
           const now2 = input.value.trim();
           renderedQuery = now2;
           setState({ results: true, history: false });
@@ -185,12 +159,10 @@ export function search() {
     }, 500);
   };
 
-  // изменеие интерфейса в зависимости от значения в инпуте
   const applyUIForValue = () => {
     const val = input.value.trim();
     const len = val.length;
 
-     // len = 0
     if (len === 0) {
       renderedQuery = "";
       cancelPendingFetch();
@@ -209,7 +181,6 @@ export function search() {
       return;
     }
 
-     // len = 2
     if (len === 1) {
       renderedQuery = "";
       cancelPendingFetch();
@@ -226,7 +197,6 @@ export function search() {
       return;
     }
 
-    // len >= 2
     setState({
       hasText: true,
       hint: false,
@@ -240,7 +210,6 @@ export function search() {
 
   input.addEventListener("input", applyUIForValue);
 
-  // делегирование
   search.addEventListener("click", (e) => {
     const clearBtn = e.target.closest(".search__clear-btn");
     if (clearBtn) {
@@ -264,7 +233,6 @@ export function search() {
     }
   });
 
-  // сабмит
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const val = input.value.trim();
@@ -295,7 +263,6 @@ export function search() {
     window.location.href = `${BASE_URL}?q=${encodeURIComponent(val)}`;
   });
 
-  // возврат со страницы результатов
   window.addEventListener("pageshow", (ev) => {
     if (ev.persisted) {
       isSubmitting = false;
@@ -305,32 +272,27 @@ export function search() {
     }
   });
 
-  // закрытие поиска
+  
   window.addEventListener("search:close", () => {
-    if (fetchTimer) {
-      clearTimeout(fetchTimer);
-      fetchTimer = null;
-    }
-    if (currentCtrl) {
-      currentCtrl.abort();
-      currentCtrl = null;
-    }
+    cancelPendingFetch();
+    abortCurrent();
     isSubmitting = false;
     activeFetches = 0;
     renderedQuery = "";
+  });
 
+  
+  window.addEventListener("search:closed-final", () => {
     list.replaceChildren();
     setState({ loading: false, results: false });
   });
 
-  // подстраховка при уходе
   window.addEventListener("beforeunload", () => {
     isSubmitting = true;
     cancelPendingFetch();
     abortCurrent();
   });
 
-  // синхронизация истории между вкладками
   const rerenderHistoryIfEmptyInput = () => {
     if (input.value.trim().length === 0) {
       renderedQuery = "";
@@ -347,9 +309,11 @@ export function search() {
       });
     }
   };
+
   window.addEventListener("storage", (ev) => {
     if (ev.key === LS_KEY) rerenderHistoryIfEmptyInput();
   });
+
   window.addEventListener("recent:updated", rerenderHistoryIfEmptyInput);
 
   applyUIForValue();
