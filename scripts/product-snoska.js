@@ -1,9 +1,5 @@
 export function toggleSnoska() {
-  const CLS = {
-    visible: "footnote__visible",
-    noScroll: "no-scroll",
-  };
-
+  const CLS = { noScroll: "no-scroll" };
   const BASE_Z = 200000;
   const sheetStack = [];
 
@@ -39,26 +35,18 @@ export function toggleSnoska() {
 
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".compare__info-btn");
-    if (btn) {
-      open(btn.previousElementSibling);
-      return;
-    }
+    if (btn) return open(btn.previousElementSibling);
+
     const self = e.target.closest(".snoska-trigger");
-    if (self) {
-      open(self);
-      return;
-    }
+    if (self) return open(self);
+
     const prev = e.target.closest(".snoska-trigger-prev");
-    if (prev) {
-      open(prev.nextElementSibling);
-      return;
-    }
+    if (prev) return open(prev.nextElementSibling);
   });
 
   function open(infoBlock) {
     const base = document.querySelector(".footnote");
     const layer = base.cloneNode(true);
-
     document.body.appendChild(layer);
 
     const backdrop = layer.querySelector(".footnote__backdrop");
@@ -70,12 +58,8 @@ export function toggleSnoska() {
     layer.appendChild(quest);
 
     const index = sheetStack.length;
-
-    const backdropZ = BASE_Z + index * 2;
-    const sheetZ = BASE_Z + index * 2 + 1;
-
-    backdrop.style.zIndex = backdropZ;
-    quest.style.zIndex = sheetZ;
+    backdrop.style.zIndex = BASE_Z + index * 2;
+    quest.style.zIndex = BASE_Z + index * 2 + 1;
 
     if (index > 0) {
       const prev = sheetStack[index - 1];
@@ -84,32 +68,34 @@ export function toggleSnoska() {
     }
 
     const caption = infoBlock.dataset.caption?.trim() || "";
-    header.style.display = caption ? "" : "none";
-    header.textContent = caption;
+    if (header) {
+      header.style.display = caption ? "" : "none";
+      header.textContent = caption;
+    }
 
-    content.innerHTML = "";
-    const clone = infoBlock.cloneNode(true);
-    Array.from(clone.attributes).forEach((attr) => {
-      if (!attr.name.startsWith("data-")) clone.removeAttribute(attr.name);
-    });
-    clone.childNodes.forEach((n) => {
-      if (n.nodeType === 1 || n.nodeType === 3) {
-        content.appendChild(n.cloneNode(true));
-      }
-    });
+    if (content) {
+      content.innerHTML = "";
+      const clone = infoBlock.cloneNode(true);
+      Array.from(clone.attributes).forEach((attr) => {
+        if (!attr.name.startsWith("data-")) clone.removeAttribute(attr.name);
+      });
+      clone.childNodes.forEach((n) => {
+        if (n.nodeType === 1 || n.nodeType === 3) {
+          content.appendChild(n.cloneNode(true));
+        }
+      });
+    }
 
     quest.scrollTop = 0;
-
     sheetStack.push({ layer, backdrop, quest });
 
-    backdrop.style.opacity = "1";
-    backdrop.style.pointerEvents = "auto";
+    layer.style.opacity = "1";
+    layer.style.pointerEvents = "auto";
 
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        layer.classList.add(CLS.visible);
-        attachDrag(layer, quest, backdrop);
-      });
+      backdrop.style.setProperty("--backdrop-opacity", "1");
+      quest.style.setProperty("--sheet-pos", "0px");
+      attachDrag(layer, quest, backdrop);
     });
 
     document.body.classList.add(CLS.noScroll);
@@ -119,32 +105,25 @@ export function toggleSnoska() {
     if (sheetStack.length === 0) return;
 
     const { layer, backdrop: topBack, quest } = sheetStack.pop();
-
     const prev = sheetStack[sheetStack.length - 1];
     const prevBack = prev ? prev.backdrop : null;
-
-    if (prevBack) {
-      prevBack.style.transition = "opacity .3s ease";
-      prevBack.style.pointerEvents = "auto";
-    }
 
     topBack.style.transition = "opacity .3s ease";
     quest.style.transition = "transform .3s ease";
 
-    topBack.style.opacity = "0";
-    quest.style.transform = "translateY(100%)";
+    topBack.style.setProperty("--backdrop-opacity", "0");
+    quest.style.setProperty("--sheet-pos", "100%");
 
     if (prevBack) {
       prevBack.style.opacity = "1";
+      prevBack.style.pointerEvents = "auto";
     }
 
     quest.addEventListener(
       "transitionend",
       () => {
         layer.remove();
-        if (!prevBack) {
-          document.body.classList.remove(CLS.noScroll);
-        }
+        if (!prevBack) document.body.classList.remove(CLS.noScroll);
         rebuildZ();
       },
       { once: true }
@@ -154,87 +133,99 @@ export function toggleSnoska() {
   function rebuildZ() {
     sheetStack.forEach((item, i) => {
       item.backdrop.style.zIndex = BASE_Z + i * 2;
-      item.layer.style.zIndex = BASE_Z + i * 2 + 1;
+      item.quest.style.zIndex = BASE_Z + i * 2 + 1;
     });
   }
 
   function attachDrag(layer, quest, backdrop) {
     let startY = 0;
     let deltaY = 0;
-    let dragging = false;
     let gesture = "undecided";
+    let currentY = 0;
+    let animating = false;
+
+    function animate() {
+      if (!animating) return;
+
+      const diff = deltaY - currentY;
+      currentY += diff * 0.25;
+      currentY = Math.max(0, currentY);
+
+      const h = quest.offsetHeight;
+      const p = Math.min(Math.max(currentY / h, 0), 1);
+
+      quest.style.setProperty("--sheet-pos", currentY + "px");
+      backdrop.style.setProperty("--backdrop-opacity", 1 - p);
+
+      if (Math.abs(diff) > 0.5) {
+        requestAnimationFrame(animate);
+      } else {
+        currentY = deltaY;
+        quest.style.setProperty("--sheet-pos", currentY + "px");
+        animating = false;
+      }
+    }
 
     quest.addEventListener("touchstart", (e) => {
-      const t = e.touches[0];
-      startY = t.clientY;
+      startY = e.touches[0].clientY;
       deltaY = 0;
-      dragging = false;
+      currentY = 0;
       gesture = "undecided";
+
+      quest.style.height = quest.offsetHeight + "px";
+      quest.style.transition = "none";
     });
 
     quest.addEventListener(
       "touchmove",
       (e) => {
-        const t = e.touches[0];
-        deltaY = t.clientY - startY;
+        deltaY = e.touches[0].clientY - startY;
+        deltaY = Math.max(0, deltaY);
 
         if (gesture === "undecided") {
-          if (deltaY < 0) {
-            gesture = "scroll";
-            return;
-          }
-          if (quest.scrollTop > 0) {
-            gesture = "scroll";
-            return;
-          }
-          if (deltaY > 10) {
-            gesture = "drag";
-            dragging = true;
-            quest.style.transition = "none";
-          } else {
-            return;
-          }
+          if (quest.scrollTop > 0) return (gesture = "scroll");
+          if (deltaY > 10) gesture = "drag";
+          else return;
         }
 
         if (gesture === "scroll") return;
 
-        if (gesture === "drag" && dragging) {
-          if (deltaY > 0) {
-            quest.style.transform = `translateY(${deltaY}px)`;
-            const h = quest.offsetHeight;
-            const p = Math.min(deltaY / h, 1);
-            backdrop.style.opacity = String(1 - p);
-            e.preventDefault();
-          }
+        if (!animating) {
+          animating = true;
+          requestAnimationFrame(animate);
         }
+
+        e.preventDefault();
       },
       { passive: false }
     );
 
     quest.addEventListener("touchend", () => {
+      quest.style.height = "";
+
       if (gesture !== "drag") return;
 
-      dragging = false;
+      const h = quest.offsetHeight;
 
-      if (deltaY > 130) {
+      if (deltaY > h * 0.25) {
         close();
       } else {
         quest.style.transition = "transform .3s ease";
-        quest.style.transform = "";
-        backdrop.style.opacity = "1";
+        backdrop.style.transition = "opacity .3s ease";
+        quest.style.setProperty("--sheet-pos", "0px");
+        backdrop.style.setProperty("--backdrop-opacity", "1");
       }
 
+      deltaY = 0;
+      currentY = 0;
+      animating = false;
       gesture = "undecided";
     });
   }
 
   document.addEventListener("click", (e) => {
     if (sheetStack.length === 0) return;
-
     const top = sheetStack[sheetStack.length - 1];
-
-    if (e.target === top.backdrop) {
-      close();
-    }
+    if (e.target === top.backdrop) close();
   });
 }

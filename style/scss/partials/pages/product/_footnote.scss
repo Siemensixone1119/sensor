@@ -1,32 +1,46 @@
+.footnote__backdrop,
+.footnote__quest {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  contain: paint layout size;
+}
+
 .footnote {
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+
   &__backdrop {
     position: fixed;
+    top: 0;
     left: 0;
-    bottom: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: opacity 0.4s ease;
-    transform: translateY(100%);
-    opacity: 0;
+    background: rgba(0, 0, 0, 0.8);
+
+    opacity: var(--backdrop-opacity, 0);
+    transition: opacity .3s ease;
+    will-change: opacity;
   }
 
   &__quest {
+     contain: layout style paint;
+  will-change: transform;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100vw;
     max-height: 85vh;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 99999;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    transform: translateY(100%);
-    background-color: #fff;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+
+    background: #fff;
+    border-radius: 25px 25px 0 0;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
     min-height: 30%;
+
+    transform: translateY(var(--sheet-pos, 100%));
+    transition: transform .3s ease;
+    will-change: transform;
   }
 
   &__line-wrapper {
@@ -36,6 +50,8 @@
     top: 0;
     background-color: #fff;
     z-index: 1000;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
   }
 
   &__line {
@@ -49,6 +65,7 @@
   &__cont {
     padding: var(--page-gutter);
     padding-top: 0;
+    overflow-y: auto;
   }
 
   &__header {
