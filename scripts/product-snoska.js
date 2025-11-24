@@ -98,7 +98,6 @@ export function toggleSnoska() {
     const prev = sheetStack[sheetStack.length - 1];
     const pb = prev ? prev.backdrop : null;
 
-    topBack.style.transition = "opacity .3s ease";
     quest.style.transition = "transform .3s ease";
 
     topBack.style.setProperty("--backdrop-opacity", "0");
