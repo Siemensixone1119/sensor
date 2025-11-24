@@ -16,14 +16,8 @@ export function toggleSnoska() {
       }
 
       if (btnText && btnText.trim()) {
-        if (
-          !block.nextElementSibling ||
-          !block.nextElementSibling.classList.contains("compare__info-btn")
-        ) {
-          block.insertAdjacentHTML(
-            "afterend",
-            `<button type="button" class="compare__info-btn">${btnText}</button>`
-          );
+        if (!block.nextElementSibling || !block.nextElementSibling.classList.contains("compare__info-btn")) {
+          block.insertAdjacentHTML("afterend", `<button type="button" class="compare__info-btn">${btnText}</button>`);
         }
       } else {
         block.classList.add("snoska-trigger");
@@ -37,11 +31,11 @@ export function toggleSnoska() {
     const btn = e.target.closest(".compare__info-btn");
     if (btn) return open(btn.previousElementSibling);
 
-    const self = e.target.closest(".snoska-trigger");
-    if (self) return open(self);
+    const s = e.target.closest(".snoska-trigger");
+    if (s) return open(s);
 
-    const prev = e.target.closest(".snoska-trigger-prev");
-    if (prev) return open(prev.nextElementSibling);
+    const p = e.target.closest(".snoska-trigger-prev");
+    if (p) return open(p.nextElementSibling);
   });
 
   function open(infoBlock) {
@@ -53,6 +47,7 @@ export function toggleSnoska() {
     const quest = layer.querySelector(".footnote__quest");
     const header = layer.querySelector(".footnote__header");
     const content = layer.querySelector(".footnote__content");
+    const line = layer.querySelector(".footnote__line-wrapper"); // ← линия
 
     layer.appendChild(backdrop);
     layer.appendChild(quest);
@@ -68,26 +63,21 @@ export function toggleSnoska() {
     }
 
     const caption = infoBlock.dataset.caption?.trim() || "";
-    if (header) {
-      header.style.display = caption ? "" : "none";
-      header.textContent = caption;
-    }
+    header.style.display = caption ? "" : "none";
+    header.textContent = caption;
 
-    if (content) {
-      content.innerHTML = "";
-      const clone = infoBlock.cloneNode(true);
-      Array.from(clone.attributes).forEach((attr) => {
-        if (!attr.name.startsWith("data-")) clone.removeAttribute(attr.name);
-      });
-      clone.childNodes.forEach((n) => {
-        if (n.nodeType === 1 || n.nodeType === 3) {
-          content.appendChild(n.cloneNode(true));
-        }
-      });
-    }
+    content.innerHTML = "";
+    const clone = infoBlock.cloneNode(true);
+    Array.from(clone.attributes).forEach((a) => {
+      if (!a.name.startsWith("data-")) clone.removeAttribute(a.name);
+    });
+    clone.childNodes.forEach((n) => {
+      if (n.nodeType === 1 || n.nodeType === 3) content.appendChild(n.cloneNode(true));
+    });
 
     quest.scrollTop = 0;
-    sheetStack.push({ layer, backdrop, quest });
+
+    sheetStack.push({ layer, backdrop, quest, line });
 
     layer.style.opacity = "1";
     layer.style.pointerEvents = "auto";
@@ -95,7 +85,7 @@ export function toggleSnoska() {
     requestAnimationFrame(() => {
       backdrop.style.setProperty("--backdrop-opacity", "1");
       quest.style.setProperty("--sheet-pos", "0px");
-      attachDrag(layer, quest, backdrop);
+      attachDrag(layer, quest, backdrop, line);
     });
 
     document.body.classList.add(CLS.noScroll);
@@ -106,7 +96,7 @@ export function toggleSnoska() {
 
     const { layer, backdrop: topBack, quest } = sheetStack.pop();
     const prev = sheetStack[sheetStack.length - 1];
-    const prevBack = prev ? prev.backdrop : null;
+    const pb = prev ? prev.backdrop : null;
 
     topBack.style.transition = "opacity .3s ease";
     quest.style.transition = "transform .3s ease";
@@ -114,16 +104,16 @@ export function toggleSnoska() {
     topBack.style.setProperty("--backdrop-opacity", "0");
     quest.style.setProperty("--sheet-pos", "100%");
 
-    if (prevBack) {
-      prevBack.style.opacity = "1";
-      prevBack.style.pointerEvents = "auto";
+    if (pb) {
+      pb.style.opacity = "1";
+      pb.style.pointerEvents = "auto";
     }
 
     quest.addEventListener(
       "transitionend",
       () => {
         layer.remove();
-        if (!prevBack) document.body.classList.remove(CLS.noScroll);
+        if (!pb) document.body.classList.remove(CLS.noScroll);
         rebuildZ();
       },
       { once: true }
@@ -131,18 +121,19 @@ export function toggleSnoska() {
   }
 
   function rebuildZ() {
-    sheetStack.forEach((item, i) => {
-      item.backdrop.style.zIndex = BASE_Z + i * 2;
-      item.quest.style.zIndex = BASE_Z + i * 2 + 1;
+    sheetStack.forEach((s, i) => {
+      s.backdrop.style.zIndex = BASE_Z + i * 2;
+      s.quest.style.zIndex = BASE_Z + i * 2 + 1;
     });
   }
 
-  function attachDrag(layer, quest, backdrop) {
+  function attachDrag(layer, quest, backdrop, line) {
     let startY = 0;
     let deltaY = 0;
     let gesture = "undecided";
     let currentY = 0;
     let animating = false;
+    let dragAllowed = false;
 
     function animate() {
       if (!animating) return;
@@ -157,9 +148,8 @@ export function toggleSnoska() {
       quest.style.setProperty("--sheet-pos", currentY + "px");
       backdrop.style.setProperty("--backdrop-opacity", 1 - p);
 
-      if (Math.abs(diff) > 0.5) {
-        requestAnimationFrame(animate);
-      } else {
+      if (Math.abs(diff) > 0.5) requestAnimationFrame(animate);
+      else {
         currentY = deltaY;
         quest.style.setProperty("--sheet-pos", currentY + "px");
         animating = false;
@@ -167,6 +157,8 @@ export function toggleSnoska() {
     }
 
     quest.addEventListener("touchstart", (e) => {
+      dragAllowed = line && line.contains(e.target);
+
       startY = e.touches[0].clientY;
       deltaY = 0;
       currentY = 0;
@@ -179,16 +171,15 @@ export function toggleSnoska() {
     quest.addEventListener(
       "touchmove",
       (e) => {
+        if (!dragAllowed) return;
+
         deltaY = e.touches[0].clientY - startY;
         deltaY = Math.max(0, deltaY);
 
         if (gesture === "undecided") {
-          if (quest.scrollTop > 0) return (gesture = "scroll");
           if (deltaY > 10) gesture = "drag";
           else return;
         }
-
-        if (gesture === "scroll") return;
 
         if (!animating) {
           animating = true;
@@ -207,9 +198,8 @@ export function toggleSnoska() {
 
       const h = quest.offsetHeight;
 
-      if (deltaY > h * 0.25) {
-        close();
-      } else {
+      if (deltaY > h * 0.25) close();
+      else {
         quest.style.transition = "transform .3s ease";
         backdrop.style.transition = "opacity .3s ease";
         quest.style.setProperty("--sheet-pos", "0px");
