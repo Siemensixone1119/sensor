@@ -98,8 +98,6 @@ export function toggleSnoska() {
     const prev = sheetStack[sheetStack.length - 1];
     const pb = prev ? prev.backdrop : null;
 
-    quest.style.transition = "transform .3s ease";
-
     topBack.style.setProperty("--backdrop-opacity", "0");
     quest.style.setProperty("--sheet-pos", "100%");
 
@@ -199,8 +197,6 @@ export function toggleSnoska() {
 
       if (deltaY > h * 0.25) close();
       else {
-        quest.style.transition = "transform .3s ease";
-        backdrop.style.transition = "opacity .3s ease";
         quest.style.setProperty("--sheet-pos", "0px");
         backdrop.style.setProperty("--backdrop-opacity", "1");
       }
