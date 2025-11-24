@@ -16,8 +16,14 @@ export function toggleSnoska() {
       }
 
       if (btnText && btnText.trim()) {
-        if (!block.nextElementSibling || !block.nextElementSibling.classList.contains("compare__info-btn")) {
-          block.insertAdjacentHTML("afterend", `<button type="button" class="compare__info-btn">${btnText}</button>`);
+        if (
+          !block.nextElementSibling ||
+          !block.nextElementSibling.classList.contains("compare__info-btn")
+        ) {
+          block.insertAdjacentHTML(
+            "afterend",
+            `<button type="button" class="compare__info-btn">${btnText}</button>`
+          );
         }
       } else {
         block.classList.add("snoska-trigger");
@@ -47,7 +53,7 @@ export function toggleSnoska() {
     const quest = layer.querySelector(".footnote__quest");
     const header = layer.querySelector(".footnote__header");
     const content = layer.querySelector(".footnote__content");
-    const line = layer.querySelector(".footnote__line-wrapper"); // ← линия
+    const line = layer.querySelector(".footnote__line-wrapper");
 
     layer.appendChild(backdrop);
     layer.appendChild(quest);
@@ -72,7 +78,8 @@ export function toggleSnoska() {
       if (!a.name.startsWith("data-")) clone.removeAttribute(a.name);
     });
     clone.childNodes.forEach((n) => {
-      if (n.nodeType === 1 || n.nodeType === 3) content.appendChild(n.cloneNode(true));
+      if (n.nodeType === 1 || n.nodeType === 3)
+        content.appendChild(n.cloneNode(true));
     });
 
     quest.scrollTop = 0;
@@ -91,12 +98,44 @@ export function toggleSnoska() {
     document.body.classList.add(CLS.noScroll);
   }
 
-  function close() {
+  /* ============================
+     INSTANT CLOSE (SWIPE)
+  ============================ */
+  function closeInstant() {
     if (sheetStack.length === 0) return;
 
     const { layer, backdrop: topBack, quest } = sheetStack.pop();
     const prev = sheetStack[sheetStack.length - 1];
     const pb = prev ? prev.backdrop : null;
+
+    topBack.style.transition = "opacity 0s";
+    quest.style.transition = "transform 0s";
+
+    topBack.style.setProperty("--backdrop-opacity", "0");
+    quest.style.setProperty("--sheet-pos", "100%");
+
+    if (pb) {
+      pb.style.opacity = "1";
+      pb.style.pointerEvents = "auto";
+    }
+
+    layer.remove();
+    if (!pb) document.body.classList.remove(CLS.noScroll);
+    rebuildZ();
+  }
+
+  /* ============================
+     ANIMATED CLOSE (BACKDROP)
+  ============================ */
+  function closeAnimated() {
+    if (sheetStack.length === 0) return;
+
+    const { layer, backdrop: topBack, quest } = sheetStack.pop();
+    const prev = sheetStack[sheetStack.length - 1];
+    const pb = prev ? prev.backdrop : null;
+
+    topBack.style.transition = "opacity .3s ease";
+    quest.style.transition = "transform .3s ease";
 
     topBack.style.setProperty("--backdrop-opacity", "0");
     quest.style.setProperty("--sheet-pos", "100%");
@@ -195,8 +234,11 @@ export function toggleSnoska() {
 
       const h = quest.offsetHeight;
 
-      if (deltaY > h * 0.25) close();
+      if (deltaY > h * 0.25) closeInstant();
       else {
+        quest.style.transition = "transform 0s";
+        backdrop.style.transition = "opacity 0s";
+
         quest.style.setProperty("--sheet-pos", "0px");
         backdrop.style.setProperty("--backdrop-opacity", "1");
       }
@@ -208,9 +250,16 @@ export function toggleSnoska() {
     });
   }
 
+  /* ============================
+     BACKDROP CLICK = ANIMATED CLOSE
+  ============================ */
   document.addEventListener("click", (e) => {
     if (sheetStack.length === 0) return;
+
     const top = sheetStack[sheetStack.length - 1];
-    if (e.target === top.backdrop) close();
+
+    if (e.target === top.backdrop) {
+      closeAnimated(); // ← плавное закрытие
+    }
   });
 }
