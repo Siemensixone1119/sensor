@@ -333,12 +333,8 @@ h2:has(+ div.compare) {
   margin-bottom: 5px !important;
 }
 
-.compare:is(.footnote *) .compare__header {
-  top: 34px;
-}
-
 .compare:not(:is(main *)) .compare__header {
-  top: 34px;
+  top: 0;
 }
 
 .compare {
@@ -618,7 +614,6 @@ h2:has(+ div.compare) {
   height: 100vh;
   background: rgba(0, 0, 0, 0.8);
   opacity: var(--backdrop-opacity, 0);
-  transition: opacity 0.3s ease;
   will-change: opacity;
 }
 .footnote__quest {

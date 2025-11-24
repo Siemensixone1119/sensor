@@ -48,18 +48,10 @@ h2:has(+div.compare) {
   margin-bottom: 5px !important;
 }
 
-.compare:is(.footnote *) {
-  .compare {
-    &__header {
-      top: 34px;
-    }
-  }
-}
-
 .compare:not(:is(main *)) {
   .compare {
     &__header {
-      top: 34px;
+      top: 0;
     }
   }
 }
