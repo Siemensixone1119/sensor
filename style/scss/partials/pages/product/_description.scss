@@ -19,10 +19,6 @@
     gap: 5px;
   }
 
-  &__toggle:checked~&__controls &__btn svg {
-    transform: rotate(180deg);
-  }
-
   &__toggle {
     display: none;
   }
@@ -69,6 +65,10 @@
 
   &__toggle:checked+&__content label {
     opacity: 0;
+  }
+
+  &__toggle:checked+&__content &__open-button{
+    pointer-events: none;
   }
 }
 
