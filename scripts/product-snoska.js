@@ -37,7 +37,6 @@ export function toggleSnoska() {
   // вызов генерации кнопок
   processInfoBlocks();
 
-
   document.addEventListener("click", (e) => {
     // кнопка сноска
     const btn = e.target.closest(".compare__info-btn");
@@ -70,6 +69,12 @@ export function toggleSnoska() {
     backdrop.style.zIndex = BASE_Z + index * 2;
     quest.style.zIndex = BASE_Z + index * 2 + 1;
 
+    if (CSS.supports("height", "100dvh")) {
+      quest.style.height = "95dvh";
+    } else {
+      quest.style.height = "85vh";
+    }
+
     // блокировка кликов по хэдеру сайта
     const siteHeader = document.querySelector(".header");
     if (siteHeader) siteHeader.style.pointerEvents = "none";
@@ -97,7 +102,8 @@ export function toggleSnoska() {
       if (!attr.name.startsWith("data-")) clone.removeAttribute(attr.name);
     });
     clone.childNodes.forEach((n) => {
-      if (n.nodeType === 1 || n.nodeType === 3) { // 1 -element, 3 - text
+      if (n.nodeType === 1 || n.nodeType === 3) {
+        // 1 -element, 3 - text
         content.appendChild(n.cloneNode(true));
       }
     });
@@ -221,7 +227,7 @@ export function toggleSnoska() {
       const pullingDown = deltaY > 5; // трогают ли сейчас полосочку
 
       if (gesture === "undecided") {
-        if (isHandle) { 
+        if (isHandle) {
           gesture = "drag"; // если трогают полосочку, счиаем это свайпом
         } else if (canDragFromContent && pullingDown) {
           gesture = "drag"; // если трогают и полосочку и контент, считаем свайпом
