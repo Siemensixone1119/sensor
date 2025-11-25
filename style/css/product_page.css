@@ -621,7 +621,6 @@ h2:has(+ div.compare) {
   bottom: 0;
   left: 0;
   width: 100vw;
-  max-height: 95dvh;
   background: #fff;
   border-radius: 25px 25px 0 0;
   display: flex;

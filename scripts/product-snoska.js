@@ -70,9 +70,9 @@ export function toggleSnoska() {
     quest.style.zIndex = BASE_Z + index * 2 + 1;
 
     if (CSS.supports("height", "100dvh")) {
-      quest.style.height = "95dvh";
+      quest.style.maxHeight = "95dvh";
     } else {
-      quest.style.height = "85vh";
+      quest.style.maxHeight = "85vh";
     }
 
     // блокировка кликов по хэдеру сайта
