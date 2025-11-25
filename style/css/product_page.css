@@ -603,18 +603,15 @@ h2:has(+ div.compare) {
 
 .footnote {
   opacity: 0;
-  pointer-events: none;
   position: relative;
 }
 .footnote__backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: rgba(0, 0, 0, 0.8);
   opacity: var(--backdrop-opacity, 0);
-  transition: opacity 0.3s ease;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
   will-change: opacity;
 }
 .footnote__quest {
@@ -624,19 +621,18 @@ h2:has(+ div.compare) {
   bottom: 0;
   left: 0;
   width: 100vw;
-  max-height: 85vh;
+  max-height: 95dvh;
   background: #fff;
   border-radius: 25px 25px 0 0;
   display: flex;
   flex-direction: column;
   min-height: 30%;
   transform: translateY(var(--sheet-pos, 100%));
-  transition: transform 0.3s ease;
-  will-change: transform;
+  transition: transform 0.25s ease;
 }
 .footnote__line-wrapper {
   width: 100%;
-  padding: 15px 0;
+  padding: 8px 0 20px;
   position: sticky;
   top: 0;
   background-color: #fff;
@@ -655,21 +651,15 @@ h2:has(+ div.compare) {
   padding: var(--page-gutter);
   padding-top: 0;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .footnote__header {
   font-size: 20px;
   font-weight: 500;
-  display: block;
-  padding: var(--page-gutter) 0;
+  display: inline-block;
   background-color: #fff;
-  padding-top: 0;
-}
-.footnote__visible .footnote__backdrop {
-  opacity: 1;
-}
-.footnote__visible .footnote__quest,
-.footnote__visible .footnote__backdrop {
-  transform: translateY(0);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  margin: 0;
 }
 
 *[data-info] {
