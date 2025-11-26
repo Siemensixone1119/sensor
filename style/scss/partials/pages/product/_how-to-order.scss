@@ -16,6 +16,7 @@
     flex-direction: column;
     gap: 30px;
     padding: 0;
+    margin: 0;
   }
 
   &__checkbox:checked~.order__list {

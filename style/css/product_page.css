@@ -180,6 +180,7 @@ h6 {
   flex-direction: column;
   gap: 30px;
   padding: 0;
+  margin: 0;
 }
 .how-to-order__checkbox:checked ~ .order__list {
   max-height: 2000px;
@@ -337,9 +338,12 @@ h2:has(+ div.compare) {
   top: 0;
 }
 
+.openable-section__content > .compare {
+  margin-top: -10px;
+}
+
 .compare {
   min-width: 100vw;
-  margin-top: 5px;
   --cells-visible: 4;
   --col-width: calc(100vw / var(--cells-visible));
   margin-inline: calc(var(--page-gutter) * -1);
@@ -621,6 +625,7 @@ h2:has(+ div.compare) {
   bottom: 0;
   left: 0;
   width: 100vw;
+  max-height: 85vh;
   background: #fff;
   border-radius: 25px 25px 0 0;
   display: flex;
@@ -665,11 +670,16 @@ h2:has(+ div.compare) {
   display: none !important;
 }
 
+@supports (max-height: 95dvh) {
+  .footnote__quest {
+    max-height: 95dvh;
+  }
+}
 .files-list {
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
   padding: 0;
+  margin: 0;
 }
 .files-list__item {
   display: flex;

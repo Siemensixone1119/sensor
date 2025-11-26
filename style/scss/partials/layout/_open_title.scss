@@ -13,6 +13,10 @@
   }
 }
 
+.openable-section__content{
+  padding-top: 10px;
+}
+
 .openable-section__title.openable-section__title ~ * {
   max-height: 0;
   opacity: 0;

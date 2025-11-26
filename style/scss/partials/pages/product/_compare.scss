@@ -56,9 +56,13 @@ h2:has(+div.compare) {
   }
 }
 
+.openable-section__content > .compare{
+  margin-top: -10px;
+}
+
 .compare {
   min-width: 100vw;
-  margin-top: 5px;
+  // margin-top: 5px;
   --cells-visible: 4;
   --col-width: calc(100vw / var(--cells-visible));
   margin-inline: calc(var(--page-gutter) * -1);

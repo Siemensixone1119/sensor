@@ -69,12 +69,6 @@ export function toggleSnoska() {
     backdrop.style.zIndex = BASE_Z + index * 2;
     quest.style.zIndex = BASE_Z + index * 2 + 1;
 
-    if (CSS.supports("height", "100dvh")) {
-      quest.style.maxHeight = "95dvh";
-    } else {
-      quest.style.maxHeight = "85vh";
-    }
-
     // блокировка кликов по хэдеру сайта
     const siteHeader = document.querySelector(".header");
     if (siteHeader) siteHeader.style.pointerEvents = "none";
@@ -156,9 +150,11 @@ export function toggleSnoska() {
           siteHeader.style.pointerEvents = "auto";
         }
 
-        // елси сноска не последняя
-        if (prev) prev.layer.style.pointerEvents = "auto";
-        else document.body.classList.remove(CLS.noScroll);
+        // если сноска не последняя
+        if (prev) {
+          prev.layer.style.pointerEvents = "auto";
+          prev.backdrop.style.pointerEvents = "auto";
+        } else document.body.classList.remove(CLS.noScroll);
 
         rebuildZ(); // пересчет z-индекса
         isClosing = false;

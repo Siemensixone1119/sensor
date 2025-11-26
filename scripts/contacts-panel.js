@@ -2,9 +2,8 @@ export function initContactsPanel() {
   // получение элементов
   const contacts = document?.querySelector(".contacts");
   const openEl = document?.querySelector(".header__phone-button");
-  const closeEl = document?.querySelector(".contacts__close-btn");
 
-  if (!contacts || !openEl || !closeEl) {
+  if (!contacts || !openEl) {
     throw new Error("Элемент не найден");
   }
 
@@ -21,13 +20,5 @@ export function initContactsPanel() {
     document.body.classList.add(CLS.noScroll);
   }
 
-  // закрытие меню контактов
-  function close() {
-    if (!contacts.classList.contains(CLS.visible)) return;
-    contacts.classList.remove(CLS.visible);
-    document.body.classList.remove(CLS.noScroll);
-  }
-
   openEl.addEventListener("click", open);
-  closeEl.addEventListener("click", close);
 }
