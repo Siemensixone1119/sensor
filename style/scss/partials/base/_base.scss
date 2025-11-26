@@ -10,6 +10,13 @@
 
 :root {
   --page-gutter: 15px;
+  --snoska-height: 85vh;
+}
+
+@supports(max-height: 95dvh) {
+  body {
+    --snoska-height: 95dvh;
+  }
 }
 
 .upper {
@@ -80,7 +87,7 @@ main ol {
 }
 
 main ul li::marker,
-main ol li::marker{
+main ol li::marker {
   color: rgb(153, 153, 153);
 }
 
@@ -106,26 +113,26 @@ h6 {
 }
 
 
-h1{
+h1 {
   font-size: 26px;
 }
 
-h2{
+h2 {
   font-size: 22px;
 }
 
-h3{
+h3 {
   font-size: 20px;
 }
 
-h4{
+h4 {
   font-size: 18px;
 }
 
-h5{
+h5 {
   font-size: 16px;
 }
 
-h6{
+h6 {
   font-size: 14px;
 }

@@ -16,7 +16,7 @@
   // z-index: 9999;
   text-align: center;
   overflow: hidden;
-  max-height: calc(95dvh - 32px);
+  max-height: calc(var(--snoska-height) - 32px);
   // top: 0;
   // height: var(--app-height);
   // transition: transform 0.3s ease, height 0.25s ease;

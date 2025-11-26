@@ -29,7 +29,7 @@
     bottom: 0;
     left: 0;
     width: 100vw;
-    max-height: 85vh;
+    max-height: var(--snoska-height);
 
     background: #fff;
     border-radius: 25px 25px 0 0;
@@ -79,10 +79,4 @@
 
 *[data-info] {
   display: none !important;
-}
-
-@supports(max-height: 95dvh) {
-  .footnote__quest {
-    max-height: 95dvh;
-  }
 }

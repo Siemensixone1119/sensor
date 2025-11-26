@@ -8,8 +8,14 @@
 
 :root {
   --page-gutter: 15px;
+  --snoska-height: 85vh;
 }
 
+@supports (max-height: 95dvh) {
+  body {
+    --snoska-height: 95dvh;
+  }
+}
 .upper {
   text-transform: uppercase;
 }
@@ -858,7 +864,7 @@ main {
   background-color: #fefefe;
   text-align: center;
   overflow: hidden;
-  max-height: calc(95dvh - 32px);
+  max-height: calc(var(--snoska-height) - 32px);
 }
 .contacts > div {
   overflow: auto;
