@@ -35,6 +35,7 @@ body {
   box-sizing: content-box;
   max-width: 100%;
   margin: 0;
+  overscroll-behavior-y: none;
 }
 
 h1,
@@ -68,7 +69,8 @@ footer ol {
   list-style: none;
 }
 
-header li, footer li{
+header li,
+footer li {
   margin-left: 0;
 }
 

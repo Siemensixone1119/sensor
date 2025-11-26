@@ -183,6 +183,7 @@ export function toggleSnoska() {
 
     let gesture = "none"; // тип движения dragon drop или scroll
     let canDragFromContent = false; // можно ли закрыть при свайпу по контенту, а не только полосочке
+    let sheetHeight = 0;
 
     // палец прикладывается к экрану
     function onStart(e) {
@@ -193,12 +194,14 @@ export function toggleSnoska() {
       lastTime = performance.now();
       deltaY = 0;
       velocity = 0;
+      sheetHeight = quest.offsetHeight;
 
       gesture = "undecided";
       canDragFromContent = scroller.scrollTop === 0;
 
       quest.style.transition = "none";
       backdrop.style.transition = "none";
+      e.stopPropagation();
     }
 
     // движение пальца
@@ -235,12 +238,15 @@ export function toggleSnoska() {
 
       if (gesture !== "drag") return;
 
-      if (e.cancelable) e.preventDefault(); // cancelable - можно ли отменить событие, то уьираем дефолт скрол
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+      e.stopPropagation(); // cancelable - можно ли отменить событие, то уьираем дефолт скрол
 
       quest.style.setProperty("--sheet-pos", deltaY + "px");
       backdrop.style.setProperty(
         "--backdrop-opacity",
-        1 - deltaY / quest.offsetHeight
+        1 - deltaY / sheetHeight
       );
     }
 
@@ -255,7 +261,7 @@ export function toggleSnoska() {
         return;
       }
 
-      const h = quest.offsetHeight; // высота сноски
+      const h = sheetHeight; // высота сноски
       const projected = deltaY + velocity * 120; // куда бы ушла шторка через 120 мс
       // если свайп до второй половина, то закрываем
       if (projected > h / 2) {
