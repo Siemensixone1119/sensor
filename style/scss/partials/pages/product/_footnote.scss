@@ -46,7 +46,7 @@
 
   &__line-wrapper {
     width: 100%;
-    padding: 8px 0 20px;
+    padding: 8px var(--page-gutter) 5px;
     position: sticky;
     top: 0;
     background-color: #fff;
@@ -61,6 +61,7 @@
     min-height: 4px;
     border-radius: 8px;
     margin: 0 auto;
+    margin-bottom: 20px
   }
 
   &__cont {
@@ -72,30 +73,19 @@
     touch-action: pan-y;
   }
 
-  &__header-title {
-    font-size: 20px;
-    font-weight: 500;
-    display: inline-block;
-    background-color: #fff;
-    font-family: $main-font;
-    margin: 0;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
 
   &__close-btn {
     padding: 10px;
-    padding-top: 5px;
     line-height: 0;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    z-index: 9999;
   }
 
   &__close-icon {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     fill: #212121;
     line-height: 0;
   }

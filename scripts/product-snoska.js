@@ -59,9 +59,11 @@ export function toggleSnoska() {
 
     const backdrop = layer.querySelector(".footnote__backdrop");
     const quest = layer.querySelector(".footnote__quest");
-    const header = layer.querySelector(".footnote__header");
+    const header = layer.querySelector(".footnote__header-title");
     const content = layer.querySelector(".footnote__content");
     const scroller = layer.querySelector(".footnote__cont"); // это контент, который скролится
+    const closeBtn = layer.querySelector(".footnote__close-btn"); // крестик для закрытия
+
 
     const index = sheetStack.length;
 
@@ -119,6 +121,7 @@ export function toggleSnoska() {
     });
 
     document.body.classList.add(CLS.noScroll);
+    closeBtn.addEventListener("click", close) // закрытие по клику на крестик
   }
 
   // закрытие сноски
@@ -170,7 +173,6 @@ export function toggleSnoska() {
   }
 
   // обработка движений и кликов
-  // обработка движений и кликов
   function attachDrag(layer, quest, backdrop, scroller) {
     const handle = layer.querySelector(".footnote__line-wrapper");
 
@@ -183,26 +185,29 @@ export function toggleSnoska() {
     let gesture = "none";
     let canDragFromContent = false;
 
-    // палец, который УПРАВЛЯЕТ шторкой
+    // свайп который управляет шторкой
     let activeId = null;
 
     function onStart(e) {
       if (isClosing) return;
 
-      // если уже тащим шторку — новые пальцы вообще игнорируем
+      // если уже есть движение
       if (activeId !== null) return;
 
-      const touch = e.changedTouches[0];
+      const touch = e.changedTouches[0]; // координаты первого касания сноски
+      console.log(touch);
+      
       activeId = touch.identifier;
 
       startY = touch.clientY;
       lastY = startY;
-      lastTime = performance.now();
+      lastTime = performance.now(); //тайминг начала события в миллисекундах
+      console.log(lastTime)
       deltaY = 0;
-      velocity = 0;
+      velocity = 0; // скорость свайпа
 
-      gesture = "undecided";
-      canDragFromContent = scroller.scrollTop === 0;
+      gesture = "undecided"; //тип события
+      canDragFromContent = scroller.scrollTop === 0; //долисталось ли до верха сноски
 
       quest.style.transition = "none";
       backdrop.style.transition = "none";
@@ -215,12 +220,11 @@ export function toggleSnoska() {
       if (isClosing) return;
       if (activeId === null) return;
 
-      // берём КОНКРЕТНО тот палец, который начал жест
+      // берём конкретно действие которое начало событие
       const touch = Array.from(e.touches).find(
         (t) => t.identifier === activeId
       );
 
-      // если по какой-то причине нашего пальца нет в списке — просто выходим
       if (!touch) return;
 
       const currentY = touch.clientY;
@@ -238,7 +242,7 @@ export function toggleSnoska() {
       lastTime = currentTime;
 
       const isHandle = !!e.target.closest(".footnote__line-wrapper");
-      const pullingDown = deltaY > 5;
+      const pullingDown = deltaY > 5; //свайп вниз?
 
       canDragFromContent = scroller.scrollTop === 0;
 
@@ -255,7 +259,7 @@ export function toggleSnoska() {
 
       if (gesture !== "drag") return;
 
-      if (e.cancelable) e.preventDefault();
+      if (e.cancelable) e.preventDefault(); // если событие можно отменить
 
       quest.style.setProperty("--sheet-pos", deltaY + "px");
       backdrop.style.setProperty(
@@ -266,19 +270,19 @@ export function toggleSnoska() {
 
     function onEnd(e) {
       if (isClosing) return;
-      if (activeId === null) return;
+      if (activeId === null) return; // если это не первое событие
 
-      // проверяем: это отпустили ИМЕННО активный палец или какой-то другой?
+      // проверка, что именно первое событие пропадает
       const activeFingerEnded = Array.from(e.changedTouches).some(
         (t) => t.identifier === activeId
       );
 
-      // если отпустили второй/третий палец — просто игнор
+      // если не первое событие
       if (!activeFingerEnded) {
         return;
       }
 
-      // вот тут уже точно отпустили основной палец
+      // вот тут уже ghjikj gthdjt cj,snbt
       activeId = null;
 
       scroller.style.overflowY = "auto";
@@ -294,6 +298,7 @@ export function toggleSnoska() {
       const h = quest.offsetHeight;
       const projected = deltaY + velocity * 120;
 
+      // если сноска прикрыта наполовину своей высоты
       if (projected > h / 2) {
         close();
       } else {
