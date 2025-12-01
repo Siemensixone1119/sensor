@@ -61,7 +61,7 @@ export function toggleSnoska() {
     const quest = layer.querySelector(".footnote__quest");
     const header = layer.querySelector(".footnote__header");
     const content = layer.querySelector(".footnote__content");
-    const scroller = layer.querySelector(".footnote__cont"); // это контен, который скролится, то есть без верхней полосочки
+    const scroller = layer.querySelector(".footnote__cont"); // это контент, который скролится
 
     const index = sheetStack.length;
 
@@ -97,7 +97,7 @@ export function toggleSnoska() {
     });
     clone.childNodes.forEach((n) => {
       if (n.nodeType === 1 || n.nodeType === 3) {
-        // 1 -element, 3 - text
+        // 1 - element, 3 - text
         content.appendChild(n.cloneNode(true));
       }
     });
@@ -127,8 +127,8 @@ export function toggleSnoska() {
     if (isClosing) return;
     isClosing = true;
 
-    const { layer, backdrop: topBack, quest } = sheetStack.pop(); // деструктуризация одного слоя стэка
-    const prev = sheetStack[sheetStack.length - 1]; //  какая по счету сноска
+    const { layer, backdrop: topBack, quest } = sheetStack.pop(); // деструктуризация
+    const prev = sheetStack[sheetStack.length - 1];
 
     // стили
     topBack.style.transition = "opacity .25s ease";
@@ -138,28 +138,26 @@ export function toggleSnoska() {
     topBack.style.pointerEvents = "none";
     quest.style.setProperty("--sheet-pos", "100%");
 
-    // ожидание окончания анимации
     quest.addEventListener(
       "transitionend",
       () => {
-        layer.remove(); // удаление сноски
+        layer.remove();
 
-        // возврат стидей хэдера
+        // возврат стилей хэдера
         const siteHeader = document.querySelector(".header");
         if (sheetStack.length === 0 && siteHeader) {
           siteHeader.style.pointerEvents = "auto";
         }
 
-        // если сноска не последняя
         if (prev) {
           prev.layer.style.pointerEvents = "auto";
           prev.backdrop.style.pointerEvents = "auto";
         } else document.body.classList.remove(CLS.noScroll);
 
-        rebuildZ(); // пересчет z-индекса
+        rebuildZ();
         isClosing = false;
       },
-      { once: true } //  обработчик вешается один раз
+      { once: true }
     );
   }
 
@@ -172,47 +170,64 @@ export function toggleSnoska() {
   }
 
   // обработка движений и кликов
+  // обработка движений и кликов
   function attachDrag(layer, quest, backdrop, scroller) {
-    const handle = layer.querySelector(".footnote__line-wrapper"); // контейнер полосочки
+    const handle = layer.querySelector(".footnote__line-wrapper");
 
-    let startY = 0; // начальная позиция пальцы
-    let deltaY = 0; // смещение пальца
-    let lastY = 0; // позиция пальца на предидущем кадре
-    let lastTime = 0; // время предидущего кадра
-    let velocity = 0; // скорость свайпа
+    let startY = 0;
+    let deltaY = 0;
+    let lastY = 0;
+    let lastTime = 0;
+    let velocity = 0;
 
-    let gesture = "none"; // тип движения dragon drop или scroll
-    let canDragFromContent = false; // можно ли закрыть при свайпу по контенту, а не только полосочке
-    let sheetHeight = 0;
+    let gesture = "none";
+    let canDragFromContent = false;
 
-    // палец прикладывается к экрану
+    // палец, который УПРАВЛЯЕТ шторкой
+    let activeId = null;
+
     function onStart(e) {
       if (isClosing) return;
 
-      startY = e.touches[0].clientY;
+      // если уже тащим шторку — новые пальцы вообще игнорируем
+      if (activeId !== null) return;
+
+      const touch = e.changedTouches[0];
+      activeId = touch.identifier;
+
+      startY = touch.clientY;
       lastY = startY;
       lastTime = performance.now();
       deltaY = 0;
       velocity = 0;
-      sheetHeight = quest.offsetHeight;
 
       gesture = "undecided";
       canDragFromContent = scroller.scrollTop === 0;
 
       quest.style.transition = "none";
       backdrop.style.transition = "none";
-      e.stopPropagation();
+
+      scroller.style.overflowY = "auto";
+      scroller.style.overscrollBehavior = "contain";
     }
 
-    // движение пальца
     function onMove(e) {
       if (isClosing) return;
+      if (activeId === null) return;
 
-      const currentY = e.touches[0].clientY;
+      // берём КОНКРЕТНО тот палец, который начал жест
+      const touch = Array.from(e.touches).find(
+        (t) => t.identifier === activeId
+      );
+
+      // если по какой-то причине нашего пальца нет в списке — просто выходим
+      if (!touch) return;
+
+      const currentY = touch.clientY;
       const currentTime = performance.now();
 
       deltaY = currentY - startY;
-      // если листать в низ то будет обычный скрол
+
       if (deltaY < 0) {
         gesture = gesture === "undecided" ? "scroll" : gesture;
         return;
@@ -223,36 +238,51 @@ export function toggleSnoska() {
       lastTime = currentTime;
 
       const isHandle = !!e.target.closest(".footnote__line-wrapper");
-      const pullingDown = deltaY > 5; // трогают ли сейчас полосочку
+      const pullingDown = deltaY > 5;
+
+      canDragFromContent = scroller.scrollTop === 0;
 
       if (gesture === "undecided") {
-        if (isHandle) {
-          gesture = "drag"; // если трогают полосочку, счиаем это свайпом
-        } else if (canDragFromContent && pullingDown) {
-          gesture = "drag"; // если трогают и полосочку и контент, считаем свайпом
+        if (isHandle || (canDragFromContent && pullingDown)) {
+          gesture = "drag";
+          scroller.style.overflowY = "hidden";
+          scroller.style.overscrollBehavior = "none";
         } else {
-          gesture = "scroll"; // если трогаем только контент - скроллим его
+          gesture = "scroll";
           return;
         }
       }
 
       if (gesture !== "drag") return;
 
-      if (e.cancelable) {
-        e.preventDefault();
-      }
-      e.stopPropagation(); // cancelable - можно ли отменить событие, то уьираем дефолт скрол
+      if (e.cancelable) e.preventDefault();
 
       quest.style.setProperty("--sheet-pos", deltaY + "px");
       backdrop.style.setProperty(
         "--backdrop-opacity",
-        1 - deltaY / sheetHeight
+        1 - deltaY / quest.offsetHeight
       );
     }
 
-    // при убирании пальца с экрана
-    function onEnd() {
+    function onEnd(e) {
       if (isClosing) return;
+      if (activeId === null) return;
+
+      // проверяем: это отпустили ИМЕННО активный палец или какой-то другой?
+      const activeFingerEnded = Array.from(e.changedTouches).some(
+        (t) => t.identifier === activeId
+      );
+
+      // если отпустили второй/третий палец — просто игнор
+      if (!activeFingerEnded) {
+        return;
+      }
+
+      // вот тут уже точно отпустили основной палец
+      activeId = null;
+
+      scroller.style.overflowY = "auto";
+      scroller.style.overscrollBehavior = "contain";
 
       if (gesture !== "drag") {
         gesture = "none";
@@ -261,9 +291,9 @@ export function toggleSnoska() {
         return;
       }
 
-      const h = sheetHeight; // высота сноски
-      const projected = deltaY + velocity * 120; // куда бы ушла шторка через 120 мс
-      // если свайп до второй половина, то закрываем
+      const h = quest.offsetHeight;
+      const projected = deltaY + velocity * 120;
+
       if (projected > h / 2) {
         close();
       } else {
@@ -288,6 +318,8 @@ export function toggleSnoska() {
     scroller.addEventListener("touchmove", onMove, { passive: false });
     scroller.addEventListener("touchend", onEnd);
   }
+
+
 
   // клик в бэкдроп
   document.addEventListener("click", (e) => {

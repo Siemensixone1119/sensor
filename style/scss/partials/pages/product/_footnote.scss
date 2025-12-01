@@ -20,6 +20,7 @@
     pointer-events: none;
     transition: opacity .25s ease;
     will-change: opacity;
+    overflow: hidden;
   }
 
   &__quest {
@@ -31,7 +32,7 @@
     width: 100vw;
     max-height: var(--snoska-height);
     overscroll-behavior: none;
-    touch-action: none;
+    touch-action: pan-y;
 
     background: #fff;
     border-radius: 25px 25px 0 0;
@@ -71,13 +72,32 @@
     touch-action: pan-y;
   }
 
-  &__header {
+  &__header-title {
     font-size: 20px;
     font-weight: 500;
     display: inline-block;
     background-color: #fff;
     font-family: $main-font;
     margin: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__close-btn {
+    padding: 10px;
+    padding-top: 5px;
+    line-height: 0;
+  }
+
+  &__close-icon {
+    width: 18px;
+    height: 18px;
+    fill: #212121;
+    line-height: 0;
   }
 }
 
