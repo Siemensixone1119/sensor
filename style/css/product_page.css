@@ -128,6 +128,14 @@ h6 {
   font-size: 14px;
 }
 
+body.no-scroll {
+  height: 100%;
+  overflow: hidden !important;
+  width: 100%;
+  overscroll-behavior: none !important;
+  touch-action: none;
+}
+
 .product svg {
   min-width: 18px;
   min-height: 18px;
@@ -604,21 +612,14 @@ h2:has(+ div.compare) {
   --data-cell: 15;
 }
 
-.footnote__backdrop,
-.footnote__quest {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  contain: paint layout size;
-}
-
 .footnote {
   opacity: 0;
-  position: relative;
 }
 .footnote__backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
+  contain: paint;
   opacity: var(--backdrop-opacity, 0);
   pointer-events: none;
   transition: opacity 0.25s ease;
@@ -626,14 +627,13 @@ h2:has(+ div.compare) {
   overflow: hidden;
 }
 .footnote__quest {
-  contain: layout style paint;
   will-change: transform;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
-  max-height: var(--snoska-height);
-  overscroll-behavior: none;
+  max-height: 95dvh;
+  height: auto;
   touch-action: pan-y;
   background: #fff;
   border-radius: 25px 25px 0 0;
@@ -646,7 +646,7 @@ h2:has(+ div.compare) {
 .footnote__line-wrapper {
   width: 100%;
   padding: 8px var(--page-gutter) 5px;
-  position: sticky;
+  position: static;
   top: 0;
   background-color: #fff;
   z-index: 1000;

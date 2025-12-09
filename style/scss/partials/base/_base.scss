@@ -137,3 +137,11 @@ h5 {
 h6 {
   font-size: 14px;
 }
+
+body.no-scroll {
+  height: 100%;
+  overflow: hidden !important;
+  width: 100%;
+  overscroll-behavior: none !important;
+  touch-action: none;
+}

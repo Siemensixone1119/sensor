@@ -19,13 +19,3 @@ slider();
 bgElement();
 syncScroll();
 toggleSnoska();
-
-function fixVH() {
-  document.documentElement.style.setProperty(
-    "--app-height",
-    window.innerHeight + "px"
-  );
-}
-
-fixVH();
-window.addEventListener("resize", fixVH);

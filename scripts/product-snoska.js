@@ -1,25 +1,22 @@
 export function toggleSnoska() {
-  const CLS = { noScroll: "no-scroll" }; //это для блокировки боди
-  const BASE_Z = 200000; // для z-индекса
-  const sheetStack = []; // стэк слоев
-  let isClosing = false; // чтобы закрытие не происходило повторно и не лагало
+  const BASE_Z = 200000;
+  const sheetStack = [];
+  let isClosing = false;
 
-  // генерация кнопочек открытия сноскок
+  processInfoBlocks();
+
   function processInfoBlocks(root = document) {
     const blocks = root.querySelectorAll("[data-info]");
-    // генерация каждой снсоски в зависимости от data-prev
     blocks.forEach((block) => {
-      const btnText = block.dataset.buttonText; // текст кнопочки
-      const triggerPrev = block.dataset.trigger === "prev"; // наличие аттрибута prev
+      const btnText = block.dataset.buttonText;
+      const triggerPrev = block.dataset.trigger === "prev";
 
-      // генерация сноски не в виде кнопки
       if (triggerPrev) {
         const prev = block.previousElementSibling;
         if (prev) prev.classList.add("snoska-trigger-prev");
         return;
       }
 
-      // генерация сноски в виде кнопочки
       if (btnText && btnText.trim()) {
         const next = block.nextElementSibling;
         if (!next || !next.classList.contains("compare__info-btn")) {
@@ -34,111 +31,97 @@ export function toggleSnoska() {
     });
   }
 
-  // вызов генерации кнопок
-  processInfoBlocks();
-
   document.addEventListener("click", (e) => {
-    // кнопка сноска
     const btn = e.target.closest(".compare__info-btn");
     if (btn) return open(btn.previousElementSibling);
 
-    // а это если контент сноски в аттрибуте
     const self = e.target.closest(".snoska-trigger");
     if (self) return open(self);
 
-    // сноской становится предидущий элемент
     const prev = e.target.closest(".snoska-trigger-prev");
     if (prev) return open(prev.nextElementSibling);
+
+    if (sheetStack.length && !isClosing) {
+      const top = sheetStack[sheetStack.length - 1];
+      if (e.target === top.backdrop) close();
+    }
   });
 
-  // открытие сноски
   function open(infoBlock) {
-    const base = document.querySelector(".footnote"); // изначальная сноска
-    const layer = base.cloneNode(true); // клон сноски, чтобы можно было кидать их в стек
+    const base = document.querySelector(".footnote");
+    const layer = base.cloneNode(true);
     document.body.appendChild(layer);
 
     const backdrop = layer.querySelector(".footnote__backdrop");
     const quest = layer.querySelector(".footnote__quest");
     const header = layer.querySelector(".footnote__header-title");
     const content = layer.querySelector(".footnote__content");
-    const scroller = layer.querySelector(".footnote__cont"); // это контент, который скролится
-    const closeBtn = layer.querySelector(".footnote__close-btn"); // крестик для закрытия
-
+    const scroller = layer.querySelector(".footnote__cont");
+    const closeBtn = layer.querySelector(".footnote__close-btn");
 
     const index = sheetStack.length;
 
-    // рассчет z-индексов
     backdrop.style.zIndex = BASE_Z + index * 2;
     quest.style.zIndex = BASE_Z + index * 2 + 1;
 
-    // блокировка кликов по хэдеру сайта
-    const siteHeader = document.querySelector(".header");
-    if (siteHeader) siteHeader.style.pointerEvents = "none";
-
-    // изменение стилей при открытии
-    if (index > 0) {
-      const prev = sheetStack[index - 1];
-      prev.layer.style.pointerEvents = "none";
-      prev.backdrop.style.setProperty("--backdrop-opacity", "1");
-      prev.backdrop.style.pointerEvents = "none";
-    }
-
-    // генерация заголовка
     const caption = infoBlock.dataset.caption?.trim() || "";
-    if (caption) {
-      header.style.display = "";
-      header.textContent = caption;
-    } else {
-      header.style.display = "none";
-    }
+    header.style.display = caption ? "" : "none";
+    header.textContent = caption;
 
     content.innerHTML = "";
     const clone = infoBlock.cloneNode(true);
+
     Array.from(clone.attributes).forEach((attr) => {
       if (!attr.name.startsWith("data-")) clone.removeAttribute(attr.name);
     });
+
     clone.childNodes.forEach((n) => {
       if (n.nodeType === 1 || n.nodeType === 3) {
-        // 1 - element, 3 - text
         content.appendChild(n.cloneNode(true));
       }
     });
 
-    scroller.scrollTop = 0; // контент наверху
+    scroller.scrollTop = 0;
 
-    sheetStack.push({ layer, backdrop, quest, scroller }); // один слой в стэк
+    sheetStack.push({ layer, backdrop, quest, scroller });
 
     layer.style.pointerEvents = "auto";
     layer.style.opacity = "1";
 
+    document.body.classList.add("no-scroll");
+
     requestAnimationFrame(() => {
-      backdrop.style.setProperty("--backdrop-opacity", "1");
-      backdrop.style.pointerEvents = "auto";
+      requestAnimationFrame(() => {
+        const realHeight = quest.scrollHeight;
+        const maxHeight = window.innerHeight * 0.95;
+        const finalHeight = Math.min(realHeight, maxHeight);
 
-      quest.style.setProperty("--sheet-pos", "0px");
+        quest.style.setProperty("--snoska-height", finalHeight + "px");
 
-      attachDrag(layer, quest, backdrop, scroller); // обработчик движений
+        backdrop.style.setProperty("--backdrop-opacity", "1");
+        backdrop.style.pointerEvents = "auto";
+        quest.style.setProperty("--sheet-pos", "0px");
+
+        attachDrag(layer, quest, backdrop, scroller, finalHeight);
+      });
     });
 
-    document.body.classList.add(CLS.noScroll);
-    closeBtn.addEventListener("click", close) // закрытие по клику на крестик
+    closeBtn.addEventListener("click", close);
   }
 
-  // закрытие сноски
   function close() {
-    if (sheetStack.length === 0) return;
+    if (!sheetStack.length) return;
     if (isClosing) return;
+
     isClosing = true;
 
-    const { layer, backdrop: topBack, quest } = sheetStack.pop(); // деструктуризация
+    const { layer, backdrop: topBack, quest } = sheetStack.pop();
     const prev = sheetStack[sheetStack.length - 1];
 
-    // стили
     topBack.style.transition = "opacity .25s ease";
     quest.style.transition = "transform .25s ease";
 
     topBack.style.setProperty("--backdrop-opacity", "0");
-    topBack.style.pointerEvents = "none";
     quest.style.setProperty("--sheet-pos", "100%");
 
     quest.addEventListener(
@@ -146,34 +129,17 @@ export function toggleSnoska() {
       () => {
         layer.remove();
 
-        // возврат стилей хэдера
-        const siteHeader = document.querySelector(".header");
-        if (sheetStack.length === 0 && siteHeader) {
-          siteHeader.style.pointerEvents = "auto";
+        if (!prev) {
+          document.body.classList.remove("no-scroll");
         }
 
-        if (prev) {
-          prev.layer.style.pointerEvents = "auto";
-          prev.backdrop.style.pointerEvents = "auto";
-        } else document.body.classList.remove(CLS.noScroll);
-
-        rebuildZ();
         isClosing = false;
       },
       { once: true }
     );
   }
 
-  // пересчет z-индекса
-  function rebuildZ() {
-    sheetStack.forEach((item, i) => {
-      item.backdrop.style.zIndex = BASE_Z + i * 2;
-      item.quest.style.zIndex = BASE_Z + i * 2 + 1;
-    });
-  }
-
-  // обработка движений и кликов
-  function attachDrag(layer, quest, backdrop, scroller) {
+  function attachDrag(layer, quest, backdrop, scroller, sheetHeight) {
     const handle = layer.querySelector(".footnote__line-wrapper");
 
     let startY = 0;
@@ -181,76 +147,83 @@ export function toggleSnoska() {
     let lastY = 0;
     let lastTime = 0;
     let velocity = 0;
-
     let gesture = "none";
-    let canDragFromContent = false;
-
-    // свайп который управляет шторкой
     let activeId = null;
+
+    function lockScroll() {
+      scroller.style.overflow = "hidden";
+      scroller.style.touchAction = "none";
+    }
+
+    function unlockScroll() {
+      scroller.style.overflow = "auto";
+      scroller.style.touchAction = "pan-y";
+    }
+
+    // Лок страницы
+    function lockPage() {
+      document.documentElement.style.overscrollBehavior = "none";
+      document.body.style.overscrollBehavior = "none";
+    }
+
+    function unlockPage() {
+      document.documentElement.style.overscrollBehavior = "";
+      document.body.style.overscrollBehavior = "";
+    }
 
     function onStart(e) {
       if (isClosing) return;
-
-      // если уже есть движение
       if (activeId !== null) return;
 
-      const touch = e.changedTouches[0]; // координаты первого касания сноски
-      console.log(touch);
-      
-      activeId = touch.identifier;
+      const t = e.changedTouches[0];
+      activeId = t.identifier;
 
-      startY = touch.clientY;
-      lastY = startY;
-      lastTime = performance.now(); //тайминг начала события в миллисекундах
-      console.log(lastTime)
+      startY = lastY = t.clientY;
+      lastTime = performance.now();
       deltaY = 0;
-      velocity = 0; // скорость свайпа
+      velocity = 0;
 
-      gesture = "undecided"; //тип события
-      canDragFromContent = scroller.scrollTop === 0; //долисталось ли до верха сноски
+      gesture = "undecided";
 
       quest.style.transition = "none";
       backdrop.style.transition = "none";
 
-      scroller.style.overflowY = "auto";
-      scroller.style.overscrollBehavior = "contain";
+      unlockScroll();
+      lockPage();
     }
 
     function onMove(e) {
       if (isClosing) return;
       if (activeId === null) return;
 
-      // берём конкретно действие которое начало событие
-      const touch = Array.from(e.touches).find(
-        (t) => t.identifier === activeId
-      );
-
+      const touch = [...e.touches].find(t => t.identifier === activeId);
       if (!touch) return;
 
-      const currentY = touch.clientY;
-      const currentTime = performance.now();
+      const now = performance.now();
+      const y = touch.clientY;
 
-      deltaY = currentY - startY;
+      deltaY = y - startY;
 
       if (deltaY < 0) {
-        gesture = gesture === "undecided" ? "scroll" : gesture;
-        return;
+        if (gesture === "drag") {
+          deltaY = 0;
+        } else {
+          gesture = "scroll";
+          return;
+        }
       }
 
-      velocity = (currentY - lastY) / (currentTime - lastTime);
-      lastY = currentY;
-      lastTime = currentTime;
+      velocity = (y - lastY) / (now - lastTime);
+      lastY = y;
+      lastTime = now;
 
       const isHandle = !!e.target.closest(".footnote__line-wrapper");
-      const pullingDown = deltaY > 5; //свайп вниз?
-
-      canDragFromContent = scroller.scrollTop === 0;
+      const atTop = scroller.scrollTop <= 0;
 
       if (gesture === "undecided") {
-        if (isHandle || (canDragFromContent && pullingDown)) {
+        if (isHandle || (atTop && deltaY > 5)) {
           gesture = "drag";
-          scroller.style.overflowY = "hidden";
-          scroller.style.overscrollBehavior = "none";
+          lockScroll();
         } else {
           gesture = "scroll";
           return;
@@ -259,60 +232,46 @@ export function toggleSnoska() {
 
       if (gesture !== "drag") return;
 
-      if (e.cancelable) e.preventDefault(); // если событие можно отменить
+      if (e.cancelable) e.preventDefault();
 
-      quest.style.setProperty("--sheet-pos", deltaY + "px");
-      backdrop.style.setProperty(
-        "--backdrop-opacity",
-        1 - deltaY / quest.offsetHeight
-      );
+      const safeY = Math.max(0, deltaY);
+
+      quest.style.setProperty("--sheet-pos", safeY + "px");
+
+      const opacity = 1 - safeY / sheetHeight;
+      backdrop.style.setProperty("--backdrop-opacity", Math.max(0, opacity));
     }
+
 
     function onEnd(e) {
       if (isClosing) return;
-      if (activeId === null) return; // если это не первое событие
+      if (activeId === null) return;
 
-      // проверка, что именно первое событие пропадает
-      const activeFingerEnded = Array.from(e.changedTouches).some(
-        (t) => t.identifier === activeId
-      );
+      const ended = [...e.changedTouches].some(t => t.identifier === activeId);
+      if (!ended) return;
 
-      // если не первое событие
-      if (!activeFingerEnded) {
-        return;
-      }
-
-      // вот тут уже ghjikj gthdjt cj,snbt
       activeId = null;
 
-      scroller.style.overflowY = "auto";
-      scroller.style.overscrollBehavior = "contain";
+      unlockScroll();
+      unlockPage();
 
       if (gesture !== "drag") {
         gesture = "none";
-        deltaY = 0;
-        velocity = 0;
         return;
       }
 
-      const h = quest.offsetHeight;
       const projected = deltaY + velocity * 120;
 
-      // если сноска прикрыта наполовину своей высоты
-      if (projected > h / 2) {
+      if (projected > sheetHeight * 0.5) {
         close();
       } else {
         quest.style.transition = "transform .25s ease";
         backdrop.style.transition = "opacity .25s ease";
-
         quest.style.setProperty("--sheet-pos", "0px");
         backdrop.style.setProperty("--backdrop-opacity", "1");
-        backdrop.style.pointerEvents = "auto";
       }
 
       gesture = "none";
-      deltaY = 0;
-      velocity = 0;
     }
 
     handle.addEventListener("touchstart", onStart);
@@ -323,13 +282,4 @@ export function toggleSnoska() {
     scroller.addEventListener("touchmove", onMove, { passive: false });
     scroller.addEventListener("touchend", onEnd);
   }
-
-
-
-  // клик в бэкдроп
-  document.addEventListener("click", (e) => {
-    if (sheetStack.length === 0 || isClosing) return;
-    const top = sheetStack[sheetStack.length - 1];
-    if (e.target === top.backdrop) close();
-  });
 }
