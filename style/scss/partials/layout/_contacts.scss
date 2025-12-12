@@ -10,7 +10,6 @@
   background-color: $second-text;
   text-align: center;
   overflow: hidden;
-  max-height: calc(var(--snoska-height) - 32px);
 
   &>div {
     display: flex;
@@ -32,11 +31,15 @@
   }
 
   &__text {
+    display: inline-block;
     margin-top: 10px;
     margin-bottom: 8px;
+    width: 100%;
   }
 
   &__subtext {
+    width: 100%;
+    display: inline-block;
     margin: 4px 0px;
     font-size: 13px;
     color: #212121d7;
@@ -172,7 +175,6 @@
   align-items: end;
   justify-content: flex-start;
   max-height: fit-content;
-  gap: 15px;
 }
 
 .footnote__cont:has( .contacts) {

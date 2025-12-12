@@ -53,13 +53,11 @@ export function toggleSnoska() {
   });
 
   function createLayer() {
-    // ✅ если есть template — берём из него
     if (footnoteTemplate?.content) {
       const el = footnoteTemplate.content.firstElementChild?.cloneNode(true);
       if (el) return el;
     }
 
-    // 🔁 fallback на старый вариант (если template не найден/пустой)
     const base = document.querySelector(".footnote");
     if (!base) return null;
     return base.cloneNode(true);
@@ -78,7 +76,6 @@ export function toggleSnoska() {
     const scroller = layer.querySelector(".footnote__cont");
     const closeBtn = layer.querySelector(".footnote__close-btn");
 
-    // если вдруг в template сломалась структура — аккуратно выходим
     if (!backdrop || !quest || !header || !content || !scroller || !closeBtn) {
       layer.remove();
       return;
@@ -139,7 +136,6 @@ export function toggleSnoska() {
     isClosing = true;
 
     const { layer, backdrop: topBack, quest } = sheetStack.pop();
-    const prev = sheetStack[sheetStack.length - 1];
 
     topBack.style.transition = "opacity .25s ease";
     quest.style.transition = "transform .25s ease";
@@ -169,6 +165,26 @@ export function toggleSnoska() {
     let gesture = "none";
     let activeId = null;
 
+    function lockScroll() {
+      scroller.style.overflow = "hidden";
+      scroller.style.touchAction = "none";
+    }
+
+    function unlockScroll() {
+      scroller.style.overflow = "auto";
+      scroller.style.touchAction = "pan-y";
+    }
+
+    function lockPage() {
+      document.documentElement.style.overscrollBehavior = "none";
+      document.body.style.overscrollBehavior = "none";
+    }
+
+    function unlockPage() {
+      document.documentElement.style.overscrollBehavior = "";
+      document.body.style.overscrollBehavior = "";
+    }
+
     function onStart(e) {
       if (isClosing) return;
       if (activeId !== null) return;
@@ -185,6 +201,9 @@ export function toggleSnoska() {
 
       quest.style.transition = "none";
       backdrop.style.transition = "none";
+
+      unlockScroll();
+      lockPage();
     }
 
     function onMove(e) {
@@ -218,6 +237,7 @@ export function toggleSnoska() {
       if (gesture === "undecided") {
         if (isHandle || (atTop && deltaY > 5)) {
           gesture = "drag";
+          lockScroll();
         } else {
           gesture = "scroll";
           return;
@@ -244,6 +264,9 @@ export function toggleSnoska() {
       if (!ended) return;
 
       activeId = null;
+
+      unlockScroll();
+      unlockPage();
 
       if (gesture !== "drag") {
         gesture = "none";

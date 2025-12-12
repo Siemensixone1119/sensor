@@ -866,7 +866,6 @@ main {
   background-color: #fefefe;
   text-align: center;
   overflow: hidden;
-  max-height: calc(var(--snoska-height) - 32px);
 }
 .contacts > div {
   display: flex;
@@ -885,10 +884,14 @@ main {
   margin-bottom: 10px;
 }
 .contacts__text {
+  display: inline-block;
   margin-top: 10px;
   margin-bottom: 8px;
+  width: 100%;
 }
 .contacts__subtext {
+  width: 100%;
+  display: inline-block;
   margin: 4px 0px;
   font-size: 13px;
   color: rgba(33, 33, 33, 0.8431372549);
@@ -999,7 +1002,6 @@ main {
   justify-content: flex-start;
   max-height: -moz-fit-content;
   max-height: fit-content;
-  gap: 15px;
 }
 
 .footnote__cont:has(.contacts) {
