@@ -128,14 +128,6 @@ h6 {
   font-size: 14px;
 }
 
-body.no-scroll {
-  height: 100%;
-  overflow: hidden !important;
-  width: 100%;
-  overscroll-behavior: none !important;
-  touch-action: none;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -877,7 +869,6 @@ main {
   max-height: calc(var(--snoska-height) - 32px);
 }
 .contacts > div {
-  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

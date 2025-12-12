@@ -86,3 +86,11 @@
 *[data-info] {
   display: none !important;
 }
+
+html:has(.footnote) {
+  height: 100%;
+  overflow: hidden !important;
+  width: 100%;
+  overscroll-behavior: none !important;
+  touch-action: none;
+}

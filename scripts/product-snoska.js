@@ -3,6 +3,11 @@ export function toggleSnoska() {
   const sheetStack = [];
   let isClosing = false;
 
+  const footnoteTemplate =
+    document.querySelector("template[data-template-footnote]") ||
+    document.querySelector("template[data-footnote-template]") ||
+    null;
+
   processInfoBlocks();
 
   function processInfoBlocks(root = document) {
@@ -47,9 +52,23 @@ export function toggleSnoska() {
     }
   });
 
-  function open(infoBlock) {
+  function createLayer() {
+    // ✅ если есть template — берём из него
+    if (footnoteTemplate?.content) {
+      const el = footnoteTemplate.content.firstElementChild?.cloneNode(true);
+      if (el) return el;
+    }
+
+    // 🔁 fallback на старый вариант (если template не найден/пустой)
     const base = document.querySelector(".footnote");
-    const layer = base.cloneNode(true);
+    if (!base) return null;
+    return base.cloneNode(true);
+  }
+
+  function open(infoBlock) {
+    const layer = createLayer();
+    if (!layer) return;
+
     document.body.appendChild(layer);
 
     const backdrop = layer.querySelector(".footnote__backdrop");
@@ -58,6 +77,12 @@ export function toggleSnoska() {
     const content = layer.querySelector(".footnote__content");
     const scroller = layer.querySelector(".footnote__cont");
     const closeBtn = layer.querySelector(".footnote__close-btn");
+
+    // если вдруг в template сломалась структура — аккуратно выходим
+    if (!backdrop || !quest || !header || !content || !scroller || !closeBtn) {
+      layer.remove();
+      return;
+    }
 
     const index = sheetStack.length;
 
@@ -87,8 +112,6 @@ export function toggleSnoska() {
 
     layer.style.pointerEvents = "auto";
     layer.style.opacity = "1";
-
-    document.body.classList.add("no-scroll");
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -129,10 +152,6 @@ export function toggleSnoska() {
       () => {
         layer.remove();
 
-        if (!prev) {
-          document.body.classList.remove("no-scroll");
-        }
-
         isClosing = false;
       },
       { once: true }
@@ -150,27 +169,6 @@ export function toggleSnoska() {
     let gesture = "none";
     let activeId = null;
 
-    function lockScroll() {
-      scroller.style.overflow = "hidden";
-      scroller.style.touchAction = "none";
-    }
-
-    function unlockScroll() {
-      scroller.style.overflow = "auto";
-      scroller.style.touchAction = "pan-y";
-    }
-
-    // Лок страницы
-    function lockPage() {
-      document.documentElement.style.overscrollBehavior = "none";
-      document.body.style.overscrollBehavior = "none";
-    }
-
-    function unlockPage() {
-      document.documentElement.style.overscrollBehavior = "";
-      document.body.style.overscrollBehavior = "";
-    }
-
     function onStart(e) {
       if (isClosing) return;
       if (activeId !== null) return;
@@ -187,16 +185,13 @@ export function toggleSnoska() {
 
       quest.style.transition = "none";
       backdrop.style.transition = "none";
-
-      unlockScroll();
-      lockPage();
     }
 
     function onMove(e) {
       if (isClosing) return;
       if (activeId === null) return;
 
-      const touch = [...e.touches].find(t => t.identifier === activeId);
+      const touch = [...e.touches].find((t) => t.identifier === activeId);
       if (!touch) return;
 
       const now = performance.now();
@@ -223,7 +218,6 @@ export function toggleSnoska() {
       if (gesture === "undecided") {
         if (isHandle || (atTop && deltaY > 5)) {
           gesture = "drag";
-          lockScroll();
         } else {
           gesture = "scroll";
           return;
@@ -242,18 +236,14 @@ export function toggleSnoska() {
       backdrop.style.setProperty("--backdrop-opacity", Math.max(0, opacity));
     }
 
-
     function onEnd(e) {
       if (isClosing) return;
       if (activeId === null) return;
 
-      const ended = [...e.changedTouches].some(t => t.identifier === activeId);
+      const ended = [...e.changedTouches].some((t) => t.identifier === activeId);
       if (!ended) return;
 
       activeId = null;
-
-      unlockScroll();
-      unlockPage();
 
       if (gesture !== "drag") {
         gesture = "none";
@@ -274,9 +264,11 @@ export function toggleSnoska() {
       gesture = "none";
     }
 
-    handle.addEventListener("touchstart", onStart);
-    handle.addEventListener("touchmove", onMove, { passive: false });
-    handle.addEventListener("touchend", onEnd);
+    if (handle) {
+      handle.addEventListener("touchstart", onStart);
+      handle.addEventListener("touchmove", onMove, { passive: false });
+      handle.addEventListener("touchend", onEnd);
+    }
 
     scroller.addEventListener("touchstart", onStart);
     scroller.addEventListener("touchmove", onMove, { passive: false });

@@ -17,7 +17,6 @@ export function initContactsPanel() {
   function open() {
     if (contacts.classList.contains(CLS.visible)) return;
     contacts.classList.add(CLS.visible);
-    document.body.classList.add(CLS.noScroll);
   }
 
   openEl.addEventListener("click", open);

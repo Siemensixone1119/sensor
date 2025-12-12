@@ -40,9 +40,7 @@ export function initHeaderAutoHide() {
       lastScrollTop = 0;
       return;
     }
-
-    // if (Math.abs(delta) < 0.5) delta = 0;
-
+    
     if (delta > 0) {
       offset = Math.min(offset + delta, headerHeight);
     } else if (delta < 0) {

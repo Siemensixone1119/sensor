@@ -128,14 +128,6 @@ h6 {
   font-size: 14px;
 }
 
-body.no-scroll {
-  height: 100%;
-  overflow: hidden !important;
-  width: 100%;
-  overscroll-behavior: none !important;
-  touch-action: none;
-}
-
 .product svg {
   min-width: 18px;
   min-height: 18px;
@@ -686,6 +678,14 @@ h2:has(+ div.compare) {
 
 *[data-info] {
   display: none !important;
+}
+
+html:has(.footnote) {
+  height: 100%;
+  overflow: hidden !important;
+  width: 100%;
+  overscroll-behavior: none !important;
+  touch-action: none;
 }
 
 .files-list {
