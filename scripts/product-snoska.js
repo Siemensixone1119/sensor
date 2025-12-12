@@ -8,6 +8,45 @@ export function toggleSnoska() {
     document.querySelector("template[data-footnote-template]") ||
     null;
 
+  let dragActive = false;
+  let activeQuestEl = null;
+
+  document.addEventListener(
+    "touchstart",
+    (e) => {
+      if (!dragActive || !activeQuestEl) return;
+      if (!e.target.closest(".footnote__quest")) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    { capture: true, passive: false }
+  );
+
+  document.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!dragActive || !activeQuestEl) return;
+      if (!e.target.closest(".footnote__quest")) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    { capture: true, passive: false }
+  );
+
+  document.addEventListener(
+    "touchend",
+    (e) => {
+      if (!dragActive || !activeQuestEl) return;
+      if (!e.target.closest(".footnote__quest")) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    { capture: true, passive: false }
+  );
+
   processInfoBlocks();
 
   function processInfoBlocks(root = document) {
@@ -57,7 +96,6 @@ export function toggleSnoska() {
       const el = footnoteTemplate.content.firstElementChild?.cloneNode(true);
       if (el) return el;
     }
-
     const base = document.querySelector(".footnote");
     if (!base) return null;
     return base.cloneNode(true);
@@ -98,9 +136,7 @@ export function toggleSnoska() {
     });
 
     clone.childNodes.forEach((n) => {
-      if (n.nodeType === 1 || n.nodeType === 3) {
-        content.appendChild(n.cloneNode(true));
-      }
+      if (n.nodeType === 1 || n.nodeType === 3) content.appendChild(n.cloneNode(true));
     });
 
     scroller.scrollTop = 0;
@@ -117,7 +153,6 @@ export function toggleSnoska() {
         const finalHeight = Math.min(realHeight, maxHeight);
 
         quest.style.setProperty("--snoska-height", finalHeight + "px");
-
         backdrop.style.setProperty("--backdrop-opacity", "1");
         backdrop.style.pointerEvents = "auto";
         quest.style.setProperty("--sheet-pos", "0px");
@@ -130,24 +165,21 @@ export function toggleSnoska() {
   }
 
   function close() {
-    if (!sheetStack.length) return;
-    if (isClosing) return;
-
+    if (!sheetStack.length || isClosing) return;
     isClosing = true;
 
-    const { layer, backdrop: topBack, quest } = sheetStack.pop();
+    const { layer, backdrop, quest } = sheetStack.pop();
 
-    topBack.style.transition = "opacity .25s ease";
+    backdrop.style.transition = "opacity .25s ease";
     quest.style.transition = "transform .25s ease";
 
-    topBack.style.setProperty("--backdrop-opacity", "0");
+    backdrop.style.setProperty("--backdrop-opacity", "0");
     quest.style.setProperty("--sheet-pos", "100%");
 
     quest.addEventListener(
       "transitionend",
       () => {
         layer.remove();
-
         isClosing = false;
       },
       { once: true }
@@ -162,8 +194,12 @@ export function toggleSnoska() {
     let lastY = 0;
     let lastTime = 0;
     let velocity = 0;
-    let gesture = "none";
+
+    let mode = "none"; // "scroll" | "drag"
     let activeId = null;
+
+    let atTopAtStart = false;
+    let startedOnHandle = false;
 
     function lockScroll() {
       scroller.style.overflow = "hidden";
@@ -177,17 +213,34 @@ export function toggleSnoska() {
 
     function lockPage() {
       document.documentElement.style.overscrollBehavior = "none";
-      document.body.style.overscrollBehavior = "none";
     }
 
     function unlockPage() {
       document.documentElement.style.overscrollBehavior = "";
-      document.body.style.overscrollBehavior = "";
+    }
+
+    function snapBack() {
+      quest.style.transition = "transform .25s ease";
+      backdrop.style.transition = "opacity .25s ease";
+      quest.style.setProperty("--sheet-pos", "0px");
+      backdrop.style.setProperty("--backdrop-opacity", "1");
+    }
+
+    function cancelAll() {
+      if (activeId === null) return;
+      activeId = null;
+      mode = "none";
+
+      dragActive = false;
+      activeQuestEl = null;
+
+      unlockScroll();
+      unlockPage();
+      snapBack();
     }
 
     function onStart(e) {
-      if (isClosing) return;
-      if (activeId !== null) return;
+      if (isClosing || activeId !== null) return;
 
       const t = e.changedTouches[0];
       activeId = t.identifier;
@@ -197,18 +250,29 @@ export function toggleSnoska() {
       deltaY = 0;
       velocity = 0;
 
-      gesture = "undecided";
+      startedOnHandle = !!e.target.closest(".footnote__line-wrapper");
+      atTopAtStart = scroller.scrollTop <= 0;
+
+      mode = startedOnHandle ? "drag" : "scroll";
 
       quest.style.transition = "none";
       backdrop.style.transition = "none";
 
-      unlockScroll();
       lockPage();
+
+      if (mode === "drag") {
+        lockScroll();
+        dragActive = true;
+        activeQuestEl = quest;
+      } else {
+        unlockScroll();
+        dragActive = false;
+        activeQuestEl = null;
+      }
     }
 
     function onMove(e) {
-      if (isClosing) return;
-      if (activeId === null) return;
+      if (isClosing || activeId === null) return;
 
       const touch = [...e.touches].find((t) => t.identifier === activeId);
       if (!touch) return;
@@ -217,84 +281,87 @@ export function toggleSnoska() {
       const y = touch.clientY;
 
       deltaY = y - startY;
-
-      if (deltaY < 0) {
-        if (gesture === "drag") {
-          deltaY = 0;
-        } else {
-          gesture = "scroll";
-          return;
-        }
-      }
-
       velocity = (y - lastY) / (now - lastTime);
       lastY = y;
       lastTime = now;
 
-      const isHandle = !!e.target.closest(".footnote__line-wrapper");
-      const atTop = scroller.scrollTop <= 0;
+      if (mode === "scroll") {
+        if (!startedOnHandle && atTopAtStart && deltaY > 8) {
+          mode = "drag";
+          startY = touch.clientY;
+          deltaY = 0;
+          lastY = touch.clientY;
+          velocity = 0;
 
-      if (gesture === "undecided") {
-        if (isHandle || (atTop && deltaY > 5)) {
-          gesture = "drag";
           lockScroll();
+          dragActive = true;
+          activeQuestEl = quest;
         } else {
-          gesture = "scroll";
           return;
         }
       }
 
-      if (gesture !== "drag") return;
+      if (mode !== "drag") return;
+
+      if (deltaY < 0) deltaY = 0;
 
       if (e.cancelable) e.preventDefault();
 
       const safeY = Math.max(0, deltaY);
-
       quest.style.setProperty("--sheet-pos", safeY + "px");
-
-      const opacity = 1 - safeY / sheetHeight;
-      backdrop.style.setProperty("--backdrop-opacity", Math.max(0, opacity));
+      backdrop.style.setProperty("--backdrop-opacity", Math.max(0, 1 - safeY / sheetHeight));
     }
 
     function onEnd(e) {
-      if (isClosing) return;
-      if (activeId === null) return;
+      if (isClosing || activeId === null) return;
 
       const ended = [...e.changedTouches].some((t) => t.identifier === activeId);
       if (!ended) return;
 
       activeId = null;
 
+      dragActive = false;
+      activeQuestEl = null;
+
       unlockScroll();
       unlockPage();
 
-      if (gesture !== "drag") {
-        gesture = "none";
+      if (mode !== "drag") {
+        mode = "none";
         return;
       }
 
       const projected = deltaY + velocity * 120;
 
-      if (projected > sheetHeight * 0.5) {
-        close();
-      } else {
-        quest.style.transition = "transform .25s ease";
-        backdrop.style.transition = "opacity .25s ease";
-        quest.style.setProperty("--sheet-pos", "0px");
-        backdrop.style.setProperty("--backdrop-opacity", "1");
-      }
+      if (projected > sheetHeight * 0.5) close();
+      else snapBack();
 
-      gesture = "none";
+      mode = "none";
     }
+
+    const optsMove = { passive: false };
 
     if (handle) {
-      handle.addEventListener("touchstart", onStart);
-      handle.addEventListener("touchmove", onMove, { passive: false });
-      handle.addEventListener("touchend", onEnd);
+      handle.addEventListener("touchstart", onStart, { passive: true });
+      handle.addEventListener("touchmove", onMove, optsMove);
+      handle.addEventListener("touchend", onEnd, { passive: true });
+      handle.addEventListener("touchcancel", cancelAll, { passive: true });
     }
 
-    scroller.addEventListener("touchstart", onStart);
-    scroller.addEventListener("touchmove", onMove, { passive: false });
-    scroller.addEventListener("touchend", onEnd);
+    scroller.addEventListener("touchstart", onStart, { passive: true });
+    scroller.addEventListener("touchmove", onMove, optsMove);
+    scroller.addEventListener("touchend", onEnd, { passive: true });
+    scroller.addEventListener("touchcancel", cancelAll, { passive: true });
+
+    window.addEventListener("blur", cancelAll, { passive: true });
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (document.hidden) cancelAll();
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", cancelAll, { passive: true });
+    window.addEventListener("orientationchange", cancelAll, { passive: true });
   }
 }
