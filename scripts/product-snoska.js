@@ -119,6 +119,7 @@ export function toggleSnoska() {
       return;
     }
 
+    
     const index = sheetStack.length;
 
     backdrop.style.zIndex = BASE_Z + index * 2;
@@ -156,7 +157,7 @@ export function toggleSnoska() {
         backdrop.style.setProperty("--backdrop-opacity", "1");
         backdrop.style.pointerEvents = "auto";
         quest.style.setProperty("--sheet-pos", "0px");
-
+        
         attachDrag(layer, quest, backdrop, scroller, finalHeight);
       });
     });
@@ -186,182 +187,183 @@ export function toggleSnoska() {
     );
   }
 
-  function attachDrag(layer, quest, backdrop, scroller, sheetHeight) {
-    const handle = layer.querySelector(".footnote__line-wrapper");
+function attachDrag(layer, quest, backdrop, scroller, sheetHeight) {
+  const handle = layer.querySelector(".footnote__line-wrapper");
 
-    let startY = 0;
-    let deltaY = 0;
-    let lastY = 0;
-    let lastTime = 0;
-    let velocity = 0;
+  let startX = 0;
+  let startY = 0;
+  let lastY = 0;
+  let lastTime = 0;
+  let velocity = 0;
 
-    let mode = "none"; // "scroll" | "drag"
-    let activeId = null;
+  let deltaY = 0;
+  let activeId = null;
+  let mode = "none";
+  let axis = null;
 
-    let atTopAtStart = false;
-    let startedOnHandle = false;
+  let atTopAtStart = false;
+  let startedOnHandle = false;
 
-    function lockScroll() {
-      scroller.style.overflow = "hidden";
-      scroller.style.touchAction = "none";
-    }
+  function lockScroll() {
+    scroller.style.overflow = "hidden";
+    scroller.style.touchAction = "none";
+  }
 
-    function unlockScroll() {
-      scroller.style.overflow = "auto";
-      scroller.style.touchAction = "pan-y";
-    }
+  function unlockScroll() {
+    scroller.style.overflow = "auto";
+    scroller.style.touchAction = "pan-y";
+  }
 
-    function lockPage() {
-      document.documentElement.style.overscrollBehavior = "none";
-    }
+  function lockPage() {
+    document.documentElement.style.overscrollBehavior = "none";
+  }
 
-    function unlockPage() {
-      document.documentElement.style.overscrollBehavior = "";
-    }
+  function unlockPage() {
+    document.documentElement.style.overscrollBehavior = "";
+  }
 
-    function snapBack() {
-      quest.style.transition = "transform .25s ease";
-      backdrop.style.transition = "opacity .25s ease";
-      quest.style.setProperty("--sheet-pos", "0px");
-      backdrop.style.setProperty("--backdrop-opacity", "1");
-    }
+  function snapBack() {
+    quest.style.transition = "transform .25s ease";
+    backdrop.style.transition = "opacity .25s ease";
+    quest.style.setProperty("--sheet-pos", "0px");
+    backdrop.style.setProperty("--backdrop-opacity", "1");
+  }
 
-    function cancelAll() {
-      if (activeId === null) return;
-      activeId = null;
-      mode = "none";
+  function cancelAll() {
+    if (activeId === null) return;
 
-      dragActive = false;
-      activeQuestEl = null;
+    activeId = null;
+    axis = null;
+    mode = "none";
 
-      unlockScroll();
-      unlockPage();
-      snapBack();
-    }
+    unlockScroll();
+    unlockPage();
+    snapBack();
+  }
 
-    function onStart(e) {
-      if (isClosing || activeId !== null) return;
+  function onStart(e) {
+    if (isClosing || activeId !== null) return;
 
-      const t = e.changedTouches[0];
-      activeId = t.identifier;
+    const t = e.changedTouches[0];
+    activeId = t.identifier;
 
-      startY = lastY = t.clientY;
-      lastTime = performance.now();
-      deltaY = 0;
-      velocity = 0;
+    startX = t.clientX;
+    startY = t.clientY;
+    lastY = startY;
+    lastTime = performance.now();
+    velocity = 0;
+    deltaY = 0;
 
-      startedOnHandle = !!e.target.closest(".footnote__line-wrapper");
-      atTopAtStart = scroller.scrollTop <= 0;
+    axis = null;
 
-      mode = startedOnHandle ? "drag" : "scroll";
+    startedOnHandle = !!e.target.closest(".footnote__line-wrapper");
+    atTopAtStart = scroller.scrollTop <= 0;
 
-      quest.style.transition = "none";
-      backdrop.style.transition = "none";
+    mode = startedOnHandle ? "drag" : "scroll";
 
-      lockPage();
+    quest.style.transition = "none";
+    backdrop.style.transition = "none";
 
-      if (mode === "drag") {
-        lockScroll();
-        dragActive = true;
-        activeQuestEl = quest;
+    lockPage();
+  }
+
+  function onMove(e) {
+    if (isClosing || activeId === null) return;
+
+    const touch = [...e.touches].find(t => t.identifier === activeId);
+    if (!touch) return;
+
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+
+    if (!axis) {
+      if (Math.abs(dx) > Math.abs(dy)) {
+        axis = "x";
+      } else if (Math.abs(dy) > Math.abs(dx)) {
+        axis = "y";
       } else {
-        unlockScroll();
-        dragActive = false;
-        activeQuestEl = null;
-      }
-    }
-
-    function onMove(e) {
-      if (isClosing || activeId === null) return;
-
-      const touch = [...e.touches].find((t) => t.identifier === activeId);
-      if (!touch) return;
-
-      const now = performance.now();
-      const y = touch.clientY;
-
-      deltaY = y - startY;
-      velocity = (y - lastY) / (now - lastTime);
-      lastY = y;
-      lastTime = now;
-
-      if (mode === "scroll") {
-        if (!startedOnHandle && atTopAtStart && deltaY > 8) {
-          mode = "drag";
-          startY = touch.clientY;
-          deltaY = 0;
-          lastY = touch.clientY;
-          velocity = 0;
-
-          lockScroll();
-          dragActive = true;
-          activeQuestEl = quest;
-        } else {
-          return;
-        }
-      }
-
-      if (mode !== "drag") return;
-
-      if (deltaY < 0) deltaY = 0;
-
-      if (e.cancelable) e.preventDefault();
-
-      const safeY = Math.max(0, deltaY);
-      quest.style.setProperty("--sheet-pos", safeY + "px");
-      backdrop.style.setProperty("--backdrop-opacity", Math.max(0, 1 - safeY / sheetHeight));
-    }
-
-    function onEnd(e) {
-      if (isClosing || activeId === null) return;
-
-      const ended = [...e.changedTouches].some((t) => t.identifier === activeId);
-      if (!ended) return;
-
-      activeId = null;
-
-      dragActive = false;
-      activeQuestEl = null;
-
-      unlockScroll();
-      unlockPage();
-
-      if (mode !== "drag") {
-        mode = "none";
         return;
       }
-
-      const projected = deltaY + velocity * 120;
-
-      if (projected > sheetHeight * 0.5) close();
-      else snapBack();
-
-      mode = "none";
     }
 
-    const optsMove = { passive: false };
-
-    if (handle) {
-      handle.addEventListener("touchstart", onStart, { passive: true });
-      handle.addEventListener("touchmove", onMove, optsMove);
-      handle.addEventListener("touchend", onEnd, { passive: true });
-      handle.addEventListener("touchcancel", cancelAll, { passive: true });
+    if (axis === "x") {
+      return;
     }
 
-    scroller.addEventListener("touchstart", onStart, { passive: true });
-    scroller.addEventListener("touchmove", onMove, optsMove);
-    scroller.addEventListener("touchend", onEnd, { passive: true });
-    scroller.addEventListener("touchcancel", cancelAll, { passive: true });
+    const now = performance.now();
+    velocity = (touch.clientY - lastY) / (now - lastTime);
+    lastY = touch.clientY;
+    lastTime = now;
 
-    window.addEventListener("blur", cancelAll, { passive: true });
-    document.addEventListener(
-      "visibilitychange",
-      () => {
-        if (document.hidden) cancelAll();
-      },
-      { passive: true }
+    deltaY = touch.clientY - startY;
+
+    if (mode === "scroll") {
+      if (!startedOnHandle && atTopAtStart && deltaY > 8) {
+        mode = "drag";
+        startY = touch.clientY;
+        deltaY = 0;
+        velocity = 0;
+        lockScroll();
+      } else {
+        return;
+      }
+    }
+
+    if (mode !== "drag") return;
+    if (deltaY < 0) deltaY = 0;
+
+    if (e.cancelable) e.preventDefault();
+
+    quest.style.setProperty("--sheet-pos", deltaY + "px");
+    backdrop.style.setProperty(
+      "--backdrop-opacity",
+      Math.max(0, 1 - deltaY / sheetHeight)
     );
-    window.addEventListener("resize", cancelAll, { passive: true });
-    window.addEventListener("orientationchange", cancelAll, { passive: true });
   }
+
+  function onEnd(e) {
+    if (isClosing || activeId === null) return;
+
+    const ended = [...e.changedTouches].some(t => t.identifier === activeId);
+    if (!ended) return;
+
+    activeId = null;
+    axis = null;
+
+    unlockScroll();
+    unlockPage();
+
+    if (mode !== "drag") {
+      mode = "none";
+      return;
+    }
+
+    const projected = deltaY + velocity * 120;
+
+    if (projected > sheetHeight * 0.5) close();
+    else snapBack();
+
+    mode = "none";
+  }
+
+  const optsMove = { passive: false };
+
+  if (handle) {
+    handle.addEventListener("touchstart", onStart, { passive: true });
+    handle.addEventListener("touchmove", onMove, optsMove);
+    handle.addEventListener("touchend", onEnd, { passive: true });
+    handle.addEventListener("touchcancel", cancelAll, { passive: true });
+  }
+
+  scroller.addEventListener("touchstart", onStart, { passive: true });
+  scroller.addEventListener("touchmove", onMove, optsMove);
+  scroller.addEventListener("touchend", onEnd, { passive: true });
+  scroller.addEventListener("touchcancel", cancelAll, { passive: true });
+
+  window.addEventListener("blur", cancelAll);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) cancelAll();
+  });
+}
+
 }

@@ -128,6 +128,10 @@ h6 {
   font-size: 14px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
 }
