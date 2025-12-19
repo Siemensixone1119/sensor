@@ -1395,4 +1395,87 @@ h1:has(> .clamped-text > .clamped-text__control:checked) span {
 .button__add-to-cart {
   background-color: #b30006;
   color: #fff;
+}
+
+.footnote {
+  opacity: 0;
+}
+.footnote__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  contain: paint;
+  opacity: var(--backdrop-opacity, 0);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  will-change: opacity;
+  overflow: hidden;
+}
+.footnote__quest {
+  will-change: transform;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  max-height: 95dvh;
+  height: auto;
+  touch-action: pan-y;
+  background: #fff;
+  border-radius: 25px 25px 0 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(var(--sheet-pos, 100%));
+  transition: transform 0.25s ease;
+}
+.footnote__line-wrapper {
+  width: 100%;
+  padding: 8px var(--page-gutter) 5px;
+  position: static;
+  top: 0;
+  background-color: #fff;
+  z-index: 1000;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.footnote__line {
+  width: 20vw;
+  background-color: #6c6c6c;
+  min-height: 4px;
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.footnote__cont {
+  padding: var(--page-gutter);
+  padding-top: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+.footnote__close-btn {
+  padding: 10px;
+  line-height: 0;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  z-index: 9999;
+}
+.footnote__close-icon {
+  width: 14px;
+  height: 14px;
+  fill: #212121;
+  line-height: 0;
+}
+
+*[data-info] {
+  display: none !important;
+}
+
+html:has(.footnote) {
+  height: 100%;
+  overflow: hidden !important;
+  width: 100%;
+  overscroll-behavior: none !important;
+  touch-action: none;
 }/*# sourceMappingURL=main.css.map */

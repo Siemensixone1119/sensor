@@ -4,9 +4,7 @@ import { initContactsPanel } from "./scripts/contacts-panel.js";
 import { initMessageButtonAutoHide } from "./scripts/message-button-autohide.js";
 import { mountMobileMenu } from "./scripts/toggleMenu.js";
 import { search } from "./scripts/search.js";
-import { slider } from "./scripts/product-slider.js";
 import { bgElement } from "./scripts/bcg-element.js";
-import { syncScroll } from "./scripts/syncScroll.js";
 import { toggleSnoska } from "./scripts/product-snoska.js";
 
 initHeaderAutoHide();
@@ -15,7 +13,5 @@ initMessageButtonAutoHide();
 initContactsPanel();
 mountMobileMenu();
 search();
-slider();
 bgElement();
-syncScroll();
 toggleSnoska();

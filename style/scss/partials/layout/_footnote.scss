@@ -1,4 +1,4 @@
-@use "../../base/variable" as *;
+@use "../base/variable" as *;
 
 .footnote {
   opacity: 0;
@@ -31,7 +31,7 @@
     border-radius: 25px 25px 0 0;
     display: flex;
     flex-direction: column;
-    min-height: 30%;
+    // min-height: 30%;
 
     transform: translateY(var(--sheet-pos, 100%));
     transition: transform .25s ease;
