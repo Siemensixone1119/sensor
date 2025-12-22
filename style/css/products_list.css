@@ -14,13 +14,18 @@
   position: relative;
   border: 1px solid #e6e6e6;
 }
-.product-card__item {
+.product-card__item-link {
   height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: var(--page-gutter);
+  z-index: 1;
+  inset: 0;
 }
 .product-card__title {
   line-height: 1;
   position: relative;
-  margin-top: 10px;
+  margin-top: 0;
   margin-bottom: 10px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -28,18 +33,14 @@
   overflow: hidden;
 }
 .product-card__title-category {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 2 * var(--page-gutter));
+  display: inline-block;
   padding: 10px 0;
-  text-align: center;
-  border-bottom: 1px solid #e6e6e6;
+  position: relative;
+  z-index: 2;
 }
 .product-card__title-category-text {
   font-size: 12px;
-  color: #808080;
+  color: #c6c6c6;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
@@ -100,20 +101,16 @@
   top: 90%;
   left: 0;
 }
-.product-card__pprf {
+.product-card__panel {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 12%;
+  top: 5px;
   right: calc(var(--page-gutter) - 5px);
+  gap: 5px;
+  z-index: 2;
 }
-.product-card__pprf svg {
-  height: 17px;
-  width: 24px;
-  line-height: 1;
-}
-.product-card__pprf-item {
-  padding: 2.5px 5px;
+.product-card__panel-item {
   width: -moz-min-content;
   width: min-content;
   background-color: #fff;
@@ -121,10 +118,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
 }
-.product-card__pprf-item--in-process svg {
+.product-card__panel-item svg {
+  height: 32px;
+  width: 32px;
+  line-height: 1;
+}
+.product-card__panel-item--in-process svg {
   opacity: 20%;
+}
+.product-card__lock {
+  width: 24px;
+  height: 24px;
+  padding: 16px;
+}
+.product-card__lock svg {
+  width: 16px;
+  height: 16px;
+  fill: #b30006;
+  left: 50%;
+  top: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
 }
 .product-card__colors {
   display: flex;
@@ -148,19 +163,6 @@
 }
 .product-card__color--blue {
   background-color: #0000FF;
-}
-.product-card__lock {
-  padding: 7px var(--page-gutter);
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-.product-card__lock svg {
-  width: 12px;
-  height: 12px;
-  fill: #b30006;
 }
 
 @media screen and (min-width: 1500px) {
@@ -201,10 +203,7 @@
   background-color: #0074CC;
 }
 
+.sticker--soon-in-stock,
 .sticker--sale {
-  background-color: #f44;
-}
-
-.sticker--soon-in-stock {
   background-color: #ee2b2b;
 }/*# sourceMappingURL=products_list.css.map */

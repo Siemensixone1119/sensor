@@ -17,14 +17,19 @@
   position: relative;
   border: 1px solid #e6e6e6;
 
-  &__item {
+  &__item-link {
     height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: var(--page-gutter);
+    z-index: 1;
+    inset: 0;
   }
 
   &__title {
     line-height: 1;
     position: relative;
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 10px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -33,19 +38,15 @@
   }
 
   &__title-category {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 2 * var(--page-gutter));
+    display: inline-block;
     padding: 10px 0;
-    text-align: center;
-    border-bottom: 1px solid #e6e6e6;
+    position: relative;
+    z-index: 2;
   }
 
   &__title-category-text {
     font-size: 12px;
-    color: #808080;
+    color: #c6c6c6;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
@@ -117,34 +118,50 @@
     left: 0;
   }
 
-  &__pprf {
+  &__panel {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 12%;
+    top: 5px;
     right: calc(var(--page-gutter) - 5px);
-
-    svg {
-      height: 17px;
-      width: 24px;
-      line-height: 1;
-    }
+    gap: 5px;
+    z-index: 2;
   }
 
-  &__pprf-item {
-    padding: 2.5px 5px;
+  &__panel-item {
     width: min-content;
     background-color: #fff;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
+
+    svg {
+      height: 32px;
+      width: 32px;
+      line-height: 1;
+    }
   }
 
-  &__pprf-item--in-process {
+  &__panel-item--in-process {
     svg {
       opacity: 20%;
+    }
+  }
+
+  &__lock {
+    width: 24px;
+    height: 24px;
+    padding: 16px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: $accent-color;
+      left: 50%;
+      top: 50%;
+      position: relative;
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -174,20 +191,6 @@
 
     &--blue {
       background-color: #0000FF;
-    }
-  }
-
-  &__lock {
-    padding: 7px var(--page-gutter);
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: fit-content;
-
-    svg {
-      width: 12px;
-      height: 12px;
-      fill: $accent-color;
     }
   }
 }
@@ -234,10 +237,7 @@
   background-color: #0074CC;
 }
 
+.sticker--soon-in-stock,
 .sticker--sale {
-  background-color: #f44;
-}
-
-.sticker--soon-in-stock {
   background-color: #ee2b2b;
 }
