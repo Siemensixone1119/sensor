@@ -8,7 +8,7 @@
   <link rel="preload" href="../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="../style/css/products_list.css" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="../style/css/product_page.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="shortcut icon" href="./assets/image/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="../index.js" defer></script>
 </head>
 
@@ -134,6 +134,11 @@
           d="M21.3509 18c-1.1798 0-2.1126-0.3384-2.7986-1.0153-0.6767-0.6769-1.0151-1.7131-1.0151-3.1087v-1.0027c0-1.2702 0.3384-2.2312 1.0151-2.883C19.2383 9.3301 20.1711 9 21.3509 9c0.567 0 1.0655 0.0669 1.4953 0.2006 0.4299 0.1337 0.7957 0.3259 1.0975 0.5766 0.3018 0.2507 0.5396 0.5557 0.7133 0.915 0.1738 0.351 0.2881 0.7479 0.343 1.1908h-1.9617c-0.0823-0.4262-0.2515-0.7563-0.5076-0.9902-0.2561-0.234-0.6494-0.351-1.1798-0.351-0.5762 0-1.0289 0.1796-1.3581 0.539-0.3293 0.351-0.4939 0.9484-0.4939 1.7925v1.0027c0 0.4847 0.0412 0.8942 0.1235 1.2285 0.0914 0.3259 0.2149 0.5891 0.3704 0.7897 0.1554 0.2005 0.3475 0.3467 0.5761 0.4387 0.2287 0.0835 0.4893 0.1253 0.782 0.1253 0.5396 0 0.9283-0.117 1.1661-0.351 0.2469-0.2423 0.4207-0.5933 0.5213-1.0529H25c-0.1189 0.936-0.4756 1.663-1.07 2.1811C23.3355 17.7451 22.4758 18 21.3509 18z" />
         <path d="M25 20H1v2h24z" />
         <path d="M25 5H1v2h24z" />
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 32 32">
+        <path
+          d="M10.667 9.333c0-2.941 2.392-5.333 5.333-5.333s5.333 2.392 5.333 5.333v4.001h-10.667v-4.001zM24 13.335v-4.001c0-4.412-3.588-8-8-8s-8 3.588-8 8v4.001h-2.667v15.999h21.333v-15.999h-2.667z">
+        </path>
       </symbol>
     </defs>
   </svg>
@@ -289,7 +294,7 @@
     </nav>
     <ul class="products-list layout">
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img1.jpg">
             <div class="product-card__stickers">
               <div class="sticker sticker--new">Новинка</div>
@@ -306,9 +311,9 @@
               производства.</span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Уровнемеры</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item">
             <svg>
@@ -330,7 +335,7 @@
         </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img2.jpg">
           </div>
           <div class="product-card__content">
@@ -339,9 +344,9 @@
             <span class="product-card__description">Радиоволновой. До 20 м. Интерфейсы СЕНС, RS-485.</span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Уровнемеры</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item">
             <svg>
@@ -361,9 +366,18 @@
           <span data-info data-trigger="prev">Устройство включено в Единый реестр российской радиоэлектронной
             продукции (ПП РФ 878)</span>
         </div>
+        <div class="product-card__lock">
+          <span>
+            <svg>
+              <use xlink:href="#icon-lock"></use>
+            </svg>
+          </span>
+          <span data-info data-trigger="prev">Этот продукт видно только в Сенсоре
+          </span>
+        </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img3.jpg">
             <div class="product-card__stickers">
               <div class="sticker sticker--in-stock">Уже в продаже</div>
@@ -377,9 +391,9 @@
               раздела двухфазной жидкости.</span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Уровнемеры</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item">
             <svg>
@@ -401,7 +415,7 @@
         </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img4.jpg">
             <div class="product-card__stickers">
               <div class="sticker sticker--sale">-5%</div>
@@ -422,9 +436,9 @@
               производства.</span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Газоанализаторы</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item">
             <svg>
@@ -446,7 +460,7 @@
         </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img5.jpg">
             <div class="product-card__stickers">
               <div class="product-card__colors">
@@ -467,9 +481,9 @@
               производства.</span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Светозвуковые (комбинированные)</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item">
             <svg>
@@ -491,7 +505,7 @@
         </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img6.jpg">
           </div>
           <div class="product-card__content">
@@ -515,7 +529,7 @@
         </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img7.jpg">
             <div class="product-card__stickers">
               <div class="sticker sticker--new">Новинка</div>
@@ -529,9 +543,9 @@
               паров нефтепродуктов.</span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Газоанализаторы</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item product-card__pprf-item--in-process">
             <svg>
@@ -543,7 +557,7 @@
         </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img8.png">
             <div class="product-card__stickers">
               <div class="sticker sticker--new">Новинка</div>
@@ -557,9 +571,9 @@
               нефтя­ного топлива (мазута) по ГОСТ 10585-2013 и т. п.</span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Клапаны электромагнитные двухпроходные</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item">
             <svg>
@@ -573,7 +587,7 @@
         </div>
       </li>
       <li class="product-card">
-        <a href="/">
+        <a href="/" class="product-card__item">
           <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img9.jpg">
           </div>
           <div class="product-card__content">
@@ -589,9 +603,9 @@
             </span>
           </div>
         </a>
-        <div class="product-card__title-category">
+        <a href="/" class="product-card__title-category">
           <span class="product-card__title-category-text">Газоанализаторы</span>
-        </div>
+        </a>
         <div class="product-card__pprf">
           <div class="product-card__pprf-item">
             <svg>
@@ -648,9 +662,9 @@
             </svg>
           </label>
           <ul class="tab__content">
-            <li><a href="/">Уровнемеры</a></li>
-            <li><a href="/">Газоанализаторы</a></li>
-            <li><a href="/">Адаптеры интерфейсов</a></li>
+            <li><a href="/" class="product-card__item">Уровнемеры</a></li>
+            <li><a href="/" class="product-card__item">Газоанализаторы</a></li>
+            <li><a href="/" class="product-card__item">Адаптеры интерфейсов</a></li>
           </ul>
         </li>
 
@@ -663,9 +677,9 @@
             </svg>
           </label>
           <ul class="tab__content">
-            <li><a href="/">Файлы для скачивания</a></li>
-            <li><a href="/">Обращения в сервисную службу</a></li>
-            <li><a href="/">Проверить статус обращения</a></li>
+            <li><a href="/" class="product-card__item">Файлы для скачивания</a></li>
+            <li><a href="/" class="product-card__item">Обращения в сервисную службу</a></li>
+            <li><a href="/" class="product-card__item">Проверить статус обращения</a></li>
           </ul>
         </li>
 
@@ -678,15 +692,15 @@
             </svg>
           </label>
           <ul class="tab__content">
-            <li><a href="/">НПП “СЕНСОР” сегодня</a></li>
-            <li><a href="/">Политика в области качества</a></li>
-            <li><a href="/">Социальная политика</a></li>
+            <li><a href="/" class="product-card__item">НПП “СЕНСОР” сегодня</a></li>
+            <li><a href="/" class="product-card__item">Политика в области качества</a></li>
+            <li><a href="/" class="product-card__item">Социальная политика</a></li>
           </ul>
         </li>
 
-        <li><a href="/">Контакты</a></li>
-        <li><a href="/">Каталоги продукции</a></li>
-        <li><a href="/">Анкета дилера</a></li>
+        <li><a href="/" class="product-card__item">Контакты</a></li>
+        <li><a href="/" class="product-card__item">Каталоги продукции</a></li>
+        <li><a href="/" class="product-card__item">Анкета дилера</a></li>
       </ul>
     </div>
 

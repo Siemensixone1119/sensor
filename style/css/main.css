@@ -421,7 +421,7 @@ input {
 .header__search--false {
   font-size: 14px;
   white-space: nowrap;
-  color: rgb(104, 103, 103);
+  color: #808080;
   text-overflow: ellipsis;
 }
 .header__button {
@@ -1293,7 +1293,7 @@ main {
 }
 .breadcrumbs .breadcrumbs__item > * {
   font-size: 14px;
-  color: #a4a4a4;
+  color: #808080;
   white-space: nowrap;
   margin: 0;
   padding: 0;
@@ -1301,7 +1301,7 @@ main {
 }
 .breadcrumbs .breadcrumbs__item:not(:first-child)::before {
   content: "";
-  border: solid #a4a4a4;
+  border: solid #808080;
   border-width: 0 1px 1px 0;
   display: inline-block;
   padding: 3px;
