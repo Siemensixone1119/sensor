@@ -14,4 +14,13 @@
     color: #808080;
     text-decoration: underline;
   }
+
+  &__info{
+    margin: 20px 0;
+  }
+
+  &__info-text{
+    color: #808080;
+    font-size: 12px;
+  }
 }

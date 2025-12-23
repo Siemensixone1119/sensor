@@ -134,6 +134,11 @@ h6 {
   display: none;
 }
 
+img,
+video {
+  max-width: 100%;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -219,4 +219,11 @@
   font-size: 14px;
   color: #808080;
   text-decoration: underline;
+}
+.products-list__info {
+  margin: 20px 0;
+}
+.products-list__info-text {
+  color: #808080;
+  font-size: 12px;
 }/*# sourceMappingURL=products_list.css.map */

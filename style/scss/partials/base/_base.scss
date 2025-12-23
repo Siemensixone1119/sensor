@@ -144,3 +144,8 @@ h6 {
 ::-webkit-scrollbar {
   display: none;
 }
+
+img,
+video{
+  max-width: 100%;
+}
