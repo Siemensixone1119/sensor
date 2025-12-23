@@ -205,4 +205,18 @@
 .sticker--soon-in-stock,
 .sticker--sale {
   background-color: #ee2b2b;
+}
+
+.products-list__title-wrap {
+  margin-bottom: 10px;
+}
+.products-list__title {
+  font-size: 30px;
+  margin: 0;
+  line-height: 1;
+}
+.products-list__more {
+  font-size: 14px;
+  color: #808080;
+  text-decoration: underline;
 }/*# sourceMappingURL=products_list.css.map */

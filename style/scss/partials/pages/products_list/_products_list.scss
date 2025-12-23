@@ -1,0 +1,17 @@
+.products-list {
+  &__title-wrap {
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-size: 30px;
+    margin: 0;
+    line-height: 1;
+  }
+
+  &__more{
+    font-size: 14px;
+    color: #808080;
+    text-decoration: underline;
+  }
+}

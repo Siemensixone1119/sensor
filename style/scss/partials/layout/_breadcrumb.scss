@@ -4,7 +4,7 @@
 
   .breadcrumbs__list {
     overflow-x: auto;
-    padding: 15px;
+    padding: 15px var(--page-gutter);
     list-style: none;
     margin: 0;
     white-space: nowrap;
