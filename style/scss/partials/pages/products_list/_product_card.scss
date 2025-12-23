@@ -55,7 +55,7 @@
 
   &__image {
     aspect-ratio: 1/1;
-    width: 100%;
+    width: 85%;
     max-height: 250px;
     background-repeat: no-repeat;
     background-size: contain;
@@ -81,8 +81,8 @@
     width: 0px;
     gap: 5px;
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 0%;
+    left: -9%;
   }
 
   &__price {
