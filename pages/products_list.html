@@ -10,6 +10,142 @@
   <link rel="preload" href="../style/css/product_page.css" as="style" onload="this.rel='stylesheet'">
   <link rel="shortcut icon" href="../assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="../index.js" defer></script>
+  <style>
+    .contact {
+      --c-text: #111;
+      --c-muted: #6b7280;
+      --c-border: rgba(17, 17, 17, 0.12);
+      --c-card: #f7f7f8;
+      --c-white: #fff;
+
+      --radius: 16px;
+      --pad-x: 16px;
+
+      background: var(--c-white);
+      color: var(--c-text);
+      border-top: 1px solid var(--c-border);
+
+      position: relative;
+    }
+
+    .contact__header {
+      position: sticky;
+      top: calc(var(--sticky-top, 0px) + env(safe-area-inset-top, 0px));
+      z-index: 3;
+
+      padding: 16px var(--pad-x);
+      background: var(--c-white);
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .contact__title {
+      margin: 0 0 10px 0;
+      font-size: 22px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .contact__header-content {
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact__header-label {
+      font-size: 13px;
+      line-height: 1.2;
+      color: var(--c-muted);
+    }
+
+    .contact__link {
+      width: fit-content;
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.35);
+      padding-bottom: 2px;
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+
+    .contact__link--email {
+      font-weight: 500;
+    }
+
+    .contact__content {
+      padding: 16px var(--pad-x) 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact__section-title {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.15px;
+    }
+
+    .contact__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    /* Карточка контакта */
+    .contact-card {
+      background: var(--c-card);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: var(--radius);
+      padding: 14px 14px 12px;
+    }
+
+    .contact-card__name {
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .contact-card__rows {
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact-card__row {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .contact-card__label {
+      font-size: 13px;
+      line-height: 1.2;
+      color: var(--c-muted);
+    }
+
+    .contact-card__value {
+      font-size: 15px;
+      line-height: 1.25;
+      color: var(--c-text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.28);
+      width: fit-content;
+
+      &:focus-visible {
+        outline: 2px solid rgba(17, 17, 17, 0.35);
+        outline-offset: 2px;
+        border-bottom-color: transparent;
+        border-radius: 6px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -293,7 +429,99 @@
       </ul>
 
     </nav>
-    <div class="layout">
+    <section class="contact" id="contacts">
+      <div class="contact__header">
+        <h2 class="contact__title">Контакты</h2>
+
+        <div class="contact__header-content">
+          <div class="contact__header-label">Отдел продаж</div>
+
+          <a class="contact__link contact__link--tel" href="tel:+78412652121">
+            +7 (8412) 65-21-21
+          </a>
+
+          <a class="contact__link contact__link--email" href="mailto:op@nppsensor.ru">
+            op@nppsensor.ru
+          </a>
+        </div>
+      </div>
+
+      <div class="contact__content">
+        <div class="contact__section">
+          <h3 class="contact__section-title">Менеджеры по продажам</h3>
+
+          <ul class="contact__list">
+            <li class="contact-card">
+              <div class="contact-card__name">Алексей Олегович Гусев</div>
+
+              <div class="contact-card__rows">
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Тел.</span>
+                  <a class="contact-card__value" href="tel:+78412652121">+7 (8412) 65-21-21</a>
+                </div>
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Доб.</span>
+                  <span class="contact-card__value">22-44</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="contact-card">
+              <div class="contact-card__name">Анастасия Алексеевна Потороева</div>
+
+              <div class="contact-card__rows">
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Тел.</span>
+                  <a class="contact-card__value" href="tel:+78412652121">+7 (8412) 65-21-21</a>
+                </div>
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Доб.</span>
+                  <span class="contact-card__value">22-44</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="contact-card">
+              <div class="contact-card__name">Наталья Геннадьевна Соболь</div>
+
+              <div class="contact-card__rows">
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Тел.</span>
+                  <a class="contact-card__value" href="tel:+78412652121">+7 (8412) 65-21-21</a>
+                </div>
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Доб.</span>
+                  <span class="contact-card__value">22-44</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact__section">
+          <h3 class="contact__section-title">Менеджер по отгрузке</h3>
+
+          <ul class="contact__list">
+            <li class="contact-card">
+              <div class="contact-card__name">Вячеслав Борисович Рискин</div>
+
+              <div class="contact-card__rows">
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Тел.</span>
+                  <a class="contact-card__value" href="tel:+78412652121">+7 (8412) 65-21-21</a>
+                </div>
+                <div class="contact-card__row">
+                  <span class="contact-card__label">Email</span>
+                  <a class="contact-card__value" href="mailto:log@nppsensor.ru">log@nppsensor.ru</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- <div class="layout">
       <div class="products-list__title-wrap">
         <h1 class="products-list__title">Датчики и сигнализаторы уровня</h1>
         <span class="products-list__more">Подробнее</span>
@@ -772,7 +1000,7 @@
           технической
           консультацией.</span>
       </div>
-    </div>
+    </div> -->
   </main>
 
 

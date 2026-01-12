@@ -1,121 +1,156 @@
 .contact {
-  border-top: 1px solid #ddd;
-  position: relative;
-  overflow: unset;
-
-  &__title {
-    padding-bottom: 12px;
-    font-weight: 600;
-    font-size: 22px;
+  &>section {
+    margin-bottom: 30px;
   }
 
-  &__header {
-    padding: 20px 0;
-    background-color: #fff;
-    position: sticky;
-    top: var(--sticky-top);
-    z-index: 1;
-    border-bottom: 1px solid #ddd;
+  h1, h2{
+    margin: 0;
   }
 
-  &__header-content {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+  h1{margin-bottom: 5px;}
 
-  &__header-tel {
-    font-size: 16px;
-    width: fit-content;
-  }
-
-  &__header-tel::after,
-  &__tel::after {
-    content: "";
-    border: solid #212121;
-    border-width: 0 1px 1px 0;
-    display: inline-block;
-    padding: 2.6px;
-    transform: rotate(-45deg) translate(-1px, -1px);
-    margin: 2px 10px;
-  }
-
-  &__header-email {
-    max-width: 511px;
-    font-size: 16px;
-    line-height: 24px;
-    text-decoration: underline;
-    width: fit-content;
-  }
-
-  &__row {
-    position: relative;
-    margin-left: -25px;
-    font-size: 0;
-    white-space: nowrap;
-    border-top: 1px solid #ddd;
-    padding: 20px 0;
-  }
-
-  &__row--first {
-    border: none;
-  }
-
-  &__col {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-    padding: 23px 0 3px 25px;
-    font-size: 14px;
-    line-height: 18px;
-    white-space: normal;
-  }
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  &__name {
-    font-weight: 600;
-    padding-bottom: 5px;
-    font-size: 17px;
-  }
-
-  &__text {
-    font-size: 16px;
-  }
-
-  &__tel {
-    white-space: nowrap;
-    font-size: 14px;
-    width: fit-content;
-  }
-
-  &__email {
-    font-size: 14px;
-    text-decoration: underline;
-  }
-
-  &__item-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .files-list{
+    margin-bottom: var(--page-gutter);
   }
 }
 
-@media (max-width: 640px) {
-  .contact {
-    &__row {
-      margin-left: 0;
-      white-space: normal
-    }
 
-    &__col {
-      display: block;
-      width: 100%;
-      padding: 0 0 3px 0
-    }
+.contact__title {
+  font-size: 30px;
+}
+
+.contact__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.person-btn__icon {
+
+  line-height: 0;
+  margin-left: auto;
+
+  svg {
+    fill: rgba(17, 17, 17, 0.45);
+    width: 15px;
+    height: 15px;
   }
+}
+
+.contact__section{
+  margin-bottom: 30px;
+}
+
+.contact__section-title {
+  font-size: 20px;
+}
+
+.contact__people {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.person-btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  min-height: 52px;
+  padding: 14px;
+
+  background: #fff;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 4px;
+
+  text-decoration: none;
+  color: inherit;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(17, 17, 17, 0.35);
+    outline-offset: 2px;
+  }
+}
+
+.person-btn:has(.person-btn__ext) .person-btn__icon {
+  margin-left: 0;
+}
+
+.person-btn__name {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.person-btn__ext {
+  font-size: 13px;
+  line-height: 1.2;
+  color: rgba(17, 17, 17, 0.55);
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.contact__meta {
+  display: grid;
+  margin: 6px 0 12px;
+}
+
+.contact__meta-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 10px 0;
+  min-height: 44px;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.contact__meta-label {
+  font-size: 13px;
+  line-height: 1.2;
+  color: rgba(17, 17, 17, 0.55);
+  flex: 0 0 auto;
+}
+
+.contact__meta-link {
+  font-size: 16px;
+  line-height: 1.2;
+  color: inherit;
+  text-decoration: underline;
+
+  display: inline-flex;
+  align-items: center;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(17, 17, 17, 0.35);
+    outline-offset: 2px;
+    border-bottom-color: transparent;
+    border-radius: 6px;
+  }
+}
+
+.contact__text--bold {
+  font-weight: 600;
+}
+
+.contact__text-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
