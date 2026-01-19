@@ -10,6 +10,8 @@
   <link rel="preload" href="../style/css/contacts.css" as="style" onload="this.rel='stylesheet'">
   <link rel="shortcut icon" href="../assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="../index.js" defer></script>
+  <!-- <script src="https://api-maps.yandex.ru/v3/?apikey=c6ac5170-c2ba-44b3-a44c-0ce2d69a1241&lang=ru_RU" defer></script>
+  <script src="../scripts/map.js" defer></script> -->
 </head>
 
 <body>
@@ -552,7 +554,10 @@
                 <li class="extra-question__item">
                   <span class="extra-question__name">Где забрать самовывозом?</span>
                   <div data-trigger="prev" data-caption="Карта проезда" data-info>
-                    <span>тут будет карта</span>
+                    <div class="map" id="map">
+                      <script type="text/javascript" charset="utf-8" async
+                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad20db961b8e333b79e9068a8d677355459f599f76ecc4371c5146f7f028324b6&amp;width=100%&amp;height=500&amp;lang=ru_RU&amp;scroll=true"></script>
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -595,7 +600,7 @@
                 </span>
                 <span class="contact__meta-link">tumakova@nppsensor.ru</span>
               </a>
-              
+
               <a class="contact__meta-row" href="tel:+78412652131">
                 <span class="contact__meta-icon">
                   <svg>
