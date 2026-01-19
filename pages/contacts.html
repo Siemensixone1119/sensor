@@ -145,6 +145,17 @@
           d="M8 7c0-2.206 1.794-4 4-4s4 1.794 4 4v3.001H8V7zm10 3.001V7c0-3.309-2.691-6-6-6S6 3.691 6 7v3.001H4V22h16V10.001h-2z">
         </path>
       </symbol>
+      <symbol id="icon-at" viewBox="0 0 32 32">
+        <path
+          d="M16 5.333c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667c1.603 0 3.12-0.353 4.481-0.984 0.668-0.31 1.461-0.019 1.771 0.649s0.019 1.461-0.649 1.77c-1.705 0.79-3.604 1.231-5.602 1.231-7.364 0-13.333-5.97-13.333-13.333s5.97-13.333 13.333-13.333c7.364 0 13.333 5.97 13.333 13.333l-0 0.025c-0.056 2.92-0.985 4.887-2.356 6.107-1.339 1.192-2.924 1.517-4.029 1.517-1.59 0-2.986-0.826-3.784-2.071-2.769 2.447-6.76 2.984-9.224 0.246-2.568-2.853-1.852-7.617 0.888-10.661 2.651-2.945 7.47-4.082 10.238-0.675 0.238-0.65 0.941-1.015 1.617-0.823 0.708 0.202 1.119 0.94 0.917 1.648-0.79 2.769-1.721 5.511-2.418 8.303 0.203 0.786 0.918 1.366 1.767 1.366 0.639 0 1.529-0.195 2.256-0.842 0.693-0.617 1.416-1.805 1.463-4.153-0.007-5.885-4.78-10.654-10.667-10.654zM19.137 17.219c0.093-0.32 0.337-1.175 0.622-2.171 0.312-1.092-0.092-2.141-0.944-3.088-1.226-1.362-3.856-1.404-6.007 0.986-2.163 2.403-2.242 5.588-0.888 7.093 1.226 1.362 3.856 1.404 6.007-0.986 0.497-0.553 0.966-1.125 1.209-1.835z">
+        </path>
+      </symbol>
+      <symbol id="icon-mobile" viewBox="0 0 24 24" stroke-width="1.5" stroke="#808080" stroke-linecap="round"
+        stroke-linejoin="round" fill="none">
+        <path
+          d="M15.25 2.75h-6.5c-1.6569 0-3 1.3431-3 3v12.5c0 1.6569 1.3431 3 3 3h6.5c1.6569 0 3-1.3431 3-3V5.75c0-1.6569-1.3431-3-3-3z" />
+        <path d="M11 17.75h2" />
+      </symbol>
     </defs>
   </svg>
 
@@ -166,7 +177,7 @@
       </a>
 
       <button href="/" class="header__phone-button" aria-label="Позвонить">
-        <svg class="header__phone-icon" aria-hidden="true" focusable="false">
+        <svg ar-phoneia-hidden="true" focusable="false">
           <use xlink:href="#icon-phone"></use>
         </svg>
       </button>
@@ -294,198 +305,611 @@
     </nav>
     <div class="layout contact">
 
-      <h1>Контакты</h1>
-      <section class="contact__text-cont">
-        <span>
-          <span class="contact__text--bold">Адрес</span><br>
-          <span class="contact__text">Россия, 442961, Пензенская область, г. Заречный, ул. Промышленная, строение
-            5</span><br>
-        </span>
-        <span>
-          <span class="contact__text--bold">Адрес для почтовых отправлений</span><br>
-          <span class="contact__text">Россия, 442965, г. Заречный Пензенской области, а/я 737</span><br>
-        </span>
-        <span>
-          <span class="contact__text--bold">Время работы</span><br>
-          <span class="contact__text">понедельник - пятница с 08:00 до 17:00 (мск)</span><br>
-        </span>
-      </section>
+      <div class="contact__wrap">
+        <section class="contact__text-group">
+          <h1>Контакты</h1>
+          <span>
+            <span class="contact__text--bold">Адрес</span><br>
+            <span class="contact__text">Россия, 442961, Пензенская область, г. Заречный, ул. Промышленная, строение
+              5</span><br>
+          </span>
+          <span>
+            <span class="contact__text--bold">Адрес для почтовых отправлений</span><br>
+            <span class="contact__text">Россия, 442965, г. Заречный Пензенской области, а/я 737</span><br>
+          </span>
+          <span>
+            <span class="contact__text--bold">Время работы</span><br>
+            <span class="contact__text">понедельник - пятница с 08:00 до 17:00 (мск)</span><br>
+          </span>
+        </section>
 
-
-      <section class="contact__section" aria-labelledby="sales-managers">
-        <h2 class="contact__section-title" id="sales-managers">Секретарь</h2>
-
-        <div class="contact__meta">
-          <div class="contact__meta-row">
-            <span class="contact__meta-label">Мобильный телефон</span>
-            <a class="contact__meta-link" href="tel:+78412652121">+7 (8412) 65-21-00</a>
-          </div>
-
-          <div class="contact__meta-row">
-            <span class="contact__meta-label">Email</span>
-            <a class="contact__meta-link contact__meta-link--email" href="mailto:op@nppsensor.ru">info@nppsensor.ru</a>
-          </div>
-        </div>
-      </section>
-
-
-      <section>
-        <ul class="files-list">
-          <li class="files-list__item">
-            <div class="files-list__wrapper--icon">
-              <img class="files-list__icon" loading="lazy" src="../assets/image/exe.png" alt="" />
-            </div>
-            <div class="files-list__wrapper--info">
-              <a class="files-list__name link" target="_blank" href="/">Карта партнёра<div class="files-list__click">
+        <section>
+          <ul class="files-list">
+            <li class="files-list__item">
+              <div class="files-list__wrapper--icon">
+                <img class="files-list__icon" loading="lazy" src="../assets/image/exe.png" alt="" />
+              </div>
+              <div class="files-list__wrapper--info">
+                <a class="files-list__name link" target="_blank" href="/">Карта партнёра<div class="files-list__click">
+                  </div>
+                </a>
+                <div class="files-list__meta">
+                  <div class="files-list__meta-ext">pdf</div>
+                  <div class="files-list__meta-size">510,11 КБ</div>
+                  <div class="files-list__meta-date">12.12.2023</div>
                 </div>
-              </a>
-              <div class="files-list__meta">
-                <div class="files-list__meta-ext">pdf</div>
-                <div class="files-list__meta-size">510,11 КБ</div>
-                <div class="files-list__meta-date">12.12.2023</div>
               </div>
-            </div>
-          </li>
-        </ul>
-        <ul class="extra-question">
-          <li class="extra-question__item">
-            <span class="extra-question__name">Реквезиты</span>
-            <div data-trigger="prev" data-caption="" data-info>
-              <h2>Полное наименование</h2>
-              <span>Общество с ограниченной ответственностью Научно-производственное предприятие «СЕНСОР»</span>
+            </li>
+          </ul>
+          <ul class="extra-question">
+            <li class="extra-question__item">
+              <span class="extra-question__name">Реквезиты</span>
+              <div data-trigger="prev" data-caption="" data-info>
+                <h2>Полное наименование</h2>
+                <span>Общество с ограниченной ответственностью Научно-производственное предприятие «СЕНСОР»</span>
 
-              <h2>Сокращённое наименование</h2>
-              <span>ООО НПП «СЕНСОР»</span>
+                <h2>Сокращённое наименование</h2>
+                <span>ООО НПП «СЕНСОР»</span>
 
-              <h2>Юридический адрес</h2>
-              <span>442961, г. Заречный Пензенской области, ул. Промышленная, строение 5</span>
+                <h2>Юридический адрес</h2>
+                <span>442961, г. Заречный Пензенской области, ул. Промышленная, строение 5</span>
 
-              <h2>Почтовый адрес</h2>
-              <span>442965, г. Заречный Пензенской области, а/я 737</span>
+                <h2>Почтовый адрес</h2>
+                <span>442965, г. Заречный Пензенской области, а/я 737</span>
 
-              <h2>Единоличный исполнительный орган</h2>
-              <span>Генеральный директор Мизгунов Юрий Анатольевич, действующий на основании Устава</span>
+                <h2>Единоличный исполнительный орган</h2>
+                <span>Генеральный директор Мизгунов Юрий Анатольевич, действующий на основании Устава</span>
 
-              <h2>Коды</h2>
-              <span>
-                ОГРН: 1025801498205 <br>
-                ИНН: 5838002196 <br>
-                КПП: 583801001<br>
-                ОКПО: 27754891<br>
-                ОКВЭД: 26.51, 26.30, 27.33, 28.14, 33.13, 33.20, 72.19<br>
-                ОКАТО: 56534000000<br>
-                ОКОПФ: 12300<br>
-                ОКФС: 16
-              </span>
-            </div>
-          </li>
-          <li class="extra-question__item">
-            <a href="" class="extra-question__name">Сообщить о проблеме</a>
-          </li>
-        </ul>
-      </section>
-
-
-      <div class="contact">
-        <div class="contact__header">
-          <h1 class="contact__title">Отдел продаж</h1>
-        </div>
-
-        <div class="contact__content">
-
-          <section class="contact__section" aria-labelledby="sales-managers">
-            <h2 class="contact__section-title" id="sales-managers">Менеджеры по продажам</h2>
-
-            <div class="contact__meta">
-              <div class="contact__meta-row">
-                <span class="contact__meta-label">Рабочий телефон</span>
-                <a class="contact__meta-link" href="tel:+78412652121">+7 (8412) 65-21-21</a>
+                <h2>Коды</h2>
+                <span>
+                  ОГРН: 1025801498205 <br>
+                  ИНН: 5838002196 <br>
+                  КПП: 583801001<br>
+                  ОКПО: 27754891<br>
+                  ОКВЭД: 26.51, 26.30, 27.33, 28.14, 33.13, 33.20, 72.19<br>
+                  ОКАТО: 56534000000<br>
+                  ОКОПФ: 12300<br>
+                  ОКФС: 16
+                </span>
               </div>
-
-              <div class="contact__meta-row">
-                <span class="contact__meta-label">Email</span>
-                <a class="contact__meta-link contact__meta-link--email"
-                  href="mailto:op@nppsensor.ru">op@nppsensor.ru</a>
-              </div>
-            </div>
-
-
-            <ul class="contact__people">
-              <li class="contact__person">
-                <a class="person-btn" href="tel:+78412652121;ext=2244"
-                  aria-label="Позвонить: Алексей Олегович Гусев, добавочный 22 44">
-                  <span class="person-btn__name">Алексей Олегович Гусев</span>
-                  <span class="person-btn__ext">доб. 22-44</span>
-                  <span class="person-btn__icon">
-                    <svg>
-                      <use xlink:href="#icon-phone"></use>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-
-              <li class="contact__person">
-                <a class="person-btn" href="tel:+78412652121;ext=2233"
-                  aria-label="Позвонить: Анастасия Алексеевна Потороева, добавочный 22 33">
-                  <span class="person-btn__name">Анастасия Алексеевна Потороева</span>
-                  <span class="person-btn__ext">доб. 22-33</span>
-                  <span class="person-btn__icon">
-                    <svg>
-                      <use xlink:href="#icon-phone"></use>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-
-              <li class="contact__person">
-                <a class="person-btn" href="tel:+78412652121;ext=22455"
-                  aria-label="Позвонить: Анастасия Алексеевна Потороева, добавочный 22 55">
-                  <span class="person-btn__name">Наталья Геннадьевна Соболь</span>
-                  <span class="person-btn__ext">доб. 22-55</span>
-                  <span class="person-btn__icon">
-                    <svg>
-                      <use xlink:href="#icon-phone"></use>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-
-            </ul>
-          </section>
-
-
-          <section class="contact__section" aria-labelledby="sales-managers">
-            <h2 class="contact__section-title" id="sales-managers">Менеджер по отгрузке</h2>
-
-            <div class="contact__meta">
-              <div class="contact__meta-row">
-                <span class="contact__meta-label">Мобильный телефон</span>
-                <a class="contact__meta-link" href="tel:+78412652121">+7 903 323-12-67</a>
-              </div>
-
-              <div class="contact__meta-row">
-                <span class="contact__meta-label">Email</span>
-                <a class="contact__meta-link contact__meta-link--email"
-                  href="mailto:op@nppsensor.ru">log@nppsensor.ru</a>
-              </div>
-            </div>
-
-            <ul class="contact__people">
-              <li class="contact__person">
-                <a class="person-btn" href="tel:+78412652121" aria-label="Позвонить: Вячеслав Борисович Рискин">
-                  <span class="person-btn__name">Вячеслав Борисович Рискин</span>
-                  <span class="person-btn__icon">
-                    <svg>
-                      <use xlink:href="#icon-phone"></use>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
+            </li>
+          </ul>
+        </section>
       </div>
-    </div>
+
+      <section class="contact__section">
+        <div>
+          <h2 class="contact__section-title">Секретарь</h2>
+
+          <div class="contact__meta">
+            <a class="contact__meta-row" href="mailto:info@nppsensor.ru">
+              <span class="contact__meta-icon">
+                <svg>
+                  <use xlink:href="#icon-at"></use>
+                </svg>
+              </span>
+              <span class="contact__meta-link">info@nppsensor.ru</span>
+            </a>
+
+            <a class="contact__meta-row" href="tel:+78412652100">
+              <span class="contact__meta-icon">
+                <svg>
+                  <use xlink:href="#icon-phone"></use>
+                </svg>
+              </span>
+              <span class="contact__meta-link">+7 (8412) 65-21-00</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h2 class="contact__section-title contact__section-title--main">Отдел продаж</h2>
+
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:op@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">op@nppsensor.ru</span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-21</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--m">Менеджеры по продажам</h2>
+            <div class="contact__meta--link">
+              <a class="contact__meta-row" href="tel:+78412652121p2244">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Алексей Олегович Гусев</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-44</span>
+                </span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2233">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Анастасия Алексеевна Потороева</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-33</span>
+                </span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2255">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Наталья Геннадьевна Соболь</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-55</span>
+                </span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2288">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Кирилл Алексеевич Мануйлов</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-88</span>
+                </span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2299">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Дмитрий Сергеевич Полуянов</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-99</span>
+                </span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2266">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Игорь Владимирович Артемьев</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-66</span>
+                </span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2277">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Денис Леонидович Веков</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-77</span>
+                </span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2242">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">
+                  <span class="contact__meta-name">Ярослав Александрович Леднов</span>
+                  <span class="contact__meta-number">+7 (8412) 65-21-21, доб. 22-42</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h2 class="contact__section-title">Менеджер по отгрузке</h2>
+            <span class="contact__section-subtitle">Вячеслав Борисович Рискин</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:log@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">log@nppsensor.ru</span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+79033231267">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-mobile"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 903 323-12-67</span>
+              </a>
+
+              <ul class="extra-question">
+                <li class="extra-question__item">
+                  <span class="extra-question__name">Где забрать самовывозом?</span>
+                  <div data-trigger="prev" data-caption="Карта проезда" data-info>
+                    <span>тут будет карта</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Менеджер по договорной работе</h2>
+            <span class="contact__section-subtitle">Елена Алексеевна Кудрячёва</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:kea@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">kea@nppsensor.ru</span>
+              </a>
+
+              <a class="contact__meta-row" href="tel:+78412652121p2232">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-21, доб. 22-32</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Мнеджер по договорной работе</h2>
+            <span class="contact__section-subtitle">Татьяна Юрьевна Тумакова</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:tumakova@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">tumakova@nppsensor.ru</span>
+              </a>
+              
+              <a class="contact__meta-row" href="tel:+78412652131">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-23</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--main">Сервисная служба</h2>
+            <div class="contact__meta">
+              <a href="">
+                <ul class="extra-question">
+                  <li class="extra-question__item">
+                    <span class="extra-question__name">Заказать</span>
+                  </li>
+                </ul>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--m">Начальник сервисной службы</h2>
+            <span class="contact__section-subtitle">Дмитрий Станиславович Соболь</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:srv@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">srv@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652155p1511">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-55, доб. 15-11</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Заместитель начальника сервисной службы по информационному
+              сервису</h2>
+            <span class="contact__section-subtitle">Александр Леонидович Кошеваров</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:ss@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">ss@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652155p1521">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-55, доб. 15-21</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+79674450827">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-mobile"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 967 445-08-27</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Заместитель начальника сервисной службы по техническому сервису приборов
+            </h2>
+            <span class="contact__section-subtitle">Виктор Николаевич Кузнецов</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:kvn@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">kvn@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652155p1541">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-55, доб. 15-41</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+79273935126">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-mobile"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 927 393-51-26</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Заместитель начальника сервисной службы по техническому сервису арматуры
+            </h2>
+            <span class="contact__section-subtitle">Василий Петрович Абраменков</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:avp@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">avp@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652155p1531">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-55, доб. 15-31</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+79273934924">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-mobile"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 927 393-49-24</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--main">Отдел тендерных продаж</h2>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Руководитель</h2>
+            <span class="contact__section-subtitle">Алексей Юрьевич Соколовский</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:tender@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">tender@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652121p2311">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-21, доб. 23-11</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--main">Отдел материально-технического снабжения
+            </h2>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Начальник ОМТС</h2>
+            <span class="contact__section-subtitle">Павел Александрович Пивоваров</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:ppa@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">ppa@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652122p3211">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-22, доб. 32-11</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--main">Отдел технического контроля
+            </h2>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Заместитель директора по качеству – начальник ОТК</h2>
+            <span class="contact__section-subtitle">Александр Сергеевич Калмыков</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:otk@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">otk@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652122p6611">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-22, доб. 66-11</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--main">Бухгалтерия
+            </h2>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Бухгалтер</h2>
+            <span class="contact__section-subtitle">Елена Владимировна Растова</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:buh@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">buh@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652122p1244">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-22, доб. 12-44</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title contact__section-title--main">Отдел маркетинга
+            </h2>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Ведущий специалист по рекламной и выставочной деятельности</h2>
+            <span class="contact__section-subtitle">Пётр Юрьевич Харченко</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:hpu@nppsensor.ru">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">hpu@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652121p2111">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-21, доб. 21-11</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="contact__section-title">Ведущий менеджер по маркетингу</h2>
+            <span class="contact__section-subtitle">Роман Юрьевич Бирюков</span>
+            <div class="contact__meta">
+              <a class="contact__meta-row" href="mailto:+marketing@nppsensor.ru<">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-at"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">marketing@nppsensor.ru</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+78412652121p2122">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-phone"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 (8412) 65-21-21, доб. 21-22</span>
+              </a>
+              <a class="contact__meta-row" href="tel:+79677017354">
+                <span class="contact__meta-icon">
+                  <svg>
+                    <use xlink:href="#icon-mobile"></use>
+                  </svg>
+                </span>
+                <span class="contact__meta-link">+7 967 701-73-54</span>
+              </a>
+            </div>
+          </div>
+
+      </section>
     </div>
   </main>
 

@@ -55,12 +55,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
 
-  &__phone-icon {
-    fill: #fff;
-    width: 20px;
-    height: 20px;
+    svg {
+      fill: #fff;
+      width: 20px;
+      height: 20px;
+    }
   }
 
   // Нижняя часть
@@ -165,9 +165,11 @@
   }
 }
 
-.header__overlay{
+.header__overlay {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   transform: translateY(0);
   transition: none;
@@ -195,4 +197,3 @@
   box-shadow: 0 0 5px #aaa;
   height: 50px;
 }
-

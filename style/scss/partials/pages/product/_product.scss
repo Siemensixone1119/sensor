@@ -35,16 +35,16 @@
   margin: 0;
 
   &__item {
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 12px;
     border-top-left-radius: 0;
     margin-bottom: var(--page-gutter);
-    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
   }
 
   &__name {
     display: block;
-    padding: 15px;
+    padding: 10px 15px;
   }
 }
 
