@@ -150,4 +150,51 @@
   border-radius: 8px;
   font-size: 16px;
   margin: 0 auto 10px;
+}
+.appeal__files-error {
+  color: red;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+.appeal__files-list {
+  padding: 0;
+  list-style: none;
+}
+.appeal__files-name {
+  padding: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  white-space: nowrap;
+}
+.appeal__files-remove {
+  border-left: 1px solid #ccc;
+  padding: 10px;
+  line-height: 0;
+}
+.appeal__files-item {
+  margin-bottom: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+}
+.appeal__files-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+.appeal__files-row svg {
+  width: 13px;
+  height: 13px;
 }/*# sourceMappingURL=service.css.map */

@@ -340,6 +340,26 @@
 
           <div class="appeal__file-attachment">
             <span class="appeal__text">Прикрепить файл</span>
+            <div class="appeal__files">
+              <span class="appeal__files-error"></span>
+
+              <ul class="appeal__files-list">
+                <!-- <li class="appeal__files-item">
+                  <div class="appeal__files-row">
+                    <div class="appeal__files-name">
+                      file name
+                    </div>
+
+                    <div class="appeal__files-remove">
+                      <svg class="appeal__files-remove-icon">
+                        <use xlink:href="#icon-menu_close"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </li> -->
+              </ul>
+            </div>
+
             <div class="appeal__file-wrap">
               <label class="appeal__label" for="file-upload">
                 <svg>
@@ -347,7 +367,8 @@
                 </svg>
                 <span>Загрузить</span>
               </label>
-              <input class="appeal__input-file" type="file" id="file-upload">
+              <input class="appeal__input-file" type="file" id="file-upload" multiple
+                accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
               <span class="appeal__file-info">Максимум 20 файлов общим размером до 20 МБ.</span>
             </div>
           </div>

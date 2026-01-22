@@ -1,20 +1,18 @@
 export function addFieldset() {
   document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.appeal__form');
-    const addProductButton = document.querySelector('.appeal__button--add'); // Кнопка добавления
-    const productContainer = document.querySelector('.appeal__fieldset-wrap'); // Контейнер для всех fieldset
+    const addProductButton = document.querySelector('.appeal__button--add');
+    const productContainer = document.querySelector('.appeal__fieldset-wrap');
 
-    let productCount = 1; // Изначально один продукт
+    let productCount = 1;
 
-    // Убедимся, что productContainer существует
     if (!productContainer) {
       console.error('Контейнер для продуктов не найден');
       return;
     }
 
-    // Функция для добавления нового fieldset
     addProductButton.addEventListener('click', function () {
-      productCount++; // Увеличиваем количество продуктов
+      productCount++;
 
       const newFieldset = document.createElement('fieldset');
       newFieldset.classList.add('appeal__fieldset', 'product-fieldset');
@@ -59,25 +57,21 @@ export function addFieldset() {
         <button class="appeal__button--remove" type="button">Удалить</button>
       `;
 
-      // Добавляем новый fieldset в контейнер для продуктов
       productContainer.appendChild(newFieldset);
-
-      // Показываем кнопку "Удалить" для нового fieldset
       newFieldset.querySelector('.appeal__button--remove').style.display = 'inline-block';
     });
 
-    // Используем делегирование событий для кнопки "Удалить" на каждом новом fieldset
     productContainer.addEventListener('click', function (event) {
       if (event.target && event.target.classList.contains('appeal__button--remove')) {
         const fieldsetToRemove = event.target.closest('.product-fieldset');
         if (fieldsetToRemove) {
-          fieldsetToRemove.remove(); // Удаляем текущий fieldset
-          productCount--; // Уменьшаем счетчик продуктов
+          fieldsetToRemove.remove();
+          productCount--;
         }
 
-        // Если остался только один fieldset, скрываем кнопку "Удалить"
         if (productCount === 1) {
-          removeProductButton.style.display = 'none';
+          const removeBtn = productContainer.querySelector('.appeal__button--remove');
+          if (removeBtn) removeBtn.style.display = 'none';
         }
       }
     });
