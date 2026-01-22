@@ -4,9 +4,9 @@ export function add_file() {
   const filesList = document.querySelector('.appeal__files-list');
   const errorBox = document.querySelector('.appeal__files-error');
 
-  const MAX_FILES = 2; // Максимум файлов
-  const MAX_SIZE = 20 * 1024 * 1024; // 20 МБ
-  const MAX_NAME_LENGTH = 25; // Максимальная длина отображаемого имени
+  const MAX_FILES = 20;
+  const MAX_SIZE = 20 * 1024 * 1024;
+  const MAX_NAME_LENGTH = 25;
   const ALLOWED_EXT = [
     'zip', 'pdf', 'rar', 'exe',
     'xlsx', 'docx', 'xls', 'doc',

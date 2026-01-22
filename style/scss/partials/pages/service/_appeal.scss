@@ -148,7 +148,8 @@
   }
 
   &__files-error {
-    color: red;
+    color: $accent-color;
+    font-weight: 500;
     padding-bottom: 10px;
     display: inline-block;
   }

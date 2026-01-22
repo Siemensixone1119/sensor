@@ -152,7 +152,8 @@
   margin: 0 auto 10px;
 }
 .appeal__files-error {
-  color: red;
+  color: #b30006;
+  font-weight: 500;
   padding-bottom: 10px;
   display: inline-block;
 }
@@ -197,4 +198,48 @@
 .appeal__files-row svg {
   width: 13px;
   height: 13px;
+}
+
+.appeal-status .title {
+  margin-bottom: 15px;
+}
+.appeal-status__form {
+  margin: 25px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+.appeal-status__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+.appeal-status__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+.appeal-status__submit {
+  width: 100%;
+  background-color: #b30006;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.appeal-status__error {
+  color: #b30006;
+  font-weight: 500;
 }/*# sourceMappingURL=service.css.map */
