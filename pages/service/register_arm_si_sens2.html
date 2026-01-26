@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Обращение в сервисную службу</title>
+  <title>Проверить статус обращения</title>
   <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
   <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="../../index.js" defer></script>
-  <script type="module" src="../../appeal.js" defer></script>
+  <script type="module" src="../../scripts/status_validate.js" defer></script>
 </head>
 
 <body>
@@ -262,72 +262,90 @@
           <a href="/" class="link">Поддержка</a>
         </li>
         <li class="breadcrumbs__item">
-          <a href="/" class="link">Обращение в сервисную службу</a>
+          <a href="./appeal_status.html" class="link">Проверить статус обращения</a>
         </li>
       </ul>
-
-      <div class="appeal layout">
-        <h1 class="title">Обращение в сервисную службу</h1>
-
-        <form class="appeal__form" action="">
-          <fieldset class="appeal__fieldset">
-            <legend class="appeal__legend">Организация</legend>
-            <ul class="appeal__list">
-              <li class="appeal__list-item">
-                <label class="appeal__label" for="inn">ИНН:</label>
-                <input required class="appeal__input" type="text" id="inn">
-              </li>
-              <li class="appeal__list-item">
-                <label class="appeal__label" for="contact-name">ФИО контактного лица:</label>
-                <input required class="appeal__input" type="text" id="contact-name">
-              </li>
-              <li class="appeal__list-item">
-                <label class="appeal__label" for="phone">Номер телефона:</label>
-                <input required class="appeal__input" type="tel" id="phone">
-              </li>
-              <li class="appeal__list-item">
-                <label class="appeal__label" for="email">Адрес электронной почты:</label>
-                <input required class="appeal__input" type="email" id="email">
-              </li>
-            </ul>
-          </fieldset>
-
-          <div class="appeal__fieldset-wrap">
-          </div>
-
-          <div class="appeal__file-attachment">
-            <span class="appeal__text">Прикрепить файл</span>
-            <div class="appeal__files">
-              <span class="appeal__files-error"></span>
-              <ul class="appeal__files-list"></ul>
-            </div>
-
-            <div class="appeal__file-wrap">
-              <label class="appeal__label" for="file-upload">
-                <svg>
-                  <use xlink:href="#icon-download"></use>
-                </svg>
-                <span>Загрузить</span>
-              </label>
-              <input class="appeal__input-file" type="file" id="file-upload" multiple
-                accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
-              <span class="appeal__file-info">Максимум 20 файлов общим размером до 20 МБ.</span>
-            </div>
-          </div>
-
-          <div class="appeal__consent">
-            <input required class="appeal__checkbox" type="checkbox" id="consent">
-            <label class="appeal__label" for="consent"> Даю согласие на обработку персональных данных в соответствии с
-              <a class="appeal__link" href="">политикой</a></label>
-          </div>
-          <div class="appeal__button-wrap">
-            <button class="appeal__button" type="submit">Отправить</button>
-          </div>
-        </form>
-      </div>
-
-
     </nav>
+
+    <div class="register-arm layout">
+      <h1 class="title">Пробная регистрация на 1 месяц</h1>
+      <span>Заполните оставшиеся поля.</span>
+
+      <form class="register-arm__form" action="">
+        <div class="register-arm__field">
+          <label class="register-arm__label" for="ito-serial">
+            <span class="register-arm__label-title">Код продукта:</span>
+          </label>
+
+          <div class="register-arm__wrap">
+            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
+              placeholder="XXXX-XXXX-XXXX">
+            <span class="register-arm__label-hint">Код должен быть из программы, установленной на ПК в месте
+              эксплуатации</span>
+            <span class="register-arm__help">Как узнать код продукта?</span>
+            <div data-trigger="prev" data-caption="Как узнать код продукта?" data-info>
+              <span>1. На компьютере с установленной программой в меню "Пуск" откройте окно регистрации АРМ СИ
+                СЕНС.</span><br>
+              <img src="../../assets/image/product_code1.png" alt="" class="register-arm__img"><br>
+              <span>2. В открывшемся окне вы увидите код продукта.</span><br>
+              <img src="../../assets/image/product_code2.png" alt="" class="register-arm__img"><br>
+              <span>3. Если код продукта в программе не отображается, значит в системе отключен или отсутствует сетевой
+                адаптер (встроенная или внешняя сетевая карта, USB-модем и т. п.). В этом случае следует включить
+                имеющийся или установить <a href="" class="register-arm__op">виртуальный сетевой адаптер</a> и
+                перезапустить программу.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="register-arm__field">
+          <label class="register-arm__label" for="ito-serial">
+            <span class="register-arm__label-title">Наименование эксплуатирующей организации:</span>
+          </label>
+          <div class="register-arm__wrap">
+            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
+              placeholder="ООО &quot;Организация&quot;">
+          </div>
+        </div>
+
+        <div class="register-arm__field">
+          <label class="register-arm__label" for="ito-serial">
+            <span class="register-arm__label-title">Ф.И.О. руководителя:</span>
+          </label>
+          <div class="register-arm__wrap">
+            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
+              placeholder="Иванов Иван Иванович">
+          </div>
+        </div>
+
+        <div class="register-arm__field">
+          <label class="register-arm__label" for="ito-serial">
+            <span class="register-arm__label-title">Адрес электронной почты:</span>
+          </label>
+          <div class="register-arm__wrap">
+            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
+              placeholder="ivanov@company.ru">
+            <span class="register-arm__gray">Проверьте дважды, именно на этот адрес мы вышлем регистрационный код</span>
+          </div>
+        </div>
+
+        <div class="register-arm__field">
+          <label class="register-arm__label" for="ito-serial">
+            <span class="register-arm__label-title">Номер телефона:</span>
+          </label>
+          <div class="register-arm__wrap">
+            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
+              placeholder="+7 (999) 123-45-67">
+            <span class="register-arm__gray">Мы свяжемся с вами только при необходимости</span>
+          </div>
+        </div>
+
+        <div class="register-arm__wrap-submit">
+          <input class="register-arm__submit register-arm__submit--back" type="submit" value="Начать заново">
+          <input class="register-arm__submit" type="submit" value="Зарегестрировать">
+        </div>
+      </form>
+    </div>
+
   </main>
 
   <footer>
@@ -582,7 +600,7 @@
         <li data-role="group">
           <a href="./appeal.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="./appeal_status.html"><span class="text-primary">Проверить статус
+          <a href="https://www.nppsensor.ru/support/repair-check"><span class="text-primary">Проверить статус
               обращения</span></a>
           <a href="https://www.nppsensor.ru/support/register"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>

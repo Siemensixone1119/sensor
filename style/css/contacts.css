@@ -10,6 +10,9 @@
 }
 .contact .extra-question__item {
   margin: 0;
+  -webkit-box-shadow: 0 2px 4px rgba(41, 35, 97, 0.3882352941);
+          box-shadow: 0 2px 4px rgba(41, 35, 97, 0.3882352941);
+  border: 1px solid rgba(41, 35, 97, 0.368627451);
 }
 .contact .files-list {
   margin-bottom: 10px;
@@ -151,7 +154,7 @@
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
-  gap: 20px;
+  gap: 10px;
   padding: 10px 15px;
   min-height: 44px;
   border: 1px solid #ccc;
