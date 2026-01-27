@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Проверить статус обращения</title>
-  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../index.js" defer></script>
+  <title>Основные
+    этапы настройки АРМ СИ СЕНС</title>
+  <link rel="preload" href="../../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../../index.js" defer></script>
   <!-- <script type="module" src="../../scripts/status_validate.js" defer></script> -->
 </head>
 
@@ -264,74 +265,78 @@
         <li class="breadcrumbs__item">
           <a href="./appeal_status.html" class="link">Часто задаваемые вопросы</a>
         </li>
+        <li class="breadcrumbs__item">
+          <a href="./appeal_status.html" class="link">Основные
+            этапы настройки АРМ СИ СЕНС</a>
+        </li>
       </ul>
     </nav>
 
-    <div class="layout">
-      <h1 class="title">Часто задаваемые вопросы</h1>
-      <span>Ознакомьтесь с ответами на часто возникающие вопросы прежде, чем обратиться в сервисную службу
-        предприятия.</span>
-      <span>Возможно, Ваша проблема решится быстрее и легче, чем вы ожидали.</span>
-      <br>
-      <span>Если у вас остались вопросы, напишите нам по адресу <a href="mailto:srv@nppsensor.ru"
-          style="color: #04b;">srv@nppsensor.ru</a>.</span><br><br>
-      <span>Вопросы:</span>
-      <ul>
-        <li>
-          <a href="">Как отправить продукцию на сервисное обслуживание?</a>
-        </li>
-        <li>
-          <a href="">Какие приборы системы измерительной «СЕНС» подключаются к программно-техническому комплексу
-            "Контар"?</a>
-        </li>
-        <li>
-          <a href="">Что такое "Выход - W5DНЗ"?</a>
-        </li>
-        <li>
-          <a href="">Обслуживание электромагнитного привода клапанов СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка драйвера ЛИН-USB на Windows 10</a>
-        </li>
-        <li>
-          <a href="">Переустановка драйвера ЛИН-USB на Windows 10?</a>
-        </li>
-        <li>
-          <a href="">С какими системами и терминалами спутникового мониторинга совместимы устройства «СЕНС»?</a>
-        </li>
-        <li>
-          <a href="">Подключение адаптера ЛИН-RS485/232-DIN?</a>
-        </li>
-        <li>
-          <a href="">Основные этапы настройки АРМ СИ СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка второго Firebird</a>
-        </li>
-        <li>
-          <a href="">Настройка GPRS-канала связи с помощью терминала Robustel M1000 Pro</a>
-        </li>
-        <li>
-          <a href="">Дополнение к руководству пользователя по записи градуировочной таблицы в уровнемер ПМП-201Е (версия
-            программы уровнемера A32E)</a>
-        </li>
-        <li>
-          <a href="">Замена чувствительного элемента ПМП-201Е</a>
-        </li>
-        <li>
-          <a href="">Руководство по эксплуатации МС-К-500-ТС «ТЕХНОСФЕРА»</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</a>
-        </li>
-        <li>
-          <a href="">Настройка датчика конечных положений клапанов СЕНС</a>
-        </li>
-      </ul>
-    </div>
+    <article class="layout">
+      <h1 class="title">Основные
+        этапы настройки АРМ СИ СЕНС</h1>
+      <p>1. Проверить успешное соединение с файлом базы данных. Если соединение не установлено, обратитесь к
+        руководству пользователя (файл manual.pdf в папке программы АРМ СИ СЕНС).</p>
+
+      <img src="https://www.nppsensor.ru/i/74da1734-8262-4458-9b13-951933f78084"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>2. Создать подключение к линии СЕНС.</p>
+
+      <img src="https://www.nppsensor.ru/i/01d5efb6-06f1-4c38-9b5c-85c66cf1a3c0"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>3. Выбрать тип подключения в зависимости от используемого адаптера (адаптеры ЛИН-USB, ЛИН-RS232, ЛИН-RS485,
+        ЛИН-RS485/232 используют тип подключения RS232) и номер COM-порта, используемого адаптером (для подключения
+        RS232).</p>
+
+      <img src="https://www.nppsensor.ru/i/53a1928a-6e4a-4eca-9c79-c3dc209b2a55"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>4. Добавить необходимое количество резервуаров. Обычно одному уровнемеру соответствует один резервуар.</p>
+
+      <img src="https://www.nppsensor.ru/i/44a551fd-5758-4a0c-a9d3-baf73c917407"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>5. В каждый резервуар добавить просматриваемые параметры.</p>
+
+      <img src="https://www.nppsensor.ru/i/25a7fc00-6309-4a62-97b7-c991d70e11d5"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>6. Напротив каждого параметра указать адрес соответствующего уровнемера в линии СЕНС. Для типов подключения
+        TCP/IP и GSM также указать IP-адрес адаптера (для TCP/IP) или номер телефона GSM-модема (для GSM) в
+        соответствии с руководством пользователя.</p>
+
+      <img src="https://www.nppsensor.ru/i/2270cac1-4331-4969-8fc2-3a3071f759b7"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>7. Газосигнализаторы добавляются аналогично. Напротив каждого указать его адрес в линии СЕНС. Для типов
+        подключения TCP/IP и GSM также указать IP-адрес адаптера (для TCP/IP) или номер телефона GSM-модема (для GSM)
+        в соответствии с руководством пользователя.</p>
+
+      <img src="https://www.nppsensor.ru/i/b7407abb-b8da-4c97-8df2-04a9d2c9209b"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>8. Если настройка произведена правильно, в программе АРМ СИ СЕНС резервуары будут отображаться следующим
+        образом:</p>
+
+      <img src="https://www.nppsensor.ru/i/d09aaefc-1ef2-4140-b839-257dd5aec5a1"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Газосигнализаторы:</p>
+
+      <img src="https://www.nppsensor.ru/i/53ad1cc6-3077-449c-ac8d-7be04eccb966"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Более подробно о настройке и работе с программой АРМ СИ СЕНС можно прочитать в руководстве пользователя в
+        разделе «О программе… (F1)» по кнопке <span style="position: relative;top: 5px;"><img
+            src="https://www.nppsensor.ru/i/9218842c-388a-4b72-b725-6b7d81313912" style="height: 25px;" alt=""></span>.
+      </p>
+
+      <p class="p">Если у вас остались вопросы, напишите нам по адресу <a class="link-blue"
+          href="mailto:srv@nppsensor.ru" target="_blank">srv@nppsensor.ru</a>.
+      </p>
+    </article>
   </main>
 
   <footer>

@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Проверить статус обращения</title>
-  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../index.js" defer></script>
+  <title>Установка
+    второго Firebird</title>
+  <link rel="preload" href="../../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../../index.js" defer></script>
   <!-- <script type="module" src="../../scripts/status_validate.js" defer></script> -->
 </head>
 
@@ -264,74 +265,115 @@
         <li class="breadcrumbs__item">
           <a href="./appeal_status.html" class="link">Часто задаваемые вопросы</a>
         </li>
+        <li class="breadcrumbs__item">
+          <a href="./appeal_status.html" class="link">Установка
+            второго Firebird</a>
+        </li>
       </ul>
     </nav>
 
-    <div class="layout">
-      <h1 class="title">Часто задаваемые вопросы</h1>
-      <span>Ознакомьтесь с ответами на часто возникающие вопросы прежде, чем обратиться в сервисную службу
-        предприятия.</span>
-      <span>Возможно, Ваша проблема решится быстрее и легче, чем вы ожидали.</span>
-      <br>
-      <span>Если у вас остались вопросы, напишите нам по адресу <a href="mailto:srv@nppsensor.ru"
-          style="color: #04b;">srv@nppsensor.ru</a>.</span><br><br>
-      <span>Вопросы:</span>
-      <ul>
-        <li>
-          <a href="">Как отправить продукцию на сервисное обслуживание?</a>
-        </li>
-        <li>
-          <a href="">Какие приборы системы измерительной «СЕНС» подключаются к программно-техническому комплексу
-            "Контар"?</a>
-        </li>
-        <li>
-          <a href="">Что такое "Выход - W5DНЗ"?</a>
-        </li>
-        <li>
-          <a href="">Обслуживание электромагнитного привода клапанов СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка драйвера ЛИН-USB на Windows 10</a>
-        </li>
-        <li>
-          <a href="">Переустановка драйвера ЛИН-USB на Windows 10?</a>
-        </li>
-        <li>
-          <a href="">С какими системами и терминалами спутникового мониторинга совместимы устройства «СЕНС»?</a>
-        </li>
-        <li>
-          <a href="">Подключение адаптера ЛИН-RS485/232-DIN?</a>
-        </li>
-        <li>
-          <a href="">Основные этапы настройки АРМ СИ СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка второго Firebird</a>
-        </li>
-        <li>
-          <a href="">Настройка GPRS-канала связи с помощью терминала Robustel M1000 Pro</a>
-        </li>
-        <li>
-          <a href="">Дополнение к руководству пользователя по записи градуировочной таблицы в уровнемер ПМП-201Е (версия
-            программы уровнемера A32E)</a>
-        </li>
-        <li>
-          <a href="">Замена чувствительного элемента ПМП-201Е</a>
-        </li>
-        <li>
-          <a href="">Руководство по эксплуатации МС-К-500-ТС «ТЕХНОСФЕРА»</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</a>
-        </li>
-        <li>
-          <a href="">Настройка датчика конечных положений клапанов СЕНС</a>
-        </li>
-      </ul>
-    </div>
+    <article class="layout">
+      <h1 class="title">Установка
+        второго Firebird</h1>
+      <p>В случаях, когда АРМ СИ СЕНС устанавливается на компьютер, на котором уже установлены другие программы,
+        использующие Firebird (например, Топаз), необходимо установить ещё одну копию Firebird.</p>
+
+      <p><a class="link-red" target="_blank" href="https://yandex.ru/search/?text=firebird+2.5+скачать">Firebird 2.5</a>
+        не обязательно устанавливать на
+        диск С, можно перенести его в любое место любого диска (с путём покороче).</p>
+
+      <p>Нажать кнопку “Пуск”-&gt;”Выполнить…”. Набрать cmd, нажать Enter. Появится командная строка.</p>
+
+      <p>В проводнике Windows или в Total Commander перейти в папку bin устанавливаемого Firebird 2.5. Скопировать
+        полный путь к этой папке (Ctrl-C или по пр.кн.мыши). Например, отсюда:</p>
+
+      <img src="https://www.nppsensor.ru/i/2ca244e8-4c3f-4487-8456-e812935ac249"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <img src="https://www.nppsensor.ru/i/15a8ae75-eb07-4cad-8f27-c4935d44f69d"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Перейти в окно командной строки.</p>
+
+      <p>Набрать <code>cd</code>, пробел, нажать пр.кн. мыши на строке ввода, из меню выбрать “Вставить”, нажать
+        Enter.</p>
+
+      <img src="https://www.nppsensor.ru/i/2312d278-f8e9-4c12-991f-ccd84ec9d66c"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Если Firebird 2.5 будет не на диске С, например, как в этом примере, – на E, то перейти на этот диск. Для
+        этого нужно набрать <code>e:</code> и нажать Enter.</p>
+
+      <img src="https://www.nppsensor.ru/i/71a6c1cd-7b0e-4386-8c06-d2916527aba6"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Теперь можно установить службу. Имя можно выбрать FB25.</p>
+
+      <p><code>instsvc.exe i -c -n FB25</code></p>
+
+      <img src="https://www.nppsensor.ru/i/fc407d80-0649-4410-9c3e-332319058c78"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Далее нужно перейти в папку с нашим Firebird 2.5, в данном случае это
+        <code>e:\Firebird-2.5.8.27089-0_Win32\</code>.
+      </p>
+
+      <p>Открыть файл firebird.conf на редактирование.</p>
+
+      <p>Найти строку (где-то в середине файла)</p>
+
+      <p><code>#RemoteServicePort = 3050</code></p>
+
+      <p>Сделать её вот такой</p>
+
+      <p><code>RemoteServicePort = 3051</code></p>
+
+      <p>(обязательно убрать <code>#</code> в начале строки)</p>
+
+      <img src="https://www.nppsensor.ru/i/d186b4eb-a1f4-41a9-86bc-b1f55978d74c"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Сохранить. Закрыть файл.</p>
+
+      <img src="https://www.nppsensor.ru/i/679d7dfb-f00a-4ba7-b6a2-ef3df3b90b5a"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Теперь нужно открыть “Диспетчер задач” Windows и перейти на вкладку “Службы” найти наш Firebird 2.5.</p>
+
+      <p>Выделить мышью строку, нажать правую кн.мыши, выбрать “Запустить службу”.</p>
+
+      <img src="https://www.nppsensor.ru/i/b2b2e87e-dccf-44eb-8120-1236deb67209"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Firebird 2.5 установлен.</p>
+
+      <h2 class="title">Настройка АРМ СИ СЕНС</h2>
+
+      <p>Желательно <a class="link-red" href="/support/downloads/Soft">скачать</a> последнюю версию АРМ СИ
+        СЕНС (не ниже 2.8.1).</p>
+
+      <p><strong>ВАЖНО!</strong></p>
+
+      <p><strong>При установке АРМ СИ СЕНС в окне “Выбор компонентов” снять галочку “СУБД Firebird v2.5”</strong></p>
+
+      <p>После установки АРМ СИ СЕНС запустить программу “Настройка АРМ СИ СЕНС”, перейти на вкладку “Управление БД”,
+        установить галочку “Расширенные настройки”, в поле “Порт:” задать 3051, нажать кнопку <span
+          style="position: relative;top: 5px;"><img
+            src="https://www.nppsensor.ru/i/3d8a34ce-6d1d-41b8-809d-2b0f2361162f" alt=""></span></p>
+
+      <img src="https://www.nppsensor.ru/i/3d54e50e-e511-4990-b578-13c00bdd4370"
+        style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+      <p>Готово.</p>
+
+      <p>Закрыть программу “Настройка АРМ СИ СЕНС” (нужно для сохранения настроек).</p>
+
+      <p>Далее работать с АРМ СИ СЕНС как обычно.</p>
+
+      <p class="p">Если у вас остались вопросы, напишите нам по адресу <a class="link-blue"
+          href="mailto:srv@nppsensor.ru" target="_blank">srv@nppsensor.ru</a>.
+      </p>
+    </article>
   </main>
 
   <footer>

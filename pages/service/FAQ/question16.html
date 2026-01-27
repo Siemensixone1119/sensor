@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Проверить статус обращения</title>
-  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../index.js" defer></script>
+  <title>Настройки
+    адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</title>
+  <link rel="preload" href="../../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../../index.js" defer></script>
+  <script type="module" src="../../../scripts/toggle_faq.js" defer></script>
   <!-- <script type="module" src="../../scripts/status_validate.js" defer></script> -->
 </head>
 
@@ -264,74 +266,136 @@
         <li class="breadcrumbs__item">
           <a href="./appeal_status.html" class="link">Часто задаваемые вопросы</a>
         </li>
+        <li class="breadcrumbs__item">
+          <a href="./appeal_status.html" class="link">Настройки
+            адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</a>
+        </li>
       </ul>
     </nav>
 
-    <div class="layout">
-      <h1 class="title">Часто задаваемые вопросы</h1>
-      <span>Ознакомьтесь с ответами на часто возникающие вопросы прежде, чем обратиться в сервисную службу
-        предприятия.</span>
-      <span>Возможно, Ваша проблема решится быстрее и легче, чем вы ожидали.</span>
-      <br>
-      <span>Если у вас остались вопросы, напишите нам по адресу <a href="mailto:srv@nppsensor.ru"
-          style="color: #04b;">srv@nppsensor.ru</a>.</span><br><br>
-      <span>Вопросы:</span>
-      <ul>
-        <li>
-          <a href="">Как отправить продукцию на сервисное обслуживание?</a>
-        </li>
-        <li>
-          <a href="">Какие приборы системы измерительной «СЕНС» подключаются к программно-техническому комплексу
-            "Контар"?</a>
-        </li>
-        <li>
-          <a href="">Что такое "Выход - W5DНЗ"?</a>
-        </li>
-        <li>
-          <a href="">Обслуживание электромагнитного привода клапанов СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка драйвера ЛИН-USB на Windows 10</a>
-        </li>
-        <li>
-          <a href="">Переустановка драйвера ЛИН-USB на Windows 10?</a>
-        </li>
-        <li>
-          <a href="">С какими системами и терминалами спутникового мониторинга совместимы устройства «СЕНС»?</a>
-        </li>
-        <li>
-          <a href="">Подключение адаптера ЛИН-RS485/232-DIN?</a>
-        </li>
-        <li>
-          <a href="">Основные этапы настройки АРМ СИ СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка второго Firebird</a>
-        </li>
-        <li>
-          <a href="">Настройка GPRS-канала связи с помощью терминала Robustel M1000 Pro</a>
-        </li>
-        <li>
-          <a href="">Дополнение к руководству пользователя по записи градуировочной таблицы в уровнемер ПМП-201Е (версия
-            программы уровнемера A32E)</a>
-        </li>
-        <li>
-          <a href="">Замена чувствительного элемента ПМП-201Е</a>
-        </li>
-        <li>
-          <a href="">Руководство по эксплуатации МС-К-500-ТС «ТЕХНОСФЕРА»</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</a>
-        </li>
-        <li>
-          <a href="">Настройка датчика конечных положений клапанов СЕНС</a>
-        </li>
-      </ul>
-    </div>
+    <article class="layout">
+      <h1 class="title">Настройки
+        адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</h1>
+      <p>ПО&nbsp;«Мобильная карта» получает данные от&nbsp;уровнемеров ПМП-201 с&nbsp;использованием протокола MODBUS.
+      </p>
+
+      <h2 class="title">1. Положение переключателей на&nbsp;лицевой панели адаптера.</h2>
+
+      <img src="https://www.nppsensor.ru/i/5041052c-d52e-459b-9655-8fcc695e9bd7/w-140"
+        style="float: left; margin-right: 20px; margin-bottom: 10px; z-index: 1;" alt="">
+
+      <style>
+        .support-table-doms table,
+        .support-table-doms tr,
+        .support-table-doms th,
+        .support-table-doms td {
+          border: 1px solid #ccc;
+          font-size: 12px;
+          vertical-align: middle;
+          line-height: 1.4;
+        }
+
+        .support-table-doms tr,
+        .support-table-doms th,
+        .support-table-doms td {
+          padding: 2px 5px;
+        }
+
+        .support-table-doms th,
+        .support-table-doms td:first-child {
+          text-align: center;
+        }
+      </style>
+
+      <table class="support-table-doms" style="width: calc(100% - 170px);">
+        <tbody>
+          <tr>
+            <th>№</th>
+            <th>Положение</th>
+            <th>Режим</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>включен&nbsp;(слева)</td>
+            <td>включен протокол MODBUS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td>режим порта «обычный»</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td>зарезервирован</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td rowspan="2">8-N-1 (8 бит данных, без контроля четности, 1 стоповый бит)</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>отключен&nbsp;(справа)</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>включен&nbsp;(слева)</td>
+            <td>скорость обмена 19200 бит/с</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td rowspan="2">интерфейс RS-485, двухпроводный</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>отключен&nbsp;(справа)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p><em>Примечание – переключатели 4-8 могут иметь другое положение в&nbsp;зависимости от&nbsp;настроек
+          оборудования, на&nbsp;котором установлено ПО&nbsp;«Мобильная карта».</em></p>
+
+      <h2 class="title">2. Настройки адаптера.</h2>
+
+      <p>Адаптер настраивается с&nbsp;использованием программы «Настройка датчиков и&nbsp;вторичных приборов».
+        Программу можно скачать <a class="link-red" target="_blank"
+          href="https://www.nppsensor.ru/support/downloads/Soft">здесь</a>. После запуска программы необходимо запустить
+        инструмент настройки
+        адаптера в&nbsp;режиме протокола MODBUS (меню «Инструменты–Настройка адаптера Modbus»).</p>
+
+      <img src="https://www.nppsensor.ru/i/c6939cf1-7a34-45eb-b11b-e449507d4f49"
+        style="display: block; margin: 10px auto; " alt="">
+
+      <p>В&nbsp;появившемся окне нажать кнопку «Считать».</p>
+
+      <img src="https://www.nppsensor.ru/i/5ba2c74f-6178-4d36-a9aa-46f69fbe7dee"
+        style="display: block; margin: 10px auto; " alt="">
+
+      <p>На&nbsp;заводе-изготовителе в&nbsp;карту регистров (слоты) добавлен уровнемер с&nbsp;адресом 1&nbsp;(протокол
+        СЕНС) для&nbsp;считывания восьми параметров (уровень, температура, процентное заполнение, объём, масса,
+        плотность, объём продукта, уровень подтоварной воды). Для&nbsp;добавления уровнемера с&nbsp;адресом
+        2&nbsp;(протокол СЕНС) необходимо заполнить последовательно следующие 8&nbsp;слотов (9-16).</p>
+
+      <img src="https://www.nppsensor.ru/i/042a5186-33b4-40e5-ab1a-d5893c51161a"
+        style="display: block; margin: 10px auto; " alt="">
+
+      <p>Аналогично следует добавить остальные уровнемеры.</p>
+
+      <p><strong>ВАЖНО! – для&nbsp;каждого уровнемера должно быть добавлено 8&nbsp;параметров, потому что
+          в&nbsp;ПО&nbsp;«Мобильная карта» за&nbsp;уровнемер принимается 8&nbsp;регистров MODBUS (1-8, 9-16, 17-24
+          и&nbsp;т.&nbsp;д.).</strong></p>
+
+      <p>Настройку ПО&nbsp;«Мобильная карта» проводить по&nbsp;инструкциям на&nbsp;него.</p>
+
+      <p class="p">Если у вас остались вопросы, напишите нам по адресу <a class="link-blue"
+          href="mailto:srv@nppsensor.ru" target="_blank">srv@nppsensor.ru</a>.
+      </p>
+    </article>
   </main>
 
   <footer>

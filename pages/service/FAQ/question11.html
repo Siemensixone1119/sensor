@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Проверить статус обращения</title>
-  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../index.js" defer></script>
+  <title>Настройка
+    GPRS-канала связи с помощью терминала Robustel M1000 Pro</title>
+  <link rel="preload" href="../../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../../index.js" defer></script>
+  <script type="module" src="../../../scripts/toggle_faq.js" defer></script>
   <!-- <script type="module" src="../../scripts/status_validate.js" defer></script> -->
 </head>
 
@@ -264,74 +266,173 @@
         <li class="breadcrumbs__item">
           <a href="./appeal_status.html" class="link">Часто задаваемые вопросы</a>
         </li>
+        <li class="breadcrumbs__item">
+          <a href="./appeal_status.html" class="link">Настройка
+            GPRS-канала связи с помощью терминала Robustel M1000 Pro</a>
+        </li>
       </ul>
     </nav>
 
-    <div class="layout">
-      <h1 class="title">Часто задаваемые вопросы</h1>
-      <span>Ознакомьтесь с ответами на часто возникающие вопросы прежде, чем обратиться в сервисную службу
-        предприятия.</span>
-      <span>Возможно, Ваша проблема решится быстрее и легче, чем вы ожидали.</span>
-      <br>
-      <span>Если у вас остались вопросы, напишите нам по адресу <a href="mailto:srv@nppsensor.ru"
-          style="color: #04b;">srv@nppsensor.ru</a>.</span><br><br>
-      <span>Вопросы:</span>
+    <article class="layout">
+      <h1 class="title">Настройка
+        GPRS-канала связи с помощью терминала Robustel M1000 Pro</h1>
+      <p>Для организации связи необходимо, чтобы выполнялись следующие условия:</p>
+
       <ul>
-        <li>
-          <a href="">Как отправить продукцию на сервисное обслуживание?</a>
+        <li>доступность интернет-соединения по сотовой сети (GPRS, EDGE, 3G) на объекте установки датчиков</li>
+        <li>наличие статического «белого» IP-адреса на ПК в офисе либо у шлюза организации</li>
+        <li>наличие программы «TCP-COM Bridge» на ПК в офисе</li>
+        <li>наличие переходника USB-RS232</li>
+      </ul>
+
+
+      <ul class="faq">
+        <li class="faq__item">
+          <span class="faq__title link-blue">1&nbsp;&nbsp;&nbsp;Настройка терминала</span>
+          <div class="faq__content">
+            <p>1.1&nbsp;&nbsp;&nbsp;Установить переключатель MODE терминала в положение «CONFIG», подключить терминал
+              к порту RS232 ПК или переходника (USB-RS232), подать питание. При необходимости можно использовать жгут
+              (СЕНС.685621.010-01) из комплекта терминала, где провод «A» соответствует контакту «2» (RxD), провод «Z»
+              – контакту «3» (TxD).</p>
+            <p>1.2&nbsp;&nbsp;&nbsp;Запустить программу M1000 Pro V2 Configurator V2.5.0.</p>
+            <p>1.3&nbsp;&nbsp;&nbsp;Во вкладке «COM» выбрать необходимый COM-порт и нажать кнопку подключения.</p>
+
+            <img src="https://www.nppsensor.ru/i/7cdc2f99-bf10-403e-bc6c-cb6ae72395be"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>1.4&nbsp;&nbsp;&nbsp;При успешном подключении появится следующее окно.</p>
+
+            <img src="https://www.nppsensor.ru/i/9b5d16c3-ab72-4faf-bcf1-54f5bf8ab5f9"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>1.5&nbsp;&nbsp;&nbsp;Установить настройки COM-порта в соответствии с рисунком ниже.</p>
+
+            <img src="https://www.nppsensor.ru/i/1fdb9e7e-0f94-42f5-a74d-d0619e4dfd38"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>1.6&nbsp;&nbsp;&nbsp;Во вкладке «GPRS» настроить подключение к сети Интернет. На следующем рисунке
+              изображены настройки подключения к оператору сотовой связи МТС.</p>
+
+            <img src="https://www.nppsensor.ru/i/fe03b6a9-3bf1-430f-a9dd-6e1fcb522d5f"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>1.7&nbsp;&nbsp;&nbsp;Во вкладке «Connection» настроить подключение к ПК в офисе, с которого будет
+              осуществляться настройка и наблюдение за объектом. В поля Address и Port вводятся соответственно внешний
+              статический IP-адрес ПК и порт, по которому будет происходить обмен данными.</p>
+
+            <img src="https://www.nppsensor.ru/i/7a9ec8d7-efe2-41e3-b5f6-92c93427911d"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>Если ПК в составе сети организации, нужно использовать внешний статический адрес шлюза с дальнейшей
+              переадресацией порта на используемый ПК.</p>
+            <p>Для записи настроек в память терминала нажать кнопку <span style="position: relative;top: 10px;"><img
+                  src="https://www.nppsensor.ru/i/464b9b66-aad7-4d89-9ced-28a11ab316f9/h-35"
+                  style="height: min-content;" alt=""></span>.</p>
+
+            <p>При успешной записи появится окно, показанное на следующем рисунке. Перезагрузить терминал, сбросив
+              питание.</p>
+
+            <img src="https://www.nppsensor.ru/i/2639f298-be29-4da9-92e1-710b8718d96d"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>1.8&nbsp;&nbsp;&nbsp;Установить переключатель MODE терминала в положение «NORMAL», подключить терминал
+              с помощью жгута (СЕНС.685621.010-01) к адаптеру ЛИН-RS485/232-DIN.</p>
+
+            <p>1.9&nbsp;&nbsp;&nbsp;Установить переключатели Адаптера ЛИН-RS485/232-DIN в соответствии с рисунком.</p>
+
+            <img src="https://www.nppsensor.ru/i/109f7694-213a-4bc5-84f2-d25ede601f7b"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>1.10&nbsp;&nbsp;&nbsp;Адаптер ЛИН-RS485/232-DIN подключить к линии СЕНС. Подать питание на терминал.
+              После успешного подключения к сети сотовой связи индикаторы «Net» и «Sys» терминала должны моргать
+              одновременно с частотой один раз в три секунды.</p>
+          </div>
         </li>
-        <li>
-          <a href="">Какие приборы системы измерительной «СЕНС» подключаются к программно-техническому комплексу
-            "Контар"?</a>
+
+        <li class="faq__item">
+          <span class="faq__title link-blue">2&nbsp;&nbsp;&nbsp;Настройка ПК в офисе</span>
+          <div class="faq__content" style="display: block;">
+            <p>2.1&nbsp;&nbsp;&nbsp;Установить программу «TCP-COM Bridge» на ПК в офисе.</p>
+            <p>2.2&nbsp;&nbsp;&nbsp;Запустить программу «TCP-COM Bridge». Выбрать пункт меню «Устройства» → «Добавить».
+            </p>
+            <p>2.3&nbsp;&nbsp;&nbsp;Во вкладке «Порт» Выбрать неиспользуемый на ПК COM-порт. Настройки порта установить
+              в соответствии с рисунком.</p>
+
+            <img src="https://www.nppsensor.ru/i/a8663075-4af9-42f4-95ba-04894168281f"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>2.4&nbsp;&nbsp;&nbsp;Во вкладке «Настройка IP» ввести IP-адрес ПК и порт, по которому будет
+              осуществляться соединение (рис. 9). Если ПК имеет статический «белый» IP-адрес, они должны совпадать с
+              введёнными в терминал Robustel.</p>
+
+            <img src="https://www.nppsensor.ru/i/c9f8d330-dbf7-4b8a-bdcd-dd3a8d296fd4"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>2.5&nbsp;&nbsp;&nbsp;Нажать кнопку «ОК». Программа создаст виртуальный COM-порт с соответствующим ему
+              IP-адресом.</p>
+
+            <img src="https://www.nppsensor.ru/i/48ff2832-5f79-407b-a1ac-05eb6addf25c"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>При необходимости автоматического запуска программы во время включения компьютера, выбрать тип старта
+              «Реестр Windows (все пользователи)».</p>
+            <p>2.6&nbsp;&nbsp;&nbsp;Терминал автоматически подключится к ПК, о чём будет свидетельствовать счётчик
+              подключенных клиентов.</p>
+
+            <img src="https://www.nppsensor.ru/i/826f240c-220a-4073-8ee4-ae33babeede0"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+          </div>
         </li>
-        <li>
-          <a href="">Что такое "Выход - W5DНЗ"?</a>
-        </li>
-        <li>
-          <a href="">Обслуживание электромагнитного привода клапанов СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка драйвера ЛИН-USB на Windows 10</a>
-        </li>
-        <li>
-          <a href="">Переустановка драйвера ЛИН-USB на Windows 10?</a>
-        </li>
-        <li>
-          <a href="">С какими системами и терминалами спутникового мониторинга совместимы устройства «СЕНС»?</a>
-        </li>
-        <li>
-          <a href="">Подключение адаптера ЛИН-RS485/232-DIN?</a>
-        </li>
-        <li>
-          <a href="">Основные этапы настройки АРМ СИ СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка второго Firebird</a>
-        </li>
-        <li>
-          <a href="">Настройка GPRS-канала связи с помощью терминала Robustel M1000 Pro</a>
-        </li>
-        <li>
-          <a href="">Дополнение к руководству пользователя по записи градуировочной таблицы в уровнемер ПМП-201Е (версия
-            программы уровнемера A32E)</a>
-        </li>
-        <li>
-          <a href="">Замена чувствительного элемента ПМП-201Е</a>
-        </li>
-        <li>
-          <a href="">Руководство по эксплуатации МС-К-500-ТС «ТЕХНОСФЕРА»</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</a>
-        </li>
-        <li>
-          <a href="">Настройка датчика конечных положений клапанов СЕНС</a>
+
+        <li class="faq__item">
+          <span class="faq__title link-blue">3&nbsp;&nbsp;&nbsp;Проверка подключения</span>
+          <div class="faq__content" style="display: block;">
+            <p>3.1&nbsp;&nbsp;&nbsp;Запустить программу Настройка Датчиков и вторичных приборов. Выбрать пункт меню
+              «Опции» → «Настройки». Настройки порта установить в соответствии с рисунком. Начать «ОК».</p>
+
+            <img src="https://www.nppsensor.ru/i/13ec010d-27b6-4d78-ad47-5cb130b9dbb1"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>3.2&nbsp;&nbsp;&nbsp;Выбрать пункт меню «Устройства» → «Поиск…». Ввести диапазон адресов с 255 по 255.
+              Нажать «ОК». Если всё настроено и подключено правильно, в левом поле должен появиться адаптер
+              ЛИН-RS485/232-DIN.</p>
+
+            <img src="https://www.nppsensor.ru/i/677a4aef-4afd-42ea-8167-a4862e6f7b60"
+              style="display: block; margin: 10px auto; max-width: 90%;" alt="">
+
+            <p>3.3&nbsp;&nbsp;&nbsp;Можно начинать работать с удалённым оборудованием линии СЕНС, используя созданный
+              виртуальный COM-порт.</p>
+          </div>
         </li>
       </ul>
-    </div>
+      <p><br>
+      </p>
+      <h2 style="margin-bottom: 20px;">Файлы</h2>
+      <ul class="files-list">
+        <li class="files-list__item">
+          <div class="files-list__wrapper--icon">
+            <img class="files-list__icon" loading="lazy"
+              src="https://www.nppsensor.ru/images/icons/filetypes/ico-zip.png" alt="" />
+          </div>
+          <div class="files-list__wrapper--info">
+            <a class="files-list__name link" target="_blank"
+              href="https://www.nppsensor.ru/download/Soft/Robustel_M1000_Pro_V2.zip">ПО для настройки адаптера
+              ЛИН-RS485/232-Robustel
+              (M1000 Pro V2 Configurator)<div class="files-list__click"></div>
+            </a>
+            <div class="files-list__meta">
+              <div class="files-list__meta-ext">zip</div>
+              <div class="files-list__meta-size">4,60 МБ</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <p class="p">Если у вас остались вопросы, напишите нам по адресу <a class="link-blue"
+          href="mailto:srv@nppsensor.ru" target="_blank">srv@nppsensor.ru</a>.
+      </p>
+    </article>
   </main>
 
   <footer>

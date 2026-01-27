@@ -81,3 +81,7 @@
     left: 0;
   }
 }
+
+.files-list__meta:not(:has(> .files-list__meta-date)) .files-list__meta-size::after {
+  content: none;
+}

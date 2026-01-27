@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Проверить статус обращения</title>
-  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../index.js" defer></script>
+  <title>Настройки
+    адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</title>
+  <link rel="preload" href="../../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../../style/css/service.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../../index.js" defer></script>
+  <script type="module" src="../../../scripts/toggle_faq.js" defer></script>
   <!-- <script type="module" src="../../scripts/status_validate.js" defer></script> -->
 </head>
 
@@ -264,74 +266,120 @@
         <li class="breadcrumbs__item">
           <a href="./appeal_status.html" class="link">Часто задаваемые вопросы</a>
         </li>
+        <li class="breadcrumbs__item">
+          <a href="./appeal_status.html" class="link">Настройки
+            адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</a>
+        </li>
       </ul>
     </nav>
 
-    <div class="layout">
-      <h1 class="title">Часто задаваемые вопросы</h1>
-      <span>Ознакомьтесь с ответами на часто возникающие вопросы прежде, чем обратиться в сервисную службу
-        предприятия.</span>
-      <span>Возможно, Ваша проблема решится быстрее и легче, чем вы ожидали.</span>
-      <br>
-      <span>Если у вас остались вопросы, напишите нам по адресу <a href="mailto:srv@nppsensor.ru"
-          style="color: #04b;">srv@nppsensor.ru</a>.</span><br><br>
-      <span>Вопросы:</span>
-      <ul>
-        <li>
-          <a href="">Как отправить продукцию на сервисное обслуживание?</a>
-        </li>
-        <li>
-          <a href="">Какие приборы системы измерительной «СЕНС» подключаются к программно-техническому комплексу
-            "Контар"?</a>
-        </li>
-        <li>
-          <a href="">Что такое "Выход - W5DНЗ"?</a>
-        </li>
-        <li>
-          <a href="">Обслуживание электромагнитного привода клапанов СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка драйвера ЛИН-USB на Windows 10</a>
-        </li>
-        <li>
-          <a href="">Переустановка драйвера ЛИН-USB на Windows 10?</a>
-        </li>
-        <li>
-          <a href="">С какими системами и терминалами спутникового мониторинга совместимы устройства «СЕНС»?</a>
-        </li>
-        <li>
-          <a href="">Подключение адаптера ЛИН-RS485/232-DIN?</a>
-        </li>
-        <li>
-          <a href="">Основные этапы настройки АРМ СИ СЕНС</a>
-        </li>
-        <li>
-          <a href="">Установка второго Firebird</a>
-        </li>
-        <li>
-          <a href="">Настройка GPRS-канала связи с помощью терминала Robustel M1000 Pro</a>
-        </li>
-        <li>
-          <a href="">Дополнение к руководству пользователя по записи градуировочной таблицы в уровнемер ПМП-201Е (версия
-            программы уровнемера A32E)</a>
-        </li>
-        <li>
-          <a href="">Замена чувствительного элемента ПМП-201Е</a>
-        </li>
-        <li>
-          <a href="">Руководство по эксплуатации МС-К-500-ТС «ТЕХНОСФЕРА»</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</a>
-        </li>
-        <li>
-          <a href="">Настройки адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</a>
-        </li>
-        <li>
-          <a href="">Настройка датчика конечных положений клапанов СЕНС</a>
-        </li>
-      </ul>
-    </div>
+    <article class="layout">
+      <h1 class="title">Настройки
+        адаптера ЛИН-RS485/232-DIN для работы с контроллерами DOMS</h1>
+      <h2 class="title">1. Положение переключателей на лицевой панели адаптера.</h2>
+
+      <img src="https://www.nppsensor.ru/i/38ba7c24-70e2-4b43-85d1-a418015b9e4b/w-150"
+        style="float: left; margin-right: 20px; margin-bottom: 10px; z-index: 1;" alt="">
+
+      <style>
+        .support-table-doms table,
+        .support-table-doms tr,
+        .support-table-doms th,
+        .support-table-doms td {
+          border: 1px solid #ccc;
+          font-size: 12px;
+          vertical-align: middle;
+          line-height: 1.4;
+        }
+
+        .support-table-doms tr,
+        .support-table-doms th,
+        .support-table-doms td {
+          padding: 2px 5px;
+        }
+
+        .support-table-doms th,
+        .support-table-doms td:first-child {
+          text-align: center;
+        }
+      </style>
+
+      <table class="support-table-doms" style="width: calc(100% - 170px);">
+        <tbody>
+          <tr>
+            <th>№</th>
+            <th>Положение</th>
+            <th>Режим</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td>включен протокол СЕНС</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td>режим порта «обычный»</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td>зарезервирован</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td rowspan="2">8-N-1 (8 бит данных, без контроля четности, 1 стоповый бит)</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>отключен&nbsp;(справа)</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>включен&nbsp;(слева)</td>
+            <td>скорость обмена 19200 бит/с</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td>–</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>включен&nbsp;(слева)</td>
+            <td>интерфейс RS-232</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="title">2. Настройки адаптера.</h2>
+
+      <p>Адаптер настраивается с использованием программы «Настройка датчиков и вторичных приборов».</p>
+
+      <p>Программу можно скачать <a class="link-red" target="_blank"
+          href="https://www.nppsensor.ru/support/downloads/Soft">здесь</a>.</p>
+
+      <p>Найти адаптер по его адресу или адресу 255 (служебный со стороны порта RS-…).</p>
+
+      <img src="https://www.nppsensor.ru/i/259c1aa0-8c62-4517-9daf-ba41c5c71b77"
+        style="display: block; margin: 10px auto; width: 100%;" alt="">
+
+      <p>На закладке «Настраиваемые параметры» установить в параметре «Установки 2» флаг под номером 2.</p>
+
+      <p>Записать изменения в адаптер меню Устройства–Записать все параметры…</p>
+
+      <img src="https://www.nppsensor.ru/i/3c7cbf17-1c51-4d3a-a170-c439baefd228/w-340"
+        style="display: block; margin: 10px auto; " alt="">
+
+      <p>По умолчанию в заводских настройках флаг 2 не установлен. После установки флага адаптер будет транслировать в
+        порт RS-232 посылки байтов состояния ПМП-201, по которым контроллер DOMS определяет подключенные к нему
+        уровнемеры.</p>
+
+      <p class="p">Если у вас остались вопросы, напишите нам по адресу <a class="link-blue"
+          href="mailto:srv@nppsensor.ru" target="_blank">srv@nppsensor.ru</a>.
+      </p>
+    </article>
   </main>
 
   <footer>

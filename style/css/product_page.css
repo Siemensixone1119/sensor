@@ -139,6 +139,14 @@ video {
   max-width: 100%;
 }
 
+.link-red {
+  color: #b30006;
+}
+
+.link-blue {
+  color: #04b;
+}
+
 .product svg {
   min-width: 18px;
   min-height: 18px;
@@ -758,6 +766,10 @@ h2:has(+ div.compare) {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.files-list__meta:not(:has(> .files-list__meta-date)) .files-list__meta-size::after {
+  content: none;
 }
 
 .product-price {
