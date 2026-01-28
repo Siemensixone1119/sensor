@@ -239,6 +239,20 @@ video {
   color: #04b;
 }
 
+label {
+  position: relative;
+}
+
+label.required::before {
+  content: "*";
+  position: absolute;
+  top: 9px;
+  left: -7px;
+  font-size: 16px;
+  color: #b30006;
+  line-height: 0;
+}
+
 @font-face {
   font-family: pfdintextcomppro-light;
   src: url("./../../assets/font/pfdintextcomppro-light.woff");

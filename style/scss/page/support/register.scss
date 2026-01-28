@@ -1,0 +1,127 @@
+@use "../../partials/base/variable" as *;
+
+.register-arm {
+
+  &__img {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+
+    img {
+      border: 1px solid #212121;
+    }
+  }
+
+  &__img {
+    margin: 10px auto;
+  }
+
+  &__op {
+    color: blue;
+  }
+
+  &__form {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    // gap: 10px;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__label-title {
+    font-size: 16px;
+  }
+
+  &__label-hint {
+    font-size: 12px;
+    color: $accent-color;
+    font-weight: 600;
+  }
+
+  &__gray {
+    font-size: 13px;
+    color: #808080;
+    width: fit-content;
+    line-height: 1;
+  }
+
+  &__input {
+    padding: 10px;
+    border: 1px solid lightgrey;
+    outline: none;
+  }
+
+  &__help {
+    font-size: 13px;
+    color: #808080;
+    border-bottom: 1px dotted;
+    width: fit-content;
+    line-height: 1;
+  }
+
+  &__captcha {
+    height: 30px;
+  }
+
+  &__field--consent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+
+    input {
+      margin-top: 5px;
+    }
+
+    a {
+      color: $accent-color;
+    }
+  }
+
+  &__submit {
+    width: 50%;
+    background-color: $accent-color;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  &__submit--back {
+    background-color: #fff;
+    color: #212121;
+    border: 1px solid #ccc;
+  }
+
+  input::placeholder {
+    color: #ccc;
+  }
+
+  &__wrap-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--page-gutter);
+  }
+}

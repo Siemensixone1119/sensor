@@ -84,4 +84,49 @@
 
 .files-list__meta:not(:has(> .files-list__meta-date)) .files-list__meta-size::after {
   content: none;
-}/*# sourceMappingURL=service.css.map */
+}
+
+.faq__content {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 250ms ease;
+  transition: max-height 250ms ease;
+}
+
+.faq__item.is-open .faq__content {
+  max-height: 5000px;
+}
+
+.faq__title {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: inline-block;
+}
+
+.faq {
+  padding-left: 20px;
+  list-style: none;
+}
+
+.faq__item {
+  position: relative;
+}
+
+.faq__item::before {
+  content: "";
+  position: absolute;
+  left: -19px;
+  top: 0.55em;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 7px;
+  border-color: transparent transparent transparent currentColor;
+  -webkit-transition: -webkit-transform 200ms ease;
+  transition: -webkit-transform 200ms ease;
+  transition: transform 200ms ease;
+  transition: transform 200ms ease, -webkit-transform 200ms ease;
+}/*# sourceMappingURL=knowledge.css.map */

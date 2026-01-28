@@ -1,0 +1,39 @@
+@use "../../partials/pages/product/files-list";
+
+.faq__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 250ms ease;
+}
+
+.faq__item.is-open .faq__content {
+  max-height: 5000px;
+}
+
+.faq__title {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+}
+
+.faq {
+  padding-left: 20px;
+  list-style: none;
+}
+
+.faq__item {
+  position: relative;
+}
+
+.faq__item::before {
+  content: "";
+  position: absolute;
+  left: -19px;
+  top: 0.55em;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 7px;
+  border-color: transparent transparent transparent currentColor;
+  transition: transform 200ms ease;
+}
