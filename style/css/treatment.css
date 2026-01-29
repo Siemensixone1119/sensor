@@ -27,7 +27,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 .appeal__list-item {
   display: -webkit-box;

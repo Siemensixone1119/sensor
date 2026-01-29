@@ -274,12 +274,12 @@
         <div class="register-arm__field">
           <label class="register-arm__label" for="ito-serial">
             <span class="register-arm__label-title">Серийный номер диска ИТО:</span>
+            <span class="register-arm__label-hint">Не заполняйте для пробной регистрации</span>
           </label>
 
           <div class="register-arm__wrap">
             <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
               placeholder="например, XXXXX-XXXXXX-XXXXXX-XX">
-            <span class="register-arm__label-hint">Не заполняйте для пробной регистрации</span>
             <span class="register-arm__help">Где найти серийный номер?</span>
             <div data-trigger="prev" data-caption="Где находится серийный номер диска ИТО?" data-info>
               <span>Этот номер указан на коробке приобретённого вами компакт-диска ИТО.</span><br>
@@ -297,18 +297,15 @@
         </div>
 
         <div class="register-arm__field">
-          <!-- <div class="register-arm__wrap2"> -->
           <label class="register-arm__label required" for="antispam">
             <span class="register-arm__label-title">Антиспам-код:</span>
           </label>
 
-          <div class="register-arm__captcha">
+          <div class="register-arm__captcha-wrap">
             <img class="register-arm__captcha-image" src="../../assets/image/captcha.png" alt="Антиспам-код">
+            <input class="register-arm__input" id="antispam" name="antispam" type="text"
+              placeholder="введите антиспам-код" required>
           </div>
-          <!-- </div> -->
-
-          <input class="register-arm__input" id="antispam" name="antispam" type="text"
-            placeholder="введите антиспам-код" required>
         </div>
 
         <div class="register-arm__field register-arm__field--consent">

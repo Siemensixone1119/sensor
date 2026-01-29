@@ -33,7 +33,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 .register-arm__field {
   display: -webkit-box;
@@ -62,7 +62,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 3px;
+  gap: 5px;
 }
 .register-arm__label-title {
   font-size: 16px;
@@ -96,6 +96,17 @@
 }
 .register-arm__captcha {
   height: 30px;
+}
+.register-arm__captcha-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.register-arm__captcha-wrap input {
+  width: 100%;
 }
 .register-arm__field--consent {
   display: -webkit-box;
