@@ -1,3 +1,6 @@
+.appeal__fieldset.appeal__fieldset-wrap {
+  padding: 0 var(--page-gutter);
+}
 .appeal__fieldset {
   border: 1px dashed lightgrey;
   margin: 15px 0;

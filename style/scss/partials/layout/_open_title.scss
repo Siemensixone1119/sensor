@@ -11,33 +11,37 @@
     font-family: "pfdintextcomppro-regular", sans-serif;
     font-weight: 400;
   }
+
+  svg {
+    min-width: 18px;
+    min-height: 18px;
+    width: 18px;
+    height: 18px;
+    fill: #212121;
+  }
 }
 
-.openable-section__content{
+.openable-section__content {
   padding-top: 10px;
 }
 
-.openable-section__title.openable-section__title ~ * {
+.openable-section__title.openable-section__title~* {
   max-height: 0;
   opacity: 0;
   display: none;
 }
 
-.openable-section__title.openable-section__title:has(.openable-section__control:checked) ~ * {
+.openable-section__title.openable-section__title:has(.openable-section__control:checked)~* {
   max-height: max-content;
   opacity: 1;
   display: block;
 }
 
-.openable-section__title.openable-section__title:has(.openable-section__control:checked)
-  .openable-section__label
-  .openable-section__icon {
+.openable-section__title.openable-section__title:has(.openable-section__control:checked) .openable-section__label .openable-section__icon {
   transform: rotate(180deg);
 }
 
-.openable-section__title.openable-section__title:has(.openable-section__control:checked)
-  .openable-section__label
-  .openable-section__icon {
+.openable-section__title.openable-section__title:has(.openable-section__control:checked) .openable-section__label .openable-section__icon {
   transform: rotate(180deg);
   transition: transform 0.3s ease;
 }
@@ -46,7 +50,7 @@
   transition: transform 0.3s ease;
 }
 
-.openable-section:scope h3{
+.openable-section:scope h3 {
   color: aqua;
 }
 

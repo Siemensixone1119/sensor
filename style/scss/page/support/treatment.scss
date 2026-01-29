@@ -1,6 +1,11 @@
 @use "../../partials/base/variable" as *;
 
 .appeal {
+
+  &__fieldset.appeal__fieldset-wrap{
+    padding: 0 var(--page-gutter)
+  }
+
   &__fieldset {
     border: 1px dashed lightgrey;
     margin: 15px 0;

@@ -1675,6 +1675,13 @@ main {
   font-family: "pfdintextcomppro-regular", sans-serif;
   font-weight: 400;
 }
+.openable-section__label svg {
+  min-width: 18px;
+  min-height: 18px;
+  width: 18px;
+  height: 18px;
+  fill: #212121;
+}
 
 .openable-section__content {
   padding-top: 10px;
