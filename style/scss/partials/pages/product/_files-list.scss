@@ -16,7 +16,7 @@
 
   &__wrapper--icon {
     min-width: 46px;
-    height: 46px;
+    height: fit-content;
 
     .files-list__icon {
       width: 46px;
@@ -26,6 +26,7 @@
 
   &__description{
     font-size: 14px;
+    z-index: 100;
   }
 
   &__number{

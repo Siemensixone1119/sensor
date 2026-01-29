@@ -29,14 +29,16 @@
 
     label {
       pointer-events: none;
+      position: absolute;
+      bottom: 0;
     }
   }
 
   &__open {
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: calc(100vw - var(--page-gutter) * 2);
+    left: calc(var(--page-gutter) * -1);
+    width: calc(100vw);
     height: 35px;
     border-bottom: 1px solid #e3e3e3;
   }
@@ -67,7 +69,7 @@
     opacity: 0;
   }
 
-  &__toggle:checked+&__content &__open-button{
+  &__toggle:checked+&__content &__open-button {
     pointer-events: none;
   }
 }

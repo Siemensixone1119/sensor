@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Настройка
-    датчика конечных положений клапанов СЕНС</title>
+  <title>Настройки
+    адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</title>
   <link rel="stylesheet" href="../../style/css/main.css">
+  <link rel="stylesheet" href="../../style/css/downloads.css">
   <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="../../scripts/pages/layout.js"></script>
 </head>
@@ -261,146 +262,69 @@
           <a href="" class="link">Поддержка</a>
         </li>
         <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Часто задаваемые вопросы</a>
+          <a href="./appeal_status.html" class="link">Файлы для скачивания</a>
         </li>
         <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Настройка
-            датчика конечных положений клапанов СЕНС</a>
+          <a href="./appeal_status.html" class="link">Опросные листы</a>
         </li>
       </ul>
     </nav>
 
-    <article class="layout">
-      <h1 class="title">Настройка
-        датчика конечных положений клапанов СЕНС</h1>
-      <p>1. Для&nbsp;калибровки СЕНС-ДКП необходимо подключить его непосредственно к&nbsp;ПК с&nbsp;помощью
-        преобразователя RS485-USB в&nbsp;разъём RS-485 в&nbsp;контакты А&nbsp;(Data +) и&nbsp;B&nbsp;(Data -). Также
-        требуется подать питание от&nbsp;10 до&nbsp;36&nbsp;В на&nbsp;СЕНС-ДКП (клеммы&nbsp;«1» (плюс питания)
-        и&nbsp;«2» (минус питания)).</p>
-
-      <p><strong>ВНИМАНИЕ! Без драйвера на преобразователь RS485-USB калибровка ДКП будет невозможна.</strong></p>
-
-    
-        <div >
-          <div class="image" title="" data-caption=""
-            style="margin: 5px; width: 100%; align-self: center;text-indent: 0;"><img
-              src="https://www.nppsensor.ru/i/de3311c4-1ab5-4eff-b135-ffa2ad6e6168/w-1200" alt=""
-              style="display: block; margin: 10px auto;  vertical-align: bottom;  border-radius: 1vmin; width: 300px;height:300px;">
-          </div>
-          <div class="image" title="Вид программы «DP-M_1_v2»" data-caption="Вид программы «DP-M_1_v2»"
-            style="width: 100%;"><img
-              src="https://www.nppsensor.ru/i/7b9b9f1c-a66b-4980-afcf-85fae2a2572e/w-1200"
-              alt="Вид программы «DP-M_1_v2»"
-              style="display: block; margin: 10px auto;  vertical-align: bottom;  border-radius: 1vmin; width: 300px;height:300px;">
-          </div>
-        </div>
-
-      <p>2. Запустить программу «DP-M_1_v2». Нажать кнопку «Открыть» на&nbsp;панели «СОМ-порт»
-        и&nbsp;в&nbsp;открывшемся окне выбрать порт компьютера к&nbsp;которому подключен преобразователь интерфейса.
-        <strong>Другие параметры в&nbsp;данном окне не&nbsp;изменять.</strong> Нажать кнопку&nbsp;«ОК».
-      </p>
-
-      <img src="https://www.nppsensor.ru/i/1f6247d3-5a28-4449-81fc-5b990ad97291/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>3. Если подключение установлено – появится возможность выбора характеристик клапана, а&nbsp;также внизу будет
-        указана текущая версия прошивки СЕНС-ДКП.</p>
-
-      <img src="https://www.nppsensor.ru/i/4b234975-5fcc-4055-bbe1-9f4b3077792b/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>4. На&nbsp;панелях «Условный проход», «Тип клапана» и&nbsp;«Фиксация» выбрать характеристики проверяемого
-        клапана.</p>
-
-      <p><strong>Например, для&nbsp;клапанов СЕНС-ПР DN150PN25-СЕНС-ДКП требуется выбрать параметры:</strong></p>
-
-      <ul>
-        <li>условный проход: «150мм»</li>
-        <li>тип клапана: «Норм Закрыт»</li>
-        <li>фиксация: «3 положения». <strong>ВНИМАНИЕ!</strong> Для&nbsp;клапанов любого типа и&nbsp;условного прохода
-          необходимо выбирать этот пункт.</li>
+    <div class="layout">
+      <div class="downloads__search-wrap">
+        <label for="">Поиск файлов:</label>
+        <input type="text" placeholder="Введите текст...">
+      </div>
+      <ul class="downloads__filters">
+        <li class="downloads__filter">
+          <a href="" class="downloads__filter-name">резвернуть все</a>
+        </li>
+        <li class="downloads__filter">
+          <a href="" class="downloads__filter-name">показать архивные</a>
+        </li>
       </ul>
 
-      <p>После выбора всех параметров появится кнопка «Проверка». Проверьте ещё раз выбранные параметры и&nbsp;жмите
-        на&nbsp;кнопку «Проверка» – начнётся калибровка СЕНС-ДКП. Если что-то выбрали неверно – нажмите кнопку
-        «Назад».</p>
+      <ul class="files-list">
+        <li class="files-list__item">
+          <div class="files-list__wrapper--icon">
+            <img class="files-list__icon" loading="lazy"
+              src="data:image/jpeg;base64,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"
+              alt="" />
+          </div>
+          <div class="files-list__wrapper--info">
+            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
+              средств измерений (Россия)<div class="files-list__click"></div>
+            </a>
+            <div class="files-list__description">Описание</div>
+            <div class="files-list__number">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</div>
+            <div class="files-list__meta">
+              <div class="files-list__meta-ext">pdf</div>
+              <div class="files-list__meta-size">510,11 КБ</div>
+              <div class="files-list__meta-date">12.12.2023</div>
+            </div>
+          </div>
+        </li>
 
-      <img src="https://www.nppsensor.ru/i/09ba6930-f18a-48ba-bad0-5dd379834b64/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>5. На&nbsp;панели «ПАРАМЕТРЫ СЕНС-ДКП» кратковременно нажать кнопку «ПРОВЕРКА». После этого программа
-        проверит соответствие параметров СЕНС-ДКП установленным требованиям и&nbsp;при необходимости проведёт
-        корректировку параметров под&nbsp;клапан, в&nbsp;который установлен СЕНС-ДКП. В&nbsp;процессе проверки
-        и&nbsp;корректировки программа будет выводить сообщения о&nbsp;необходимости выполнения определённых действий,
-        например, как&nbsp;показано на&nbsp;рисунке ниже включить привод клапана (открыть клапан):</p>
-
-      <ul>
-        <li>если появляется сообщение «Выключите привод клапана» – следует отключить питание клапана (закрыть клапан),
-          и&nbsp;только затем нажать кнопку «ОК»</li>
-        <li>если появится сообщение «Выключите питание ВУУК-СЕНС-ДКП» – нужно снять питание с&nbsp;самого СЕНС-ДКП
-          (с&nbsp;клемм «1» и&nbsp;«2»)</li>
+        <li class="files-list__item">
+          <div class="files-list__wrapper--icon">
+            <img class="files-list__icon" loading="lazy"
+              src="data:image/jpeg;base64,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"
+              alt="" />
+          </div>
+          <div class="files-list__wrapper--info">
+            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
+              средств измерений (Россия)<div class="files-list__click"></div>
+            </a>
+            <div class="files-list__description"><a href="" class="link-red">ФГИС «Аршин»</a> , 76364-19</div>
+            <div class="files-list__meta">
+              <div class="files-list__meta-ext">pdf</div>
+              <div class="files-list__meta-size">124,36 КБ</div>
+              <div class="files-list__meta-date">15.01.2026</div>
+            </div>
+          </div>
+        </li>
       </ul>
-
-      <p><strong>При&nbsp;этом необходимо вначале выполнить указанное в&nbsp;сообщении действие и&nbsp;только после
-          этого закрыть сообщение, нажав на&nbsp;пиктограмму <span style="position: relative;top: 5px;"><img
-              src="https://www.nppsensor.ru/i/a8e55800-4578-4798-91b1-2c33fb2f51ac" style="height: 25px;"
-              alt=""></span>, либо на&nbsp;кнопку «ОК»</strong>.</p>
-
-      <img src="https://www.nppsensor.ru/i/8fea7343-fb27-4899-acda-abf3c29f022f/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="ЧЗВ-37">
-
-      <p>6. По&nbsp;окончании коррекции параметров СЕНС-ДКП под&nbsp;клапан сохранить уставки, нажав кнопку «Yes».</p>
-
-      <img src="https://www.nppsensor.ru/i/cad90463-22ae-41b6-94af-59a1ab406aaa/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>7. По требованию программы снять питание с СЕНС-ДКП, затем подать питание на СЕНС-ДКП.</p>
-
-      <img src="https://www.nppsensor.ru/i/14332ce1-8243-4520-86eb-d2aaf15401bb/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>8. Кратковременно нажать кнопку «КАЛИБР».</p>
-
-      <img src="https://www.nppsensor.ru/i/4d3cce50-6032-45da-a425-fe700edf9572/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>9. По&nbsp;результату калибровки на&nbsp;экране ПК должно появиться сообщение <strong>«КАЛИБРОВКА закончена
-          успешно»</strong>.</p>
-
-      <img src="https://www.nppsensor.ru/i/26c9c35e-21a0-4c1c-a000-19aaa0d1001a/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p><strong>ВНИМАНИЕ!</strong> В&nbsp;случае появления сообщения «<strong>ОШИБКА КАЛИБРОВКИ</strong>» проверить
-        правильность установки характеристик клапана повторить работы согласно программе.</p>
-
-      <p>10. Далее программа предложит сохранить протокол калибровки СЕНС-ДКП в&nbsp;текстовом формате. Допускается
-        данный протокол не&nbsp;сохранять, закрыв окно нажатием на&nbsp;пиктограмму <span
-          style="position: relative;top: 5px;"><img
-            src="https://www.nppsensor.ru/i/a8e55800-4578-4798-91b1-2c33fb2f51ac" style="height: 25px;" alt=""></span>.
-      </p>
-
-      <img src="https://www.nppsensor.ru/i/837f8a04-a155-4342-a9ad-9c03e8b32557/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>11. Для&nbsp;проверки клапана следует нажать на&nbsp;кнопку «ОПРОС» и&nbsp;посрабатывать клапаном несколько
-        раз, фиксируя изменение положение затвора. Кнопка «ОПРОС» зафиксируется в&nbsp;нажатом положении.
-        При&nbsp;этом информация о&nbsp;текущем положении клапана будет обновляться с&nbsp;интервалом 1&nbsp;с.
-        В&nbsp;случае корректных показаний положения затвора СЕНС-ДКП калибровку считать пройденой.</p>
-
-      <img src="https://www.nppsensor.ru/i/96fdfc1d-c3ea-435a-9f36-7cf11a6dd365/h-350"
-        style="display: block; margin: 10px auto; height: min-content;" alt="">
-
-      <p>Если показания СЕНС-ДКП не&nbsp;соответствуют положению затвора клапана, требуется произвести действия
-        согласно п.&nbsp;2 – п.&nbsp;10.</p>
-
-      <p>В&nbsp;случае невозможности калибровки СЕНС-ДКП следует обратиться в&nbsp;сервисную службу по&nbsp;телефону
-        +7&nbsp;8412&nbsp;65-21-55, либо по&nbsp;электронной почте: <a class="link-red"
-          href="mailto:srv@nppsensor.ru">srv@nppsensor.ru</a>.</p>
-
-      <p class="p">Если у вас остались вопросы, напишите нам по адресу <a class="link-blue"
-          href="mailto:srv@nppsensor.ru" target="_blank">srv@nppsensor.ru</a>.
-      </p>
-    </article>
+    </div>
   </main>
 
   <footer>

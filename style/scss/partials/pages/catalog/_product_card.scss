@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0;
-  gap: var(--page-gutter);
+  gap: 20px;
 }
 
 .product-card {
@@ -134,6 +134,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 
     svg {
       height: 32px;
@@ -146,6 +147,12 @@
     svg {
       opacity: 20%;
     }
+  }
+
+  &__panel-item:has(.product-card__lock) {
+    position: absolute;
+    top: -20px;
+    right: -9px;
   }
 
   &__lock {

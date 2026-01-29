@@ -20,7 +20,9 @@
 }
 .files-list__wrapper--icon {
   min-width: 46px;
-  height: 46px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .files-list__wrapper--icon .files-list__icon {
   width: 46px;
@@ -28,6 +30,7 @@
 }
 .files-list__description {
   font-size: 14px;
+  z-index: 100;
 }
 .files-list__number {
   font-size: 12px;
@@ -121,7 +124,7 @@
 }
 .extra-question__name {
   display: block;
-  padding: 10px 15px;
+  padding: var(--page-gutter);
 }
 
 @media (min-width: 715px) {
@@ -134,26 +137,6 @@
             column-gap: 20px;
   }
 }
-.products-list__title-wrap {
-  margin-bottom: 10px;
-}
-.products-list__title {
-  margin: 0;
-  line-height: 1;
-}
-.products-list__more {
-  font-size: 14px;
-  color: #808080;
-  text-decoration: underline;
-}
-.products-list__info {
-  margin: 20px 0;
-}
-.products-list__info-text {
-  color: #808080;
-  font-size: 12px;
-}
-
 .contact__wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -310,8 +293,8 @@
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
-  gap: 10px;
-  padding: 10px 15px;
+  gap: var(--page-gutter);
+  padding: var(--page-gutter);
   min-height: 44px;
   border: 1px solid #ccc;
   border-radius: 4px;

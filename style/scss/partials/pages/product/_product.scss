@@ -44,7 +44,7 @@
 
   &__name {
     display: block;
-    padding: 10px 15px;
+    padding: var(--page-gutter);
   }
 }
 

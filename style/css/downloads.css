@@ -20,7 +20,9 @@
 }
 .files-list__wrapper--icon {
   min-width: 46px;
-  height: 46px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .files-list__wrapper--icon .files-list__icon {
   width: 46px;
@@ -28,6 +30,7 @@
 }
 .files-list__description {
   font-size: 14px;
+  z-index: 100;
 }
 .files-list__number {
   font-size: 12px;
@@ -84,4 +87,68 @@
 
 .files-list__meta:not(:has(> .files-list__meta-date)) .files-list__meta-size::after {
   content: none;
-}/*# sourceMappingURL=service.css.map */
+}
+
+.downloads__category-wrap {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+.downloads__category {
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  outline: none;
+  margin-bottom: 15px;
+}
+.downloads__search-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+.downloads__search-wrap label {
+  font-size: 14px;
+  white-space: nowrap;
+}
+.downloads__search-wrap input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+.downloads__filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+.downloads__filter {
+  list-style: none;
+  padding: 0;
+  padding: 5px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+.downloads__filter-name {
+  font-size: 14px;
+  text-align: center;
+  color: blue;
+}/*# sourceMappingURL=downloads.css.map */

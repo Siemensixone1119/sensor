@@ -20,7 +20,9 @@
 }
 .files-list__wrapper--icon {
   min-width: 46px;
-  height: 46px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .files-list__wrapper--icon .files-list__icon {
   width: 46px;
@@ -28,6 +30,7 @@
 }
 .files-list__description {
   font-size: 14px;
+  z-index: 100;
 }
 .files-list__number {
   font-size: 12px;

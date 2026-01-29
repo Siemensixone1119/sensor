@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0;
-  gap: var(--page-gutter);
+  gap: 20px;
 }
 
 .product-card {
@@ -145,6 +145,11 @@
 }
 .product-card__panel-item--in-process svg {
   opacity: 20%;
+}
+.product-card__panel-item:has(.product-card__lock) {
+  position: absolute;
+  top: -20px;
+  right: -9px;
 }
 .product-card__lock {
   width: 24px;

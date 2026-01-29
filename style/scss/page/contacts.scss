@@ -1,7 +1,5 @@
-@use "../partials/pages/contacts/contacts_list";
 @use "../partials/pages/product/files-list";
 @use "../partials/pages/product/product";
-@use "../partials/pages/products_list/products_list";
 
 .contact {
 
@@ -161,9 +159,9 @@
   &__meta-row {
     display: flex;
     align-items: baseline;
-    gap: 10px;
+    gap: var(--page-gutter);
 
-    padding: 10px 15px;
+    padding: var(--page-gutter);
     min-height: 44px;
     border: 1px solid #ccc;
     border-radius: 4px;
