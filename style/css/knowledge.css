@@ -95,6 +95,15 @@
   -webkit-transition: max-height 250ms ease;
   transition: max-height 250ms ease;
 }
+.faq__content li {
+  line-height: 1.2 !important;
+  margin-bottom: 10px;
+}
+.faq__content li > p,
+.faq__content li > span,
+.faq__content li > a {
+  line-height: 1.2;
+}
 
 .faq__item.is-open .faq__content {
   max-height: 5000px;

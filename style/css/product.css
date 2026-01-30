@@ -71,17 +71,36 @@ ol {
 
 main ul {
   list-style: disc;
-  padding-left: 32px;
+  padding-left: 20px;
 }
 
 main ol {
   list-style: decimal;
-  padding-left: 32px;
+  padding-left: 20px;
 }
 
 main ul li::marker,
 main ol li::marker {
   color: rgb(153, 153, 153);
+}
+
+main ul li::after,
+main ol li::after {
+  content: ";";
+  color: currentColor;
+}
+
+main ul li:last-child:after,
+main ol li:last-child:after {
+  content: ".";
+  color: currentColor;
+}
+
+ul.not-marked li::after,
+ol.not-marked li::after,
+ol.not-marked li:last-child::after,
+ul.not-marked li:last-child:after {
+  content: "";
 }
 
 h1 {

@@ -4,6 +4,16 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 250ms ease;
+
+  li {
+    line-height: 1.2 !important;
+    margin-bottom: 10px;
+    >p,
+    >span,
+    >a {
+      line-height: 1.2;
+    }
+  }
 }
 
 .faq__item.is-open .faq__content {

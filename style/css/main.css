@@ -163,17 +163,36 @@ ol {
 
 main ul {
   list-style: disc;
-  padding-left: 32px;
+  padding-left: 20px;
 }
 
 main ol {
   list-style: decimal;
-  padding-left: 32px;
+  padding-left: 20px;
 }
 
 main ul li::marker,
 main ol li::marker {
   color: rgb(153, 153, 153);
+}
+
+main ul li::after,
+main ol li::after {
+  content: ";";
+  color: currentColor;
+}
+
+main ul li:last-child:after,
+main ol li:last-child:after {
+  content: ".";
+  color: currentColor;
+}
+
+ul.not-marked li::after,
+ol.not-marked li::after,
+ol.not-marked li:last-child::after,
+ul.not-marked li:last-child:after {
+  content: "";
 }
 
 h1 {
@@ -1871,4 +1890,94 @@ html:has(.footnote) {
       overscroll-behavior: none !important;
   -ms-touch-action: none;
       touch-action: none;
+}
+
+.input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+.input__label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.input__label-main {
+  font-size: 16px;
+}
+.input__extra, .input__label-extra {
+  font-size: 12px;
+  color: #b30006;
+  font-weight: 600;
+}
+.input__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+.input__content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+.input__content input::-webkit-input-placeholder {
+  color: #ccc;
+}
+.input__content input::-moz-placeholder {
+  color: #ccc;
+}
+.input__content input:-ms-input-placeholder {
+  color: #ccc;
+}
+.input__content input::-ms-input-placeholder {
+  color: #ccc;
+}
+.input__content input::placeholder {
+  color: #ccc;
+}
+.input__error {
+  color: red;
+}
+.input__description {
+  font-size: 13px;
+  color: #808080;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  line-height: 1;
+}
+.input__clue {
+  font-size: 13px;
+  color: #808080;
+  border-bottom: 1px dotted;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  line-height: 1;
+}
+
+.select {
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  outline: none;
 }/*# sourceMappingURL=main.css.map */

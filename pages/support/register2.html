@@ -270,18 +270,34 @@
       <h1 class="title">Пробная регистрация на 1 месяц</h1>
       <span>Заполните оставшиеся поля.</span>
 
+      <!-- <form action="">
+        <div class="input">
+          <label class="input__label" for="">
+            <span class="input__label-main">номер ито</span>
+            <span class="input__label-extra">красный текст</span>
+          </label>
+          <div class="input__content">
+            <input type="text" placeholder="введите текст">
+            <div class="input__error">ошибка</div>
+            <span class="input__extra">красненький текст</span>
+            <span class="input__description">серое описание</span>
+            <span class="input__clue">сноска</span>
+          </div>
+        </div>
+      </form> -->
+
       <form class="register-arm__form" action="">
-        <div class="register-arm__field">
-          <label class="register-arm__label required" for="ito-serial">
-            <span class="register-arm__label-title">Код продукта:</span>
+        <div class="input">
+          <label class="input__label required" for="ito-serial">
+            <span class="input__label-main">Код продукта:</span>
           </label>
 
-          <div class="register-arm__wrap">
-            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
-              placeholder="XXXX-XXXX-XXXX">
-            <span class="register-arm__label-hint">Код должен быть из программы, установленной на ПК в месте
+          <div class="input__content">
+            <input id="ito-serial" name="ito_serial" type="text" placeholder="XXXX-XXXX-XXXX">
+            <div class="input__error"></div>
+            <span class="input__extra">Код должен быть из программы, установленной на ПК в месте
               эксплуатации</span>
-            <span class="register-arm__help">Как узнать код продукта?</span>
+            <span class="input__clue">Как узнать код продукта?</span>
             <div data-trigger="prev" data-caption="Как узнать код продукта?" data-info>
               <span>1. На компьютере с установленной программой в меню "Пуск" откройте окно регистрации АРМ СИ
                 СЕНС.</span><br>
@@ -296,45 +312,45 @@
           </div>
         </div>
 
-        <div class="register-arm__field">
-          <label class="register-arm__label required" for="ito-serial">
-            <span class="register-arm__label-title">Наименование эксплуатирующей организации:</span>
+        <div class="input">
+          <label class="input__label required" for="ito-serial">
+            <span class="input__label-main">Наименование эксплуатирующей организации:</span>
           </label>
-          <div class="register-arm__wrap">
-            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
-              placeholder="ООО &quot;Организация&quot;">
+          <div class="input__content">
+            <input id="ito-serial" name="ito_serial" type="text" placeholder="ООО &quot;Организация&quot;">
+            <div class="input__error"></div>
           </div>
         </div>
 
-        <div class="register-arm__field">
-          <label class="register-arm__label required" for="ito-serial">
-            <span class="register-arm__label-title">Ф.И.О. руководителя:</span>
+        <div class="input">
+          <label class="input__label required" for="ito-serial">
+            <span class="input__label-main">Ф.И.О. руководителя:</span>
           </label>
-          <div class="register-arm__wrap">
-            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
-              placeholder="Иванов Иван Иванович">
+          <div class="input__content">
+            <input id="ito-serial" name="ito_serial" type="text" placeholder="Иванов Иван Иванович">
+            <div class="input__error"></div>
           </div>
         </div>
 
-        <div class="register-arm__field">
-          <label class="register-arm__label required" for="ito-serial">
-            <span class="register-arm__label-title">Адрес электронной почты:</span>
+        <div class="input">
+          <label class="input__label required" for="ito-serial">
+            <span class="input__label-main">Адрес электронной почты:</span>
           </label>
-          <div class="register-arm__wrap">
-            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
-              placeholder="ivanov@company.ru">
-            <span class="register-arm__gray">Проверьте дважды, именно на этот адрес мы вышлем регистрационный код</span>
+          <div class="input__content">
+            <input id="ito-serial" name="ito_serial" type="text" placeholder="ivanov@company.ru">
+            <div class="input__error"></div>
+            <span class="input__description">Проверьте дважды, именно на этот адрес мы вышлем регистрационный код</span>
           </div>
         </div>
 
-        <div class="register-arm__field">
+        <div class="input">
           <label class="register-arm__label" for="ito-serial">
-            <span class="register-arm__label-title">Номер телефона:</span>
+            <span class="input__label-main">Номер телефона:</span>
           </label>
-          <div class="register-arm__wrap">
-            <input class="register-arm__input" id="ito-serial" name="ito_serial" type="text"
-              placeholder="+7 (999) 123-45-67">
-            <span class="register-arm__gray">Мы свяжемся с вами только при необходимости</span>
+          <div class="input__content">
+            <input id="ito-serial" name="ito_serial" type="text" placeholder="+7 (999) 123-45-67">
+            <div class="input__error"></div>
+            <span class="input__description">Мы свяжемся с вами только при необходимости</span>
           </div>
         </div>
 
@@ -531,7 +547,6 @@
                   class="text-primary">Преобразователи давления</span></a>
               <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/temperature-transmitters"><span
                   class="text-primary">Преобразователи температуры</span></a>
-
               <a
                 href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/electric-contact-pressure-gauges"><span
                   class="text-primary">Электроконтактные манометры</span></a>
@@ -597,34 +612,34 @@
       <ul>
         <li data-role="header">Поддержка</li>
         <li data-role="group">
-          <a href="./treatment.html"><span class="text-primary">Обращение в сервисную
+          <a href="../support/treatment.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="./repair-check1.html"><span class="text-primary">Проверить статус
+          <a href="../support/repair-check1.html"><span class="text-primary">Проверить статус
               обращения</span></a>
-          <a href="./register1.html"><span class="text-primary">Регистрация АРМ СИ
+          <a href="../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>
           <a href="../service/metrology.html"><span class="text-primary">Метрологические
               услуги</span></a>
 
-          <a href="./knowledge.html"><span class="text-primary">Часто задаваемые
+          <a href="../support/knowledge.html"><span class="text-primary">Часто задаваемые
               вопросы</span></a>
         </li>
         <li data-role="group">
           <div data-role="header">
-            <a href="https://www.nppsensor.ru/support/downloads">Файлы для скачивания</a>
+            <a href="./downloads.html">Файлы для скачивания</a>
           </div>
-          <a href="https://www.nppsensor.ru/support/downloads/Certificates"><span class="text-primary">Свидетельства и
+          <a href="./downloads/certificates.html"><span class="text-primary">Свидетельства и
               сертификаты</span></a>
-          <a href="https://www.nppsensor.ru/support/downloads/Catalogues"><span class="text-primary">Каталоги
+          <a href="./downloads/catalogues.html"><span class="text-primary">Каталоги
               продукции</span></a>
-          <a href="https://www.nppsensor.ru/support/downloads/Blanks"><span class="text-primary">Опросные
+          <a href="./downloads/blanks.html"><span class="text-primary">Опросные
               листы</span></a>
-          <a href="https://www.nppsensor.ru/support/downloads/UserManual"><span class="text-primary">Руководства
+          <a href="./downloads/user-manual.html"><span class="text-primary">Руководства
               по
               эксплуатации</span></a>
-          <a href="https://www.nppsensor.ru/support/downloads/Soft"><span class="text-primary">Программное
+          <a href="./downloads/soft.html"><span class="text-primary">Программное
               обеспечение</span></a>
-          <a href="https://www.nppsensor.ru/support/downloads/3DModels"><span class="text-primary">3D-модели</span></a>
+          <a href="./downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
         </li>
       </ul>
       <a href="../contacts.html"><span class="text-primary">Контакты</span></a>
