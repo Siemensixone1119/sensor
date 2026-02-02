@@ -1,0 +1,22 @@
+@use "../../partials/pages/product/files-list";
+
+.vacancy {
+
+  .files-list{
+    margin-top: 20px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h3{
+    font-size: 22px;
+  }
+}
+
+.openable-section__content > section:first-of-type > .vacancy__subtitle {
+  margin-top: 0;
+}

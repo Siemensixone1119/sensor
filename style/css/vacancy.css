@@ -88,56 +88,23 @@
   content: none;
 }
 
-.faq__content {
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: max-height 250ms ease;
-  transition: max-height 250ms ease;
+.vacancy .files-list {
+  margin-top: 20px;
 }
-.faq__content li {
-  line-height: 1.2 !important;
-  margin-bottom: 10px;
+.vacancy__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
 }
-.faq__content li > p,
-.faq__content li > span,
-.faq__content li > a {
-  line-height: 1.2;
-}
-
-.faq__item.is-open .faq__content {
-  max-height: 5000px;
+.vacancy h3 {
+  font-size: 22px;
 }
 
-.faq__title {
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  display: inline-block;
-}
-
-.faq {
-  padding-left: 20px;
-  list-style: none;
-}
-
-.faq__item {
-  position: relative;
-}
-
-.faq__item::before {
-  content: "";
-  position: absolute;
-  left: -19px;
-  top: 0.55em;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 5px 0 5px 7px;
-  border-color: transparent transparent transparent currentColor;
-  -webkit-transition: -webkit-transform 200ms ease;
-  transition: -webkit-transform 200ms ease;
-  transition: transform 200ms ease;
-  transition: transform 200ms ease, -webkit-transform 200ms ease;
-}/*# sourceMappingURL=knowledge.css.map */
+.openable-section__content > section:first-of-type > .vacancy__subtitle {
+  margin-top: 0;
+}/*# sourceMappingURL=vacancy.css.map */

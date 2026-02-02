@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Настройки
-    адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</title>
-  <link rel="stylesheet" href="../../../style/css/main.css">
-  <link rel="stylesheet" href="../../../style/css/downloads.css">
-  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../../scripts/pages/layout.js"></script>
+  <title>Проверить статус обращения</title>
+  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../style/css/vacancy.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../scripts/pages/layout.js"></script>
 </head>
 
 <body>
@@ -259,80 +258,328 @@
 
       <ul class="breadcrumbs__list">
         <li class="breadcrumbs__item">
-          <a href="" class="link">Поддержка</a>
+          <a href="" class="link">О предприятии</a>
         </li>
         <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Файлы для скачивания</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">ПО</a>
+          <a href="./appeal_status.html" class="link">Вакансии</a>
         </li>
       </ul>
     </nav>
 
-    <div class="layout">
-      <div class="downloads__head">
-        <div class="downloads__category-wrap">
-          <select name="" id="" class="select">
-            <option value="">Все файлы</option>
-            <option value="">Опросные листы</option>
-            <option value="">Руководства</option>
-            <option value="" selected>ПО</option>
-            <option value="">Cертификаты</option>
-            <option value="">3D-модели</option>
-            <option value="">Каталоги</option>
-          </select>
-        </div>
-
-        <div class="downloads__search-wrap">
-          <label for="">Поиск файлов:</label>
-          <div class="input__content">
-            <input type="text" placeholder="Введите текст...">
-          </div>
-        </div>
-      </div>
-
+    <div class="layout vacancy">
+      <h1>Вакансии</h1>
       <ul class="files-list not-marked">
         <li class="files-list__item">
           <div class="files-list__wrapper--icon">
             <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,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"
-              alt="" />
+              src="https://www.nppsensor.ru/images/icons/filetypes/ico-doc.png" alt="" />
           </div>
           <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
+            <a class="files-list__name link" target="_blank" href="">Анкета соискателя<div class="files-list__click">
+              </div>
             </a>
-            <div class="files-list__description">Описание</div>
-            <div class="files-list__number">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</div>
             <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">510,11 КБ</div>
-              <div class="files-list__meta-date">12.12.2023</div>
-            </div>
-          </div>
-        </li>
-
-        <li class="files-list__item">
-          <div class="files-list__wrapper--icon">
-            <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,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"
-              alt="" />
-          </div>
-          <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
-            </a>
-            <div class="files-list__description"><a href="" class="link-red">ФГИС «Аршин»</a> , 76364-19</div>
-            <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">124,36 КБ</div>
-              <div class="files-list__meta-date">15.01.2026</div>
+              <div class="files-list__meta-ext">rtf</div>
+              <div class="files-list__meta-size">76,4 КБ</div>
             </div>
           </div>
         </li>
       </ul>
+
+      <div class="openable-section">
+        <h2 class="openable-section__title">
+          <label class="openable-section__label">
+            <input type="checkbox" class="openable-section__control" hidden />
+            <svg class="openable-section__icon">
+              <use xlink:href="#icon-arrow"></use>
+            </svg>
+            <span class="openable-section__title-text">Контролёр радиоэлектронной аппаратуры и приборов</span>
+          </label>
+        </h2>
+        <div class="openable-section__content">
+          <section>
+            <h3 class="vacancy__subtitle">Основные обязанности</h3>
+            <ul class="vacancy__list">
+              <li>
+                <span>приёмка и осуществление приёмо-сдаточных испытаний продукции (приборостроение) на соответствие
+                  требованиям КД и ТД, другой нормативной документации</span>
+              </li>
+              <li>
+                <span>
+                  документальное оформление приёмки или отклонения от приёмки в соответствии со стандартами предприятия
+                </span>
+              </li>
+              <li>
+                <span>
+                  осуществление входного контроля поступающих комплектующих изделий, оформление результатов контроля в
+                  соответствии со стандартами предприятия
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="vacancy__subtitle">
+              Требования к кандидатам
+            </h3>
+
+            <ul class="vacancy__list">
+              <li>
+                <span>профильное техническое образование</span>
+              </li>
+              <li>
+                <span>обязателен опыт работы на предприятиях приборостроения в подразделениях контроля качества или
+                  метрологии, производственных подразделениях или конструкторско-технологического сопровождения</span>
+              </li>
+              <li>
+                <span>желательно знакомство с основами технологии сборки и монтажа электронных приборов, их настройки и
+                  регулировки</span>
+              </li>
+              <li>
+                <span>знание средств контроля (мерительные инструменты, измерительные приборы, испытательное и
+                  контрольное оборудование)</span>
+              </li>
+              <li>
+                <span>умение обращаться к нормативно-технической документации</span>
+              </li>
+              <li>
+                <span>уверенный пользователь ПК</span>
+              </li>
+              <li>
+                <span>будет являться преимуществом знание основ метрологии</span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="vacancy__subtitle">Условия</h3>
+            <ul class="vacancy__list">
+              <li>
+                <span>пятидневная рабочая неделя, с 08.00 до 17.00, перерыв с 12 до 13</span>
+              </li>
+              <li>
+                <span>работа в сплоченном и дружном коллективе на предприятии с более чем 30-летней историей</span>
+              </li>
+              <li>
+                <span>возможность профессионального и карьерного роста</span>
+              </li>
+              <li>
+                <span>оформление строго по ТК, полный соцпакет, ежегодная индексация заработной платы</span>
+              </li>
+              <li>
+                <span>испытательный срок до 3 месяцев</span>
+              </li>
+              <li>
+                <span>корпоративный транспорт по Заречному утром и вечером</span>
+              </li>
+              <li>
+                <span>конкурентная заработная плата (оклад+премия), уровень обсуждается с успешным кандидатом</span>
+              </li>
+              <li>
+                <span>иногородним специалистам оформляем пропуск в г. Заречный</span>
+              </li>
+            </ul>
+          </section>
+
+          <span>Резюме направлять на электронную почту <a href="mailto:info@nppsensor.ru"
+              class="link-red">info@nppsensor.ru</a></span>
+        </div>
+      </div>
+
+
+      <div class="openable-section">
+        <h2 class="openable-section__title">
+          <label class="openable-section__label">
+            <input type="checkbox" class="openable-section__control" hidden />
+            <svg class="openable-section__icon">
+              <use xlink:href="#icon-arrow"></use>
+            </svg>
+            <span class="openable-section__title-text">Оператор-наладчик станков с ЧПУ</span>
+          </label>
+        </h2>
+        <div class="openable-section__content">
+          <section>
+            <h3 class="vacancy__subtitle">Основные обязанности</h3>
+            <ul class="vacancy__list">
+              <li>
+                <span>изготовление и обработка деталей на станках с ЧПУ в соответствии с картами наладки</span>
+              </li>
+              <li>
+                <span>
+                  самостоятельная наладка обрабатывающих центров, заточка неспециализированного инструмента
+                </span>
+              </li>
+              <li>
+                <span>
+                  выходной контроль полученных деталей на соответствие требованиям КД
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="vacancy__subtitle">
+              Требования к кандидатам
+            </h3>
+
+            <ul class="vacancy__list">
+              <li>
+                <span>среднее профессиональное образование</span>
+              </li>
+              <li>
+                <span>обязателен опыт работы оператором/оператором-наладчиком станков с ЧПУ</span>
+              </li>
+              <li>
+                <span>отличное знание технологии металлообработки, оборудования</span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="vacancy__subtitle">Условия</h3>
+            <ul class="vacancy__list">
+              <li>
+                <span>пятидневная рабочая неделя, двусменная работа (первая смена с 08:00 до 17:00, вторая смена с 17:00
+                  до 00:30), регламентированные перерывы</span>
+              </li>
+              <li>
+                <span>комфортные условия труда, обеспеченность инструментом и калибрами, мерителями</span>
+              </li>
+              <li>
+                <span>техническая поддержка технологов и программистов</span>
+              </li>
+              <li>
+                <span>работа в сплочённом и дружном коллективе на предприятии с более чем 30-летней историей</span>
+              </li>
+              <li>
+                <span>возможность профессионального и карьерного роста</span>
+              </li>
+              <li>
+                <span>оформление строго по ТК, полный соцпакет, ежегодная индексация заработной платы</span>
+              </li>
+              <li>
+                <span>корпоративный транспорт по Заречному утром и вечером, возможность посещения корпоративного
+                  спорт-клуба</span>
+              </li>
+              <li>
+                <span>конкурентная заработная плата (оплата по нормируемым заданиям - оклад+премия)</span>
+              </li>
+              <li>
+                <span>возможность дополнительной подработки</span>
+              </li>
+              <li>
+                <span>иногородним специалистам оформляем пропуск в г. Заречный</span>
+              </li>
+            </ul>
+          </section>
+
+          <span>Резюме направлять на электронную почту <a href="mailto:info@nppsensor.ru"
+              class="link-red">info@nppsensor.ru</a></span>
+        </div>
+      </div>
+
+
+      <div class="openable-section">
+        <h2 class="openable-section__title">
+          <label class="openable-section__label">
+            <input type="checkbox" class="openable-section__control" hidden />
+            <svg class="openable-section__icon">
+              <use xlink:href="#icon-arrow"></use>
+            </svg>
+            <span class="openable-section__title-text">Инженер-программист</span>
+          </label>
+        </h2>
+        <div class="openable-section__content">
+          <section>
+            <h3 class="vacancy__subtitle">Основные обязанности</h3>
+            <ul class="vacancy__list">
+              <li>
+                <span>разработка программного обеспечения для систем телеметрии, АСУ ТП, ПАЗ, РСУ</span>
+              </li>
+              <li>
+                <span>
+                  разработка интерфейсов пользователя
+                </span>
+              </li>
+              <li>
+                <span>
+                  разработка структур БД для хранения информации
+                </span>
+              </li>
+              <li>
+                <span>
+                  разработка алгоритмов обработки данных
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="vacancy__subtitle">
+              Требования к кандидатам
+            </h3>
+
+            <ul class="vacancy__list">
+              <li>
+                <span>высшее техническое образование</span>
+              </li>
+              <li>
+                <span>опыт работы на аналогичной должности (программист) от двух лет обязателен</span>
+              </li>
+              <li>
+                <span>знание английского языка в объёме, необходимом для чтения и понимания технической литературы по
+                  направлению деятельности</span>
+              </li>
+              <li>
+                <span>хорошее знание языка программирования С++ обязательно</span>
+              </li>
+              <li>
+                <span>опыт работы в средах разработки Embarcadero RAD Studio и/или Visual Studio обязателен</span>
+              </li>
+              <li>
+                <span>опыт разработки ПО для связи ПК с устройствами по интерфейсам RS-232/RS-485 с использованием
+                  протоколов (например Modbus RTU) обязателен</span>
+              </li>
+              <li>
+                <span>опыт работы с СУБД (Firebird, PostgreSQL и тд.) желателен</span>
+              </li>
+              <li>
+                <span>опыт разработки ПО для Linux-based и Embedded систем приветствуется</span>
+              </li>
+              <li>
+                <span>опыт работы в SCADA системах приветствуется</span>
+              </li>
+              <li>
+                <span>опыт программирования контроллеров (Fastwell, Wago, Siemens и др.) приветствуется</span>
+              </li>
+              <li>
+                <span>опыт программирования микроконтроллеров приветствуется</span>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="vacancy__subtitle">Условия</h3>
+            <ul class="vacancy__list">
+              <li>
+                <span>график работы: 5/2, с 8:00 до 17:00 перерыв на обед с 12:00 до 13:00</span>
+              </li>
+              <li>
+                <span>оформление по ТК РФ</span>
+              </li>
+              <li>
+                <span>заработная плата по результатам собеседования</span>
+              </li>
+            </ul>
+          </section>
+
+          <span>Телефон для связи: <a href="tel:+79061580616" class="link-red">+7 906 158 06 16</a></span><br>
+          <span>Резюме направлять на электронную почту <a href="mailto:borisov@nppsensor.ru"
+              class="link-red">borisov@nppsensor.ru</a></span>
+        </div>
+      </div>
     </div>
+
   </main>
 
   <footer>
@@ -485,12 +732,12 @@
         <li data-role="group">
           <a href="https://www.nppsensor.ru/company"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
           <a href="https://www.nppsensor.ru/company/history"><span class="text-primary">История</span></a>
-          <a href="../../company/news.html"><span class="text-primary">Новости</span></a>
+          <a href="./news.html"><span class="text-primary">Новости</span></a>
           <a href="https://www.nppsensor.ru/dealers"><span class="text-primary">Дилеры</span></a>
           <a href="https://www.nppsensor.ru/company/license"><span class="text-primary">Дипломы,
               патенты</span></a>
           <a href="https://www.nppsensor.ru/company/video"><span class="text-primary">Видеоархив</span></a>
-          <a href="../../company/vacancy.html"><span class="text-primary">Вакансии</span></a>
+          <a href="./vacancy.html"><span class="text-primary">Вакансии</span></a>
           <a href="https://www.nppsensor.ru/company/quality_policy"><span class="text-primary">Политика в области
               качества</span></a>
           <a href="https://www.nppsensor.ru/company/social"><span class="text-primary">Социальная
@@ -501,7 +748,7 @@
         <li data-role="header">Продукция</li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../../catalog.html">Вся продукция</a>
+            <a href="../catalog.html">Вся продукция</a>
           </div>
           <a href="https://www.nppsensor.ru/catalog/level-transmitters"><span class="text-primary">Уровнемеры</span></a>
           <a href="https://www.nppsensor.ru/catalog/level-sensors-and-indicators"><span class="text-primary">Датчики и
@@ -519,7 +766,6 @@
                   class="text-primary">Преобразователи давления</span></a>
               <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/temperature-transmitters"><span
                   class="text-primary">Преобразователи температуры</span></a>
-
               <a
                 href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/electric-contact-pressure-gauges"><span
                   class="text-primary">Электроконтактные манометры</span></a>
@@ -585,37 +831,37 @@
       <ul>
         <li data-role="header">Поддержка</li>
         <li data-role="group">
-          <a href="../../support/treatment.html"><span class="text-primary">Обращение в сервисную
+          <a href="../support/treatment.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="../../support/repair-check1.html"><span class="text-primary">Проверить статус
+          <a href="../support/repair-check1.html"><span class="text-primary">Проверить статус
               обращения</span></a>
-          <a href="../../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
+          <a href="../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>
-          <a href="../../service/metrology.html"><span class="text-primary">Метрологические
+          <a href="../service/metrology.html"><span class="text-primary">Метрологические
               услуги</span></a>
 
-          <a href="../../support/knowledge.html"><span class="text-primary">Часто задаваемые
+          <a href="../support/knowledge.html"><span class="text-primary">Часто задаваемые
               вопросы</span></a>
         </li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../downloads.html">Файлы для скачивания</a>
+            <a href="./downloads.html">Файлы для скачивания</a>
           </div>
-          <a href="./certificates.html"><span class="text-primary">Свидетельства и
+          <a href="./downloads/certificates.html"><span class="text-primary">Свидетельства и
               сертификаты</span></a>
-          <a href="./catalogues.html"><span class="text-primary">Каталоги
+          <a href="./downloads/catalogues.html"><span class="text-primary">Каталоги
               продукции</span></a>
-          <a href="./blanks.html"><span class="text-primary">Опросные
+          <a href="./downloads/blanks.html"><span class="text-primary">Опросные
               листы</span></a>
-          <a href="./user-manual.html"><span class="text-primary">Руководства
+          <a href="./downloads/user-manual.html"><span class="text-primary">Руководства
               по
               эксплуатации</span></a>
-          <a href="./soft.html"><span class="text-primary">Программное
+          <a href="./downloads/soft.html"><span class="text-primary">Программное
               обеспечение</span></a>
-          <a href="./3D-models.html"><span class="text-primary">3D-модели</span></a>
+          <a href="./downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
         </li>
       </ul>
-      <a href="../../contacts.html"><span class="text-primary">Контакты</span></a>
+      <a href="../contacts.html"><span class="text-primary">Контакты</span></a>
       <a href="https://www.nppsensor.ru/price"><span class="text-primary">Прайс-лист</span></a>
       <a href="https://www.nppsensor.ru/help/media-compatible"><span class="text-primary">Помощь</span></a>
     </li>

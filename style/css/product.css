@@ -736,7 +736,6 @@ h2:has(+ div.compare) {
   display: flex;
   width: auto;
   gap: 15px;
-  min-height: 65px;
   margin-left: 0;
 }
 .files-list__wrapper--icon {
