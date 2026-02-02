@@ -9,6 +9,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 30px;
+  margin-top: 15px;
 }
 .news__link {
   display: -webkit-box;

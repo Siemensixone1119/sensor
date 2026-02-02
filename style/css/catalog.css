@@ -150,6 +150,7 @@
   position: absolute;
   top: -20px;
   right: -9px;
+  z-index: 10;
 }
 .product-card__lock {
   width: 24px;
