@@ -1980,4 +1980,33 @@ html:has(.footnote) {
   padding: 10px;
   border: 1px solid lightgrey;
   outline: none;
+}
+
+.select {
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.select option {
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 50px;
+  max-height: 500px;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+
+.checkbox {
+  accent-color: #c10606;
+  width: 32px;
+  height: 32px;
 }/*# sourceMappingURL=main.css.map */

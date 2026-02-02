@@ -11,27 +11,47 @@ export function addFieldset() {
       fieldset.innerHTML = `
         <button class="appeal__button--remove" type="button">Удалить</button>
         
-        <div class="appeal__list">
-          <div class="appeal__list-item">
-            <label class="appeal__label required" for="product-type-${count}">Тип изделия:</label>
-            <select class="appeal__select" id="product-type-${count}">
+      <div class="appeal__list">
+        <div class="input">
+          <label class="input_label required" for="product-type-${count}">
+            <span class="input__label-main">Тип изделия:</span>
+          </label>
+          <div class="input__content">
+            <select class="select" id="product-type-${count}">
               <option value="" disabled selected>--Выберите тип прибора--</option>
               <option value="magnetic-converter">Преобразователь магнитный поплавковый</option>
               <option value="electromagnetic-valve">Клапан электромагнитный</option>
               <option value="other">Другой прибор</option>
             </select>
+            <div class="input__error"></div>
           </div>
-          <div class="appeal__list-item">
-            <label class="appeal__label required" for="manufacture-year-${count}">Год выпуска:</label>
-            <input required class="appeal__input" type="number" id="manufacture-year-${count}" min="1970" max="2026" placeholder="Указан на шильде или в паспорте">
+        </div>
+        <div class="input">
+          <label class="input_label required" for="manufacture-year-${count}">
+            <span class="input__label-main">Год выпуска:</span>
+          </label>
+          <div class="input__content">
+            <input required class="appeal__input" type="number" id="manufacture-year-${count}" min="1970" max="2026"
+              placeholder="Указан на шильде или в паспорте">
+            <div class="input__error"></div>
           </div>
-          <div class="appeal__list-item">
-            <label class="appeal__label required" for="serial-number-${count}">Заводской номер:</label>
-            <input required class="appeal__input" type="text" id="serial-number-${count}" placeholder="Указан на шильде или в паспорте">
+        </div>
+        <div class="input">
+          <label class="input_label required" for="serial-number-${count}">
+            <span class="input__label-main">Заводской номер:</span>
+          </label>
+          <div class="input__content">
+            <input required class="appeal__input" type="text" id="serial-number-${count}"
+              placeholder="Указан на шильде или в паспорте">
+            <div class="input__error"></div>
           </div>
-          <div class="appeal__list-item">
-            <label class="appeal__label required" for="appeal-reason-${count}">Причина обращения:</label>
-            <select class="appeal__select" id="appeal-reason-${count}">
+        </div>
+        <div class="input">
+          <label class="input_label required" for="appeal-reason-${count}">
+            <span class="input__label-main">Причина обращения:</span>
+          </label>
+          <div class="input__content">
+            <select class="select" id="appeal-reason-${count}">
               <option value="" disabled selected>--Выберите--</option>
               <option value="consultation-setup">Нужна консультация по настройке</option>
               <option value="consultation-diagnostics">Нужна консультация по диагностике</option>
@@ -39,13 +59,21 @@ export function addFieldset() {
               <option value="send-for-repair">Сообщить об отправке для диагностики, обслуживания, ремонта, проверки</option>
               <option value="order-parts">Хочу заказать запчасти</option>
             </select>
-          </div>
-          <div class="appeal__list-item">
-            <label class="appeal__label required" for="short-description-${count}">Краткое описание:</label>
-            <textarea class="appeal__textarea" id="short-description-${count}"></textarea>
+            <div class="input__error"></div>
           </div>
         </div>
-        <button class="appeal__button--add" type="button">Добавить ещё продукт</button>
+        <div class="input">
+          <label class="input_label required" for="short-description-${count}">
+            <span class="input__label-main">Краткое описание:</span>
+          </label>
+          <div class="input__content">
+            <textarea class="textarea" id="short-description-${count}"></textarea>
+            <div class="input__error"></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="appeal__button--add" type="button">Добавить ещё продукт</button>
       `;
       return fieldset;
     }
