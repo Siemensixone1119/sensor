@@ -136,6 +136,26 @@
             column-gap: 20px;
   }
 }
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+.contact__item {
+  padding: var(--page-gutter);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+.contact__item h2 {
+  margin-top: 0;
+}
 .contact__wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -300,6 +320,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 .contact__meta-icon {
   line-height: 0;

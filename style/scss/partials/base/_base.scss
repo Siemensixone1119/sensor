@@ -67,6 +67,16 @@ p {
   margin: 5px 0 10px;
 }
 
+p:has(+ ul),
+p:has(+ ol) {
+  margin-bottom: 0;
+}
+
+p+ul,
+p+ol {
+  margin-top: 2px;
+}
+
 ul,
 ol {
   margin-top: 5px;
@@ -75,29 +85,42 @@ ol {
 
 }
 
-main ul {
+main ul>li,
+main ol>li,
+.footnote ul>li,
+.footnote ol>li {
+  margin-bottom: 5px;
+}
+
+main ul,
+.footnote ul {
   list-style: disc;
   padding-left: 20px;
 }
 
-main ol {
+main ol,
+.footnote ol {
   list-style: decimal;
   padding-left: 20px;
 }
 
 main ul li::marker,
-main ol li::marker {
+.footnote ul li::marker {
   color: rgb(153, 153, 153);
 }
 
 main ul li::after,
-main ol li::after {
+main ol li::after,
+.footnote ul li::after,
+.footnote ol li::after {
   content: ";";
   color: currentColor;
 }
 
 main ul li:last-child:after,
-main ol li:last-child:after {
+main ol li:last-child:after,
+.footnote ul li:last-child:after,
+.footnote ol li:last-child:after {
   content: ".";
   color: currentColor;
 }
@@ -130,6 +153,17 @@ h6 {
   font-family: $second-family;
   font-weight: 400;
   margin: 0;
+  line-height: 1;
+}
+
+.title-description {
+  font-size: 14px;
+  color: #808080;
+  text-decoration: underline;
+}
+
+.title-wrap {
+  margin-bottom: 10px;
 }
 
 h1 {
@@ -181,7 +215,7 @@ label.required::before {
   content: "*";
   position: absolute;
   top: 9px;
-  left: -7px;
+  left: -9px;
   font-size: 16px;
   color: #b30006;
   line-height: 0;

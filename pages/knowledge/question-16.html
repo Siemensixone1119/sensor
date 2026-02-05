@@ -7,6 +7,7 @@
   <title>Настройки
     адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</title>
   <link rel="stylesheet" href="../../style/css/main.css">
+  <link rel="stylesheet" href="../../style/css/knowledge.css">
   <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="../../scripts/pages/layout.js"></script>
 </head>
@@ -270,7 +271,7 @@
       </ul>
     </nav>
 
-    <article class="layout">
+    <article class="layout faq">
       <h1 class="title">Настройки
         адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</h1>
       <p>ПО&nbsp;«Мобильная карта» получает данные от&nbsp;уровнемеров ПМП-201 с&nbsp;использованием протокола MODBUS.
@@ -278,8 +279,7 @@
 
       <h2 class="title">1. Положение переключателей на&nbsp;лицевой панели адаптера.</h2>
 
-      <img src="https://www.nppsensor.ru/i/5041052c-d52e-459b-9655-8fcc695e9bd7/w-140"
-         alt="" style="display: block; margin: 10px auto;">
+      <img src="https://www.nppsensor.ru/i/5041052c-d52e-459b-9655-8fcc695e9bd7/w-140" alt="">
 
       <style>
         .support-table-doms table,
@@ -304,7 +304,7 @@
         }
       </style>
 
-      <table class="support-table-doms" style="width: 100%;">
+      <table class="support-table-doms" style="border-spacing: 0; border-collapse: collapse; width: 100%;">
         <tbody>
           <tr>
             <th>№</th>
@@ -313,8 +313,8 @@
           </tr>
           <tr>
             <td>1</td>
-            <td>включен&nbsp;(слева)</td>
-            <td>включен протокол MODBUS</td>
+            <td>отключен&nbsp;(справа)</td>
+            <td>включен протокол СЕНС</td>
           </tr>
           <tr>
             <td>2</td>
@@ -343,16 +343,15 @@
           <tr>
             <td>7</td>
             <td>отключен&nbsp;(справа)</td>
-            <td rowspan="2">интерфейс RS-485, двухпроводный</td>
+            <td>–</td>
           </tr>
           <tr>
             <td>8</td>
-            <td>отключен&nbsp;(справа)</td>
+            <td>включен&nbsp;(слева)</td>
+            <td>интерфейс RS-232</td>
           </tr>
         </tbody>
       </table>
-
-      <p>&nbsp;</p>
 
       <p><em>Примечание – переключатели 4-8 могут иметь другое положение в&nbsp;зависимости от&nbsp;настроек
           оборудования, на&nbsp;котором установлено ПО&nbsp;«Мобильная карта».</em></p>
@@ -365,13 +364,12 @@
         инструмент настройки
         адаптера в&nbsp;режиме протокола MODBUS (меню «Инструменты–Настройка адаптера Modbus»).</p>
 
-      <img src="https://www.nppsensor.ru/i/c6939cf1-7a34-45eb-b11b-e449507d4f49"
-        style="display: block; margin: 10px auto; " alt="">
+      <img src="https://www.nppsensor.ru/i/c6939cf1-7a34-45eb-b11b-e449507d4f49" alt="">
 
       <p>В&nbsp;появившемся окне нажать кнопку «Считать».</p>
 
       <img src="https://www.nppsensor.ru/i/5ba2c74f-6178-4d36-a9aa-46f69fbe7dee"
-        style="display: block; margin: 10px auto; " alt="">
+         alt="">
 
       <p>На&nbsp;заводе-изготовителе в&nbsp;карту регистров (слоты) добавлен уровнемер с&nbsp;адресом 1&nbsp;(протокол
         СЕНС) для&nbsp;считывания восьми параметров (уровень, температура, процентное заполнение, объём, масса,
@@ -379,7 +377,7 @@
         2&nbsp;(протокол СЕНС) необходимо заполнить последовательно следующие 8&nbsp;слотов (9-16).</p>
 
       <img src="https://www.nppsensor.ru/i/042a5186-33b4-40e5-ab1a-d5893c51161a"
-        style="display: block; margin: 10px auto; " alt="">
+         alt="">
 
       <p>Аналогично следует добавить остальные уровнемеры.</p>
 

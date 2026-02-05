@@ -265,91 +265,93 @@
           <a href="" class="link">Обращение в сервисную службу</a>
         </li>
       </ul>
-
-      <div class="appeal layout">
+    </nav>
+    <div class="appeal layout">
+      <div class="title-wrap">
         <h1 class="title">Обращение в сервисную службу</h1>
-
-        <form class="appeal__form" action="">
-          <fieldset class="appeal__fieldset">
-            <legend class="appeal__legend">Организация</legend>
-            <div class="appeal__list">
-              <div class="input">
-                <label class="input__label required" for="inn">
-                  <span class="input__label-main">ИНН:</span>
-                </label>
-                <div class="input__content">
-                  <input required class="appeal__input" type="text" id="inn">
-                  <div class="input__error"></div>
-                </div>
-              </div>
-              <div class="input">
-                <label class="input__label required" for="contact-name">
-                  <span class="input__label-main">ФИО контактного лица:</span>
-                </label>
-                <div class="input__content">
-                  <input required class="appeal__input" type="text" id="contact-name">
-                  <div class="input__error"></div>
-                </div>
-              </div>
-              <div class="input">
-                <label class="input__label required" for="phone">
-                  <span class="input__label-main">Номер телефона:</span>
-                </label>
-                <div class="input__content">
-                  <input required class="appeal__input" type="tel" id="phone">
-                  <div class="input__error"></div>
-                </div>
-              </div>
-              <div class="input">
-                <label class="input__label required" for="email">
-                  <span class="input__label-main">Адрес электронной почты:</span>
-                </label>
-                <div class="input__content">
-                  <input required class="appeal__input" type="email" id="email">
-                  <div class="input__error"></div>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="appeal__fieldset appeal__fieldset-wrap">
-            <legend class="appeal__legend">Продукция</legend>
-
-          </fieldset>
-
-          <div class="appeal__file-attachment">
-            <span class="appeal__text">Прикрепить файл</span>
-            <div class="appeal__files">
-              <span class="appeal__files-error"></span>
-              <ul class="appeal__files-list"></ul>
-            </div>
-
-            <div class="appeal__file-wrap">
-              <label class="appeal__label" for="file-upload">
-                <svg>
-                  <use xlink:href="#icon-download"></use>
-                </svg>
-                <span>Загрузить</span>
-              </label>
-              <input class="appeal__input-file" type="file" id="file-upload" multiple
-                accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
-              <span class="appeal__file-info">Максимум 20 файлов общим размером до 20 МБ.</span>
-            </div>
-          </div>
-
-          <div class="appeal__consent">
-            <input required class="checkbox" type="checkbox" id="consent">
-            <label class="appeal__label" for="consent"> Даю согласие на обработку персональных данных в соответствии с
-              <a class="appeal__link" href="">политикой</a></label>
-          </div>
-          <div class="appeal__button-wrap">
-            <button class="appeal__button" type="submit">Отправить</button>
-          </div>
-        </form>
       </div>
 
+      <form class="appeal__form" action="">
+        <fieldset class="appeal__fieldset">
+          <legend class="appeal__legend">Организация</legend>
+          <div class="appeal__list">
+            <div class="input">
+              <label class="input__label required" for="inn">
+                <span class="input__label-main">ИНН:</span>
+              </label>
+              <div class="input__content">
+                <input required class="appeal__input" type="text" id="inn">
+                <div class="input__error"></div>
+              </div>
+            </div>
+            <div class="input">
+              <label class="input__label required" for="contact-name">
+                <span class="input__label-main">ФИО контактного лица:</span>
+              </label>
+              <div class="input__content">
+                <input required class="appeal__input" type="text" id="contact-name">
+                <div class="input__error"></div>
+              </div>
+            </div>
+            <div class="input">
+              <label class="input__label required" for="phone">
+                <span class="input__label-main">Номер телефона:</span>
+              </label>
+              <div class="input__content">
+                <input required class="appeal__input" type="tel" id="phone">
+                <div class="input__error"></div>
+              </div>
+            </div>
+            <div class="input">
+              <label class="input__label required" for="email">
+                <span class="input__label-main">Адрес электронной почты:</span>
+              </label>
+              <div class="input__content">
+                <input required class="appeal__input" type="email" id="email">
+                <div class="input__error"></div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
 
-    </nav>
+        <fieldset class="appeal__fieldset appeal__fieldset-wrap">
+          <legend class="appeal__legend">Продукция</legend>
+
+        </fieldset>
+
+        <div class="appeal__file-attachment">
+          <span class="appeal__text">Прикрепить файл</span>
+          <div class="appeal__files">
+            <span class="appeal__files-error"></span>
+            <ul class="appeal__files-list"></ul>
+          </div>
+
+          <div class="appeal__file-wrap">
+            <label class="appeal__label" for="file-upload">
+              <svg>
+                <use xlink:href="#icon-download"></use>
+              </svg>
+              <span>Загрузить</span>
+            </label>
+            <input class="appeal__input-file" type="file" id="file-upload" multiple
+              accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
+            <span class="appeal__file-info">Максимум 20 файлов общим размером до 20 МБ.</span>
+          </div>
+        </div>
+
+        <div class="appeal__consent">
+          <input required class="appeal__checkbox" type="checkbox" id="consent">
+          <label class="appeal__label" for="consent"> Даю согласие на обработку персональных данных в соответствии с
+            <a class="link-red" href="">политикой</a></label>
+        </div>
+        <div class="appeal__button-wrap">
+          <button class="appeal__button" type="submit">Отправить</button>
+        </div>
+      </form>
+    </div>
+
+
+
   </main>
 
   <footer>
@@ -727,67 +729,3 @@
 </body>
 
 </html>
-
-
-
-<!-- <div class="appeal__list">
-  <div class="input">
-    <label class="input_label required" for="product-type-${count}">
-      <span class="input__label-main">Тип изделия:</span>
-    </label>
-    <div class="input__content">
-      <select class="appeal__select" id="product-type-${count}">
-        <option value="" disabled selected>--Выберите тип прибора--</option>
-        <option value="magnetic-converter">Преобразователь магнитный поплавковый</option>
-        <option value="electromagnetic-valve">Клапан электромагнитный</option>
-        <option value="other">Другой прибор</option>
-      </select>
-      <div class="input__error"></div>
-    </div>
-  </div>
-  <div class="input">
-    <label class="input_label required" for="manufacture-year-${count}">
-      <span class="input__label-main">Год выпуска:</span>
-    </label>
-    <div class="input__content">
-      <input required class="appeal__input" type="number" id="manufacture-year-${count}" min="1970" max="2026"
-        placeholder="Указан на шильде или в паспорте">
-      <div class="input__error"></div>
-    </div>
-  </div>
-  <div class="input">
-    <label class="input_label required" for="serial-number-${count}">
-      <span class="input__label-main">Заводской номер:</span>
-    </label>
-    <div class="input__content">
-      <input required class="appeal__input" type="text" id="serial-number-${count}"
-        placeholder="Указан на шильде или в паспорте">
-      <div class="input__error"></div>
-    </div>
-  </div>
-  <div class="input">
-    <label class="input_label required" for="appeal-reason-${count}">
-      <span class="input__label-main">Причина обращения:</span>
-    </label>
-    <div class="input__content">
-      <select class="appeal__select" id="appeal-reason-${count}">
-        <option value="" disabled selected>--Выберите--</option>
-        <option value="consultation-setup">Нужна консультация по настройке</option>
-        <option value="consultation-diagnostics">Нужна консультация по диагностике</option>
-        <option value="report-failure">Сообщить о неисправности</option>
-        <option value="send-for-repair">Сообщить об отправке для диагностики, обслуживания, ремонта, проверки</option>
-        <option value="order-parts">Хочу заказать запчасти</option>
-      </select>
-      <div class="input__error"></div>
-    </div>
-  </div>
-  <div class="input">
-    <label class="input_label required" for="short-description-${count}">
-      <span class="input__label-main">Краткое описание:</span>
-    </label>
-    <div class="input__content">
-      <textarea class="appeal__textarea" id="short-description-${count}"></textarea>
-      <div class="input__error"></div>
-    </div>
-  </div>
-</div> -->

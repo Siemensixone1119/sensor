@@ -31,8 +31,8 @@ export function addFieldset() {
             <span class="input__label-main">Год выпуска:</span>
           </label>
           <div class="input__content">
-            <input required class="appeal__input" type="number" id="manufacture-year-${count}" min="1970" max="2026"
-              placeholder="Указан на шильде или в паспорте">
+            <input required class="appeal__input" type="number" id="manufacture-year-${count}" min="1970" max="2026">
+              <span class="input__description">Указан на шильде или в паспорте</span>
             <div class="input__error"></div>
           </div>
         </div>
@@ -41,8 +41,8 @@ export function addFieldset() {
             <span class="input__label-main">Заводской номер:</span>
           </label>
           <div class="input__content">
-            <input required class="appeal__input" type="text" id="serial-number-${count}"
-              placeholder="Указан на шильде или в паспорте">
+            <input required class="appeal__input" type="text" id="serial-number-${count}">
+              <span class="input__description">Указан на шильде или в паспорте</span>
             <div class="input__error"></div>
           </div>
         </div>

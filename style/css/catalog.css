@@ -148,9 +148,10 @@
 }
 .product-card__panel-item:has(.product-card__lock) {
   position: absolute;
-  top: -20px;
-  right: -9px;
+  top: -19px;
+  right: -15px;
   z-index: 10;
+  background-color: transparent;
 }
 .product-card__lock {
   width: 24px;
@@ -236,18 +237,6 @@
   background-color: #ee2b2b;
 }
 
-.products-list__title-wrap {
-  margin-bottom: 10px;
-}
-.products-list__title {
-  margin: 0;
-  line-height: 1;
-}
-.products-list__more {
-  font-size: 14px;
-  color: #808080;
-  text-decoration: underline;
-}
 .products-list__info {
   margin: 20px 0;
 }

@@ -51,6 +51,8 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1;
+    margin-bottom: 5px;
   }
 
   &__description {
@@ -64,9 +66,21 @@
   }
 }
 
-.new{
-  &__date{
+.new {
+  &__date {
     text-indent: 0;
     font-family: $font-family;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .news {
+    &__image-wrap {
+      min-width: 50px;
+      max-width: 50px;
+      min-width: 50px;
+      max-height: 50px;
+    }
   }
 }

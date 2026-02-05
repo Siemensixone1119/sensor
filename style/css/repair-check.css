@@ -10,7 +10,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 40px;
+  gap: 20px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  padding: 15px;
 }
 .appeal-status__row {
   display: -webkit-box;
