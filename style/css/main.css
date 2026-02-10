@@ -214,7 +214,11 @@ main ol li:last-child:after,
 ul.not-marked li::after,
 ol.not-marked li::after,
 ol.not-marked li:last-child::after,
-ul.not-marked li:last-child:after {
+ul.not-marked li:last-child:after,
+ul.not-marked li::marker,
+ol.not-marked li::marker,
+ol.not-marked li:last-child::marker,
+ul.not-marked li:last-child::marker {
   content: "";
 }
 
@@ -1926,7 +1930,7 @@ html:has(.footnote) {
       touch-action: none;
 }
 
-.input {
+.form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1934,113 +1938,209 @@ html:has(.footnote) {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 5px;
+  gap: 30px;
 }
-.input__label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+
+.legend {
+  font-size: 18px;
 }
-.input__label-main {
+
+.Field:last-child {
+  margin-bottom: 0;
+}
+
+.Field {
+  margin-bottom: 15px;
+}
+.Field__labelInner {
+  display: block;
+  margin-bottom: 8px;
+  position: relative;
+}
+.Field__labelMain {
   font-size: 16px;
 }
-.input__extra, .input__label-extra {
-  font-size: 12px;
-  color: #b30006;
-  font-weight: 600;
+.Field__labelContent {
+  display: block;
+  font-size: 13px;
 }
-.input__content {
+.Field__labelContent-text {
+  display: block;
+}
+.Field__control:has(input[type=file]) {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-bottom: 5px;
+}
+.Field__control:has(input[type=file]) .Field__file-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 3px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
+  gap: 10px;
 }
-.input__content input {
+.Field__control:has(input[type=file]) .Field__file-btn svg {
+  width: 16px;
+  height: 16px;
+  line-height: 0;
+}
+.Field__control:has(input[type=file]) input[type=file] {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.Field__control:has(input[type=checkbox]), .Field__control:has(input[type=radio]) {
+  padding: 0;
+  border: none;
+}
+.Field__control:has(input[type=checkbox]) .Field__item, .Field__control:has(input[type=radio]) .Field__item {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: self-start;
+      -ms-flex-align: self-start;
+          align-items: self-start;
+  gap: 10px;
+}
+.Field__control:has(input[type=checkbox]) .Field__item input, .Field__control:has(input[type=radio]) .Field__item input {
+  accent-color: #b30006;
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  min-height: 16px;
+  margin-top: 3px;
+}
+.Field__control:has(input[type=submit]) {
+  background-color: #b30006;
+  border-radius: 8px;
+}
+.Field__control:has(input[type=submit]) input {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}
+.Field__control {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 1px solid lightgrey;
+  line-height: 0;
+}
+.Field__control input {
+  outline: none;
+  font-size: 14px;
   width: 100%;
   padding: 10px;
-  border: 1px solid lightgrey;
-  outline: none;
 }
-.input__content input::-webkit-input-placeholder {
+.Field__control input::-webkit-input-placeholder {
   color: #ccc;
 }
-.input__content input::-moz-placeholder {
+.Field__control input::-moz-placeholder {
   color: #ccc;
 }
-.input__content input:-ms-input-placeholder {
+.Field__control input:-ms-input-placeholder {
   color: #ccc;
 }
-.input__content input::-ms-input-placeholder {
+.Field__control input::-ms-input-placeholder {
   color: #ccc;
 }
-.input__content input::placeholder {
+.Field__control input::placeholder {
   color: #ccc;
 }
-.input__error {
-  color: red;
-}
-.input__description {
-  font-size: 13px;
-  color: #808080;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  line-height: 1;
-}
-.input__clue {
-  font-size: 13px;
-  color: #808080;
-  border-bottom: 1px dotted;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  line-height: 1;
-}
-
-.select {
+.Field__control select {
+  padding: 10px;
   max-width: 100%;
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 10px;
-  border: 1px solid lightgrey;
   outline: none;
+  border: none;
+  background-color: #fff;
+  color: #212121;
 }
-
-.select {
-  max-width: 100%;
-  width: 100%;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.select option {
+.Field__control select option {
   max-width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-
-.textarea {
+.Field__control textarea {
+  padding: 10px;
   resize: vertical;
   min-height: 50px;
   max-height: 500px;
-  padding: 10px;
-  border: 1px solid lightgrey;
   outline: none;
+  width: 100%;
+  border: none;
+}
+.Field__hint > * {
+  display: block;
+  margin-top: 2px;
+}
+.Field__error {
+  display: block;
+}
+.Field__error > * {
+  color: red;
+}
+.Field__labelInner.required::before {
+  content: "*";
+  position: absolute;
+  top: 7px;
+  left: -9px;
+  font-size: 16px;
+  color: #b30006;
+  line-height: 0;
+}
+.Field__hint > *, .Field__error, .Field__labelContent-text {
+  font-size: 13px;
 }
 
-.checkbox {
-  accent-color: #c10606;
-  width: 32px;
-  height: 32px;
+.fieldset {
+  border: 1px dashed lightgrey;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.fieldset__button--remove {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #b30006;
+}
+.fieldset__button--add {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  color: #b30006;
+  pointer-events: all;
+}
+.fieldset.fieldset-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  padding: 15px 10px;
 }/*# sourceMappingURL=main.css.map */

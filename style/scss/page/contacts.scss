@@ -2,12 +2,15 @@
 @use "../partials/pages/product/product";
 
 .contact {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
 
-  &__item {
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  &__card {
     padding: var(--page-gutter);
     border: 1px solid #ccc;
     border-radius: 4px;

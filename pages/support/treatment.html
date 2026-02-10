@@ -170,7 +170,7 @@
               </div>
             </div>
             <div class="contacts__group contacts__group--phones">
-              <ul class="contacts__list">
+              <ul class="contacts__list not-marked">
                 <li class="contacts__item">
                   <a href="tel:+78412652121" class="contacts__link">+7 8412 65-21-21</a>
                   <span class="contacts__desc">отдел продаж</span>
@@ -187,7 +187,7 @@
             </div>
 
             <div class="contacts__group contacts__group--button">
-              <a href="../contacts.html" class="contacts__button">
+              <a href="./contacts.html" class="contacts__button">
                 Все контакты
                 <svg class="contacts__button-icon">
                   <use xlink:href="#icon-arrow"></use>
@@ -196,7 +196,7 @@
             </div>
 
             <div class="contacts__group contacts__group--social">
-              <ul class="contacts__social-list">
+              <ul class="contacts__social-list not-marked">
                 <li class="contacts__social-item">
                   <a href="" class="contacts__social-link">
                     <svg class="contacts__social-icon">
@@ -271,86 +271,264 @@
         <h1 class="title">Обращение в сервисную службу</h1>
       </div>
 
-      <form class="appeal__form" action="">
-        <fieldset class="appeal__fieldset">
-          <legend class="appeal__legend">Организация</legend>
-          <div class="appeal__list">
-            <div class="input">
-              <label class="input__label required" for="inn">
-                <span class="input__label-main">ИНН:</span>
-              </label>
-              <div class="input__content">
-                <input required class="appeal__input" type="text" id="inn">
-                <div class="input__error"></div>
+      <form class="form">
+        <div class="form-group">
+          <fieldset class="fieldset">
+            <legend class="legend">Организация</legend>
+
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain" for="">ИНН:</label>
+              </span>
+
+              <div class="Field__control">
+                <input class="Field__input" type="text">
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
               </div>
             </div>
-            <div class="input">
-              <label class="input__label required" for="contact-name">
-                <span class="input__label-main">ФИО контактного лица:</span>
-              </label>
-              <div class="input__content">
-                <input required class="appeal__input" type="text" id="contact-name">
-                <div class="input__error"></div>
+
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain" for="">ФИО контактного лица:</label>
+              </span>
+
+              <div class="Field__control">
+                <input class="Field__input" type="text">
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
               </div>
             </div>
-            <div class="input">
-              <label class="input__label required" for="phone">
-                <span class="input__label-main">Номер телефона:</span>
-              </label>
-              <div class="input__content">
-                <input required class="appeal__input" type="tel" id="phone">
-                <div class="input__error"></div>
+
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain" for="">Номер телефона:</label>
+              </span>
+
+              <div class="Field__control">
+                <input class="Field__input" type="tel">
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
               </div>
             </div>
-            <div class="input">
-              <label class="input__label required" for="email">
-                <span class="input__label-main">Адрес электронной почты:</span>
-              </label>
-              <div class="input__content">
-                <input required class="appeal__input" type="email" id="email">
-                <div class="input__error"></div>
+
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain" for="">Адрес электронной почты:</label>
+              </span>
+
+              <div class="Field__control">
+                <input class="Field__input" type="email">
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
               </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        </div>
 
-        <fieldset class="appeal__fieldset appeal__fieldset-wrap">
-          <legend class="appeal__legend">Продукция</legend>
+        <div class="form-group">
+          <fieldset class="fieldset fieldset-wrap">
+            <legend class="legend">Продукция</legend>
+            <fieldset class="fieldset" data-product-index="1">
+              <button class="fieldset__button--remove" type="button">Удалить</button>
 
-        </fieldset>
+              <div class="Field">
+                <span class="Field__labelInner required">
+                  <label class="Field__labelMain" for="">Тип изделия:</label>
+                </span>
 
-        <div class="appeal__file-attachment">
-          <span class="appeal__text">Прикрепить файл</span>
-          <div class="appeal__files">
-            <span class="appeal__files-error"></span>
-            <ul class="appeal__files-list"></ul>
-          </div>
+                <div class="Field__control">
+                  <select class="select" id="product-type-1" name="products[1][type]" required>
+                    <option value="" disabled selected>--Выберите тип прибора--</option>
+                    <option value="magnetic-converter">Преобразователь магнитный поплавковый</option>
+                    <option value="electromagnetic-valve">Клапан электромагнитный</option>
+                    <option value="other">Другой прибор</option>
+                  </select>
+                </div>
 
-          <div class="appeal__file-wrap">
-            <label class="appeal__label" for="file-upload">
-              <svg>
-                <use xlink:href="#icon-download"></use>
-              </svg>
-              <span>Загрузить</span>
-            </label>
-            <input class="appeal__input-file" type="file" id="file-upload" multiple
-              accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
-            <span class="appeal__file-info">Максимум 20 файлов общим размером до 20 МБ.</span>
+                <div class="Field__error">
+                  <span class="Field__error-text"></span>
+                </div>
+              </div>
+
+              <div class="Field">
+                <span class="Field__labelInner required">
+                  <label class="Field__labelMain" for="">Год выпуска:</label>
+                </span>
+
+                <div class="Field__control">
+                  <input class="Field__input" type="number">
+                </div>
+
+                <div class="Field__hint">
+                  <span class="Field__error-text">Указан на шильде или в паспорте</span>
+                </div>
+
+                <div class="Field__error">
+                  <span class="Field__error-text"></span>
+                </div>
+              </div>
+
+              <div class="Field">
+                <span class="Field__labelInner required">
+                  <label class="Field__labelMain" for="">Заводской номер:</label>
+                </span>
+
+                <div class="Field__control">
+                  <input class="Field__input" type="number">
+                </div>
+
+                <div class="Field__hint">
+                  <span class="Field__error-text">Указан на шильде или в паспорте</span>
+                </div>
+
+                <div class="Field__error">
+                  <span class="Field__error-text"></span>
+                </div>
+              </div>
+
+              <div class="Field">
+                <span class="Field__labelInner required">
+                  <label class="Field__labelMain" for="">Причина обращения:</label>
+                </span>
+
+                <div class="Field__control">
+                  <select class="select" id="appeal-reason-1" name="products[1][reason]" required>
+                    <option value="" disabled selected>--Выберите--</option>
+                    <option value="consultation-setup">Нужна консультация по настройке</option>
+                    <option value="consultation-diagnostics">Нужна консультация по диагностике</option>
+                    <option value="report-failure">Сообщить о неисправности</option>
+                    <option value="send-for-repair">Сообщить об отправке для диагностики, обслуживания, ремонта,
+                      проверки</option>
+                    <option value="order-parts">Хочу заказать запчасти</option>
+                  </select>
+                </div>
+
+                <div class="Field__error">
+                  <span class="Field__error-text"></span>
+                </div>
+              </div>
+
+              <button class="fieldset__button--add" type="button">Добавить ещё продукт</button>
+            </fieldset>
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <div class="Field">
+            <span class="Field__labelInner">
+              <label class="Field__labelMain" for="">Прикрепить файл</label>
+            </span>
+
+            <div class="Field__control">
+              <button class="Field__file-btn" type="button">
+                <svg>
+                  <use xlink:href="#icon-download"></use>
+                </svg>
+                <span>Загрузить</span>
+                <input type="file" id="file-upload" multiple
+                  accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
+              </button>
+            </div>
+
+            <div class="Field__hint">
+              <span>Максимум 20 файлов общим размером до 20 МБ.</span>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
           </div>
         </div>
 
-        <div class="appeal__consent">
-          <input required class="appeal__checkbox" type="checkbox" id="consent">
-          <label class="appeal__label" for="consent"> Даю согласие на обработку персональных данных в соответствии с
-            <a class="link-red" href="">политикой</a></label>
+        <div class="form-group">
+          <div class="Field Field_view_checkbox">
+            <div class="Field__control">
+              <div class="Field__item">
+                <input class="Field_input" type="checkbox" id="agree" name="agree" value="1">
+                <label for="agree">
+                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
+                      class="Checkbox__link">политикой</a>
+                  </span>
+                </label>
+              </div>
+
+              <div class="Field__item">
+                <input class="Field_input" type="radio" id="agree1" name="agree1" value="1">
+                <label for="agree1">
+                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
+                      class="Checkbox__link">политикой</a>
+                  </span>
+                </label>
+              </div>
+
+
+              <div class="Field__item">
+                <input class="Field_input" type="radio" id="agree2" name="agree2" value="2">
+                <label for="agree2">
+                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
+                      class="Checkbox__link">политикой</a>
+                  </span>
+                </label>
+              </div>
+
+              <div class="Field__item">
+                <input class="Field_input" type="radio" id="agree3" name="agree" value="3">
+                <label for="agree3">
+                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
+                      class="Checkbox__link">политикой</a>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
+          </div>
+
         </div>
-        <div class="appeal__button-wrap">
-          <button class="appeal__button" type="submit">Отправить</button>
+
+        <div class="form-group">
+          <div class="Field__control">
+            <input class="Field__input" type="submit" value="Отправить">
+          </div>
         </div>
+
       </form>
+
+      <!-- <div class="Field">
+        <label class="Field__labelInner required" for="ito">
+          <span class="Field__labelMain">Номер ИТО</span>
+          <span class="Field__labelContent">
+            <span>контент под лейблем</span>
+          </span>
+        </label>
+
+        <div class="Field__control">
+          <input class="Field__input" type="text">
+        </div>
+
+        <div class="Field__hint">
+          <span>красный текст</span>
+          <span>серое описание</span>
+          <span>сноска</span>
+          <span data-info data-trigger="prev">контент сноски</span>
+        </div>
+
+        <div class="Field__error">
+          <span class="Field__error-text">error</span>
+        </div>
+      </div> -->
     </div>
-
-
 
   </main>
 

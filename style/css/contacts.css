@@ -136,7 +136,7 @@
             column-gap: 20px;
   }
 }
-.contact {
+.contact__cards {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -147,13 +147,13 @@
   gap: 15px;
   margin-top: 20px;
 }
-.contact__item {
+.contact__card {
   padding: var(--page-gutter);
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
 }
-.contact__item h2 {
+.contact__card h2 {
   margin-top: 0;
 }
 .contact__wrap {

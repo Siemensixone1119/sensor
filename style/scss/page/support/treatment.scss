@@ -17,9 +17,6 @@
     overflow: hidden;
   }
 
-  &__fieldset:not(:has(.appeal__button--add)) {
-    padding-bottom: 20px;
-  }
 
   &__legend {
     font-size: 18px;
@@ -33,20 +30,7 @@
     gap: 20px;
   }
 
-  &__button--remove {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: $accent-color;
-  }
 
-  &__button--add {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    color: $accent-color;
-    pointer-events: all;
-  }
 
   &__file-attachment {
     display: flex;
@@ -90,7 +74,7 @@
 
   &__consent {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 15px;
     margin-bottom: 15px;
   }
