@@ -1,30 +1,73 @@
+@use "../../base/variable" as *;
+
 .advantages {
+  padding: 20px 0;
+  background: #fff;
+
   &__list {
+    display: grid;
+    gap: 12px;
+
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
   &__item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-areas:
+      "icon title"
+      "icon text";
+    gap: 4px 20px;
+
     margin: 0;
+    border-radius: 14px;
+    background: #fff;
+  }
+
+  &__icon {
+    grid-area: icon;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: $second-accent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon::before {
+    opacity: .9;
+    font-family: icons;
+    color: #fff;
+  }
+
+  &__icon--cert::before {
+    content: "\f0a3";
+  }
+
+  &__icon--hands::before {
+    content: "\f2b5";
+  }
+
+  &__icon--tools::before {
+    content: "\f0ad";
   }
 
   &__title {
-    margin-top: 15px;
+    grid-area: title;
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 800;
   }
 
-  &__title--certs::before {
-    content: "\f0a3";
-    font-family: icons;
-  }
-
-  &__title--hands::before {
-    content: "\f2b5";
-    font-family: icons;
-  }
-
-  &__title--tools::before {
-    content: "\f0ad";
-    font-family: icons;
+  &__text {
+    grid-area: text;
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.35;
+    opacity: .9;
   }
 }

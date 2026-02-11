@@ -120,6 +120,20 @@
       <symbol id="icon-download" viewBox="0 0 32 32">
         <path d="M0 24v4h28v-4zM26 12h-6v10h-12v-10.062l-6 0.062 12-12z"></path>
       </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 32 32">
+        <path d="M11.2 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M12.8 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6 1.6 0.716 1.6 1.6z"></path>
+        <path d="M16 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6c-0.884 0-1.6 0.716-1.6 1.6s0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M17.6 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6c0.884 0 1.6 0.716 1.6 1.6z">
+        </path>
+        <path d="M20.8 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path
+          d="M27.2 8.8c0-2.209-1.791-4-4-4h-14.4c-2.209 0-4 1.791-4 4v14.4c0 2.209 1.791 4 4 4h14.4c2.209 0 4-1.791 4-4zM6.4 11.2h19.2v12c0 1.325-1.075 2.4-2.4 2.4h-14.4c-1.325 0-2.4-1.075-2.4-2.4zM8.8 6.4h14.4c1.325 0 2.4 1.075 2.4 2.4v0.8h-19.2v-0.8c0-1.325 1.075-2.4 2.4-2.4z">
+        </path>
+      </symbol>
     </defs>
   </svg>
 
@@ -344,19 +358,115 @@
       <div class="advantages">
         <ul class="advantages__list not-marked">
           <li class="advantages__item">
-            <h3 class="advantages__title advantages__title--certs">Сертификация</h3>
-            <span class="advantages_description">Вся продукция сертифицирована на соответствие ТР ТС и требованиям
+            <div class="advantages__icon advantages__icon--cert"></div>
+            <h3 class="advantages__title">Сертификация</h3>
+            <span class="advantages__description">Вся продукция сертифицирована на соответствие ТР ТС и требованиям
               промышленной безопасности</span>
           </li>
           <li class="advantages__item">
-            <h3 class="advantages__title advantages__title--hands">Персональный подход</h3>
+            <div class="advantages__icon advantages__icon--hands"></div>
+            <h3 class="advantages__title">Персональный подход</h3>
             <span class="advantages__description">Предприятие разрабатывает и изготавливает оборудование исходя из
               потребностей заказчиков</span>
           </li>
           <li class="advantages__item">
-            <h3 class="advantages__title advantages__title--tools">Сопровождение</h3>
+            <div class="advantages__icon advantages__icon--tools"></div>
+            <h3 class="advantages__title">Сопровождение</h3>
             <span class="advantages__description">Сервисная служба выполняет гарантийное обслуживание всех заказов и
               проектов</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Новости</h2>
+        <form class="form">
+          <div class="form-group">
+            <div class="Field">
+              <div class="Field__control">
+                <select class="select" id="appeal-reason-1" name="products[1][reason]" required>
+                  <option value="" selected>Продукция</option>
+                  <option value="">Выставки</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+        <ul class="news__list not-marked">
+          <li class="news__item">
+            <a class="news__link" href="./news/new.html">
+              <div class="news__image-wrap">
+                <img class="news__image" src="https://www.nppsensor.ru/storage/useruploads/image/100ltr.jpg" alt="">
+              </div>
+              <div class="news__content">
+                <div class="news__date">
+                  <span class="news__date-icon">
+                    <svg>
+                      <use xlink:href="#icon-calendar"></use>
+                    </svg>
+                  </span>
+                  <span class="news__date-text">14 ноября 2025г.</span>
+                </div>
+                <h2 class="news__title">Уровнемер радиоволновой СЕНС УР3 – Дипломант всероссийского конкурса программы
+                  100
+                  лучших товаров России 2025 г.</h2>
+                <div class="news__description">
+                  13 ноября 2025 года были подведены итоги всероссийского конкурса программы 100 лучших товаров России.
+                  В
+                  этом году на конкурс НПП СЕНСОР представило Уровнемер радиоволновой , который стал дипломантом в
+                  номинации Продукция производственно-технического назначения.…
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li class="news__item">
+            <a class="news__link" href="./news/new.html">
+              <div class="news__image-wrap">
+                <img class="news__image" src="https://www.nppsensor.ru/storage/useruploads/image/logo.jpg" alt="">
+              </div>
+              <div class="news__content">
+                <div class="news__date">
+                  <span class="news__date-icon">
+                    <svg>
+                      <use xlink:href="#icon-calendar"></use>
+                    </svg>
+                  </span>
+                  <span class="news__date-text">19 августа 2025г.</span>
+                </div>
+                <h2 class="news__title">Модернизирован цех по производству трубопроводной арматуры</h2>
+                <div class="news__description">
+                  В научно-производственном предприятии СЕНСОР успешно модернизирован специализированный цех по
+                  производству трубопроводной арматуры. Это современное подразделение выпускает отсечные клапаны –
+                  критически важные запорные устройства, предназначенные для управления…
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li class="news__item">
+            <a class="news__link" href="./news/new.html">
+              <div class="news__image-wrap">
+                <img class="news__image" src="https://www.nppsensor.ru/storage/useruploads/image/ico-sens-umv-new.jpg"
+                  alt="">
+              </div>
+              <div class="news__content">
+                <div class="news__date">
+                  <span class="news__date-icon">
+                    <svg>
+                      <use xlink:href="#icon-calendar"></use>
+                    </svg>
+                  </span>
+                  <span class="news__date-text">16 декабря 2024г.</span>
+                </div>
+                <h2 class="news__title">Уровнемеры СЕНС УМВ в реестре ГИСП</h2>
+                <div class="news__description">
+                  Волноводные рефлекс-радарные уровнемеры включены в реестр промышленной продукции, произведённой на
+                  территории Российской Федерации, а также в реестр российской радиоэлектронной продукции. [СЕНС УМВ на
+                  портале ГИСП] Принцип работы уровнемера основан на измерении…
+                </div>
+              </div>
+            </a>
           </li>
         </ul>
       </div>
