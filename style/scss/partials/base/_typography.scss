@@ -9,3 +9,39 @@
   src: url("./../../assets/font/pfdintextcomppro-regular.woff");
   font-display: swap;
 }
+
+@font-face {
+  font-family: PFDinTextCompProRegular;
+  src: url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-regular-webfont-3f538157.eot);
+  src: url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-regular-webfont-3f538157.eot?#iefix) format("embedded-opentype"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-regular-webfont-cb1a68b7.woff) format("woff"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-regular-webfont-6a78ee32.ttf) format("truetype"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-regular-webfont-e4386b62.svg#PFDinTextCompProRegular) format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: PFDinTextCompProMedium;
+  src: url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-medium-e6b7ff79.eot);
+  src: url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-medium-e6b7ff79.eot?#iefix) format("embedded-opentype"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-medium-fa04d095.woff) format("woff"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-medium-17618868.ttf) format("truetype"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-medium-08fc3084.svg#PFDinTextCompProMedium) format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: PFDinTextCompProLight;
+  src: url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-light-67234df8.eot);
+  src: url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-light-67234df8.eot?#iefix) format("embedded-opentype"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-light-4a46706a.woff) format("woff"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-light-19b832b7.ttf) format("truetype"), url(https://www.nppsensor.ru/static/_/f/pfdintextcomppro/pfdintextcomppro-light-955e2efd.svg#PFDinTextCompProLight) format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap
+}
+
+@font-face {
+  font-family: icons;
+  src: url(https://www.nppsensor.ru/static/_/f/icons/icons-2b13baa7.eot);
+  src: url(https://www.nppsensor.ru/static/_/f/icons/icons-2b13baa7.eot?#iefix) format("embedded-opentype"), url(https://www.nppsensor.ru/static/_/f/icons/icons-cf011583.woff) format("woff"), url(https://www.nppsensor.ru/static/_/f/icons/icons-8a7cb27d.ttf) format("truetype"), url(https://www.nppsensor.ru/static/_/f/icons/icons-da909aa0.svg#icons) format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap
+}

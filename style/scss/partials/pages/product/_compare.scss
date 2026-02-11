@@ -65,7 +65,6 @@ h2:has(+div.compare) {
   // margin-top: 5px;
   --cells-visible: 4;
   --col-width: calc(100vw / var(--cells-visible));
-  margin-inline: calc(var(--page-gutter) * -1);
 
 
   &__info-btn {

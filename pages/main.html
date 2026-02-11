@@ -4,15 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог контрольно-измерительных систем для нефтегазовой промышленности производства НПП «СЕНСОР»</title>
+  <title>Обращение в сервисную службу</title>
   <link rel="preload" href="../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="../style/css/catalog.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="preload" href="../style/css/product.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="../style/css/main_page.css" as="style" onload="this.rel='stylesheet'">
   <link rel="shortcut icon" href="../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../scripts/pages/layout.js" defer></script>
+  <script type="module" src="../scripts/pages/layout.js"></script>
+  <script src="../scripts/pages/main_page.js" defer></script>
 </head>
 
 <body>
+  <!-- svg спрайт -->
+
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;overflow:hidden">
     <defs>
       <symbol id="icon-arrow" viewBox="0 0 64 32">
@@ -115,40 +117,13 @@
         <path
           d="M16 2.667C8.635 2.667 2.667 8.636 2.667 16S8.636 29.333 16 29.333c7.365 0 13.333-5.969 13.333-13.333S23.364 2.667 16 2.667zm1.333 20h-2.667v-8h2.667zm0-10.667h-2.667V9.333h2.667z" />
       </symbol>
-      <symbol id="icon-rep" viewBox="0 0 32 32">
-        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)"
-          d="M1.231 10.787v10.441h2.62v-3.416h2.117c1.895 0 4.219-0.813 4.219-3.461 0-2.396-1.303-3.564-3.775-3.564h-5.181zM3.851 12.709h1.673c0.814 0 2.058 0.015 2.058 1.523 0 1.361-0.829 1.642-2.013 1.642h-1.717v-3.165z">
-        </path>
-        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)"
-          d="M10.726 18.847c1.11 1.996 2.812 2.692 4.5 2.692 3.064 0 5.033-2.529 5.033-5.575 0-3.875-2.576-5.502-4.929-5.502-1.554 0-3.064 0.37-4.485 2.706l2.072 1.035c0.518-1.316 1.554-1.582 2.294-1.582 1.11 0 2.294 0.739 2.442 2.307h-3.76v1.893h3.76c-0.222 2.041-1.451 2.529-2.575 2.529-0.933 0-1.762-0.429-2.28-1.553l-2.072 1.050z">
-        </path>
-        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)"
-          d="M21.888 10.787v10.441h2.635v-8.4h3.612v8.4h2.635v-10.441h-8.881z"></path>
-        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)" d="M30.769 5.538h-29.538v2.462h29.538v-2.462z"></path>
-        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)" d="M30.769 24h-29.538v2.462h29.538v-2.462z"></path>
-      </symbol>
-      <symbol id="icon-rus" viewBox="0 0 32 32">
-        <path fill="#f47a55" style="fill: var(--color2, #f47a55)"
-          d="M1.231 11.216h4.289c1.565 0 2.73 0.324 3.495 0.972s1.148 1.522 1.148 2.623c0 1.111-0.383 1.99-1.148 2.638s-1.93 0.972-3.495 0.972h-1.874v3.595h-2.414v-10.799zM5.519 16.569c0.799 0 1.368-0.144 1.705-0.432 0.349-0.298 0.523-0.741 0.523-1.327s-0.174-1.023-0.523-1.311c-0.338-0.298-0.906-0.447-1.705-0.447h-1.874v3.517h1.874z">
-        </path>
-        <path fill="#f47a55" style="fill: var(--color2, #f47a55)"
-          d="M12.659 20.303c0.72 0 1.227-0.067 1.52-0.201 0.304-0.134 0.501-0.309 0.591-0.525l0.118-0.262-4.204-8.099h2.583l2.735 5.662 2.398-5.662h2.516l-3.765 8.362c-0.225 0.514-0.462 0.941-0.709 1.28-0.236 0.329-0.523 0.591-0.861 0.787s-0.743 0.329-1.216 0.401c-0.461 0.072-1.030 0.108-1.705 0.108v-1.851z">
-        </path>
-        <path fill="#f47a55" style="fill: var(--color2, #f47a55)"
-          d="M26.278 22.154c-1.452 0-2.6-0.416-3.444-1.25-0.833-0.833-1.249-2.108-1.249-3.826v-1.234c0-1.563 0.416-2.746 1.249-3.548 0.844-0.813 1.992-1.219 3.444-1.219 0.698 0 1.311 0.082 1.84 0.247s0.979 0.401 1.351 0.71c0.371 0.309 0.664 0.684 0.878 1.126 0.214 0.432 0.355 0.921 0.422 1.466h-2.414c-0.101-0.525-0.31-0.931-0.625-1.219s-0.799-0.432-1.452-0.432c-0.709 0-1.266 0.221-1.672 0.663-0.405 0.432-0.608 1.167-0.608 2.206v1.234c0 0.597 0.051 1.101 0.152 1.512 0.113 0.401 0.265 0.725 0.456 0.972s0.428 0.427 0.709 0.54c0.281 0.103 0.602 0.154 0.962 0.154 0.664 0 1.143-0.144 1.435-0.432 0.304-0.298 0.518-0.73 0.642-1.296h2.414c-0.146 1.152-0.585 2.047-1.317 2.684-0.732 0.627-1.79 0.941-3.174 0.941z">
-        </path>
-        <path fill="#f47a55" style="fill: var(--color2, #f47a55)" d="M30.769 24.615h-29.538v2.462h29.538v-2.462z">
-        </path>
-        <path fill="#f47a55" style="fill: var(--color2, #f47a55)" d="M30.769 6.154h-29.538v2.462h29.538v-2.462z"></path>
-      </symbol>
-      <symbol id="icon-lock" viewBox="0 0 24 24">
-        <path
-          d="M8 7c0-2.206 1.794-4 4-4s4 1.794 4 4v3.001H8V7zm10 3.001V7c0-3.309-2.691-6-6-6S6 3.691 6 7v3.001H4V22h16V10.001h-2z">
-        </path>
+      <symbol id="icon-download" viewBox="0 0 32 32">
+        <path d="M0 24v4h28v-4zM26 12h-6v10h-12v-10.062l-6 0.062 12-12z"></path>
       </symbol>
     </defs>
   </svg>
 
+  <!-- Хэдер -->
 
   <header class="header__overlay header">
     <!-- Верхняя часть хэдера -->
@@ -279,503 +254,133 @@
     </div>
   </header>
 
-
   <main>
-    <nav class="breadcrumbs">
 
-      <ul class="breadcrumbs__list">
-        <li class="breadcrumbs__item">
-          <a href="" class="link">Каталог продукции</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="" class="link">Датчики и сигнализаторы уровня</a>
-        </li>
-      </ul>
-
-    </nav>
     <div class="layout">
-      <div class="title-wrap">
-        <h1 class="title">Датчики и сигнализаторы уровня</h1>
-        <span class="title-description">Подробнее</span>
-        <div data-trigger="prev" data-info data-caption="Датчики и сигнализаторы уровня">
-          <span>Описание категории продукции.</span>
-        </div>
-      </div>
-      <ul class="products-list not-marked">
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img1.jpg">
-            <div class="product-card__stickers">
-              <div class="sticker sticker--new">Новинка</div>
-              <div class="sticker sticker--in-stock">Уже в продаже</div>
-            </div>
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Уровнемеры</span>
-            </a>
-
-            <h2 class="product-card__title">СЕНС УМВ</h2>
-
-            <span class="product-card__description">Волноводный микроволновый рефлекс-радарный (TDR). Широкий диапазон
-              температур, видов взрывозащиты. До 15000 мм. 4-20 мА (HART). Измерение уровня жидкости. Измерение уровня
-              раздела двухфазной жидкости.</span>
-            <span class="product-card__description--red">Собственное программное обеспечение и полный цикл
-              производства.</span>
-          </div>
-
-          <div class="product-card__panel">
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в реестр промышленной продукции, произведённой на
-              территории
-              Российской
-              Федерации</span>
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href=" #icon-rep">
-                </use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в Единый реестр российской радиоэлектронной
-              продукции (ПП РФ 878)</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img2.jpg">
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Уровнемеры</span>
-            </a>
-
-            <h2 class="product-card__title">СЕНС УР1</h2>
-
-            <span class="product-card__description">Радиоволновой. До 20 м. Интерфейсы СЕНС, RS-485.</span>
-          </div>
-          </a>
-          <div class="product-card__panel-item">
-            <div class="product-card__lock">
-              <svg>
-                <use xlink:href="#icon-lock"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Этот продукт видно только в Сенсоре
-            </span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в реестр промышленной продукции, произведённой на
-              территории
-              Российской
-              Федерации</span>
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href=" #icon-rep">
-                </use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в Единый реестр российской радиоэлектронной
-              продукции (ПП РФ 878)</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img3.jpg">
-            <div class="product-card__stickers">
-              <div class="sticker sticker--in-stock">Уже в продаже</div>
-            </div>
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Уровнемеры</span>
-            </a>
-
-            <h2 class="product-card__title">СЕНС УМВ</h2>
-
-            <span class="product-card__description">Волноводный микроволновый рефлекс-радарный (TDR). Широкий диапазон
-              температур, видов взрывозащиты. До 15000 мм. 4-20 мА (HART). Измерение уровня жидкости. Измерение уровня
-              раздела двухфазной жидкости.</span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в реестр промышленной продукции, произведённой на
-              территории
-              Российской
-              Федерации</span>
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href=" #icon-rep">
-                </use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в Единый реестр российской радиоэлектронной
-              продукции (ПП РФ 878)</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img4.jpg">
-            <div class="product-card__stickers">
-              <div class="sticker sticker--sale">-5%</div>
-            </div>
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Газоанализаторы</span>
-            </a>
-
-            <h2 class="product-card__title">СЕНС СГ-А2-КСВЗ</h2>
-
-            <span class="product-card__price">от <span class="product-card__price--bold product-card__price-sale">40
-                850 ₽</span><span class="product-card__price-old">43 000 ₽</span>
-              <span class="product-card__price-comment">(без учета НДС)</span>
-            </span>
-
-            <span class="product-card__description">Дистанционное измерение довзрывоопасных концентраций горючих газов и
-              паров нефтепродуктов.
-            </span>
-            <span class="product-card__description--red">Собственное программное обеспечение и полный цикл
-              производства.</span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в реестр промышленной продукции, произведённой на
-              территории
-              Российской
-              Федерации</span>
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href=" #icon-rep">
-                </use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в Единый реестр российской радиоэлектронной
-              продукции (ПП РФ 878)</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img5.jpg">
-            <div class="product-card__stickers">
-              <div class="product-card__colors">
-                <span class="product-card__color product-card__color--red"></span>
-                <span class="product-card__color product-card__color--yellow"></span>
-                <span class="product-card__color product-card__color--green"></span>
-                <span class="product-card__color product-card__color--blue"></span>
+      <div class="hero full-bcg">
+        <ul class="hero__list not-marked slider__list">
+          <li class="hero__item slider__item set-bg"
+            data-setbg="https://www.nppsensor.ru/images/company/about/sensor-dom-2022.jpg">
+            <div class="hero__wrap layout">
+              <h2 class="hero__title">Ведущий Российский производитель</h2>
+              <p class="hero__text">систем измерения количества нефтепродуктов в стационарных и передвижных резервуарах,
+                взрывозащищённого оборудования, трубопроводной
+                арматуры с дистанционным управлением</p>
+              <div class="hero__btn-wrap">
+                <a href="" class="hero__btn">Каталог</a>
               </div>
             </div>
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Светозвуковые (комбинированные)</span>
-            </a>
-
-            <h2 class="product-card__title">ВС-3М-X</h2>
-
-            <span class="product-card__description">Волноводный микроволновый рефлекс-радарный (TDR). Широкий диапазон
-              температур, видов взрывозащиты. До 15000 мм. 4-20 мА (HART). Измерение уровня жидкости. Измерение уровня
-              раздела двухфазной жидкости.</span>
-            <span class="product-card__description--red">Собственное программное обеспечение и полный цикл
-              производства.</span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
+          </li>
+          <li class="hero__item slider__item set-bg"
+            data-setbg="https://www.nppsensor.ru/images/company/about/stanok_cpu1.jpg">
+            <div class="hero__wrap layout">
+              <h2 class="hero__title">Современная техническая база</h2>
+              <p class="hero__text">непрерывная модернизация, внедрение передовых технологий и оптимизация производства
+                – основа развития
+                предприятия</p>
             </div>
-            <span data-info data-trigger="prev">Устройство включено в реестр промышленной продукции, произведённой на
-              территории
-              Российской
-              Федерации</span>
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href=" #icon-rep">
-                </use>
-              </svg>
+          </li>
+
+          <li class="hero__item slider__item set-bg"
+            data-setbg="https://www.nppsensor.ru/i/9354a791-97db-488c-b471-733d4c0c50a3">
+            <div class="hero__wrap layout">
+              <h2 class="hero__title">Сертификация ИНТЕРГАЗСЕРТ</h2>
+              <p class="hero__text">подтверждает успешное развитие и высокую репутацию предприятия</p>
             </div>
-            <span data-info data-trigger="prev">Устройство включено в Единый реестр российской радиоэлектронной
-              продукции (ПП РФ 878)</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img6.jpg">
-          </div>
-          <div class="product-card__content">
-            <a class="product-card__title-category">
-              <span class="product-card__title-category-text">Программное обеспечение</span>
-            </a>
+          </li>
 
-            <h2 class="product-card__title">АРМ СИ СЕНС</h2>
-
-            <span class="product-card__description">Автоматизированное рабочее место оператора АЗС, резервуарных парков
-              хранения жидких продуктов (АГЗС, ГНС, нефтебаз и др.)</span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item product-card__panel-item--in-process">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
+          <li class="hero__item slider__item set-bg"
+            data-setbg="https://www.nppsensor.ru/images/company/about/worldmap_sensor.png">
+            <div class="hero__wrap layout">
+              <h2 class="hero__title">Обширная география поставок</h2>
+              <p class="hero__text">частным, государственным и транснациональным компаниями на промышленные объекты
+                России и мира</p>
             </div>
-            <span data-info data-trigger="prev">Ведутся работы по включению устройства в реестр промышленной
-              продукции, произведённой на территории Российской Федерации</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img7.jpg">
-            <div class="product-card__stickers">
-              <div class="sticker sticker--new">Новинка</div>
-              <div class="sticker sticker--soon-in-stock">Скоро в продаже</div>
+          </li>
+
+          <li class="hero__item slider__item set-bg"
+            data-setbg="https://www.nppsensor.ru/images/company/about/podlesny.jpg">
+            <div class="hero__wrap layout">
+              <h2 class="hero__title">Развитая социальная политика</h2>
+              <p class="hero__text">поддержка физкультуры и спорта в городе, трудоустройство школьников, предоставление
+                рабочих мест инвалидам, материальная помощь работникам, санаторно-курортное лечение, благотворительность
+              </p>
             </div>
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Газоанализаторы</span>
-            </a>
+          </li>
 
-            <h2 class="product-card__title">СЕНС СГ-А1</h2>
-
-            <span class="product-card__description">Дистанционное измерение довзрывоопасных концентраций горючих газов и
-              паров нефтепродуктов.</span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item product-card__panel-item--in-process">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Ведутся работы по включению устройства в реестр промышленной
-              продукции, произведённой на территории Российской Федерации</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img8.png">
-            <div class="product-card__stickers">
-              <div class="sticker sticker--new">Новинка</div>
-              <div class="sticker sticker--in-stock">Уже в продаже</div>
-            </div>
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Клапаны электромагнитные двухпроходные</span>
-            </a>
-
-            <h2 class="product-card__title">СЕНС DN80/(25 .. 40)PN25-М</h2>
-
-            <span class="product-card__description">Нормально закрытые. Отсечные на давление до 25 кгс/см² для
-              нефтя­ного топлива (мазута) по ГОСТ 10585-2013 и т. п.</span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в реестр промышленной продукции, произведённой на
-              территории
-              Российской
-              Федерации</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-        <li class="product-card">
-          <div class="product-card__image set-bg" data-setbg="../assets/image/products_list/img9.jpg">
-          </div>
-          <div class="product-card__content">
-            <a href="" class="product-card__title-category">
-              <span class="product-card__title-category-text">Газоанализаторы</span>
-            </a>
-
-            <h2 class="product-card__title">СЕНС СГ-А3</h2>
-
-            <span class="product-card__price">от <span class="product-card__price--bold">120
-                000 ₽</span>
-              <span class="product-card__price-comment">(без учета НДС)</span>
-            </span>
-
-            <span class="product-card__description">Дистанционное измерение довзрывоопасных концентраций горючих газов и
-              паров нефтепродуктов.
-            </span>
-          </div>
-          <div class="product-card__panel">
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href="#icon-rus"></use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в реестр промышленной продукции, произведённой на
-              территории
-              Российской
-              Федерации</span>
-            <div class="product-card__panel-item">
-              <svg>
-                <use xlink:href=" #icon-rep">
-                </use>
-              </svg>
-            </div>
-            <span data-info data-trigger="prev">Устройство включено в Единый реестр российской радиоэлектронной
-              продукции (ПП РФ 878)</span>
-          </div>
-          <a href="./product.html" class="product-card__item-link"></a>
-        </li>
-      </ul>
-
-      <div class="products-list__content">
-        <p>Цена на устройство заземления автоцистерн УЗА одна из лучших по соотношению качества/стоимости. По вопросам
-          работы изделия и о том, как купить оборудование для бензовозов, топливозаправщиков и битумовозов, обращайтесь
-          к нашим менеджерам.</p>
-        <div class="compare full-bcg">
-          <div class="compare__header">
-            <div class="compare__feature">Исполнение</div>
-            <div class="compare__header-scroll">
-              <div class="compare__content">
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">1</div>
-                </div>
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">2</div>
-                </div>
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">3</div>
-                </div>
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">4</div>
-                </div>
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">5</div>
-                </div>
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">6</div>
-                </div>
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">7</div>
-                </div>
-                <div class="compare__cell">
-                  <div class="compare__cell-inner">8</div>
-                </div>
+          <li class="hero__item slider__item set-bg"
+            data-setbg="https://www.nppsensor.ru/i/f207e5b4-afb8-4cc0-abc6-95c01f00fe62">
+            <div class="hero__wrap layout">
+              <h2 class="hero__title">
+                <img class="hero__image_type_logo" src="https://www.nppsensor.ru/images/banner/NG-logo.svg"
+                  style="height: 80px;">
+                <p class="hero__text" style="font-size: 25px;">25-я международная выставка «Оборудование и технологии
+                  для нефтегазового
+                  комплекса»</p>
+              </h2>
+              <p class="hero__text">
+                <strong>со 2 по 5 марта 2026 года</strong><br>г. Москва, МВЦ «Крокус
+                Экспо», павильон 2, зал 8, стенд 8Е100
+              </p>
+              <div class="hero__btn-wrap">
+                <a href="" class="hero__btn">Получить билет</a>
+                <a href="" class="hero__btn">Получить билет</a>
               </div>
             </div>
-          </div>
+          </li>
 
-          <div class="compare__body">
-            <div class="compare__row-cont">
-              <div class="compare__feature compare__title-categories">
-                Массогабаритные характеристики
-              </div>
-              <div class="compare__row">
-                <div>
-                  <div class="compare__feature compare__title-group">
-                    Габаритные размеры, мм
-                  </div>
-
-                  <div>
-                    <div>
-                      <div class="compare__feature">А, не более</div>
-                      <div class="compare__content">
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">318</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">325</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">338</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">345</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">399</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">404</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">481</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">486</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div class="compare__feature">Б, не более</div>
-                      <div class="compare__content">
-                        <div class="compare__cell" data-cell="4">
-                          <div class="compare__cell-inner">294</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">346</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">343</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">386</div>
-                        </div>
-                        <div class="compare__cell">
-                          <div class="compare__cell-inner">391</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div class="compare__feature">В</div>
-                      <div class="compare__content">
-                        <div class="compare__cell" data-cell="2">
-                          <div class="compare__cell-inner">132</div>
-                        </div>
-                        <div class="compare__cell" data-cell="2">
-                          <div class="compare__cell-inner">196</div>
-                        </div>
-                        <div class="compare__cell" data-cell="2">
-                          <div class="compare__cell-inner">230</div>
-                        </div>
-                        <div class="compare__cell" data-cell="2">
-                          <div class="compare__cell-inner">308</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <li class="hero__item slider__item set-bg" data-setbg="https://www.nppsensor.ru/video/gas_detector.jpg">
+            <div class="hero__wrap layout">
+              <h2 class="hero__title">Расширен перечень определяемых компонентов газосигнализаторов СЕНС СГ-А2</h2>
+              <div class="hero__btn-wrap">
+                <a href="" class="hero__btn">СЕНС СГ-А2-ППК</a>
+                <a href="" class="hero__btn">СЕНС СГ-А2-КСВЗ</a>
               </div>
             </div>
-          </div>
-        </div>
-        <img src="../assets/image/products_list/img10.jpg" alt="">
+          </li>
+        </ul>
       </div>
 
-      <div class="products-list__info">
-        <span class="products-list__info-text">Стоимость продукции вы можете узнать, связавшись с отделом
-          продаж.</span><br>
-        <span class="products-list__info-text">Для оптимального выбора комплектации предлагаем воспользоваться
-          технической
-          консультацией.</span>
+      <div class="advantages">
+        <ul class="advantages__list not-marked">
+          <li class="advantages__item">
+            <h3 class="advantages__title advantages__title--certs">Сертификация</h3>
+            <span class="advantages_description">Вся продукция сертифицирована на соответствие ТР ТС и требованиям
+              промышленной безопасности</span>
+          </li>
+          <li class="advantages__item">
+            <h3 class="advantages__title advantages__title--hands">Персональный подход</h3>
+            <span class="advantages__description">Предприятие разрабатывает и изготавливает оборудование исходя из
+              потребностей заказчиков</span>
+          </li>
+          <li class="advantages__item">
+            <h3 class="advantages__title advantages__title--tools">Сопровождение</h3>
+            <span class="advantages__description">Сервисная служба выполняет гарантийное обслуживание всех заказов и
+              проектов</span>
+          </li>
+        </ul>
       </div>
     </div>
+
   </main>
+  <!-- <ul class="plashka__container not-marked" style="margin-top: 15px;">
+                <li class="plashka" style="box-shadow: none;">
+                  <div class="plashka__header">
+                    <div class="plashka-header__title"><span class="">33</span> года</div>
+                    <div class="plashka-header__subtitle">опыта</div>
+                  </div>
+                  <div class="plashka__text">Предприятие работает на&nbsp;рынке КИПиА с&nbsp;1992 года</div>
+                </li>
 
-
+                <li class="plashka" style="box-shadow: none;">
+                  <div class="plashka__header">
+                    <div class="plashka-header__title"><span class="">12&nbsp;000</span></div>
+                    <div class="plashka-header__subtitle">заказчиков</div>
+                  </div>
+                  <div class="plashka__text">Продукция востребована на&nbsp;рынках СНГ, ближнего и&nbsp;дальнего
+                    зарубежья</div>
+                </li>
+              </ul> -->
   <footer>
     <!-- Номера телефонов -->
 
@@ -800,7 +405,7 @@
     <div>
       <ul class="footer-menu">
         <li class="tab">
-          <input type="checkbox" id="menu-5" />
+          <input required type="checkbox" id="menu-5" />
           <label for="menu-5" class="tab__label">
             Продукция
             <svg class="arrow" aria-hidden="true" focusable="false">
@@ -815,7 +420,7 @@
         </li>
 
         <li class="tab">
-          <input type="checkbox" id="menu-6" />
+          <input required type="checkbox" id="menu-6" />
           <label for="menu-6" class="tab__label">
             Поддержка
             <svg class="arrow" aria-hidden="true" focusable="false">
@@ -830,7 +435,7 @@
         </li>
 
         <li class="tab">
-          <input type="checkbox" id="menu-7" />
+          <input required type="checkbox" id="menu-7" />
           <label for="menu-7" class="tab__label">
             О предприятии
             <svg class="arrow" aria-hidden="true" focusable="false">
@@ -899,8 +504,10 @@
         </li>
         <li data-role="group">
           <a href="https://cp.nppsensor.ru/"><span class="text-primary">Админ-панель</span></a>
-          <a href="https://cp.nppsensor.ru/documents/manage"><span class="text-primary">Файлы для скачивания</span></a>
-          <a href="https://www.nppsensor.ru/product/copy-paste"><span class="text-primary">Ссылки на файлы</span></a>
+          <a href="https://cp.nppsensor.ru/documents/manage"><span class="text-primary">Файлы для
+              скачивания</span></a>
+          <a href="https://www.nppsensor.ru/product/copy-paste"><span class="text-primary">Ссылки на
+              файлы</span></a>
           <a href="https://www.nppsensor.ru/contacts#requisites"><span class="text-primary">Реквизиты</span></a>
         </li>
         <li data-role="group">
@@ -924,21 +531,23 @@
         <li data-role="group">
           <a href="https://www.nppsensor.ru/company"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
           <a href="https://www.nppsensor.ru/company/history"><span class="text-primary">История</span></a>
-          <a href="./company/news.html"><span class="text-primary">Новости</span></a>
+          <a href="../company/news.html"><span class="text-primary">Новости</span></a>
           <a href="https://www.nppsensor.ru/dealers"><span class="text-primary">Дилеры</span></a>
-          <a href="https://www.nppsensor.ru/company/license"><span class="text-primary">Дипломы, патенты</span></a>
+          <a href="https://www.nppsensor.ru/company/license"><span class="text-primary">Дипломы,
+              патенты</span></a>
           <a href="https://www.nppsensor.ru/company/video"><span class="text-primary">Видеоархив</span></a>
-          <a href="./company/vacancy.html"><span class="text-primary">Вакансии</span></a>
+          <a href="../company/vacancy.html"><span class="text-primary">Вакансии</span></a>
           <a href="https://www.nppsensor.ru/company/quality_policy"><span class="text-primary">Политика в области
               качества</span></a>
-          <a href="https://www.nppsensor.ru/company/social"><span class="text-primary">Социальная политика</span></a>
+          <a href="https://www.nppsensor.ru/company/social"><span class="text-primary">Социальная
+              политика</span></a>
         </li>
       </ul>
       <ul>
         <li data-role="header">Продукция</li>
         <li data-role="group">
           <div data-role="header">
-            <a href="./catalog.html">Вся продукция</a>
+            <a href="../catalog.html">Вся продукция</a>
           </div>
           <a href="https://www.nppsensor.ru/catalog/level-transmitters"><span class="text-primary">Уровнемеры</span></a>
           <a href="https://www.nppsensor.ru/catalog/level-sensors-and-indicators"><span class="text-primary">Датчики и
@@ -949,7 +558,8 @@
             </li>
             <li data-role="group">
               <div data-role="header">
-                <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters">Все продукты группы</a>
+                <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters">Все продукты
+                  группы</a>
               </div>
               <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/pressure-transmitters"><span
                   class="text-primary">Преобразователи давления</span></a>
@@ -1021,36 +631,37 @@
       <ul>
         <li data-role="header">Поддержка</li>
         <li data-role="group">
-          <a href="./support/treatment.html"><span class="text-primary">Обращение в сервисную
+          <a href="../support/treatment.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="./support/repair-check1.html"><span class="text-primary">Проверить статус
+          <a href="../support/repair-check1.html"><span class="text-primary">Проверить статус
               обращения</span></a>
-          <a href="./support/register1.html"><span class="text-primary">Регистрация АРМ СИ
+          <a href="../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>
-          <a href="./service/metrology.html"><span class="text-primary">Метрологические
+          <a href="../service/metrology.html"><span class="text-primary">Метрологические
               услуги</span></a>
 
-          <a href="./support/knowledge.html"><span class="text-primary">Часто задаваемые
+          <a href="../support/knowledge.html"><span class="text-primary">Часто задаваемые
               вопросы</span></a>
         </li>
         <li data-role="group">
           <div data-role="header">
-            <a href="./support/downloads.html">Файлы для скачивания</a>
+            <a href="./downloads.html">Файлы для скачивания</a>
           </div>
-          <a href="./support/downloads/certificates.html"><span class="text-primary">Свидетельства и
+          <a href="./downloads/certificates.html"><span class="text-primary">Свидетельства и
               сертификаты</span></a>
-          <a href="./support/downloads/catalogues.html"><span class="text-primary">Каталоги
+          <a href="./downloads/catalogues.html"><span class="text-primary">Каталоги
               продукции</span></a>
-          <a href="./support/downloads/blanks.html"><span class="text-primary">Опросные
+          <a href="./downloads/blanks.html"><span class="text-primary">Опросные
               листы</span></a>
-          <a href="./support/downloads/user-manual.html"><span class="text-primary">Руководства по
+          <a href="./downloads/user-manual.html"><span class="text-primary">Руководства
+              по
               эксплуатации</span></a>
-          <a href="./support/downloads/soft.html"><span class="text-primary">Программное
+          <a href="./downloads/soft.html"><span class="text-primary">Программное
               обеспечение</span></a>
-          <a href="./support/downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
+          <a href="./downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
         </li>
       </ul>
-      <a href="./contacts.html"><span class="text-primary">Контакты</span></a>
+      <a href="../contacts.html"><span class="text-primary">Контакты</span></a>
       <a href="https://www.nppsensor.ru/price"><span class="text-primary">Прайс-лист</span></a>
       <a href="https://www.nppsensor.ru/help/media-compatible"><span class="text-primary">Помощь</span></a>
     </li>
@@ -1080,7 +691,7 @@
         </svg>
       </button>
       <form>
-        <input type="search" class="search__input" aria-label="Поиск по сайту" autocomplete="off" />
+        <input required type="search" class="search__input" aria-label="Поиск по сайту" autocomplete="off" />
         <label class="search__label">Найти продукцию, файлы, программное обеспечение</label>
       </form>
       <button class="search__clear-btn" aria-label="Очистить" type="button">

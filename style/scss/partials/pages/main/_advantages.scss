@@ -1,0 +1,30 @@
+.advantages {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    margin: 0;
+  }
+
+  &__title {
+    margin-top: 15px;
+  }
+
+  &__title--certs::before {
+    content: "\f0a3";
+    font-family: icons;
+  }
+
+  &__title--hands::before {
+    content: "\f2b5";
+    font-family: icons;
+  }
+
+  &__title--tools::before {
+    content: "\f0ad";
+    font-family: icons;
+  }
+}
