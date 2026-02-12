@@ -1,15 +1,15 @@
 @use "../../base/variable" as *;
 
 .advantages {
-  padding: 20px 0;
-  background: #fff;
+  // padding: 20px 0;
+  background: $second-accent;
 
   &__list {
     display: grid;
-    gap: 12px;
+    gap: 15px;
+    padding: 20px var(--page-gutter);
 
     list-style: none;
-    padding: 0;
     margin: 0;
   }
 
@@ -23,7 +23,7 @@
 
     margin: 0;
     border-radius: 14px;
-    background: #fff;
+    background: $second-accent;
   }
 
   &__icon {
@@ -31,7 +31,7 @@
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: $second-accent;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,8 @@
   &__icon::before {
     opacity: .9;
     font-family: icons;
-    color: #fff;
+    color: $second-accent;
+    font-size: 22px;
   }
 
   &__icon--cert::before {
@@ -60,14 +61,12 @@
     margin: 0;
     font-size: 22px;
     line-height: 1.2;
-    font-weight: 800;
+    color: #fff;
   }
 
   &__text {
     grid-area: text;
-    margin: 4px 0 0;
     font-size: 14px;
-    line-height: 1.35;
-    opacity: .9;
+    color: #fff;
   }
 }

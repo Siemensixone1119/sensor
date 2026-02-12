@@ -1842,6 +1842,14 @@ h1:has(> .clamped-text > .clamped-text__control:checked) span {
 .footnote {
   opacity: 0;
 }
+.footnote__info-btn {
+  color: #fff;
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 2px 4px;
+  line-height: 1;
+  min-width: 18px;
+}
 .footnote__backdrop {
   position: fixed;
   inset: 0;

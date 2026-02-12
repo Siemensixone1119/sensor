@@ -480,16 +480,6 @@ h2:has(+ div.compare) {
   --cells-visible: 4;
   --col-width: calc(100vw / var(--cells-visible));
 }
-.compare__info-btn {
-  color: #fff;
-  background-color: #ccc;
-  border-radius: 10px;
-  padding: 2px 4px;
-  margin-right: 6px;
-  margin-left: 3px;
-  line-height: 1;
-  min-width: 18px;
-}
 .compare__body::-webkit-scrollbar, .compare__header::-webkit-scrollbar {
   display: none;
 }

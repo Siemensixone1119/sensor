@@ -66,19 +66,6 @@ h2:has(+div.compare) {
   --cells-visible: 4;
   --col-width: calc(100vw / var(--cells-visible));
 
-
-  &__info-btn {
-    color: #fff;
-    background-color: #ccc;
-
-    border-radius: 10px;
-    padding: 2px 4px;
-    margin-right: 6px;
-    margin-left: 3px;
-    line-height: 1;
-    min-width: 18px;
-  }
-
   &__body::-webkit-scrollbar,
   &__header::-webkit-scrollbar {
     display: none;

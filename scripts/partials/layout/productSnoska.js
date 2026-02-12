@@ -63,10 +63,10 @@ export function toggleSnoska() {
 
       if (btnText && btnText.trim()) {
         const next = block.nextElementSibling;
-        if (!next || !next.classList.contains("compare__info-btn")) {
+        if (!next || !next.classList.contains("footnote__info-btn")) {
           block.insertAdjacentHTML(
             "afterend",
-            `<button type="button" class="compare__info-btn">${btnText}</button>`
+            `<button type="button" class="footnote__info-btn">${btnText}</button>`
           );
         }
       } else {
@@ -76,7 +76,7 @@ export function toggleSnoska() {
   }
 
   document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".compare__info-btn");
+    const btn = e.target.closest(".footnote__info-btn");
     if (btn) return open(btn.previousElementSibling);
 
     const self = e.target.closest(".snoska-trigger");

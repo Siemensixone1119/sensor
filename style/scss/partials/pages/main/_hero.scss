@@ -2,7 +2,7 @@
 
 .hero {
   width: 100vw;
-  height: 300px;
+  height: 350px;
   line-height: 30px;
   overflow: hidden;
 
@@ -27,12 +27,12 @@
     margin-right: auto;
     margin-left: auto;
     overflow: hidden;
-    max-height: 300px;
+    max-height: 350px;
     display: block;
     text-shadow: #000 1px 1px 2px;
     font-size: 18px;
     line-height: 30px;
-    color: #fff!important;
+    color: #fff !important;
     top: 50%;
     position: relative;
     transform: translateY(-50%);
@@ -48,20 +48,19 @@
     margin: 0;
   }
 
-  &__text{
+  &__text {
     font-size: 14px;
     text-indent: 0;
     margin: 0;
     color: inherit;
     font-family: inherit;
-    line-height: 20px;
   }
 
-  &__image_type_logo{
+  &__image_type_logo {
     filter: drop-shadow(0 0 3px #000);
   }
 
-  &__btn-wrap{
+  &__btn-wrap {
     display: flex;
     width: 100%;
     align-items: center;
@@ -69,19 +68,19 @@
     gap: 10px;
   }
 
-  &__btn{
+  &__btn {
     display: inline-block;
     padding: 3px 8px;
     color: #fff;
     border: 1px solid #fff;
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, .4);
     font-family: $font-family;
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 18px;
+    margin-top: 15px;
   }
 }
 
-.plashka__container{
+.plashka__container {
   display: flex;
   align-items: start;
   justify-content: center;
@@ -91,27 +90,27 @@
   list-style: 0;
 }
 
-.plashka{
+.plashka {
   flex-basis: 50%;
-  background-color: rgba(0,0,0,.2);
+  background-color: rgba(0, 0, 0, .2);
   padding: 10px;
   margin: 0;
 
   &-header__title,
-  &-header__title>span{
+  &-header__title>span {
     color: #fff;
     font-family: $font-family;
     font-size: 22px;
     line-height: 0.7;
   }
 
-  &-header__subtitle{
+  &-header__subtitle {
     color: #DDD;
-     font-family: $font-family;
+    font-family: $font-family;
     font-size: 18px;
   }
 
-  &__text{
+  &__text {
     margin-top: 2px;
     font-size: 10px;
     color: #fff;
