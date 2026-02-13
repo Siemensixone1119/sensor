@@ -606,17 +606,22 @@
   }
 }
 @media (min-width: 1500px) {
-  .products-list--has-center-title > li:nth-child(-n+2) {
+  .products-list:has(.product-card__title--center) > li:nth-child(-n+2) {
     grid-column: span 2;
   }
 }
 @media (max-width: 1500px) {
-  .products-list--has-center-title > li:nth-child(-n+2) {
+  .products-list:has(.product-card__title--center) > li:nth-child(-n+2) {
     grid-column: span 3;
   }
 }
 @media (max-width: 1000px) {
-  .products-list--has-center-title > li:nth-child(-n+2) {
+  .products-list:has(.product-card__title--center) > li:nth-child(-n+2) {
+    grid-column: auto;
+  }
+}
+@media (max-width: 500px) {
+  .products-list:has(.product-card__title--center) > li:nth-child(-n+2) {
     grid-column: auto;
   }
 }/*# sourceMappingURL=main_page.css.map */

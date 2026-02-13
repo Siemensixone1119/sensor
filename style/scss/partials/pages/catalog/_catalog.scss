@@ -40,7 +40,8 @@
   }
 }
 
-.products-list--has-center-title {
+
+.products-list:has(.product-card__title--center) {
   @media (min-width: 1500px) {
     > li:nth-child(-n + 2) { grid-column: span 2; }
   }
@@ -50,6 +51,10 @@
   }
 
   @media (max-width: 1000px) {
+    > li:nth-child(-n + 2) { grid-column: auto; }
+  }
+
+  @media (max-width: 500px) {
     > li:nth-child(-n + 2) { grid-column: auto; }
   }
 }
