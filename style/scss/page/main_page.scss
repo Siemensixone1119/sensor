@@ -1,3 +1,5 @@
+@use "../partials/base/variable" as *;
+
 @use "../partials/pages/main/hero";
 @use "../partials/pages/main/advantages";
 @use "../partials/pages/main/partners";
@@ -5,3 +7,45 @@
 
 @use "../page/company/news.scss";
 @use "../page/catalog.scss";
+
+.main-page {
+  .form-group {
+    .Field {
+      &__control {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      &__item:has(input[type="radio"]:checked):before{
+        content: "";
+        width: 100%;
+        height: 2px;
+        background-color: $accent-color;
+        position: absolute;
+        border-radius: 2px;
+        bottom: -3px;
+      }
+
+      &__item {
+        gap: 0 !important;
+        position: relative;
+
+        label {
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+
+      &__input[type="radio"] {
+        appearance: none;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0;
+      }
+    }
+  }
+}

@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Обращение в сервисную службу</title>
-  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="../../style/css/treatment.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../scripts/pages/layout.js"></script>
-  <script type="module" src="../../scripts/pages/treatment.js"></script>
+  <link rel="preload" href="../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../style/css/main_page.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../scripts/pages/layout.js"></script>
+  <script src="../scripts/pages/main_page.js" defer></script>
 </head>
 
 <body>
@@ -119,6 +119,20 @@
       </symbol>
       <symbol id="icon-download" viewBox="0 0 32 32">
         <path d="M0 24v4h28v-4zM26 12h-6v10h-12v-10.062l-6 0.062 12-12z"></path>
+      </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 32 32">
+        <path d="M11.2 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M12.8 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6 1.6 0.716 1.6 1.6z"></path>
+        <path d="M16 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6c-0.884 0-1.6 0.716-1.6 1.6s0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M17.6 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6c0.884 0 1.6 0.716 1.6 1.6z">
+        </path>
+        <path d="M20.8 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path
+          d="M27.2 8.8c0-2.209-1.791-4-4-4h-14.4c-2.209 0-4 1.791-4 4v14.4c0 2.209 1.791 4 4 4h14.4c2.209 0 4-1.791 4-4zM6.4 11.2h19.2v12c0 1.325-1.075 2.4-2.4 2.4h-14.4c-1.325 0-2.4-1.075-2.4-2.4zM8.8 6.4h14.4c1.325 0 2.4 1.075 2.4 2.4v0.8h-19.2v-0.8c0-1.325 1.075-2.4 2.4-2.4z">
+        </path>
       </symbol>
     </defs>
   </svg>
@@ -256,312 +270,91 @@
 
   <main>
     <nav class="breadcrumbs">
-
       <ul class="breadcrumbs__list">
         <li class="breadcrumbs__item">
-          <a href="" class="link">Поддержка</a>
+          <a href="" class="link">О предприятии</a>
         </li>
         <li class="breadcrumbs__item">
-          <a href="" class="link">Обращение в сервисную службу</a>
+          <a href="" class="link">НПП "СЕНСОР" сегодня</a>
         </li>
       </ul>
     </nav>
-    <div class="appeal layout">
-      <div class="title-wrap">
-        <h1 class="title">Обращение в сервисную службу</h1>
-      </div>
-
-      <!-- <form action="" class="form">
-        <div class="form-group">
-          <div class="Field">
-            <label class="Field__labelInner required" for="ito">
-              <span class="Field__labelMain">Лейбл:</span>
-              <span class="Field__labelContent">
-                <span>Контент под лейблем</span>
-              </span>
-            </label>
-
-            <div class="Field__control">
-              <input class="Field__input" type="text">
-            </div>
-
-            <div class="Field__hint">
-              <span>любой контент под инпутом</span>
-            </div>
-
-            <div class="Field__error">
-              <span class="Field__error-text">ошибка</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="Field">
-
-            <div class="Field__control">
-              <div class="Field__item">
-                <input class="Field_input" type="checkbox" id="agree" name="agree" value="1">
-                <label for="agree">
-                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
-                      class="Checkbox__link">политикой</a>
-                  </span>
-                </label>
-              </div>
-
-              <div class="Field__item">
-                <input class="Field_input" type="radio" id="agree1" name="agree1" value="1">
-                <label for="agree1">
-                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
-                      class="Checkbox__link">политикой</a>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div class="Field__error">
-              <span class="Field__error-text">ошибка</span>
-            </div>
-          </div>
-        </div>
-      </form> -->
-
+    <div class="layout company">
       <form class="form">
         <div class="form-group">
-          <fieldset class="fieldset">
-            <legend class="legend">Организация</legend>
-
-            <div class="Field">
-              <span class="Field__labelInner required">
-                <label class="Field__labelMain" for="">ИНН:</label>
-              </span>
-
-              <div class="Field__control">
-                <input class="Field__input" type="text">
-              </div>
-
-              <div class="Field__error">
-                <span class="Field__error-text"></span>
-              </div>
-            </div>
-
-            <div class="Field">
-              <span class="Field__labelInner required">
-                <label class="Field__labelMain" for="">ФИО контактного лица:</label>
-              </span>
-
-              <div class="Field__control">
-                <input class="Field__input" type="text">
-              </div>
-
-              <div class="Field__error">
-                <span class="Field__error-text"></span>
-              </div>
-            </div>
-
-            <div class="Field">
-              <span class="Field__labelInner required">
-                <label class="Field__labelMain" for="">Номер телефона:</label>
-              </span>
-
-              <div class="Field__control">
-                <input class="Field__input" type="tel">
-              </div>
-
-              <div class="Field__error">
-                <span class="Field__error-text"></span>
-              </div>
-            </div>
-
-            <div class="Field">
-              <span class="Field__labelInner required">
-                <label class="Field__labelMain" for="">Адрес электронной почты:</label>
-              </span>
-
-              <div class="Field__control">
-                <input class="Field__input" type="email">
-              </div>
-
-              <div class="Field__error">
-                <span class="Field__error-text"></span>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="form-group">
-          <fieldset class="fieldset fieldset-wrap">
-            <legend class="legend">Продукция</legend>
-            <fieldset class="fieldset" data-product-index="1">
-              <button class="fieldset__button--remove" type="button">Удалить</button>
-
-              <div class="Field">
-                <span class="Field__labelInner required">
-                  <label class="Field__labelMain" for="">Тип изделия:</label>
-                </span>
-
-                <div class="Field__control">
-                  <select class="select" id="product-type-1" name="products[1][type]" required>
-                    <option value="" disabled selected>--Выберите тип прибора--</option>
-                    <option value="magnetic-converter">Преобразователь магнитный поплавковый</option>
-                    <option value="electromagnetic-valve">Клапан электромагнитный</option>
-                    <option value="other">Другой прибор</option>
-                  </select>
-                </div>
-
-                <div class="Field__error">
-                  <span class="Field__error-text"></span>
-                </div>
-              </div>
-
-              <div class="Field">
-                <span class="Field__labelInner required">
-                  <label class="Field__labelMain" for="">Год выпуска:</label>
-                </span>
-
-                <div class="Field__control">
-                  <input class="Field__input" type="number">
-                </div>
-
-                <div class="Field__hint">
-                  <span class="Field__error-text">Указан на шильде или в паспорте</span>
-                </div>
-
-                <div class="Field__error">
-                  <span class="Field__error-text"></span>
-                </div>
-              </div>
-
-              <div class="Field">
-                <span class="Field__labelInner required">
-                  <label class="Field__labelMain" for="">Заводской номер:</label>
-                </span>
-
-                <div class="Field__control">
-                  <input class="Field__input" type="number">
-                </div>
-
-                <div class="Field__hint">
-                  <span class="Field__error-text">Указан на шильде или в паспорте</span>
-                </div>
-
-                <div class="Field__error">
-                  <span class="Field__error-text"></span>
-                </div>
-              </div>
-
-              <div class="Field">
-                <span class="Field__labelInner required">
-                  <label class="Field__labelMain" for="">Причина обращения:</label>
-                </span>
-
-                <div class="Field__control">
-                  <select class="select" id="appeal-reason-1" name="products[1][reason]" required>
-                    <option value="" disabled selected>--Выберите--</option>
-                    <option value="consultation-setup">Нужна консультация по настройке</option>
-                    <option value="consultation-diagnostics">Нужна консультация по диагностике</option>
-                    <option value="report-failure">Сообщить о неисправности</option>
-                    <option value="send-for-repair">Сообщить об отправке для диагностики, обслуживания, ремонта,
-                      проверки</option>
-                    <option value="order-parts">Хочу заказать запчасти</option>
-                  </select>
-                </div>
-
-                <div class="Field__error">
-                  <span class="Field__error-text"></span>
-                </div>
-              </div>
-
-              <button class="fieldset__button--add" type="button">Добавить ещё продукт</button>
-            </fieldset>
-          </fieldset>
-        </div>
-
-        <div class="form-group">
-          <div class="Field">
-            <span class="Field__labelInner">
-              <label class="Field__labelMain" for="">Прикрепить файл</label>
-            </span>
-
-            <div class="Field__control">
-              <button class="Field__file-btn" type="button">
-                <svg>
-                  <use xlink:href="#icon-download"></use>
-                </svg>
-                <span>Загрузить</span>
-                <input type="file" id="file-upload" multiple
-                  accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
-              </button>
-            </div>
-
-            <div class="Field__hint">
-              <span>Максимум 20 файлов общим размером до 20 МБ.</span>
-            </div>
-
-            <div class="Field__error">
-              <span class="Field__error-text"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
           <div class="Field">
             <div class="Field__control">
-              <div class="Field__item">
-                <input class="Field__input" type="checkbox" id="agree" name="agree" value="1">
-                <label for="agree">
-                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
-                      class="Checkbox__link">политикой</a>
-                  </span>
-                </label>
-              </div>
-
-              <div class="Field__item">
-                <input class="Field__input" type="radio" id="agree1" name="agree1" value="1">
-                <label for="agree1">
-                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
-                      class="Checkbox__link">политикой</a>
-                  </span>
-                </label>
-              </div>
-
-
-              <div class="Field__item">
-                <input class="Field__input" type="radio" id="agree2" name="agree2" value="2">
-                <label for="agree2">
-                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
-                      class="Checkbox__link">политикой</a>
-                  </span>
-                </label>
-              </div>
-
-              <div class="Field__item">
-                <input class="Field__input" type="radio" id="agree3" name="agree" value="3">
-                <label for="agree3">
-                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
-                      class="Checkbox__link">политикой</a>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div class="Field__error">
-              <span class="Field__error-text"></span>
+              <select class="select" id="appeal-reason-1" name="products[1][reason]" required>
+                <option value="" selected>Технологические возможности</option>
+                <option value="">Комфортная среда</option>
+                <option value="">Базы отдыха</option>
+              </select>
             </div>
           </div>
-
         </div>
-
-        <div class="form-group">
-          <div class="Field__control">
-            <input class="Field__input" type="submit" value="Отправить">
-          </div>
-        </div>
-
       </form>
+      <h2>Арматурное производство</h2>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/8f65657a-40fe-4b34-8fd8-9f8e2886e337/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/c01e546b-92b0-4324-8fe2-2c61601873df/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/c78ad6cb-4a92-4209-8d91-e75896a5f3f8/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/3e6534dd-bda0-4bc6-bff4-8d38b34dfe36/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/16dec576-8e91-4995-bd21-ff8ac37920ac/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/a5dfd700-a79d-44c1-8c3d-054e44d60e49/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/6abb5635-4d9a-4e82-b834-5d231ac0c26c/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+      <a href="">
+        <img src="https://www.nppsensor.ru/i/d5116957-dc41-4ad8-8644-fff5cba34146/w-800" alt=""
+          style="border-radius: 8px; margin: 10px auto; display: block;">
+      </a>
+
+      <h2>Приборное производство</h2>
+      <img src="" alt="" style="border-radius: 8px; margin: 10px auto; display: block;">
+      <img src="" alt="" style="border-radius: 8px; margin: 10px auto; display: block;">
+      <img src="" alt="" style="border-radius: 8px; margin: 10px auto; display: block;">
+      <img src="" alt="" style="border-radius: 8px; margin: 10px auto; display: block;">
+      <img src="" alt="" style="border-radius: 8px; margin: 10px auto; display: block;">
+      <h2>Вспомогательное производство</h2>
     </div>
 
   </main>
+  <!-- <ul class="plashka__container not-marked" style="margin-top: 15px;">
+                <li class="plashka" style="box-shadow: none;">
+                  <div class="plashka__header">
+                    <div class="plashka-header__title"><span class="">33</span> года</div>
+                    <div class="plashka-header__subtitle">опыта</div>
+                  </div>
+                  <div class="plashka__text">Предприятие работает на&nbsp;рынке КИПиА с&nbsp;1992 года</div>
+                </li>
 
+                <li class="plashka" style="box-shadow: none;">
+                  <div class="plashka__header">
+                    <div class="plashka-header__title"><span class="">12&nbsp;000</span></div>
+                    <div class="plashka-header__subtitle">заказчиков</div>
+                  </div>
+                  <div class="plashka__text">Продукция востребована на&nbsp;рынках СНГ, ближнего и&nbsp;дальнего
+                    зарубежья</div>
+                </li>
+              </ul> -->
   <footer>
     <!-- Номера телефонов -->
 
@@ -692,7 +485,7 @@
           <a href="https://www.nppsensor.ru/contacts#requisites"><span class="text-primary">Реквизиты</span></a>
         </li>
         <li data-role="group">
-          <a role="link"
+          <a role="link" href="./support/register1.html"
             onclick="$.ajax('//www.nppsensor.ru/support/register/test').done(function(data) {message(data)}); document.querySelector('.mobile-menu__header-btn').click();"
             tabindex="0" id="uniq504"><span class="text-primary">Статус регистрации АРМ</span><span
               class="text-secondary">проверить</span></a>
@@ -712,12 +505,12 @@
         <li data-role="group">
           <a href="https://www.nppsensor.ru/company"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
           <a href="https://www.nppsensor.ru/company/history"><span class="text-primary">История</span></a>
-          <a href="../company/news.html"><span class="text-primary">Новости</span></a>
+          <a href="./company/news.html"><span class="text-primary">Новости</span></a>
           <a href="https://www.nppsensor.ru/dealers"><span class="text-primary">Дилеры</span></a>
           <a href="https://www.nppsensor.ru/company/license"><span class="text-primary">Дипломы,
               патенты</span></a>
           <a href="https://www.nppsensor.ru/company/video"><span class="text-primary">Видеоархив</span></a>
-          <a href="../company/vacancy.html"><span class="text-primary">Вакансии</span></a>
+          <a href="./company/vacancy.html"><span class="text-primary">Вакансии</span></a>
           <a href="https://www.nppsensor.ru/company/quality_policy"><span class="text-primary">Политика в области
               качества</span></a>
           <a href="https://www.nppsensor.ru/company/social"><span class="text-primary">Социальная
@@ -728,7 +521,7 @@
         <li data-role="header">Продукция</li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../catalog.html">Вся продукция</a>
+            <a href="./catalog.html">Вся продукция</a>
           </div>
           <a href="https://www.nppsensor.ru/catalog/level-transmitters"><span class="text-primary">Уровнемеры</span></a>
           <a href="https://www.nppsensor.ru/catalog/level-sensors-and-indicators"><span class="text-primary">Датчики и
@@ -812,37 +605,37 @@
       <ul>
         <li data-role="header">Поддержка</li>
         <li data-role="group">
-          <a href="../support/treatment.html"><span class="text-primary">Обращение в сервисную
+          <a href="./support/treatment.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="../support/repair-check1.html"><span class="text-primary">Проверить статус
+          <a href="./support/repair-check1.html"><span class="text-primary">Проверить статус
               обращения</span></a>
-          <a href="../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
+          <a href="./support/register1.html"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>
-          <a href="../service/metrology.html"><span class="text-primary">Метрологические
+          <a href="./service/metrology.html"><span class="text-primary">Метрологические
               услуги</span></a>
 
-          <a href="../support/knowledge.html"><span class="text-primary">Часто задаваемые
+          <a href="./support/knowledge.html"><span class="text-primary">Часто задаваемые
               вопросы</span></a>
         </li>
         <li data-role="group">
           <div data-role="header">
-            <a href="./downloads.html">Файлы для скачивания</a>
+            <a href="./support/downloads.html">Файлы для скачивания</a>
           </div>
-          <a href="./downloads/certificates.html"><span class="text-primary">Свидетельства и
+          <a href="./support/downloads/certificates.html"><span class="text-primary">Свидетельства и
               сертификаты</span></a>
-          <a href="./downloads/catalogues.html"><span class="text-primary">Каталоги
+          <a href="./support/downloads/catalogues.html"><span class="text-primary">Каталоги
               продукции</span></a>
-          <a href="./downloads/blanks.html"><span class="text-primary">Опросные
+          <a href="./support/downloads/blanks.html"><span class="text-primary">Опросные
               листы</span></a>
-          <a href="./downloads/user-manual.html"><span class="text-primary">Руководства
+          <a href="./support/downloads/user-manual.html"><span class="text-primary">Руководства
               по
               эксплуатации</span></a>
-          <a href="./downloads/soft.html"><span class="text-primary">Программное
+          <a href="./support/downloads/soft.html"><span class="text-primary">Программное
               обеспечение</span></a>
-          <a href="./downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
+          <a href="./support/downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
         </li>
       </ul>
-      <a href="../contacts.html"><span class="text-primary">Контакты</span></a>
+      <a href="./contacts.html"><span class="text-primary">Контакты</span></a>
       <a href="https://www.nppsensor.ru/price"><span class="text-primary">Прайс-лист</span></a>
       <a href="https://www.nppsensor.ru/help/media-compatible"><span class="text-primary">Помощь</span></a>
     </li>

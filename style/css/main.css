@@ -2029,9 +2029,6 @@ html:has(.footnote) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: self-start;
-      -ms-flex-align: self-start;
-          align-items: self-start;
   gap: 10px;
 }
 .Field__control:has(input[type=checkbox]) .Field__item input, .Field__control:has(input[type=radio]) .Field__item input {

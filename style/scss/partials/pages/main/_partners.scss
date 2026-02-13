@@ -1,38 +1,29 @@
 .partners {
 
-  overflow-x: hidden;
-  padding-inline: calc(var(--peek) + var(--gap));
-
   &__list {
-    --slide-w: 180px;
-    --slide-h: 72px;
-    --gap: 10px;
-    --peek: 28px;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
-
-    display: flex;
-    align-items: center;
-
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    touch-action: pan-y;
+    display: grid;
+    grid-template-columns: repeat(1, 180px);
+    justify-items: center;
+    justify-content: center;
+    gap: var(--page-gutter);
+    width: fit-content;
   }
 
   &__item {
-    flex: 0 0 auto;
-    margin: 0 calc(var(--gap) / 2);
+    margin: 0;
   }
 
   &__slide {
     box-shadow: 0 0 3px rgba(0, 0, 0, .2);
-    margin: 5px auto;
+    // margin: auto;
     background-color: #fff !important;
     background-blend-mode: inherit;
     background-position-x: 0;
-    width: var(--slide-w);
-    height: var(--slide-h);
+    width: 180px;
+    height: 72px;
   }
 
   &__slide--1 {
@@ -65,5 +56,64 @@
 
   &__slide--8 {
     background-position-y: -504px;
+  }
+}
+
+.partners {
+  @media screen and (min-width: 405px) {
+    &__list {
+      grid-template-columns: repeat(2, 180px);
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    &__list {
+      grid-template-columns: repeat(3, 180px);
+    }
+  }
+
+  @media screen and (max-width: 405px) {
+
+    &__list {
+      grid-template-columns: repeat(2, 140px);
+    }
+
+    &__slide {
+      width: 140px;
+      height: 60px;
+      background-size: 275px;
+    }
+
+    &__slide--1 {
+      background-position-y: 0px;
+    }
+
+    &__slide--2 {
+      background-position-y: -52px;
+    }
+
+    &__slide--3 {
+      background-position-y: -110px;
+    }
+
+    &__slide--4 {
+      background-position-y: -160px;
+    }
+
+    &__slide--5 {
+      background-position-y: -217px;
+    }
+
+    &__slide--6 {
+      background-position-y: -270px;
+    }
+
+    &__slide--7 {
+      background-position-y: -380px;
+    }
+
+    &__slide--8 {
+      background-position-y: -435px;
+    }
   }
 }
