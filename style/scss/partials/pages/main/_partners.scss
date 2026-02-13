@@ -72,6 +72,12 @@
     }
   }
 
+  @media screen and (min-width: 800px) {
+    &__list {
+      grid-template-columns: repeat(4, 180px);
+    }
+  }
+
   @media screen and (max-width: 405px) {
 
     &__list {
