@@ -36,8 +36,6 @@ function heroMobileSlider() {
 }
 heroMobileSlider();
 
-
-
 function partnersCenteredLoop() {
   const root = document.querySelector(".partners");
   if (!root) return;

@@ -1,13 +1,13 @@
 .partners {
 
   overflow-x: hidden;
-   padding-inline: calc(var(--peek) + var(--gap));
+  padding-inline: calc(var(--peek) + var(--gap));
 
   &__list {
-     --slide-w: 180px;
-  --slide-h: 72px;
-  --gap: 10px;
-  --peek: 28px;
+    --slide-w: 180px;
+    --slide-h: 72px;
+    --gap: 10px;
+    --peek: 28px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -21,7 +21,7 @@
   }
 
   &__item {
-     flex: 0 0 auto;
+    flex: 0 0 auto;
     margin: 0 calc(var(--gap) / 2);
   }
 
@@ -31,7 +31,7 @@
     background-color: #fff !important;
     background-blend-mode: inherit;
     background-position-x: 0;
-     width: var(--slide-w);
+    width: var(--slide-w);
     height: var(--slide-h);
   }
 
@@ -67,4 +67,3 @@
     background-position-y: -504px;
   }
 }
-
