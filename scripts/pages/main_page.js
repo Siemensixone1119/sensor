@@ -36,66 +36,109 @@ function heroMobileSlider() {
 }
 heroMobileSlider();
 
-function partnersSwipeSlider() {
+
+
+function partnersCenteredLoop() {
   const root = document.querySelector(".partners");
-  const track = document.querySelector(".partners__list");
-  const slides = Array.from(track?.children ?? []).filter(n => n.nodeType === 1);
+  if (!root) return;
 
-  if (!root || !track || slides.length === 0) return;
+  const track = root.querySelector(".partners__list");
+  if (!track) return;
 
-  const END_OFFSET = 5; // <-- сдвиг последнего положения влево на 5px
+  const originalItems = Array.from(track.querySelectorAll(".partners__item"));
+  const len = originalItems.length;
+  if (len < 2) return;
 
-  let index = 0;
+  const frag = document.createDocumentFragment();
+
+  originalItems.forEach((it) => frag.appendChild(it.cloneNode(true)));
+  originalItems.forEach((it) => frag.appendChild(it.cloneNode(true)));
+  originalItems.forEach((it) => frag.appendChild(it.cloneNode(true)));
+
+  track.innerHTML = "";
+  track.appendChild(frag);
+
+  const items = Array.from(track.querySelectorAll(".partners__item"));
+  const total = items.length;
+
+  let index = len + Math.floor(len / 2);
+
+  function getTranslateX(el) {
+    const tr = getComputedStyle(el).transform;
+    if (!tr || tr === "none") return 0;
+    const m = tr.match(/matrix(3d)?\((.+)\)/);
+    if (!m) return 0;
+    const parts = m[2].split(",").map((v) => parseFloat(v));
+    return m[1] ? parts[12] : parts[4];
+  }
+
+  function setX(x, animate) {
+    track.style.transition = animate ? "transform 300ms ease" : "none";
+    track.style.transform = `translate3d(${x}px, 0, 0)`;
+  }
+
+  function centerTo(i, animate = true) {
+    const item = items[i];
+    if (!item) return;
+
+    const rootRect = root.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+
+    const rootCenter = rootRect.left + rootRect.width / 2;
+    const itemCenter = itemRect.left + itemRect.width / 2;
+
+    const currentX = getTranslateX(track);
+    const delta = itemCenter - rootCenter;
+
+    setX(currentX - delta, animate);
+  }
+
+  function snapIndexIfNeeded() {
+    if (index < len) {
+      index += len;
+      requestAnimationFrame(() => centerTo(index, false));
+    } else if (index >= len * 2) {
+      index -= len;
+      requestAnimationFrame(() => centerTo(index, false));
+    }
+  }
+
+  requestAnimationFrame(() => centerTo(index, false));
+
   let startX = 0;
 
-  function getRootW() {
-    return root.getBoundingClientRect().width;
-  }
+  track.addEventListener(
+    "touchstart",
+    (e) => {
+      startX = e.touches[0].clientX;
+    },
+    { passive: true }
+  );
 
-  function getStep() {
-    // если есть gap в flex — учитываем
-    const a = slides[0];
-    const b = slides[1] || slides[0];
-    const ra = a.getBoundingClientRect();
-    const rb = b.getBoundingClientRect();
-    const step = rb.left - ra.left;
-    return step > 0 ? step : ra.width;
-  }
+  track.addEventListener(
+    "touchend",
+    (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const delta = startX - endX;
 
-  function update(animate = true) {
-    const rootW = getRootW();
-    const step = getStep();
+      if (delta > 50) index += 1;
+      else if (delta < -50) index -= 1;
 
-    const totalW = track.scrollWidth;
-    const maxScroll = Math.max(0, totalW - rootW + END_OFFSET); // <-- тут магия
+      if (index < 0) index = 0;
+      if (index > total - 1) index = total - 1;
 
-    const raw = index * step;
-    const clamped = Math.max(0, Math.min(raw, maxScroll));
+      centerTo(index, true);
+    },
+    { passive: true }
+  );
 
-    track.style.transition = animate ? "transform 300ms ease" : "none";
-    track.style.transform = `translate3d(${-clamped}px,0,0)`;
-  }
+  track.addEventListener("transitionend", () => {
+    snapIndexIfNeeded();
+  });
 
-  track.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-    track.style.transition = "none";
-  }, { passive: true });
-
-  track.addEventListener("touchend", (e) => {
-    const endX = e.changedTouches[0].clientX;
-    const delta = startX - endX;
-
-    if (delta > 50) index += 1;
-    if (delta < -50) index -= 1;
-
-    if (index < 0) index = 0;
-    // справа не ограничиваем по index жёстко — ограничивает clamp в update()
-
-    update(true);
-  }, { passive: true });
-
-  window.addEventListener("resize", () => update(false));
-  update(false);
+  window.addEventListener("resize", () => {
+    centerTo(index, false);
+  });
 }
 
-partnersSwipeSlider();
+partnersCenteredLoop();

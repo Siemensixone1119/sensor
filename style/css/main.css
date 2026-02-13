@@ -1250,6 +1250,7 @@ main {
           justify-content: space-between;
   gap: 4vh;
   margin: 0;
+  padding: 0;
 }
 .contacts__group--phones .contacts__item {
   display: -webkit-box;
