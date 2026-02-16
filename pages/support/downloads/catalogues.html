@@ -147,7 +147,7 @@
         </svg>
       </button>
       <div data-info data-trigger="prev">
-       <div class="contacts">
+        <div class="contacts">
           <div>
             <div class="contacts__group contacts__group--info">
               <div class="contacts__logo">
@@ -272,25 +272,37 @@
 
     <div class="layout">
       <div class="downloads__head">
-        <div class="downloads__category-wrap">
-          <select name="" id="" class="select">
-            <option value="">Все файлы</option>
-            <option value="">Опросные листы</option>
-            <option value="">Руководства</option>
-            <option value="">ПО</option>
-            <option value="">Cертификаты</option>
-            <option value="">3D-модели</option>
-            <option value="" selected>Каталоги</option>
-          </select>
-        </div>
-
-        <div class="downloads__search-wrap">
-          <label for="">Поиск файлов:</label>
-          <div class="input__content">
-            <input type="text" placeholder="Введите текст...">
+        <form action="" class="form" style="margin: 0;">
+          <div class="form-group">
+            <div class="Field">
+              <div class="Field__control">
+                <select class="select" id="product-type-1" name="products[1][type]" required>
+                  <option value="">Все файлы</option>
+                  <option value="">Опросные листы</option>
+                  <option value="">Руководства</option>
+                  <option value="">ПО</option>
+                  <option value="">Сертификаты</option>
+                  <option value="">3D-модели</option>
+                  <option value="" selected>Каталоги</option>
+                </select>
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
 
+        <form action="" class="form" style="margin: 0;">
+          <div class="form-group">
+            <div class="Field">
+              <span class="Field__labelInner">
+                <label class="Field__labelMain" for="">Поиск файлов:</label>
+              </span>
+
+              <div class="Field__control">
+                <input class="Field__input" type="number" placeholder="Введите текст...">
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
       <ul class="files-list not-marked">
         <li class="files-list__item">

@@ -146,7 +146,7 @@
         </svg>
       </button>
       <div data-info data-trigger="prev">
-       <div class="contacts">
+        <div class="contacts">
           <div>
             <div class="contacts__group contacts__group--info">
               <div class="contacts__logo">
@@ -270,80 +270,108 @@
       <div class="title-wrap">
         <h1 class="title">Пробная регистрация на 1 месяц</h1>
       </div>
-
       <span>Заполните оставшиеся поля.</span>
 
-      <form class="register-arm__form" action="">
-        <div class="input">
-          <label class="input__label required" for="ito-serial">
-            <span class="input__label-main">Код продукта:</span>
-          </label>
+      <form class="form" action="">
+        <div class="fieldset">
+          <div class="Field">
+            <span class="Field__labelInner required">
+              <label class="Field__labelMain" for="">Код продукта:</label>
+            </span>
 
-          <div class="input__content">
-            <input id="ito-serial" name="ito_serial" type="text" placeholder="XXXX-XXXX-XXXX">
-            <div class="input__error"></div>
-            <span class="input__extra">Код должен быть из программы, установленной на ПК в месте
-              эксплуатации</span>
-            <span class="input__clue">Как узнать код продукта?</span>
-            <div data-trigger="prev" data-caption="Как узнать код продукта?" data-info>
-              <span>1. На компьютере с установленной программой в меню "Пуск" откройте окно регистрации АРМ СИ
-                СЕНС.</span><br>
-              <img src="../../assets/image/product_code1.png" alt="" class="register-arm__img"><br>
-              <span>2. В открывшемся окне вы увидите код продукта.</span><br>
-              <img src="../../assets/image/product_code2.png" alt="" class="register-arm__img"><br>
-              <span>3. Если код продукта в программе не отображается, значит в системе отключен или отсутствует сетевой
-                адаптер (встроенная или внешняя сетевая карта, USB-модем и т. п.). В этом случае следует включить
-                имеющийся или установить <a href="" class="register-arm__op">виртуальный сетевой адаптер</a> и
-                перезапустить программу.</span>
+            <div class="Field__control">
+              <input class="Field__input" type="number" placeholder="XXXX-XXXX-XXXX">
+            </div>
+
+            <div class="Field__hint">
+              <span>Код должен быть из программы, установленной на ПК в месте эксплуатации</span>
+              <span>Как узнать код продукта?</span>
+              <div data-trigger="prev" data-caption="Как узнать код продукта?" data-info>
+                <span>1. На компьютере с установленной программой в меню "Пуск" откройте окно регистрации АРМ СИ
+                  СЕНС.</span><br>
+                <img src="../../assets/image/product_code1.png" alt="" class="register-arm__img"><br>
+                <span>2. В открывшемся окне вы увидите код продукта.</span><br>
+                <img src="../../assets/image/product_code2.png" alt="" class="register-arm__img"><br>
+                <span>3. Если код продукта в программе не отображается, значит в системе отключен или отсутствует
+                  сетевой
+                  адаптер (встроенная или внешняя сетевая карта, USB-модем и т. п.). В этом случае следует включить
+                  имеющийся или установить <a href="" class="register-arm__op">виртуальный сетевой адаптер</a> и
+                  перезапустить программу.</span>
+              </div>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
             </div>
           </div>
-        </div>
 
-        <div class="input">
-          <label class="input__label required" for="ito-serial">
-            <span class="input__label-main">Наименование эксплуатирующей организации:</span>
-          </label>
-          <div class="input__content">
-            <input id="ito-serial" name="ito_serial" type="text" placeholder="ООО &quot;Организация&quot;">
-            <div class="input__error"></div>
+          <div class="Field">
+            <span class="Field__labelInner required">
+              <label class="Field__labelMain" for="">Наименование эксплуатирующей организации:</label>
+            </span>
+
+            <div class="Field__control">
+              <input class="Field__input" type="text" placeholder="ООО &quot;Организация&quot;">
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
           </div>
-        </div>
 
-        <div class="input">
-          <label class="input__label required" for="ito-serial">
-            <span class="input__label-main">Ф.И.О. руководителя:</span>
-          </label>
-          <div class="input__content">
-            <input id="ito-serial" name="ito_serial" type="text" placeholder="Иванов Иван Иванович">
-            <div class="input__error"></div>
+          <div class="Field">
+            <span class="Field__labelInner required">
+              <label class="Field__labelMain" for="">Ф.И.О. руководителя:</label>
+            </span>
+
+            <div class="Field__control">
+              <input class="Field__input" type="text" placeholder="Иванов Иван Иванович">
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
           </div>
-        </div>
 
-        <div class="input">
-          <label class="input__label required" for="ito-serial">
-            <span class="input__label-main">Адрес электронной почты:</span>
-          </label>
-          <div class="input__content">
-            <input id="ito-serial" name="ito_serial" type="text" placeholder="ivanov@company.ru">
-            <div class="input__error"></div>
-            <span class="input__description">Проверьте дважды, именно на этот адрес мы вышлем регистрационный код</span>
+          <div class="Field">
+            <span class="Field__labelInner required">
+              <label class="Field__labelMain" for="">Адрес электронной почты:</label>
+            </span>
+
+            <div class="Field__control">
+              <input class="Field__input" type="email" placeholder="ivanov@company.ru">
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
           </div>
-        </div>
 
-        <div class="input">
-          <label class="register-arm__label" for="ito-serial">
-            <span class="input__label-main">Номер телефона:</span>
-          </label>
-          <div class="input__content">
-            <input id="ito-serial" name="ito_serial" type="text" placeholder="+7 (999) 123-45-67">
-            <div class="input__error"></div>
-            <span class="input__description">Мы свяжемся с вами только при необходимости</span>
+          <div class="Field">
+            <span class="Field__labelInner required">
+              <label class="Field__labelMain" for="">Номер телефона:</label>
+            </span>
+
+            <div class="Field__control">
+              <input class="Field__input" type="tel" placeholder="+7 (999) 123-45-67">
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
           </div>
-        </div>
 
-        <div class="register-arm__wrap-submit">
-          <input class="register-arm__submit register-arm__submit--back" type="submit" value="Начать заново">
-          <input class="register-arm__submit" type="submit" value="Зарегестрировать">
+          <div class="Field">
+            <div class="Field__control">
+              <input class="Field__input" type="reset" value="Начать заново">
+            </div>
+          </div>
+
+          <div class="Field">
+            <div class="Field__control">
+              <input class="Field__input" type="submit" value="Зарегестрировать">
+            </div>
+          </div>
         </div>
       </form>
     </div>

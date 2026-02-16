@@ -119,14 +119,14 @@ main ol li:last-child:after,
   color: currentColor;
 }
 
-ul.not-marked li::after,
-ol.not-marked li::after,
-ol.not-marked li:last-child::after,
-ul.not-marked li:last-child:after,
-ul.not-marked li::marker,
-ol.not-marked li::marker,
-ol.not-marked li:last-child::marker,
-ul.not-marked li:last-child::marker {
+ul.not-marked > li::after,
+ol.not-marked > li::after,
+ol.not-marked > li:last-child::after,
+ul.not-marked > li:last-child:after,
+ul.not-marked > li::marker,
+ol.not-marked > li::marker,
+ol.not-marked > li:last-child::marker,
+ul.not-marked > li:last-child::marker {
   content: "";
 }
 

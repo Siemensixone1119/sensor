@@ -1,26 +1,15 @@
 @use "../base/variable" as *;
 
 .form {
-  // padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  margin-top: 20px;
 }
-
-// .form:has(>.fieldset) {
-//   padding: 0;
-// }
 
 .legend {
   font-size: 18px;
 }
-
-// .checkbox {
-//   accent-color: #c10606;
-//   min-width: 18px;
-//   min-height: 18px;
-//   margin-top: 2px;
-// }
 
 .Field:last-child {
   margin-bottom: 0;
@@ -81,7 +70,16 @@
     }
   }
 
+  &__control.Field__control--captcha {
+    display: flex;
+    align-items: center;
 
+    img {
+      height: 36px;
+      padding-top: 8px;
+      width: 100px;
+    }
+  }
 
   &__control:has(input[type="checkbox"]),
   &__control:has(input[type="radio"]) {
@@ -110,6 +108,17 @@
 
     input {
       color: #fff;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__control:has(input[type="reset"]) {
+    background-color: #fff;
+    border-radius: 8px;
+
+    input {
+      color: #212121;
       width: 100%;
       height: 100%;
     }

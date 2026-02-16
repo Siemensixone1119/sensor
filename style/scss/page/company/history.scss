@@ -2,15 +2,9 @@
 
 .history {
 
-  // &__line {
-  //   border-left: 2px solid red;
-  //   margin-left: 20px;
-  //   padding-left: 30px;
-  //   height: 100px;
-  //   float: left;
-  // }
+  margin-top: 15px;
 
-  &__item{
+  &__item {
     margin-left: 40px;
     position: relative;
   }
@@ -21,7 +15,7 @@
     color: red;
   }
 
-  &__year::before{
+  &__year::before {
     background-color: red;
     width: 10px;
     height: 10px;
@@ -32,7 +26,7 @@
     left: -29.5px;
   }
 
-  &__item::after{
+  &__item::after {
     height: calc(100% + 10px);
     border-left: 2px solid red;
     content: "";
@@ -42,7 +36,7 @@
     left: -25px;
   }
 
-  &__item:last-child::after{
+  &__item:last-child::after {
     height: 0;
   }
 

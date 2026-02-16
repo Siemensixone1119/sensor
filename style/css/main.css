@@ -211,14 +211,14 @@ main ol li:last-child:after,
   color: currentColor;
 }
 
-ul.not-marked li::after,
-ol.not-marked li::after,
-ol.not-marked li:last-child::after,
-ul.not-marked li:last-child:after,
-ul.not-marked li::marker,
-ol.not-marked li::marker,
-ol.not-marked li:last-child::marker,
-ul.not-marked li:last-child::marker {
+ul.not-marked > li::after,
+ol.not-marked > li::after,
+ol.not-marked > li:last-child::after,
+ul.not-marked > li:last-child:after,
+ul.not-marked > li::marker,
+ol.not-marked > li::marker,
+ol.not-marked > li:last-child::marker,
+ul.not-marked > li:last-child::marker {
   content: "";
 }
 
@@ -1955,6 +1955,7 @@ html:has(.footnote) {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 30px;
+  margin-top: 20px;
 }
 
 .legend {
@@ -2020,6 +2021,19 @@ html:has(.footnote) {
   width: 100%;
   height: 100%;
 }
+.Field__control.Field__control--captcha {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Field__control.Field__control--captcha img {
+  height: 36px;
+  padding-top: 8px;
+  width: 100px;
+}
 .Field__control:has(input[type=checkbox]), .Field__control:has(input[type=radio]) {
   padding: 0;
   border: none;
@@ -2045,6 +2059,15 @@ html:has(.footnote) {
 }
 .Field__control:has(input[type=submit]) input {
   color: #fff;
+  width: 100%;
+  height: 100%;
+}
+.Field__control:has(input[type=reset]) {
+  background-color: #fff;
+  border-radius: 8px;
+}
+.Field__control:has(input[type=reset]) input {
+  color: #212121;
   width: 100%;
   height: 100%;
 }

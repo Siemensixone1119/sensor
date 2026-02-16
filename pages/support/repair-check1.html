@@ -146,7 +146,7 @@
         </svg>
       </button>
       <div data-info data-trigger="prev">
-       <div class="contacts">
+        <div class="contacts">
           <div>
             <div class="contacts__group contacts__group--info">
               <div class="contacts__logo">
@@ -277,28 +277,45 @@
         Проверить.
       </p>
 
-      <form class="appeal-status__form" action="">
-        <div class="input">
-          <label class="input__label required" for="appeal-number">
-            <span class="input__label-main">Номер обращения:</span>
-          </label>
-          <div class="input__content">
-            <input class="appeal-status__input" type="text" id="appeal-number" placeholder="PXX-XXX" required>
-            <div class="input__error"></div>
-          </div>
-        </div>
+      <form class="form" action="">
+        <div class="form-group">
+          <fieldset class="fieldset">
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain">Номер обращения:</label>
+              </span>
 
-        <div class="appeal-status__row">
-          <label class="appeal-status__label required" for="appeal-inn">
-            <span class="input__label-main">ИНН:</span>
-          </label>
-          <div class="input__content">
-            <input class="appeal-status__input" type="text" id="appeal-inn" required>
-            <div class="input__error"></div>
-          </div>
-        </div>
+              <div class="Field__control">
+                <input class="Field__input" type="text" placeholder="PXX-XXX" required>
+              </div>
 
-        <input class="appeal-status__submit" type="submit" value="Проверить">
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
+              </div>
+            </div>
+
+
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain">ИНН:</label>
+              </span>
+
+              <div class="Field__control">
+                <input class="Field__input" type="text" required>
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
+              </div>
+            </div>
+
+            <div class="Field">
+              <div class="Field__control">
+                <input class="Field__input" type="submit" value="Проверить">
+              </div>
+            </div>
+          </fieldset>
+        </div>
       </form>
     </div>
   </main>

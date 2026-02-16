@@ -273,54 +273,81 @@
 
       <span>Укажите серийный номер компакт-диска ИТО или оставьте поле пустым для пробной регистрации.</span>
 
-      <form class="register-arm__form" action="">
-        <div class="input">
-          <label class="input__label" for="ito-serial">
-            <span class="input__label-main">Серийный номер диска ИТО:</span>
-            <span class="input__label-extra">Не заполняйте для пробной регистрации</span>
-          </label>
+      <form class="form" action="">
+        <div class="fieldset">
+          <div class="Field">
+            <span class="Field__labelInner">
+              <label class="Field__labelMain" for="">Серийный номер диска ИТО:</label>
+              <span class="Field__labelContent">
+                <span>Не заполняйте для пробной регистрации</span>
+              </span>
+            </span>
 
-          <div class="input__content">
-            <input id="ito-serial" name="ito_serial" type="text" placeholder="например, XXXXX-XXXXXX-XXXXXX-XX">
-            <div class="input__error"></div>
-            <span class="input__clue">Где найти серийный номер?</span>
-            <div data-trigger="prev" data-caption="Где находится серийный номер диска ИТО?" data-info>
-              <span>Этот номер указан на коробке приобретённого вами компакт-диска ИТО.</span><br>
-              <div class="register-arm__img">
-                <img src="../../assets/image/ito1.jpg" alt="">
-                <img src="../../assets/image/ito2.jpg" alt="">
+            <div class="Field__control">
+              <input class="Field__input" type="number" placeholder="XXXXX-XXXXXX-XXXXXX-XX">
+            </div>
+
+            <div class="Field__hint">
+              <span>Где найти серийный номер?</span>
+              <div data-trigger="prev" data-caption="Где находится серийный номер диска ИТО?" data-info>
+                <span>Этот номер указан на коробке приобретённого вами компакт-диска ИТО.</span><br>
+                <div class="register-arm__img">
+                  <img src="../../assets/image/ito1.jpg" alt="">
+                  <img src="../../assets/image/ito2.jpg" alt="">
+                </div>
+                <br>
+                <span>Если номер на коробке отсутствует, значит вы получили сопроводительный диск (например, для
+                  адаптера).</span>
+                <span>Для покупки лицензии на АРМ СИ СЕНС свяжитесь с <a href="" class="register-arm__op">отделом
+                    продаж.</a></span>
               </div>
-              <br>
-              <span>Если номер на коробке отсутствует, значит вы получили сопроводительный диск (например, для
-                адаптера).</span>
-              <span>Для покупки лицензии на АРМ СИ СЕНС свяжитесь с <a href="" class="register-arm__op">отделом
-                  продаж.</a></span>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
+          </div>
+
+          <div class="Field">
+            <span class="Field__labelInner required">
+              <label class="Field__labelMain" for="">Антиспам-код:</label>
+            </span>
+
+
+            <div class="Field__control Field__control--captcha">
+              <img
+                src="https://www.nppsensor.ru/contacts/feedback/captcha?v=6993049d6c8446.52595004" alt="Антиспам-код">
+              <input class="Field__input" type="text" placeholder="введите антиспам-код" required>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
+          </div>
+
+          <div class="Field">
+            <div class="Field__control">
+              <div class="Field__item">
+                <input class="Field__input" type="checkbox" id="agree" name="agree" value="1">
+                <label for="agree">
+                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
+                      class="Checkbox__link link-red">политикой</a>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
+            </div>
+          </div>
+
+          <div class="Field">
+            <div class="Field__control">
+              <input class="Field__input" type="submit" value="Продолжить">
             </div>
           </div>
         </div>
-
-        <div class="input">
-          <label class="input__label required" for="antispam">
-            <span class="input__label-main">Антиспам-код:</span>
-          </label>
-
-          <div class="register-arm__captcha-wrap">
-            <img class="register-arm__captcha-image" src="../../assets/image/captcha.png" alt="Антиспам-код">
-            <input id="antispam" name="antispam" type="text" placeholder="введите антиспам-код" required>
-          </div>
-          <div class="input__error"></div>
-        </div>
-
-        <div class="register-arm__field--consent">
-          <input class="register-arm__checkbox" id="consent" name="consent" type="checkbox">
-          <label class="register-arm__consent" for="consent">
-            Даю согласие на обработку персональных данных в соответствии с
-            <a class="register-arm__link" href="">политикой</a>
-          </label>
-          <div class="input__error"></div>
-        </div>
-
-        <input class="register-arm__submit" type="submit" value="Продолжить">
       </form>
     </div>
 
