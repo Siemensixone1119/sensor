@@ -1,0 +1,34 @@
+.history__item {
+  margin-left: 40px;
+  position: relative;
+}
+.history__year {
+  font-family: "pfdintextcomppro-light", sans-serif;
+  font-size: 40px;
+  color: red;
+}
+.history__year::before {
+  background-color: red;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  top: 21px;
+  left: -29.5px;
+}
+.history__item::after {
+  height: calc(100% + 10px);
+  border-left: 2px solid red;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 21px;
+  left: -25px;
+}
+.history__item:last-child::after {
+  height: 0;
+}
+.history__title {
+  margin: 0;
+}/*# sourceMappingURL=history.css.map */

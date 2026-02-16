@@ -1,0 +1,52 @@
+@use "../../partials/base/variable" as *;
+
+.history {
+
+  // &__line {
+  //   border-left: 2px solid red;
+  //   margin-left: 20px;
+  //   padding-left: 30px;
+  //   height: 100px;
+  //   float: left;
+  // }
+
+  &__item{
+    margin-left: 40px;
+    position: relative;
+  }
+
+  &__year {
+    font-family: $font-family;
+    font-size: 40px;
+    color: red;
+  }
+
+  &__year::before{
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border-radius: 50%;
+    content: "";
+    top: 21px;
+    left: -29.5px;
+  }
+
+  &__item::after{
+    height: calc(100% + 10px);
+    border-left: 2px solid red;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 21px;
+    left: -25px;
+  }
+
+  &__item:last-child::after{
+    height: 0;
+  }
+
+  &__title {
+    margin: 0;
+  }
+}
