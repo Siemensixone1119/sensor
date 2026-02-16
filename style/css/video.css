@@ -88,9 +88,6 @@
   content: none;
 }
 
-.video .files-list {
-  margin-top: 15px;
-}
 .video .files-list__item:first-child {
   padding: 0;
 }
