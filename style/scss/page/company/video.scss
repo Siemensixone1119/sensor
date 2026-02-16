@@ -1,0 +1,36 @@
+@use "../../partials/pages/product/files-list";
+@use "../../partials/base/variable" as *;
+
+.video {
+  .files-list {
+    margin-top: 15px;
+
+    &__item:first-child {
+      padding: 0;
+    }
+
+    &__item {
+      padding-top: var(--page-gutter);
+    }
+
+    &__wrapper--icon {
+      min-width: 85px;
+    }
+
+    &__wrapper--icon .files-list__icon {
+      width: 85px;
+    }
+
+    &__name.link {
+      margin: auto 0;
+      font-family: $font-family;
+      font-size: 20px;
+      // font-weight: 600;
+      color: $accent-color;
+    }
+
+    &__wrapper--info {
+      margin: 0;
+    }
+  }
+}
