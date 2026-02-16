@@ -1,0 +1,11 @@
+@use "../../partials/pages/product/files-list";
+
+.quality_policy{
+  h1.title+h2{
+    margin-top: 0;
+  }
+
+  .files-list{
+    margin-top: 20px;
+  }
+}
