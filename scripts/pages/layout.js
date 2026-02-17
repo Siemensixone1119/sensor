@@ -6,6 +6,7 @@ import { toggleSnoska } from "../partials/layout/productSnoska.js";
 import { search } from "../partials/layout/search.js";
 import { initSearchOverlay } from "../partials/layout/searchOverlay.js";
 import { mountMobileMenu } from "../partials/layout/toggleMenu.js";
+import { syncScroll } from "../partials/page/product/syncScroll.js";
 
 
 bgElement();
@@ -16,3 +17,4 @@ toggleSnoska();
 search();
 initSearchOverlay();
 mountMobileMenu();
+syncScroll();

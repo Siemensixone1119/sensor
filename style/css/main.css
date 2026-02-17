@@ -289,7 +289,7 @@ video {
 }
 
 .link-red {
-  color: #b30006;
+  color: #b30006 !important;
 }
 
 .link-blue {
@@ -1954,7 +1954,7 @@ html:has(.footnote) {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 30px;
+  gap: 15px;
   margin-top: 20px;
 }
 

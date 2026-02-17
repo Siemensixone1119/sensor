@@ -4,17 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Настройки
-    адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</title>
-  <link rel="stylesheet" href="../../../style/css/main.css">
-  <link rel="stylesheet" href="../../../style/css/downloads.css">
-  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../../scripts/pages/layout.js"></script>
+  <title>Контактная информация ООО НПП «СЕНСОР»</title>
+  <link rel="preload" href="../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../style/css/contacts.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../scripts/pages/layout.js" defer></script>
+  <script type="module" src="../scripts/pages/contact.js" defer></script>
 </head>
 
 <body>
-  <!-- svg спрайт -->
-
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;overflow:hidden">
     <defs>
       <symbol id="icon-arrow" viewBox="0 0 64 32">
@@ -41,9 +39,8 @@
           d="M10.667 12h10.667m-10.667 5.333h8m5.333-12a4.003 4.003 0 0 1 4 4V20a4.003 4.003 0 0 1-4 4h-6.667l-6.667 4v-4H7.999a4.003 4.003 0 0 1-4-4V9.333a4.003 4.003 0 0 1 4-4h16z" />
       </symbol>
       <symbol id="icon-phone" viewBox="0 0 30 32">
-        <path fill="#fefefe"
-          d="m27.261 21.501-4.273-.479c-.502-.058-1.012-.003-1.49.16s-.912.43-1.27.782l-3.096 3.038c-4.776-2.384-8.658-6.193-11.087-10.879l3.112-3.054a3.25 3.25 0 0 0 .959-2.707l-.488-4.16c-.095-.805-.489-1.548-1.106-2.087S7.107 1.279 6.28 1.28H3.369C1.468 1.28-.114 2.832.004 4.697.896 18.796 12.386 30.055 26.737 30.93c1.901.116 3.482-1.436 3.482-3.302v-2.856c.017-1.667-1.262-3.071-2.961-3.269z"
-          style="fill:var(--color1, #fefefe)" />
+        <path
+          d="m27.261 21.501-4.273-.479c-.502-.058-1.012-.003-1.49.16s-.912.43-1.27.782l-3.096 3.038c-4.776-2.384-8.658-6.193-11.087-10.879l3.112-3.054a3.25 3.25 0 0 0 .959-2.707l-.488-4.16c-.095-.805-.489-1.548-1.106-2.087S7.107 1.279 6.28 1.28H3.369C1.468 1.28-.114 2.832.004 4.697.896 18.796 12.386 30.055 26.737 30.93c1.901.116 3.482-1.436 3.482-3.302v-2.856c.017-1.667-1.262-3.071-2.961-3.269z" />
       </symbol>
       <symbol id="icon-logo" viewBox="0 0 92 61">
         <g>
@@ -117,18 +114,56 @@
         <path
           d="M16 2.667C8.635 2.667 2.667 8.636 2.667 16S8.636 29.333 16 29.333c7.365 0 13.333-5.969 13.333-13.333S23.364 2.667 16 2.667zm1.333 20h-2.667v-8h2.667zm0-10.667h-2.667V9.333h2.667z" />
       </symbol>
-      <symbol id="icon-download" viewBox="0 0 32 32">
-        <path d="M0 24v4h28v-4zM26 12h-6v10h-12v-10.062l-6 0.062 12-12z"></path>
+      <symbol id="icon-rep" viewBox="0 0 32 32">
+        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)"
+          d="M1.231 10.787v10.441h2.62v-3.416h2.117c1.895 0 4.219-0.813 4.219-3.461 0-2.396-1.303-3.564-3.775-3.564h-5.181zM3.851 12.709h1.673c0.814 0 2.058 0.015 2.058 1.523 0 1.361-0.829 1.642-2.013 1.642h-1.717v-3.165z">
+        </path>
+        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)"
+          d="M10.726 18.847c1.11 1.996 2.812 2.692 4.5 2.692 3.064 0 5.033-2.529 5.033-5.575 0-3.875-2.576-5.502-4.929-5.502-1.554 0-3.064 0.37-4.485 2.706l2.072 1.035c0.518-1.316 1.554-1.582 2.294-1.582 1.11 0 2.294 0.739 2.442 2.307h-3.76v1.893h3.76c-0.222 2.041-1.451 2.529-2.575 2.529-0.933 0-1.762-0.429-2.28-1.553l-2.072 1.050z">
+        </path>
+        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)"
+          d="M21.888 10.787v10.441h2.635v-8.4h3.612v8.4h2.635v-10.441h-8.881z"></path>
+        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)" d="M30.769 5.538h-29.538v2.462h29.538v-2.462z"></path>
+        <path fill="#1b6fc6" style="fill: var(--color1, #1b6fc6)" d="M30.769 24h-29.538v2.462h29.538v-2.462z"></path>
+      </symbol>
+      <symbol id="icon-rus" viewBox="0 0 32 32">
+        <path fill="#f47a55" style="fill: var(--color2, #f47a55)"
+          d="M1.231 11.216h4.289c1.565 0 2.73 0.324 3.495 0.972s1.148 1.522 1.148 2.623c0 1.111-0.383 1.99-1.148 2.638s-1.93 0.972-3.495 0.972h-1.874v3.595h-2.414v-10.799zM5.519 16.569c0.799 0 1.368-0.144 1.705-0.432 0.349-0.298 0.523-0.741 0.523-1.327s-0.174-1.023-0.523-1.311c-0.338-0.298-0.906-0.447-1.705-0.447h-1.874v3.517h1.874z">
+        </path>
+        <path fill="#f47a55" style="fill: var(--color2, #f47a55)"
+          d="M12.659 20.303c0.72 0 1.227-0.067 1.52-0.201 0.304-0.134 0.501-0.309 0.591-0.525l0.118-0.262-4.204-8.099h2.583l2.735 5.662 2.398-5.662h2.516l-3.765 8.362c-0.225 0.514-0.462 0.941-0.709 1.28-0.236 0.329-0.523 0.591-0.861 0.787s-0.743 0.329-1.216 0.401c-0.461 0.072-1.030 0.108-1.705 0.108v-1.851z">
+        </path>
+        <path fill="#f47a55" style="fill: var(--color2, #f47a55)"
+          d="M26.278 22.154c-1.452 0-2.6-0.416-3.444-1.25-0.833-0.833-1.249-2.108-1.249-3.826v-1.234c0-1.563 0.416-2.746 1.249-3.548 0.844-0.813 1.992-1.219 3.444-1.219 0.698 0 1.311 0.082 1.84 0.247s0.979 0.401 1.351 0.71c0.371 0.309 0.664 0.684 0.878 1.126 0.214 0.432 0.355 0.921 0.422 1.466h-2.414c-0.101-0.525-0.31-0.931-0.625-1.219s-0.799-0.432-1.452-0.432c-0.709 0-1.266 0.221-1.672 0.663-0.405 0.432-0.608 1.167-0.608 2.206v1.234c0 0.597 0.051 1.101 0.152 1.512 0.113 0.401 0.265 0.725 0.456 0.972s0.428 0.427 0.709 0.54c0.281 0.103 0.602 0.154 0.962 0.154 0.664 0 1.143-0.144 1.435-0.432 0.304-0.298 0.518-0.73 0.642-1.296h2.414c-0.146 1.152-0.585 2.047-1.317 2.684-0.732 0.627-1.79 0.941-3.174 0.941z">
+        </path>
+        <path fill="#f47a55" style="fill: var(--color2, #f47a55)" d="M30.769 24.615h-29.538v2.462h29.538v-2.462z">
+        </path>
+        <path fill="#f47a55" style="fill: var(--color2, #f47a55)" d="M30.769 6.154h-29.538v2.462h29.538v-2.462z"></path>
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <path
+          d="M8 7c0-2.206 1.794-4 4-4s4 1.794 4 4v3.001H8V7zm10 3.001V7c0-3.309-2.691-6-6-6S6 3.691 6 7v3.001H4V22h16V10.001h-2z">
+        </path>
+      </symbol>
+      <symbol id="icon-at" viewBox="0 0 32 32">
+        <path
+          d="M16 5.333c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667c1.603 0 3.12-0.353 4.481-0.984 0.668-0.31 1.461-0.019 1.771 0.649s0.019 1.461-0.649 1.77c-1.705 0.79-3.604 1.231-5.602 1.231-7.364 0-13.333-5.97-13.333-13.333s5.97-13.333 13.333-13.333c7.364 0 13.333 5.97 13.333 13.333l-0 0.025c-0.056 2.92-0.985 4.887-2.356 6.107-1.339 1.192-2.924 1.517-4.029 1.517-1.59 0-2.986-0.826-3.784-2.071-2.769 2.447-6.76 2.984-9.224 0.246-2.568-2.853-1.852-7.617 0.888-10.661 2.651-2.945 7.47-4.082 10.238-0.675 0.238-0.65 0.941-1.015 1.617-0.823 0.708 0.202 1.119 0.94 0.917 1.648-0.79 2.769-1.721 5.511-2.418 8.303 0.203 0.786 0.918 1.366 1.767 1.366 0.639 0 1.529-0.195 2.256-0.842 0.693-0.617 1.416-1.805 1.463-4.153-0.007-5.885-4.78-10.654-10.667-10.654zM19.137 17.219c0.093-0.32 0.337-1.175 0.622-2.171 0.312-1.092-0.092-2.141-0.944-3.088-1.226-1.362-3.856-1.404-6.007 0.986-2.163 2.403-2.242 5.588-0.888 7.093 1.226 1.362 3.856 1.404 6.007-0.986 0.497-0.553 0.966-1.125 1.209-1.835z">
+        </path>
+      </symbol>
+      <symbol id="icon-mobile" viewBox="0 0 24 24" stroke-width="1.5" stroke="#808080" stroke-linecap="round"
+        stroke-linejoin="round" fill="none">
+        <path
+          d="M15.25 2.75h-6.5c-1.6569 0-3 1.3431-3 3v12.5c0 1.6569 1.3431 3 3 3h6.5c1.6569 0 3-1.3431 3-3V5.75c0-1.6569-1.3431-3-3-3z" />
+        <path d="M11 17.75h2" />
       </symbol>
     </defs>
   </svg>
 
-  <!-- Хэдер -->
 
   <header class="header__overlay header">
     <!-- Верхняя часть хэдера -->
     <div class="header__overlay-inner header__top">
-      <a href="../../main.html" class="header__logo">
+      <a href="./main.html" class="header__logo">
         <svg class="header__logo-icon" aria-hidden="true" focusable="false">
           <use xlink:href="#icon-logo"></use>
         </svg>
@@ -142,7 +177,7 @@
       </a>
 
       <button href="" class="header__phone-button" aria-label="Позвонить">
-        <svg class="header__phone-icon" aria-hidden="true" focusable="false">
+        <svg ar-phoneia-hidden="true" focusable="false">
           <use xlink:href="#icon-phone"></use>
         </svg>
       </button>
@@ -187,7 +222,7 @@
             </div>
 
             <div class="contacts__group contacts__group--button">
-              <a href="../../contacts.html" class="contacts__button">
+              <a href="./contacts.html" class="contacts__button">
                 Все контакты
                 <svg class="contacts__button-icon">
                   <use xlink:href="#icon-arrow"></use>
@@ -254,109 +289,33 @@
     </div>
   </header>
 
+
   <main>
     <nav class="breadcrumbs">
 
       <ul class="breadcrumbs__list">
         <li class="breadcrumbs__item">
-          <a href="" class="link">Поддержка</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Файлы для скачивания</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Опросные листы</a>
+          <a href="" class="link">Правовая информация</a>
         </li>
       </ul>
     </nav>
 
     <div class="layout">
-      <div class="downloads__head">
-        <form action="" class="form" style="margin: 0;">
-          <div class="form-group">
-            <div class="Field">
-              <div class="Field__control">
-                <select class="select" id="product-type-1" name="products[1][type]" required>
-                  <option value="">Все файлы</option>
-                  <option value="" selected>Опросные листы</option>
-                  <option value="">Руководства</option>
-                  <option value="">ПО</option>
-                  <option value="">Cертификаты</option>
-                  <option value="">3D-модели</option>
-                  <option value="">Каталоги</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </form>
-
-        <form action="" class="form" style="margin: 0;">
-          <div class="form-group">
-            <div class="Field">
-              <span class="Field__labelInner">
-                <label class="Field__labelMain" for="">Поиск файлов:</label>
-              </span>
-
-              <div class="Field__control">
-                <input class="Field__input" type="number" placeholder="Введите текст...">
-              </div>
-            </div>
-          </div>
-        </form>
-
-        <ul class="downloads__filters not-marked">
-          <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">резвернуть все</button>
-          </li>
-          <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">показать архивные</button>
-          </li>
-        </ul>
-
+      <div class="title-wrap">
+        <h1 class="title">Правовая информация</h1>
       </div>
 
-      <ul class="files-list not-marked">
-        <li class="files-list__item">
-          <div class="files-list__wrapper--icon">
-            <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/wAALCACAAFsBAREA/8QAHQABAQACAwEBAQAAAAAAAAAAAAUGBwIDBAEICf/EADsQAAECBAQCBwYFAgcAAAAAAAECAwAEBREGBxIhEzUUIjFBVXPTCHSUlbO0FTJRYXEjQhYXJTRSgZH/2gAIAQEAAD8A/qHVahNSS5NiSlWn3pt4tAOvFtKQG1LJJCVH+y1rd8dfHxN4ZTPjnPRhx8TeGUz45z0YcfE3hlM+Oc9GHHxN4ZTPjnPRhx8TeGUz45z0YcfE3hlM+Oc9GHHxN4ZTPjnPRjg7OYiZbU89IUlttAKlKVPuAJA7SSWdo8bOJag8069waS0hmxcL866zpBNkqIWyDpJ7D2HuMd0liCbmJyVZcZpzrE2XEpek54vAKSnVYjQB2fv+kXYjV93gTdKfOn+nMPK6ygkbSzp3J7P5jEzm8jpQlkUSXcCUKceW1W5NQZSnXqUoBdwkaNz3X3tY29H+aD3AU7/hxBUFoQhsViTKlnTrXY8S3USUKIveywR3xVbxXWpqSbnqbhJ2fbcQ2pK5aoS60KJJCwFagDoIsf3O17RkEjMTExLJempNco4SoFpakqIsogG6bjcAH/uJlAxrhXFM5PSGHa7KVF2m6RM9GcC0tlS3EAahsesy6nbvQRErGGbOA8BTkvJYsrDkiqbDfAX0N91txS1FKEhTaFDUSk7dv/ojwOZ8ZUtSExVHMUlMtKuNNPOGQmf6anCQgEcO+5FuzttftEY3iT2hMiK7RZ+gzWPwwmdl3GS4JKcQpF1cPUFBsEEL2BBBB3BGxjTVCwhkHhnLSr5QUDNKot/iiZaZafqMlOTjiG0zaHypSuC3xCsthOs9cgAqUuwts/2ZsNYWwZl1hzCOEMWtYkkKRUqkx+IIpzkkpayFLKVoXuVDWBqGxsLRvmJNZSldRoyFpCkqmnQQRcEdHdjmcMYbU5xlYfppc0Kb1mUb1aFfmTe3Ybm4747hRKMCkikyYKCVJIl0bEixI2/Tb+I9LEuxKtJYlmW2m030oQkJSN77AfvEHHuDWsfYbfwtNVyrUuVnFtiacpcyZd91kKutkOp6yErHVUUkHSSAReNbP+zfIy9YMnhCuP4Qww7JScnOSlEUWZqeaYTMAMuPfmSm8wpWoEqJUo3BN4zDElJzLpMpTqPlaxhBNMkpZpjg1pMyVIDeyQktHssEgEjYgnfsjwMo9opycSmbey6RKDQTpZnluE6QVAdYD82wP6C9u6NWZ25Me1jmauhT+FM6KXhCalJCclqhL0idn5WVdeW+hTLqUgKKzwkrbVr/AClWpI7o1s97KHtzLFb0e1s8kzwqf4f/AKrUB0HjW6OnZPX0jq6jui2pFySI3nkPlfmplk3wc282qhjqrVSpuvtOvurUzJsIlilKGgsak6jdSx+W4Fu8necSqtzOi+9ufbuxVhCEIQhCJFV51R/Mf+kYrxKq3M6L7259u7FWEIQhCEIkVXnVH8x/6RivEqrczovvbn27sVYQhCEIQiRVedUfzH/pGK8SqtzOi+9ufbuxVhE6u1+lYbkPxOsTJZly81LgpaW4pTjriW20pSgFSiVKSAAD2xITmllopRSnMLDZUCRYVRi9wbEW1dt9v5BEcWs1ssHyvgZi4Zc4ZSFFFWYIGpQSnsV3qIH8kCOLebeVj0oueazIwwuXbSVrdTVmChABSCSdVhutPb/yH6x7qHj7A2JpsU/DuMaLU5otF/gSc+085wxa69KVE6esne1txF6ESKrzqj+Y/wDSMV4lVbmdF97c+3dirCPPOSMlUENtT0q2+hp5t9CXEXCXG1BSFD9woAg/qI/O+MsoMQ03ETrWX2S+CnKUiZSWXXKbKX4Jl1L1a1uhwOdKNlDSAlBCkKKluRwk8nMRPUKpU+t5G5fNOS8uhFNl6fSpRcslPSkFYQVuIUXA2FKS2sIaKkNEqBKgOc1k/iduQpbctkdl1NvVKrTE3XVPSbDSWpZS1JQEtINnHrplXisuHUG3G+r1DG18BZZ4aw+7KYxfwdR6Zi2bpbEtU35BnQgOaUqdSgAkBPEvuNyANzGcXj7Eiq86o/mP/SMV4lVbmdF97c+3dirEfFGE6BjKnJpOI5Ezcol1L4bDy2+um+k3QQdr3/mx7hGIuez/AJXuTSZwUefS4gvFGmrzYCeLfXtxLW32B2HdaMAey3kZYroYyNxLUZNiaQUTrmKBrADt+IFcUOAdRCiE3Jv2HcmlP4Rbbm3BL5FYhfSlmYkEvN4jbQt2XQ0pptRBesNaOy51J1b2O0eVeW1N/wBicia08w2lL6VKxSVjiqQpakArd1GyghJJ2urbYb5JhzKHCeIKU69iDAlXw7NpmrJaOIX3V/00oSlxDjbuyCEgadgdNyk3ucpwJlRgvLh+dm8Lyc83MVFLYmnZqpTM0p3Rexs8tQSbkk6QL3/YWzCJFV51R/Mf+kYrxKq3M6L7259u7FWEI+WH6QsIWEfYQiRVedUfzH/pGK8SqtzOi+9ufbuxVhCEIQhCJFV51R/Mf+kYrxKq3M6L7259u7FWEIQhCEIkVXnVH8x/6RivEqrczovvbn27sVYQhCEIQiRVedUfzH/pGK8SqtzOi+9ufbuxVhCEIQhCJFV51R/Mf+kYrxKq3M6L7259u7FWEIQhCEIkVXnVH8x/6RivE+q0+anVyj8lNtS70o8XUl1kupUC2pBBAUk/3Xvfujr6Nibxim/LnPWh0bE3jFN+XOetDo2JvGKb8uc9aHRsTeMU35c560OjYm8Ypvy5z1odGxN4xTflznrQ6Nibxim/LnPWh0bE3jFN+XOetDo2JvGKb8uc9aOCKVVnqjKztRqcq6iV4hS2zJqbJKk6d1FxW1ie6K8f/9k="
-              alt="" />
-          </div>
-          <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
-            </a>
-            <div class="files-list__description">Описание</div>
-            <div class="files-list__number">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</div>
-            <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">510,11 КБ</div>
-              <div class="files-list__meta-date">12.12.2023</div>
-            </div>
-          </div>
+      <ul>
+        <li>
+          <a href="./legal/confidential-site.html">Политика в отношении обработки персональных данных пользователей интернет-сайта НПП «СЕНСОР»</a>
         </li>
-
-        <li class="files-list__item">
-          <div class="files-list__wrapper--icon">
-            <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,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"
-              alt="" />
-          </div>
-          <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
-            </a>
-            <div class="files-list__description"><a href="" class="link-red">ФГИС «Аршин»</a> , 76364-19</div>
-            <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">124,36 КБ</div>
-              <div class="files-list__meta-date">15.01.2026</div>
-            </div>
-          </div>
+        <li>
+          <a href="./legal/confidential-company.html">Политика в отношении обработки персональных данных в НПП «СЕНСОР»</a>
         </li>
       </ul>
     </div>
   </main>
+
 
   <footer>
     <!-- Номера телефонов -->
@@ -382,7 +341,7 @@
     <div>
       <ul class="footer-menu">
         <li class="tab">
-          <input required type="checkbox" id="menu-5" />
+          <input type="checkbox" id="menu-5" />
           <label for="menu-5" class="tab__label">
             Продукция
             <svg class="arrow" aria-hidden="true" focusable="false">
@@ -397,7 +356,7 @@
         </li>
 
         <li class="tab">
-          <input required type="checkbox" id="menu-6" />
+          <input type="checkbox" id="menu-6" />
           <label for="menu-6" class="tab__label">
             Поддержка
             <svg class="arrow" aria-hidden="true" focusable="false">
@@ -412,7 +371,7 @@
         </li>
 
         <li class="tab">
-          <input required type="checkbox" id="menu-7" />
+          <input type="checkbox" id="menu-7" />
           <label for="menu-7" class="tab__label">
             О предприятии
             <svg class="arrow" aria-hidden="true" focusable="false">
@@ -420,7 +379,7 @@
             </svg>
           </label>
           <ul class="tab__content">
-            <li><a href="../../company.html" class="product-card__item">НПП “СЕНСОР” сегодня</a></li>
+            <li><a href="./company/" class="product-card__item">НПП “СЕНСОР” сегодня</a></li>
             <li><a href="" class="product-card__item">Политика в области качества</a></li>
             <li><a href="" class="product-card__item">Социальная политика</a></li>
           </ul>
@@ -454,10 +413,10 @@
 
       <ul class="footer-info__links">
         <li class="footer-info__item">
-          <a href="../../contacts/feedback.html" class="footer-info__link">Обратная связь</a>
+          <a href="./contacts/feedback.html" class="footer-info__link">Обратная связь</a>
         </li>
         <li class="footer-info__item">
-          <a href="../../legal.html" class="footer-info__link">Правовая информация</a>
+          <a href="./legal.html" class="footer-info__link">Правовая информация</a>
         </li>
       </ul>
     </div>
@@ -481,10 +440,8 @@
         </li>
         <li data-role="group">
           <a href="https://cp.nppsensor.ru/"><span class="text-primary">Админ-панель</span></a>
-          <a href="https://cp.nppsensor.ru/documents/manage"><span class="text-primary">Файлы для
-              скачивания</span></a>
-          <a href="https://www.nppsensor.ru/product/copy-paste"><span class="text-primary">Ссылки на
-              файлы</span></a>
+          <a href="https://cp.nppsensor.ru/documents/manage"><span class="text-primary">Файлы для скачивания</span></a>
+          <a href="https://www.nppsensor.ru/product/copy-paste"><span class="text-primary">Ссылки на файлы</span></a>
           <a href="https://www.nppsensor.ru/contacts#requisites"><span class="text-primary">Реквизиты</span></a>
         </li>
         <li data-role="group">
@@ -506,25 +463,23 @@
       <ul>
         <li data-role="header">О предприятии</li>
         <li data-role="group">
-          <a href="../../company.html"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
-          <a href="../../company/history.html"><span class="text-primary">История</span></a>
-          <a href="../../company/news.html"><span class="text-primary">Новости</span></a>
-          <a href="../../dealers.html"><span class="text-primary">Дилеры</span></a>
-          <a href="../../company/licence.html"><span class="text-primary">Дипломы,
-              патенты</span></a>
-          <a href="../../company/video.html"><span class="text-primary">Видеоархив</span></a>
-          <a href="../../company/vacancy.html"><span class="text-primary">Вакансии</span></a>
-          <a href="../../company/quality_policy.html"><span class="text-primary">Политика в области
+          <a href="./company.html"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
+          <a href="./company/history.html"><span class="text-primary">История</span></a>
+          <a href="./company/news.html"><span class="text-primary">Новости</span></a>
+          <a href="./dealers.html"><span class="text-primary">Дилеры</span></a>
+          <a href="./company/licence.html"><span class="text-primary">Дипломы, патенты</span></a>
+          <a href="./company/video.html"><span class="text-primary">Видеоархив</span></a>
+          <a href="./company/vacancy.html"><span class="text-primary">Вакансии</span></a>
+          <a href="./company/quality_policy.html"><span class="text-primary">Политика в области
               качества</span></a>
-          <a href="../../company/social.html"><span class="text-primary">Социальная
-              политика</span></a>
+          <a href="./company/social.html"><span class="text-primary">Социальная политика</span></a>
         </li>
       </ul>
       <ul>
         <li data-role="header">Продукция</li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../../catalog.html">Вся продукция</a>
+            <a href="./catalog.html">Вся продукция</a>
           </div>
           <a href="https://www.nppsensor.ru/catalog/level-transmitters"><span class="text-primary">Уровнемеры</span></a>
           <a href="https://www.nppsensor.ru/catalog/level-sensors-and-indicators"><span class="text-primary">Датчики и
@@ -535,8 +490,7 @@
             </li>
             <li data-role="group">
               <div data-role="header">
-                <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters">Все продукты
-                  группы</a>
+                <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters">Все продукты группы</a>
               </div>
               <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/pressure-transmitters"><span
                   class="text-primary">Преобразователи давления</span></a>
@@ -608,37 +562,36 @@
       <ul>
         <li data-role="header">Поддержка</li>
         <li data-role="group">
-          <a href="../../support/treatment.html"><span class="text-primary">Обращение в сервисную
+          <a href="./support/treatment.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="../../support/repair-check1.html"><span class="text-primary">Проверить статус
+          <a href="./support/repair-check1.html"><span class="text-primary">Проверить статус
               обращения</span></a>
-          <a href="../../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
+          <a href="./support/register1.html"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>
-          <a href="../../service/metrology.html"><span class="text-primary">Метрологические
+          <a href="./service/metrology.html"><span class="text-primary">Метрологические
               услуги</span></a>
 
-          <a href="../../support/knowledge.html"><span class="text-primary">Часто задаваемые
+          <a href="./support/knowledge.html"><span class="text-primary">Часто задаваемые
               вопросы</span></a>
         </li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../downloads.html">Файлы для скачивания</a>
+            <a href="./support/downloads.html">Файлы для скачивания</a>
           </div>
-          <a href="./certificates.html"><span class="text-primary">Свидетельства и
+          <a href="./support/downloads/certificates.html"><span class="text-primary">Свидетельства и
               сертификаты</span></a>
-          <a href="./catalogues.html"><span class="text-primary">Каталоги
+          <a href="./support/downloads/catalogues.html"><span class="text-primary">Каталоги
               продукции</span></a>
-          <a href="./blanks.html"><span class="text-primary">Опросные
+          <a href="./support/downloads/blanks.html"><span class="text-primary">Опросные
               листы</span></a>
-          <a href="./user-manual.html"><span class="text-primary">Руководства
-              по
+          <a href="./support/downloads/user-manual.html"><span class="text-primary">Руководства по
               эксплуатации</span></a>
-          <a href="./soft.html"><span class="text-primary">Программное
+          <a href="./support/downloads/soft.html"><span class="text-primary">Программное
               обеспечение</span></a>
-          <a href="./3D-models.html"><span class="text-primary">3D-модели</span></a>
+          <a href="./support/downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
         </li>
       </ul>
-      <a href="../../contacts.html"><span class="text-primary">Контакты</span></a>
+      <a href="./contacts.html"><span class="text-primary">Контакты</span></a>
       <a href="https://www.nppsensor.ru/price"><span class="text-primary">Прайс-лист</span></a>
       <a href="https://www.nppsensor.ru/help/media-compatible"><span class="text-primary">Помощь</span></a>
     </li>
@@ -668,7 +621,7 @@
         </svg>
       </button>
       <form>
-        <input required type="search" class="search__input" aria-label="Поиск по сайту" autocomplete="off" />
+        <input type="search" class="search__input" aria-label="Поиск по сайту" autocomplete="off" />
         <label class="search__label">Найти продукцию, файлы, программное обеспечение</label>
       </form>
       <button class="search__clear-btn" aria-label="Очистить" type="button">

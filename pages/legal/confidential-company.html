@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Настройки
-    адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</title>
-  <link rel="stylesheet" href="../../../style/css/main.css">
-  <link rel="stylesheet" href="../../../style/css/downloads.css">
-  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../../scripts/pages/layout.js"></script>
+  <title>Обращение в сервисную службу</title>
+  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../style/css/legal.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../scripts/pages/layout.js"></script>
 </head>
 
 <body>
@@ -120,6 +119,20 @@
       <symbol id="icon-download" viewBox="0 0 32 32">
         <path d="M0 24v4h28v-4zM26 12h-6v10h-12v-10.062l-6 0.062 12-12z"></path>
       </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 32 32">
+        <path d="M11.2 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M12.8 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6 1.6 0.716 1.6 1.6z"></path>
+        <path d="M16 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6c-0.884 0-1.6 0.716-1.6 1.6s0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M17.6 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6c0.884 0 1.6 0.716 1.6 1.6z">
+        </path>
+        <path d="M20.8 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path
+          d="M27.2 8.8c0-2.209-1.791-4-4-4h-14.4c-2.209 0-4 1.791-4 4v14.4c0 2.209 1.791 4 4 4h14.4c2.209 0 4-1.791 4-4zM6.4 11.2h19.2v12c0 1.325-1.075 2.4-2.4 2.4h-14.4c-1.325 0-2.4-1.075-2.4-2.4zM8.8 6.4h14.4c1.325 0 2.4 1.075 2.4 2.4v0.8h-19.2v-0.8c0-1.325 1.075-2.4 2.4-2.4z">
+        </path>
+      </symbol>
     </defs>
   </svg>
 
@@ -128,7 +141,7 @@
   <header class="header__overlay header">
     <!-- Верхняя часть хэдера -->
     <div class="header__overlay-inner header__top">
-      <a href="../../main.html" class="header__logo">
+      <a href="../main.html" class="header__logo">
         <svg class="header__logo-icon" aria-hidden="true" focusable="false">
           <use xlink:href="#icon-logo"></use>
         </svg>
@@ -187,7 +200,7 @@
             </div>
 
             <div class="contacts__group contacts__group--button">
-              <a href="../../contacts.html" class="contacts__button">
+              <a href="./contacts.html" class="contacts__button">
                 Все контакты
                 <svg class="contacts__button-icon">
                   <use xlink:href="#icon-arrow"></use>
@@ -256,108 +269,380 @@
 
   <main>
     <nav class="breadcrumbs">
-
       <ul class="breadcrumbs__list">
         <li class="breadcrumbs__item">
-          <a href="" class="link">Поддержка</a>
+          <a href="" class="link">Правовая информация</a>
         </li>
         <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Файлы для скачивания</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Опросные листы</a>
+          <a href="" class="link">Политика в отношении обработки персональных данных в НПП «СЕНСОР»</a>
         </li>
       </ul>
     </nav>
 
     <div class="layout">
-      <div class="downloads__head">
-        <form action="" class="form" style="margin: 0;">
-          <div class="form-group">
-            <div class="Field">
-              <div class="Field__control">
-                <select class="select" id="product-type-1" name="products[1][type]" required>
-                  <option value="">Все файлы</option>
-                  <option value="" selected>Опросные листы</option>
-                  <option value="">Руководства</option>
-                  <option value="">ПО</option>
-                  <option value="">Cертификаты</option>
-                  <option value="">3D-модели</option>
-                  <option value="">Каталоги</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </form>
+      <div class="title-wrap">
+        <h1 class="title">Политика в отношении обработки персональных данных в НПП «СЕНСОР»</h1>
+      </div>
 
-        <form action="" class="form" style="margin: 0;">
-          <div class="form-group">
-            <div class="Field">
-              <span class="Field__labelInner">
-                <label class="Field__labelMain" for="">Поиск файлов:</label>
-              </span>
+      <div>
+        <h2>1. Основные термины и определения</h2>
+        <p><strong>Автоматизированная обработка персональных данных</strong> – обработка персональных данных с помощью
+          средств вычислительной техники.</p>
+        <p><strong>Блокирование персональных данных</strong> – временное прекращение обработки персональных данных (за
+          исключением случаев, если обработка необходима для уточнения персональных данных).</p>
+        <p><strong>Информационная система персональных данных</strong> – совокупность содержащихся в базах данных
+          персональных данных и обеспечивающих их обработку информационных технологий и технических средств.</p>
+        <p><strong>Обезличивание персональных данных</strong> - действия, в результате которых становится невозможным
+          без использования дополнительной информации определить принадлежность персональных данных конкретному субъекту
+          персональных данных.</p>
+        <p><strong>Обработка персональных данных</strong> – любое действие (операция) или совокупность действий
+          (операций), совершаемых с использованием средств автоматизации или без использования таких средств с
+          персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление,
+          изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание,
+          блокирование, удаление, уничтожение персональных данных.</p>
+        <p><strong>Оператор персональных данных (оператор)</strong> – государственный орган, муниципальный орган,
+          юридическое или физическое лицо, самостоятельно или совместно с другими лицами организующие и (или)
+          осуществляющие обработку персональных данных, а также определяющие цели обработки персональных данных, состав
+          персональных данных, подлежащих обработке, действия (операции), совершаемые с персональными данными.</p>
+        <p><strong>Персональные данные</strong> – любая информация, относящаяся к прямо или косвенно определенному, или
+          определяемому физическому лицу (субъекту персональных данных).</p>
+        <p><strong>Предоставление персональных данных</strong> – действия, направленные на раскрытие персональных данных
+          определенному лицу или определенному кругу лиц.</p>
+        <p><strong>Распространение персональных данных</strong> – действия, направленные на раскрытие персональных
+          данных неопределенному кругу лиц.</p>
+        <p><strong>Трансграничная передача персональных данных</strong> – передача персональных данных на территорию
+          иностранного государства органу власти иностранного государства, иностранному физическому лицу или
+          иностранному юридическому лицу.</p>
+        <p><strong>Уничтожение персональных данных</strong> – действия, в результате которых становится невозможным
+          восстановить содержание персональных данных в информационной системе персональных данных и (или) в результате
+          которых уничтожаются материальные носители персональных данных.</p>
 
-              <div class="Field__control">
-                <input class="Field__input" type="number" placeholder="Введите текст...">
-              </div>
-            </div>
-          </div>
-        </form>
 
-        <ul class="downloads__filters not-marked">
-          <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">резвернуть все</button>
-          </li>
-          <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">показать архивные</button>
-          </li>
+        <h2 style="margin-top: 15px;">2. Общие положения</h2>
+        <p>2.1. Настоящая Политика в отношении обработки персональных данных в ООО НПП «СЕНСОР» (далее – Политика)
+          является официальным документом, в котором определены общие принципы, цели и порядок обработки персональных
+          данных (далее – ПДн), а также сведения о реализуемых мерах защиты ПДн.</p>
+        <p>2.2. Настоящая Политика распространяется на всех работников ООО НПП «СЕНСОР» (далее – Оператор), а также на
+          работников сторонних организаций, взаимодействующих с Оператором на основании соответствующих договоров,
+          нормативных, правовых и организационно-распорядительных документов.</p>
+        <p>2.3. Настоящая Политика вступает в силу с момента ее утверждения и действует бессрочно, до замены ее новой
+          Политикой.</p>
+
+        <h2 style="margin-top: 15px;">3. Цели сбора ПДн</h2>
+        <p>3.1. Оператор обрабатывает ПДн исключительно в следующих целях:</p>
+        <ul>
+          <li>ведение кадрового, бухгалтерского и воинского учета</li>
+          <li>исполнение Оператором функции работодателя, оформления трудовых отношений и обеспечение, установленных
+            законодательством Российской Федерации, условий труда</li>
+          <li>осуществление видов деятельности, предусмотренных Уставом</li>
+          <li>обеспечение пропускного режима на территорию предприятия и ЗАТО, сохранности имущества Оператора,
+            обеспечение личной безопасности</li>
+          <li>представление льгот и государственных гарантий</li>
+          <li>занесение в книгу почета, ролики о предприятии и его истории, публикации на сайте и в СМИ</li>
+          <li>оформление доверенностей на представительство</li>
+          <li>направление в командировки, оформление проездных билетов и гостиниц</li>
+          <li>ведение единого справочника работников, адресной книги (информационное обеспечение)</li>
+          <li>содействие в получении социальных льгот и налоговых вычетов</li>
+          <li>выполнение договорных обязательств с Физическими лицами, выполняющих работу по договору
+            гражданско-правового характера</li>
+          <li>выполнение договорных обязательств с клиентами и контрагентами</li>
+          <li>выполнение договорных обязательств между учебным заведением и предприятием</li>
+          <li>ведение статистики и анализа работы Сайта</li>
+          <li>регистрация программы АРМ СИ СЕНС, взаимодействие с сервисной службой</li>
+          <li>сбор обратной связи, обращение через онлайн-чат, запись на вебинары</li>
         </ul>
+
+        <h2 style="margin-top: 15px;">4. Правовые основания обработки ПДн</h2>
+        <p>4.1. Оператор обрабатывает ПДн в соответствии со следующими нормативными и правовыми актами:</p>
+        <ul>
+          <li>ст. ст. 23-24 Конституции Российской Федерации</li>
+          <li>ст. ст. 65, 86-90 Трудового кодекса Российской Федерации</li>
+          <li>Налоговым кодексом Российской Федерации</li>
+          <li>Гражданским кодексом Российской Федерации</li>
+          <li>Федеральным законом от 15 декабря 2001 г. № 167-ФЗ «Об обязательном пенсионном страховании в Российской
+            Федерации»</li>
+          <li>Федеральным законом от 6 декабря 2011 г. № 402-ФЗ «О бухгалтерском учете»</li>
+          <li>Федеральным законом от 29 декабря 2006 г. № 255-ФЗ «Об обязательном социальном страховании на случай
+            временной нетрудоспособности и в связи с материнством»</li>
+          <li>ст. 8 Федерального закона от 31 мая 1996 г. № 61-ФЗ «Об обороне»</li>
+          <li>ст. 9 Федерального закона от 26 февраля 1997 г. № 31-ФЗ «О мобилизационной подготовке и мобилизации в
+            Российской Федерации»</li>
+          <li>постановлением Правительства Российской Федерации от 27 ноября 2006 г. № 719 «Об утверждении Положения о
+            воинском учете»</li>
+          <li>Федеральным законом от 29 ноября 2010 г. № 326-ФЗ «Об обязательном медицинском страховании в Российской
+            Федерации»</li>
+          <li>ст. 13 и ст. ст. 92-94 Федерального закона от 21 ноября 2011 г. № 323-ФЗ «Об основах охраны здоровья
+            граждан в Российской Федерации</li>
+          <li>Лицензией на осуществление медицинской деятельности № Л041-01166-58/00325047 от 11.08.2021</li>
+          <li>Гражданско-правовым договором</li>
+          <li>Договором на оказание услуг</li>
+          <li>Согласиями на обработку персональных данных</li>
+          <li>Уставом Оператора</li>
+        </ul>
+
+        <h2 style="margin-top: 15px;">5. Объем и категории обрабатываемых ПДн, категории
+          субъектов ПДн</h2>
+        <p>5.1. Оператор осуществляет обработку следующих категорий ПДн:</p>
+
+        <div class="compare full-bcg">
+          <div class="compare__header">
+            <div class="compare__header-scroll">
+              <div class="compare__content">
+                <div class="compare__cell">
+                  <div class="compare__cell-inner"><strong>Категория субъектов ПДн</strong></div>
+                </div>
+                <div class="compare__cell">
+                  <div class="compare__cell-inner"><strong>Категория обрабатываемых ПДн</strong></div>
+                </div>
+                <div class="compare__cell">
+                  <div class="compare__cell-inner"><strong>Объем обрабатываемых ПДн</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare__body">
+            <div class="compare__row-cont">
+              <div class="compare__row">
+                <div class="compare__content">
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Работники, бывшие работники</div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">
+                      <ul>
+                        <li>иные категории персональных данных;</li>
+                        <li>специальные категории персональных данных</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Менее 100 000 субъектов</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="compare__row">
+                <div class="compare__content">
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Ближайшие родственники работников</div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">
+                      <ul>
+                        <li>иные категории персональных данных</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Менее 100 000 субъектов</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="compare__row">
+                <div class="compare__content">
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Физические лица, выполняющие работу по договорам
+                      гражданско-правового характера</div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">
+                      <ul>
+                        <li>иные категории персональных данных</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Менее 100 000 субъектов</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="compare__row">
+                <div class="compare__content">
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Клиенты и контрагенты (физические лица, индивидуальные
+                      предприниматели и сотрудники сторонних организаций)</div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">
+                      <ul>
+                        <li>иные категории персональных данных</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Менее 100 000 субъектов</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="compare__row">
+                <div class="compare__content">
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Практиканты</div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">
+                      <ul>
+                        <li>иные категории персональных данных</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Менее 100 000 субъектов</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="compare__row">
+                <div class="compare__content">
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Пользователи сайта</div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">
+                      <ul>
+                        <li>Иные категории персональных данных</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="compare__cell">
+                    <div class="compare__cell-inner">Менее 100 000 субъектов</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 15px;">6. Порядок и условия обработки ПДн</h2>
+        <p>6.1. Обработка ПДн осуществляется на законной и справедливой основе.</p>
+        <p>6.2. Обработка ПДн ограничивается достижением конкретных, заранее определённых и законных целей. Не
+          допускается обработка ПДн, несовместимая с целями сбора ПДн.</p>
+        <p>6.3. Не допускается объединение баз данных, содержащих ПДн, обработка которых осуществляется в целях,
+          несовместимых между собой.</p>
+        <p>6.4. Обработке подлежат только ПДн, которые отвечают целям их обработки.</p>
+        <p>6.5. Содержание и объем обрабатываемых ПДн соответствуют заявленным целям обработки и не являются избыточными
+          по отношению к заявленным целям их обработки.</p>
+        <p>6.6. При обработке ПДн обеспечивается точность ПДн, их достаточность, а в необходимых случаях и актуальность
+          по отношению к целям обработки ПДн. Принимаются необходимые меры по удалению или уточнению неполных, или
+          неточных данных.</p>
+        <p>6.7. В целях информационного обеспечения Оператора могут создаваться общедоступные источники ПДн Оператора (в
+          том числе справочники, электронные базы данных, страницы сайта Оператора в информационно-телекоммуникационной
+          сети «Интернет»). В общедоступные источники ПДн могут включаться только ПДн указанные субъектом ПДн в
+          письменном согласии на включение его ПДн в общедоступные источники.</p>
+        <p>6.8. Хранение ПДн осуществляется в форме, позволяющей определить субъекта ПДн, не дольше, чем этого требуют
+          цели обработки ПДн, если срок хранения ПДн не установлен федеральным законом, договором, стороной которого,
+          выгодоприобретателем или поручителем, по которому является субъект ПДн. Обрабатываемые ПДн по достижении целей
+          обработки или в случае утраты необходимости в достижении этих целей, если иное не предусмотрено федеральным
+          законом, подлежат уничтожению либо обезличиванию.</p>
+
+        <h2 style="margin-top: 15px;">7. Условия и сроки прекращения обработки персональных
+          данных</h2>
+        <p>7.1. Оператор прекращает обработку ПДн в следующих случаях:</p>
+        <ul>
+          <li>достижение целей обработки ПДн или максимальных сроков хранения – в течение 30 дней</li>
+          <li>утрата необходимости в достижении целей обработки ПДн – в течение 30 дней</li>
+          <li>предоставление субъектом ПДн или его законным представителем сведений, подтверждающих, что ПДн являются
+            незаконно полученными или не являются необходимыми для заявленной цели обработки – в течение 7 дней</li>
+          <li>невозможность обеспечения правомерности обработки ПДн – в течение 10 дней</li>
+          <li>отзыв субъектом ПДн согласия на обработку ПДн, если сохранение ПДн более не требуется для целей обработки
+            ПДн – в течение 30 дней</li>
+          <li>истечение сроков исковой давности для правоотношений, в рамках которых осуществляется либо осуществлялась
+            обработка ПДн</li>
+        </ul>
+
+        <p>7.2. В соответствии со статьей 21, частью 5 Федерального закона от 27 июля 2006 г. № 152-ФЗ «О персональных
+          данных» Оператор не прекращает обработку персональных данных Субъекта и не уничтожает их в следующих случаях:
+        </p>
+        <ul>
+          <li>иное предусмотрено договором, стороной которого, выгодоприобретателем или поручителем по которому является
+            Субъект</li>
+          <li>Оператор вправе осуществлять обработку персональных данных без согласия Субъекта на основаниях,
+            предусмотренных федеральными законами</li>
+          <li>не истекли сроки обработки персональных данных Субъекта, установленные федеральными законами РФ и иными
+            нормативными актами</li>
+        </ul>
+
+        <h2 style="margin-top: 15px;">8. Меры обеспечения безопасности ПДн</h2>
+        <p>8.1. Безопасность ПДн, обрабатываемых Оператором, обеспечивается реализацией правовых, организационных,
+          технических и программных мер, необходимых и достаточных для обеспечения требований законодательства в области
+          защиты ПДн.</p>
+        <p>8.2. Оператор предпринимает необходимые организационные и технические меры для обеспечения безопасности ПДн
+          от случайного или несанкционированного доступа, уничтожения, изменения, блокирования доступа и других
+          несанкционированных действий.</p>
+        <p>8.3. Оператор предпринимает следующие организационно-технические меры:</p>
+        <ul>
+          <li>назначение ответственных лиц за организацию обработки и обеспечение защиты персональных данных</li>
+          <li>ограничение состава работников Оператора, имеющих доступ к персональным данным</li>
+          <li>установление правил разграничения доступа к персональным данным, обрабатываемым в информационных системах
+            персональных данных и обеспечение регистрации и учета всех действий, совершаемых с персональными данными
+          </li>
+          <li>ограничение доступа в помещения, где размещены основные технические средства и системы информационных
+            систем персональных данных и осуществляется неавтоматизированная обработка персональных данных</li>
+          <li>ведение учета машинных носителей персональных данных</li>
+          <li>организация резервирования и восстановления работоспособности информационных систем персональных данных и
+            персональных данных модифицированных или уничтоженных вследствие несанкционированного доступа к ним</li>
+          <li>установление требований к сложности паролей для доступа к информационным системам персональных данных</li>
+          <li>применение прошедших в установленном порядке процедур оценки соответствия средств защиты информации</li>
+          <li>осуществление антивирусного контроля, предотвращение внедрения в корпоративную сеть вредоносных программ
+            (программ-вирусов) и программных закладок</li>
+          <li>организация своевременного обновления программного обеспечения, используемого в информационных системах
+            персональных данных и средств защиты информации</li>
+          <li>обнаружение фактов несанкционированного доступа к персональным данным и принятие мер по установлению
+            причин и устранению возможных последствий</li>
+          <li>контроль за принимаемыми мерами по обеспечению безопасности персональных данных и уровней защищенности
+            информационных систем персональных данных</li>
+          <li>размещение технических средств обработки ПДн, в пределах охраняемой территории</li>
+          <li>поддержание технических средств охраны, сигнализации помещений в состоянии постоянной готовности</li>
+        </ul>
+
+        <h2 style="margin-top: 15px;">9. Права субъектов персональных данных</h2>
+        <p>9.1. Субъект ПДн имеет право на получение информации, касающейся обработки его ПДн, в том числе содержащей:
+        </p>
+        <ul>
+          <li>подтверждение факта обработки ПДн Оператором</li>
+          <li>правовые основания и цели обработки ПДн</li>
+          <li>цели и применяемые Оператором способы обработки ПДн</li>
+          <li>наименование и место нахождения Оператора, сведения о лицах (за исключением работников Оператора), которые
+            имеют доступ к ПДн или которым могут быть раскрыты ПДн на основании договора с Оператором или на основании
+            федерального закона</li>
+          <li>обрабатываемые ПДн, относящиеся к соответствующему субъекту ПДн, источник их получения, если иной порядок
+            представления таких данных не предусмотрен федеральным законом</li>
+          <li>сроки обработки ПДн, в том числе сроки их хранения</li>
+          <li>порядок осуществления субъектом ПДн прав, предусмотренных Федеральным законом «О персональных данных»</li>
+          <li>информацию об осуществленной или о предполагаемой трансграничной передаче ПДн</li>
+          <li>наименование или фамилию, имя, отчество и адрес лица, осуществляющего обработку ПДн по поручению
+            Оператора, если обработка поручена или будет поручена такому лицу</li>
+          <li>иные сведения, предусмотренные Федеральным законом «О персональных данных» или другими федеральными
+            законами</li>
+        </ul>
+        <p>9.2. Субъект ПДн вправе требовать от Оператора уточнения его ПДн, их блокирования или уничтожения в случае,
+          если ПДн являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для
+          заявленной цели обработки, а также принимать предусмотренные законом меры по защите своих прав.</p>
+        <p>9.3. Если субъект ПДн считает, что Оператор осуществляет обработку его ПДн с нарушением требований
+          Федерального закона «О персональных данных» или иным образом нарушает его права и свободы, субъект ПДн вправе
+          обжаловать действия или бездействие Оператора в вышестоящий орган по защите прав субъектов ПДн (Федеральная
+          служба по надзору в сфере связи, информационных технологий и массовых коммуникаций – Роскомнадзор) или в
+          судебном порядке.</p>
+        <p>9.4. Субъект ПДн имеет право на защиту своих прав и законных интересов, в том числе на возмещение убытков и
+          (или) компенсацию морального вреда в судебном порядке.</p>
+
+        <h2 style="margin-top: 15px;">10. Заключительные положения</h2>
+        <p>10.1. Контроль исполнения требований настоящей Политики осуществляется ответственным за организацию обработки
+          ПДн.</p>
+        <p>10.2. Иные права и обязанности Оператора, определяются Федеральным законом «О персональных данных» и иными
+          нормативными правовыми актами в области защиты ПДн.</p>
+        <p>10.3. Должностные лица, виновные в нарушении норм, регулирующих обработку и защиту ПДн, несут материальную,
+          дисциплинарную, административную, гражданско-правовую или уголовную ответственность в порядке, установленном
+          федеральными законами.</p>
 
       </div>
 
-      <ul class="files-list not-marked">
-        <li class="files-list__item">
-          <div class="files-list__wrapper--icon">
-            <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,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"
-              alt="" />
-          </div>
-          <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
-            </a>
-            <div class="files-list__description">Описание</div>
-            <div class="files-list__number">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</div>
-            <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">510,11 КБ</div>
-              <div class="files-list__meta-date">12.12.2023</div>
-            </div>
-          </div>
-        </li>
-
-        <li class="files-list__item">
-          <div class="files-list__wrapper--icon">
-            <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,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"
-              alt="" />
-          </div>
-          <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
-            </a>
-            <div class="files-list__description"><a href="" class="link-red">ФГИС «Аршин»</a> , 76364-19</div>
-            <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">124,36 КБ</div>
-              <div class="files-list__meta-date">15.01.2026</div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
   </main>
-
   <footer>
     <!-- Номера телефонов -->
 
@@ -420,7 +705,7 @@
             </svg>
           </label>
           <ul class="tab__content">
-            <li><a href="../../company.html" class="product-card__item">НПП “СЕНСОР” сегодня</a></li>
+            <li><a href="./company.html" class="product-card__item">НПП “СЕНСОР” сегодня</a></li>
             <li><a href="" class="product-card__item">Политика в области качества</a></li>
             <li><a href="" class="product-card__item">Социальная политика</a></li>
           </ul>
@@ -454,10 +739,10 @@
 
       <ul class="footer-info__links">
         <li class="footer-info__item">
-          <a href="../../contacts/feedback.html" class="footer-info__link">Обратная связь</a>
+          <a href="../contacts/feedback.html" class="footer-info__link">Обратная связь</a>
         </li>
         <li class="footer-info__item">
-          <a href="../../legal.html" class="footer-info__link">Правовая информация</a>
+          <a href="../legal.html" class="footer-info__link">Правовая информация</a>
         </li>
       </ul>
     </div>
@@ -506,17 +791,17 @@
       <ul>
         <li data-role="header">О предприятии</li>
         <li data-role="group">
-          <a href="../../company.html"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
-          <a href="../../company/history.html"><span class="text-primary">История</span></a>
-          <a href="../../company/news.html"><span class="text-primary">Новости</span></a>
-          <a href="../../dealers.html"><span class="text-primary">Дилеры</span></a>
-          <a href="../../company/licence.html"><span class="text-primary">Дипломы,
+          <a href="../company.html"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
+          <a href="../company/history"><span class="text-primary">История</span></a>
+          <a href="../news.html"><span class="text-primary">Новости</span></a>
+          <a href="../contacts.html"><span class="text-primary">Дилеры</span></a>
+          <a href="../company/license.html"><span class="text-primary">Дипломы,
               патенты</span></a>
-          <a href="../../company/video.html"><span class="text-primary">Видеоархив</span></a>
-          <a href="../../company/vacancy.html"><span class="text-primary">Вакансии</span></a>
-          <a href="../../company/quality_policy.html"><span class="text-primary">Политика в области
+          <a href="../company/video.html"><span class="text-primary">Видеоархив</span></a>
+          <a href="../vacancy.html"><span class="text-primary">Вакансии</span></a>
+          <a href="../company/quality_policy.html"><span class="text-primary">Политика в области
               качества</span></a>
-          <a href="../../company/social.html"><span class="text-primary">Социальная
+          <a href="../company/social.html"><span class="text-primary">Социальная
               политика</span></a>
         </li>
       </ul>
@@ -524,7 +809,7 @@
         <li data-role="header">Продукция</li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../../catalog.html">Вся продукция</a>
+            <a href="../catalog.html">Вся продукция</a>
           </div>
           <a href="https://www.nppsensor.ru/catalog/level-transmitters"><span class="text-primary">Уровнемеры</span></a>
           <a href="https://www.nppsensor.ru/catalog/level-sensors-and-indicators"><span class="text-primary">Датчики и
@@ -542,7 +827,6 @@
                   class="text-primary">Преобразователи давления</span></a>
               <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/temperature-transmitters"><span
                   class="text-primary">Преобразователи температуры</span></a>
-
               <a
                 href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/electric-contact-pressure-gauges"><span
                   class="text-primary">Электроконтактные манометры</span></a>
@@ -608,37 +892,37 @@
       <ul>
         <li data-role="header">Поддержка</li>
         <li data-role="group">
-          <a href="../../support/treatment.html"><span class="text-primary">Обращение в сервисную
+          <a href="../support/treatment.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="../../support/repair-check1.html"><span class="text-primary">Проверить статус
+          <a href="../support/repair-check1.html"><span class="text-primary">Проверить статус
               обращения</span></a>
-          <a href="../../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
+          <a href="../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>
-          <a href="../../service/metrology.html"><span class="text-primary">Метрологические
+          <a href="../service/metrology.html"><span class="text-primary">Метрологические
               услуги</span></a>
 
-          <a href="../../support/knowledge.html"><span class="text-primary">Часто задаваемые
+          <a href="../support/knowledge.html"><span class="text-primary">Часто задаваемые
               вопросы</span></a>
         </li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../downloads.html">Файлы для скачивания</a>
+            <a href="./downloads.html">Файлы для скачивания</a>
           </div>
-          <a href="./certificates.html"><span class="text-primary">Свидетельства и
+          <a href="./downloads/certificates.html"><span class="text-primary">Свидетельства и
               сертификаты</span></a>
-          <a href="./catalogues.html"><span class="text-primary">Каталоги
+          <a href="./downloads/catalogues.html"><span class="text-primary">Каталоги
               продукции</span></a>
-          <a href="./blanks.html"><span class="text-primary">Опросные
+          <a href="./downloads/blanks.html"><span class="text-primary">Опросные
               листы</span></a>
-          <a href="./user-manual.html"><span class="text-primary">Руководства
+          <a href="./downloads/user-manual.html"><span class="text-primary">Руководства
               по
               эксплуатации</span></a>
-          <a href="./soft.html"><span class="text-primary">Программное
+          <a href="./downloads/soft.html"><span class="text-primary">Программное
               обеспечение</span></a>
-          <a href="./3D-models.html"><span class="text-primary">3D-модели</span></a>
+          <a href="./downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
         </li>
       </ul>
-      <a href="../../contacts.html"><span class="text-primary">Контакты</span></a>
+      <a href="../contacts.html"><span class="text-primary">Контакты</span></a>
       <a href="https://www.nppsensor.ru/price"><span class="text-primary">Прайс-лист</span></a>
       <a href="https://www.nppsensor.ru/help/media-compatible"><span class="text-primary">Помощь</span></a>
     </li>

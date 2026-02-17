@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Настройки
-    адаптера ЛИН-RS485/232-DIN для работы с ПО «Мобильная карта»</title>
-  <link rel="stylesheet" href="../../../style/css/main.css">
-  <link rel="stylesheet" href="../../../style/css/downloads.css">
-  <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
-  <script type="module" src="../../../scripts/pages/layout.js"></script>
+  <title>Обращение в сервисную службу</title>
+  <link rel="preload" href="../../style/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="../../style/css/history.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="shortcut icon" href="../../assets/image/favicon.ico" type="image/x-icon" />
+  <script type="module" src="../../scripts/pages/layout.js"></script>
 </head>
 
 <body>
@@ -120,6 +119,20 @@
       <symbol id="icon-download" viewBox="0 0 32 32">
         <path d="M0 24v4h28v-4zM26 12h-6v10h-12v-10.062l-6 0.062 12-12z"></path>
       </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 32 32">
+        <path d="M11.2 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M12.8 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6 1.6 0.716 1.6 1.6z"></path>
+        <path d="M16 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6c-0.884 0-1.6 0.716-1.6 1.6s0.716 1.6 1.6 1.6z">
+        </path>
+        <path d="M17.6 20.8c0 0.884-0.716 1.6-1.6 1.6s-1.6-0.716-1.6-1.6 0.716-1.6 1.6-1.6c0.884 0 1.6 0.716 1.6 1.6z">
+        </path>
+        <path d="M20.8 17.6c0.884 0 1.6-0.716 1.6-1.6s-0.716-1.6-1.6-1.6-1.6 0.716-1.6 1.6c0 0.884 0.716 1.6 1.6 1.6z">
+        </path>
+        <path
+          d="M27.2 8.8c0-2.209-1.791-4-4-4h-14.4c-2.209 0-4 1.791-4 4v14.4c0 2.209 1.791 4 4 4h14.4c2.209 0 4-1.791 4-4zM6.4 11.2h19.2v12c0 1.325-1.075 2.4-2.4 2.4h-14.4c-1.325 0-2.4-1.075-2.4-2.4zM8.8 6.4h14.4c1.325 0 2.4 1.075 2.4 2.4v0.8h-19.2v-0.8c0-1.325 1.075-2.4 2.4-2.4z">
+        </path>
+      </symbol>
     </defs>
   </svg>
 
@@ -128,7 +141,7 @@
   <header class="header__overlay header">
     <!-- Верхняя часть хэдера -->
     <div class="header__overlay-inner header__top">
-      <a href="../../main.html" class="header__logo">
+      <a href="../main.html" class="header__logo">
         <svg class="header__logo-icon" aria-hidden="true" focusable="false">
           <use xlink:href="#icon-logo"></use>
         </svg>
@@ -187,7 +200,7 @@
             </div>
 
             <div class="contacts__group contacts__group--button">
-              <a href="../../contacts.html" class="contacts__button">
+              <a href="./contacts.html" class="contacts__button">
                 Все контакты
                 <svg class="contacts__button-icon">
                   <use xlink:href="#icon-arrow"></use>
@@ -256,108 +269,149 @@
 
   <main>
     <nav class="breadcrumbs">
-
       <ul class="breadcrumbs__list">
         <li class="breadcrumbs__item">
-          <a href="" class="link">Поддержка</a>
+          <a href="" class="link">Контакты</a>
         </li>
         <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Файлы для скачивания</a>
-        </li>
-        <li class="breadcrumbs__item">
-          <a href="./appeal_status.html" class="link">Опросные листы</a>
+          <a href="" class="link">Обратная связь</a>
         </li>
       </ul>
     </nav>
 
     <div class="layout">
-      <div class="downloads__head">
-        <form action="" class="form" style="margin: 0;">
-          <div class="form-group">
+      <div class="title-wrap">
+        <h1 class="title">Форма обратной связи</h1>
+      </div>
+      <span>
+        Если у вас есть вопросы или предложения, если вы заметили неточность или ошибки в работе нашего сайта,
+        пожалуйста, сообщите нам об этом, заполнив следующую форму. Спасибо.</span>
+      <form class="form">
+        <div class="form-group">
+          <fieldset class="fieldset">
             <div class="Field">
-              <div class="Field__control">
-                <select class="select" id="product-type-1" name="products[1][type]" required>
-                  <option value="">Все файлы</option>
-                  <option value="" selected>Опросные листы</option>
-                  <option value="">Руководства</option>
-                  <option value="">ПО</option>
-                  <option value="">Cертификаты</option>
-                  <option value="">3D-модели</option>
-                  <option value="">Каталоги</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </form>
-
-        <form action="" class="form" style="margin: 0;">
-          <div class="form-group">
-            <div class="Field">
-              <span class="Field__labelInner">
-                <label class="Field__labelMain" for="">Поиск файлов:</label>
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain" for="">Ваше имя:</label>
               </span>
 
               <div class="Field__control">
-                <input class="Field__input" type="number" placeholder="Введите текст...">
+                <input class="Field__input" type="text" placeholder="Иван">
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
               </div>
             </div>
-          </div>
-        </form>
 
-        <ul class="downloads__filters not-marked">
-          <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">резвернуть все</button>
-          </li>
-          <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">показать архивные</button>
-          </li>
-        </ul>
+            <div class="Field">
+              <span class="Field__labelInner">
+                <label class="Field__labelMain" for="">Email для связи:</label>
+              </span>
 
-      </div>
+              <div class="Field__control">
+                <input class="Field__input" type="email" placeholder="ivan@email.ru">
+              </div>
 
-      <ul class="files-list not-marked">
-        <li class="files-list__item">
-          <div class="files-list__wrapper--icon">
-            <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,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"
-              alt="" />
-          </div>
-          <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
-            </a>
-            <div class="files-list__description">Описание</div>
-            <div class="files-list__number">1747, KZ74VTS00004128, KZ.02.03.01094-2023/87642-22</div>
-            <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">510,11 КБ</div>
-              <div class="files-list__meta-date">12.12.2023</div>
+              <div class="Field__hint">
+                <span>На этот email мы направим ответ</span>
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
+              </div>
+            </div>
+
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain" for=""> Текст обращения:</label>
+              </span>
+
+              <div class="Field__control">
+                <textarea name="" id=""></textarea>
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
+              </div>
+            </div>
+
+            <div class="Field">
+              <span class="Field__labelInner required">
+                <label class="Field__labelMain" for="">Антиспам-код:</label>
+              </span>
+
+
+              <div class="Field__control Field__control--captcha">
+                <img src="https://www.nppsensor.ru/contacts/feedback/captcha?v=6993049d6c8446.52595004"
+                  alt="Антиспам-код">
+                <input class="Field__input" type="text" placeholder="введите цифры" required>
+              </div>
+
+              <div class="Field__error">
+                <span class="Field__error-text"></span>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <div class="Field">
+            <span class="Field__labelInner">
+              <label class="Field__labelMain" for="">Присоеденить файл (скриншот):</label>
+            </span>
+
+            <div class="Field__control">
+              <button class="Field__file-btn" type="button">
+                <svg>
+                  <use xlink:href="#icon-download"></use>
+                </svg>
+                <span>Загрузить</span>
+                <input type="file" id="file-upload" multiple
+                  accept=".zip, .pdf, .rar, .exe, .xlsx, .docx, .xls, .doc, .jpg, .jpeg, .bmp, .png, .gif, .rtf, .tsu">
+              </button>
+            </div>
+
+            <div class="Field__hint">
+              <span>Максимум 10 файлов общим размером до 10 МБ.</span>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
             </div>
           </div>
-        </li>
+        </div>
 
-        <li class="files-list__item">
-          <div class="files-list__wrapper--icon">
-            <img class="files-list__icon" loading="lazy"
-              src="data:image/jpeg;base64,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"
-              alt="" />
-          </div>
-          <div class="files-list__wrapper--info">
-            <a class="files-list__name link" target="_blank" href="">СЕНС СГ-А2. Свидетельство об утверждении типа
-              средств измерений (Россия)<div class="files-list__click"></div>
-            </a>
-            <div class="files-list__description"><a href="" class="link-red">ФГИС «Аршин»</a> , 76364-19</div>
-            <div class="files-list__meta">
-              <div class="files-list__meta-ext">pdf</div>
-              <div class="files-list__meta-size">124,36 КБ</div>
-              <div class="files-list__meta-date">15.01.2026</div>
+        <div class="form-group">
+          <div class="Field">
+            <div class="Field__control">
+              <div class="Field__item">
+                <input class="Field__input" type="checkbox" id="agree" name="agree" value="1">
+                <label for="agree">
+                  <span>Даю согласие на обработку персональных данных в соответствии с <a href=""
+                      class="Checkbox__link link-red">политикой</a>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="Field__error">
+              <span class="Field__error-text"></span>
             </div>
           </div>
-        </li>
-      </ul>
+
+        </div>
+
+        <div class="form-group">
+          <div class="Field">
+            <div class="Field__control">
+              <input class="Field__input" type="submit" value="Отправить">
+            </div>
+          </div>
+        </div>
+
+      </form>
     </div>
   </main>
-
   <footer>
     <!-- Номера телефонов -->
 
@@ -420,7 +474,7 @@
             </svg>
           </label>
           <ul class="tab__content">
-            <li><a href="../../company.html" class="product-card__item">НПП “СЕНСОР” сегодня</a></li>
+            <li><a href="./company.html" class="product-card__item">НПП “СЕНСОР” сегодня</a></li>
             <li><a href="" class="product-card__item">Политика в области качества</a></li>
             <li><a href="" class="product-card__item">Социальная политика</a></li>
           </ul>
@@ -454,10 +508,10 @@
 
       <ul class="footer-info__links">
         <li class="footer-info__item">
-          <a href="../../contacts/feedback.html" class="footer-info__link">Обратная связь</a>
+          <a href="../contacts/feedback.html" class="footer-info__link">Обратная связь</a>
         </li>
         <li class="footer-info__item">
-          <a href="../../legal.html" class="footer-info__link">Правовая информация</a>
+          <a href="../legal.html" class="footer-info__link">Правовая информация</a>
         </li>
       </ul>
     </div>
@@ -506,17 +560,17 @@
       <ul>
         <li data-role="header">О предприятии</li>
         <li data-role="group">
-          <a href="../../company.html"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
-          <a href="../../company/history.html"><span class="text-primary">История</span></a>
-          <a href="../../company/news.html"><span class="text-primary">Новости</span></a>
-          <a href="../../dealers.html"><span class="text-primary">Дилеры</span></a>
-          <a href="../../company/licence.html"><span class="text-primary">Дипломы,
+          <a href="../company.html"><span class="text-primary">НПП «СЕНСОР» сегодня</span></a>
+          <a href="../company/history.html"><span class="text-primary">История</span></a>
+          <a href="../company/news.html"><span class="text-primary">Новости</span></a>
+          <a href="../dealers.html"><span class="text-primary">Дилеры</span></a>
+          <a href="../company/licence.html"><span class="text-primary">Дипломы,
               патенты</span></a>
-          <a href="../../company/video.html"><span class="text-primary">Видеоархив</span></a>
-          <a href="../../company/vacancy.html"><span class="text-primary">Вакансии</span></a>
-          <a href="../../company/quality_policy.html"><span class="text-primary">Политика в области
+          <a href="../company/video.html"><span class="text-primary">Видеоархив</span></a>
+          <a href="../company/vacancy.html"><span class="text-primary">Вакансии</span></a>
+          <a href="../company/quality_policy.html"><span class="text-primary">Политика в области
               качества</span></a>
-          <a href="../../company/social.html"><span class="text-primary">Социальная
+          <a href="../company/social.html"><span class="text-primary">Социальная
               политика</span></a>
         </li>
       </ul>
@@ -524,7 +578,7 @@
         <li data-role="header">Продукция</li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../../catalog.html">Вся продукция</a>
+            <a href="../catalog.html">Вся продукция</a>
           </div>
           <a href="https://www.nppsensor.ru/catalog/level-transmitters"><span class="text-primary">Уровнемеры</span></a>
           <a href="https://www.nppsensor.ru/catalog/level-sensors-and-indicators"><span class="text-primary">Датчики и
@@ -542,7 +596,6 @@
                   class="text-primary">Преобразователи давления</span></a>
               <a href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/temperature-transmitters"><span
                   class="text-primary">Преобразователи температуры</span></a>
-
               <a
                 href="https://www.nppsensor.ru/catalog/pressure-and-temperature-transmitters/electric-contact-pressure-gauges"><span
                   class="text-primary">Электроконтактные манометры</span></a>
@@ -608,37 +661,37 @@
       <ul>
         <li data-role="header">Поддержка</li>
         <li data-role="group">
-          <a href="../../support/treatment.html"><span class="text-primary">Обращение в сервисную
+          <a href="../support/treatment.html"><span class="text-primary">Обращение в сервисную
               службу</span></a>
-          <a href="../../support/repair-check1.html"><span class="text-primary">Проверить статус
+          <a href="../support/repair-check1.html"><span class="text-primary">Проверить статус
               обращения</span></a>
-          <a href="../../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
+          <a href="../support/register1.html"><span class="text-primary">Регистрация АРМ СИ
               СЕНС</span></a>
-          <a href="../../service/metrology.html"><span class="text-primary">Метрологические
+          <a href="../service/metrology.html"><span class="text-primary">Метрологические
               услуги</span></a>
 
-          <a href="../../support/knowledge.html"><span class="text-primary">Часто задаваемые
+          <a href="../support/knowledge.html"><span class="text-primary">Часто задаваемые
               вопросы</span></a>
         </li>
         <li data-role="group">
           <div data-role="header">
-            <a href="../downloads.html">Файлы для скачивания</a>
+            <a href="./downloads.html">Файлы для скачивания</a>
           </div>
-          <a href="./certificates.html"><span class="text-primary">Свидетельства и
+          <a href="./downloads/certificates.html"><span class="text-primary">Свидетельства и
               сертификаты</span></a>
-          <a href="./catalogues.html"><span class="text-primary">Каталоги
+          <a href="./downloads/catalogues.html"><span class="text-primary">Каталоги
               продукции</span></a>
-          <a href="./blanks.html"><span class="text-primary">Опросные
+          <a href="./downloads/blanks.html"><span class="text-primary">Опросные
               листы</span></a>
-          <a href="./user-manual.html"><span class="text-primary">Руководства
+          <a href="./downloads/user-manual.html"><span class="text-primary">Руководства
               по
               эксплуатации</span></a>
-          <a href="./soft.html"><span class="text-primary">Программное
+          <a href="./downloads/soft.html"><span class="text-primary">Программное
               обеспечение</span></a>
-          <a href="./3D-models.html"><span class="text-primary">3D-модели</span></a>
+          <a href="./downloads/3D-models.html"><span class="text-primary">3D-модели</span></a>
         </li>
       </ul>
-      <a href="../../contacts.html"><span class="text-primary">Контакты</span></a>
+      <a href="../contacts.html"><span class="text-primary">Контакты</span></a>
       <a href="https://www.nppsensor.ru/price"><span class="text-primary">Прайс-лист</span></a>
       <a href="https://www.nppsensor.ru/help/media-compatible"><span class="text-primary">Помощь</span></a>
     </li>

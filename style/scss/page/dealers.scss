@@ -1,0 +1,64 @@
+@use "../partials/pages/product/files-list";
+
+.files-list.dealers {
+
+  .files-list__wrapper--icon {
+    min-width: 75px;
+
+    img {
+      width: 75px;
+    }
+  }
+
+  .files-list__wrapper--info{
+    gap: 0;
+  }
+
+  .files-list__description {
+
+    &--phone::before,
+    &--web::before,
+    &--map::before,
+    &--mail::before {
+      margin-right: 5px;
+      font-family: icons;
+      font-size: 16px;
+      line-height: 0;
+      color: rgba(0,0,0,.5);
+    }
+
+    &--phone::before {
+      content: "\f095";
+    }
+
+    &--web::before {
+      content: "\f0ac";
+    }
+
+    &--map::before {
+      content: "\f041";
+    }
+
+    &--mail::before {
+      content: "\f0e0";
+      font-size: 14px;
+    }
+
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-top: 5px;
+
+      li {
+        margin-bottom: 7px;
+
+        span {
+          font-size: 12px;
+          color: rgba(0,0,0,.5);
+        }
+      }
+    }
+  }
+}
