@@ -34,4 +34,10 @@
 }
 .history__title {
   margin: 0;
+}
+
+@media screen and (min-width: 360px) {
+  .history__year::before {
+    left: -29px;
+  }
 }/*# sourceMappingURL=history.css.map */
