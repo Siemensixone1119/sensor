@@ -44,3 +44,11 @@
     margin: 0;
   }
 }
+
+@media screen and(min-width: 360px){
+  .history{
+    &__year::before {
+    left: -29px;
+  }
+  }
+}
