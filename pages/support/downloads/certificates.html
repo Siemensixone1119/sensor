@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../../style/css/downloads.css">
   <link rel="shortcut icon" href="../../../assets/image/favicon.ico" type="image/x-icon" />
   <script type="module" src="../../../scripts/pages/layout.js"></script>
+  <script type="module" src="../../../scripts/pages/download.js"></script>
 </head>
 
 <body>
@@ -147,7 +148,7 @@
         </svg>
       </button>
       <div data-info data-trigger="prev">
-       <div class="contacts">
+        <div class="contacts">
           <div>
             <div class="contacts__group contacts__group--info">
               <div class="contacts__logo">
@@ -306,10 +307,10 @@
 
         <ul class="downloads__filters not-marked">
           <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">резвернуть все</button>
+            <button href="" class="downloads__filter-name" data-appointment="open">резвернуть все</button>
           </li>
           <li class="downloads__filter">
-            <button href="" class="downloads__filter-name">показать архивные</button>
+            <button href="" class="downloads__filter-name" data-appointment="arhive">показать архивные</button>
           </li>
         </ul>
 
