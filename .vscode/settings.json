@@ -7,5 +7,5 @@
       "savePath": "/style/css"
     }
   ],
-  "liveSassCompile.settings.generateMap": true
+  "liveSassCompile.settings.generateMap": false
 }

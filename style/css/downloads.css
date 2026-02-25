@@ -122,10 +122,8 @@
   gap: 10px;
 }
 .downloads__filters {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   padding: 0;
   gap: 25px;
   margin: 0;
@@ -137,12 +135,16 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .downloads__filter-name {
-  font-size: 14px;
+  font-size: 11px;
   text-align: center;
   color: blue;
-}/*# sourceMappingURL=downloads.css.map */
+  white-space: nowrap;
+}
