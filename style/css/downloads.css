@@ -181,10 +181,10 @@
   width: 100%;
   display: inline-block;
   background-color: aliceblue;
-  /* padding: 2px; */
   line-height: 1.4;
   border-radius: 15px;
   border: 1px solid #b8d9e4;
+  max-width: 46px;
 }
 
 .downloads-filter {
