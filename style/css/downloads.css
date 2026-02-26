@@ -122,10 +122,11 @@
   gap: 10px;
 }
 .downloads__filters {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 0;
-  gap: 25px;
+  gap: 29px;
   margin: 0;
 }
 .downloads__filter {
@@ -141,10 +142,107 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 0;
 }
 .downloads__filter-name {
   font-size: 11px;
   text-align: center;
   color: blue;
   white-space: nowrap;
+}
+.downloads__arhive-list {
+  padding: 0;
+  max-width: 130px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 0;
+}
+.downloads__arhive-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.downloads__arhive-list li input {
+  width: 15px;
+  height: 16px;
+}
+
+.files-list__arhive {
+  font-size: 11px;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  background-color: aliceblue;
+  /* padding: 2px; */
+  line-height: 1.4;
+  border-radius: 15px;
+  border: 1px solid #b8d9e4;
+}
+
+.downloads-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+.downloads-filter__title {
+  font-size: 14px;
+}
+.downloads-filter__chips {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.downloads-filter__chip {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+}
+.downloads-filter__chip-input {
+  width: 15px;
+  height: 15px;
+  accent-color: #292361;
+}
+.downloads-filter__chip-text {
+  font-size: 14px;
+}
+.downloads-filter__actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.downloads-filter__dot {
+  opacity: 0.6;
+}
+.downloads-filter__btn {
+  color: #292361;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

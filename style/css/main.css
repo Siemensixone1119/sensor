@@ -219,7 +219,7 @@ ul.not-marked > li::marker,
 ol.not-marked > li::marker,
 ol.not-marked > li:last-child::marker,
 ul.not-marked > li:last-child::marker {
-  content: "";
+  display: none;
 }
 
 h1 {

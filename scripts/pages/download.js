@@ -1,54 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const openBtn = document.querySelector('[data-appointment="open"]');
-  const closeBtn = document.querySelector('[data-appointment="close"]');
-  const arhiveBtn = document.querySelector('[data-appointment="arhive"]');
+  const openAllBtn = document.querySelector('[data-appointment="open"]');
+  const closeAllBtn = document.querySelector('[data-appointment="close"]');
+
+  const showArchiveCb = document.querySelector('[data-appointment="arhive_yes"]'); // Архивные
+  const showNowCb = document.querySelector('[data-appointment="arhive_no"]');  // Действующие
+
   const sections = document.querySelectorAll('.openable-section__control');
-  const oldCerteficates = document.querySelectorAll(".old_certeficate_no");
 
-  if (oldCerteficates) {
-    oldCerteficates.forEach(certeficate => {
-      certeficate.style.display = "none";
-    })
-  }
+  const nowCertificates = document.querySelectorAll('.old_certeficate_no');  // действующие
+  const archiveCertificates = document.querySelectorAll('.old_certeficate_yes'); // архивные
 
-  if (closeBtn && openBtn !== undefined) {
-    openBtn.addEventListener('click', () => {
-      sections.forEach((section) => {
-        section.checked = true;
-      });
-    });
+  const setHidden = (nodes, hidden) => {
+    nodes.forEach((node) => node.classList.toggle('is-hidden', hidden));
+  };
 
-    closeBtn.addEventListener('click', () => {
-      sections.forEach((section) => {
-        section.checked = false;
-      });
-    });
-  } else if (openBtn !== undefined) {
-    openBtn.addEventListener('click', () => {
-      if (openBtn.textContent === 'развернуть все') {
-        sections.forEach((section) => {
-          section.checked = true;
-        });
+  const applyFilters = () => {
+    const showNow = !!showNowCb?.checked;
+    const showArchive = !!showArchiveCb?.checked;
 
-        openBtn.innerHTML =
-          '<button href="" class="downloads__filter-name" data-appointment="close">свернуть все</button>';
-      } else {
-        sections.forEach((section) => {
-          section.checked = false;
-        });
+    setHidden(nowCertificates, !showNow);
+    setHidden(archiveCertificates, !showArchive);
+  };
 
-        openBtn.innerHTML =
-          '<button href="" class="downloads__filter-name" data-appointment="open">резвернуть все</button>';
-      }
-    });
-  }
+  applyFilters();
 
-  if (arhiveBtn) {
-    arhiveBtn.addEventListener("click", () => {
-      oldCerteficates.forEach(certeficate => {
-        certeficate.style.display = "flex";
-        certeficate.style.opacity = "0.65"
-      })
-    })
-  }
+  showNowCb?.addEventListener('change', applyFilters);
+  showArchiveCb?.addEventListener('change', applyFilters);
+
+  openAllBtn?.addEventListener('click', () => {
+    sections.forEach((s) => (s.checked = true));
+  });
+
+  closeAllBtn?.addEventListener('click', () => {
+    sections.forEach((s) => (s.checked = false));
+  });
 });
