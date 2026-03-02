@@ -246,3 +246,16 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+.is-hidden {
+  display: none !important;
+}
+
+.downloads-empty {
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  color: #6b7280;
+  font-size: 14px;
+}
